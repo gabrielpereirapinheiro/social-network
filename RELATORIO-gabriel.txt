@@ -1,1 +1,3 @@
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+
+8/6/17                  Interface Grafica  Escolha e instalacao da biblioteca ncurses e criacao da pagina inicial .
