@@ -42,7 +42,7 @@ int ch = getch();
 switch (ch) 
 {
     case KEY_LEFT:
-        printw("aAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        printw("aAaAAAAAAAAAAAAAAAAAAAAAAAAA");
         int valor;
         scanw("%d",&valor);
         break;
