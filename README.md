@@ -18,6 +18,13 @@
 
 - andre_luisferreira@hotmail.com
 
+
+### Instalar Ncurses
+
+- E necesario instalar a biblioteca ```ncurses``` para executar o programa, para isso abra o terminal e digite o comando
+
+> $ sudo apt-get install libncurses5-dev libncursesw5-dev
+
 ### Como executar:
 
 - Basta entrar na pasta ```src``` pelo terminal e digitar o comando 
