@@ -28,35 +28,65 @@ void imprime_titulo()
 
 void tela_sign_up()
 {
+	char nome[30],cpf[11],senha[15],confirmacao_senha[15];
+	int idade;
+
 	clear();
 
 	imprime_titulo();
 
-	int age;
 	printw("Name:\n");
+	scanw("%s",nome);
+
 	printw("Age:\n");
+	scanw("%d",&idade);
+
 	printw("CPF\n");
+	scanw("%s",cpf);
+
+		//Oculta caractres digitados
+	noecho();
+
+	//Poem o cursor na linha para identificar onde esta
+	curs_set(1);
+
+		
 	printw("Password\n");
+	scanw("%s",senha);
+
 	printw("Confirm password");
-	scanw("%d",&age);
+	scanw("%s",confirmacao_senha);
 }
 
 void tela_sing_in()
 {
-	clear();
 
 	char name[30],senha[15];
 
+	//Limpa a tela
+	clear();
+
+	//Imprime o titulo no canto superior
 	imprime_titulo();
 
+	//Move para baixo onde ira imprimir
 	move(3,0);
 
+	//Recebe nome do usuario
 	printw("Name:");
 	scanw("%s",name);
 
+	//Desce para receber a senha
 	move(4,0);
-	printw("Password:");
 
+	//Oculta caractres digitados
+	noecho();
+
+	//Poem o cursor na linha para identificar onde esta
+	curs_set(1);
+
+	//Recebe a senha
+	printw("Password:");
 	scanw("%s",senha);
 
 }
