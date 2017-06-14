@@ -3,66 +3,141 @@
 #include <curses.h> //Biblioteca grafica, necessaria a instalacao dela, comando disponivel no ReadMe do projeto
 #include <stdio.h>
 #include <stdlib.h>
+
+
+
+#define cima      259
+#define baixo     258
+#define esquerda  260
+#define direita   261
+#define enter     10
+
+
+
 void sair_do_programa()
 {
 	endwin();//Finalizar a ncruses
 	exit(0);
 }
 
+void imprime_titulo()
+{
+	move(1,5);
+	printw("S O C I A L  N E T W O R K");
+}
+
+void tela_sing_in()
+{
+	clear();
+
+	char name[30],senha[15];
+
+	imprime_titulo();
+
+	move(3,0);
+
+	printw("Name:");
+	scanw("%s",name);
+
+	move(4,0);
+	printw("Password:");
+	
+	scanw("%s",senha);
+
+}
+
+int opcoes_tela_inicial()
+{
+
+	int opcao = 0, tecla;
+
+	do{
+		
+		imprime_titulo();
+
+		move(3,1);
+
+		printw("	Welcome to SOCIAL NETWORK !");
+		
+		move(5,0);
+		(opcao == 0) ? printw("->") : printw("  ");
+		printw("Log In\n");
+		(opcao == 1) ? printw("->") : printw("  ");
+		printw("Sing Up\n");
+		(opcao ==2 ) ? printw("->") : printw("  ");
+		printw("Exit\n");
+	
+		tecla = getch();
+
+		if(tecla == baixo)
+			(opcao == 2) ? opcao = 0: opcao++;
+		if(tecla == cima)
+			(opcao == 0) ? opcao = 2: opcao--;
+		
+		clear();
+
+	} while(tecla != enter);
+
+	switch(opcao)
+	{
+		case 0:
+			return 0;
+		case 1:
+			return 1;
+		case 2:
+			return 2;	
+		default: 
+			return -1;	
+	}
+}
+
+
 void tela_inicial()
 {
 
+	int opcao;
+	//Inicializa a biblioteca
+	initscr();  
 
-WINDOW *janela; (void)initscr();
-border(ACS_LTEE,ACS_RTEE,ACS_TTEE,ACS_BTEE, ACS_URCORNER,ACS_ULCORNER,ACS_LRCORNER,ACS_LLCORNER); 
+	//Comando que habilita pegar teclas do teclado
+	keypad(stdscr, true); 
+	
+	//Oculta o cursor na tela
+	curs_set(0);
 
-janela = newwin(LINES-10,COLS-5,(LINES-(LINES-10))/2,(COLS-(COLS- 5))/2); 
-wborder(janela, ACS_RTEE, ACS_LTEE, ACS_BTEE, ACS_TTEE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
-//Inicializa a biblioteca ncurses
-initscr();  
+	//Inicializa o uso das cores
+	start_color();
 
-//Inicializa o uso das cores
-start_color();
-//Pares de cor que usaremos, texto verde e fundo branco
-init_pair(1,COLOR_GREEN,COLOR_WHITE);
+	//Pares de cor que usaremos, texto verde e fundo branco
+	init_pair(1,COLOR_GREEN,COLOR_WHITE);
 
-//Atualiza o fundo para o par de cor 1
-bkgd(COLOR_PAIR(1));
-refresh(); 
-wrefresh(janela);
-move(2,70);
-printw("S  O  C  I  A  L        N  E  T  W  O  R  K");
-move(10,50);
-printw("LOGIN");
-move(11,100);
-printw("CADASTRAR");
-move(18,70);
-printw("SAIR");
-int ch = getch();
-switch (ch) 
-{
-    case KEY_LEFT:
-        printw("aAaAAAAAAAAAAAAAAAAAAAAAAAAA");
-        int valor;
-        scanw("%d",&valor);
-        break;
-    default:
-      break;
-}
-printw("%c",ch); 
-noecho();
-getch();
-getch();
-delwin(janela);
+	//Atualiza o fundo para o par de cor 1
+	bkgd(COLOR_PAIR(1));
+		
+	//Funcao que imprime o titulo na parte superior da tela	
+	imprime_titulo();
 
-	sair_do_programa();
+	//Recebe a opcao na tela inicial
+	opcao = opcoes_tela_inicial();
+
+	switch(opcao)
+	{
+		case 0 :
+			tela_sing_in();
+			break;
+		case 2 :
+			sair_do_programa();
+			break;
+	}
+
+	noecho();
+
 }
 
 int main(void)
 {
 	
 	tela_inicial();
-
 
 	return 0;
 }
