@@ -26,6 +26,11 @@ void imprime_titulo()
 	printw("S O C I A L  N E T W O R K");
 }
 
+void tela_sign_up()
+{
+	
+}
+
 void tela_sing_in()
 {
 	clear();
@@ -41,7 +46,7 @@ void tela_sing_in()
 
 	move(4,0);
 	printw("Password:");
-	
+
 	scanw("%s",senha);
 
 }
@@ -63,7 +68,7 @@ int opcoes_tela_inicial()
 		(opcao == 0) ? printw("->") : printw("  ");
 		printw("Log In\n");
 		(opcao == 1) ? printw("->") : printw("  ");
-		printw("Sing Up\n");
+		printw("Sign Up\n");
 		(opcao ==2 ) ? printw("->") : printw("  ");
 		printw("Exit\n");
 	
@@ -125,6 +130,8 @@ void tela_inicial()
 		case 0 :
 			tela_sing_in();
 			break;
+		case 1:
+			tela_sign_up();
 		case 2 :
 			sair_do_programa();
 			break;
