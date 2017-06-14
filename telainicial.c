@@ -23,12 +23,22 @@ void sair_do_programa()
 void imprime_titulo()
 {
 	move(1,5);
-	printw("S O C I A L  N E T W O R K");
+	printw("S O C I A L  N E T W O R K\n");
 }
 
 void tela_sign_up()
 {
-	
+	clear();
+
+	imprime_titulo();
+
+	int age;
+	printw("Name:\n");
+	printw("Age:\n");
+	printw("CPF\n");
+	printw("Password\n");
+	printw("Confirm password");
+	scanw("%d",&age);
 }
 
 void tela_sing_in()
