@@ -7,7 +7,7 @@
 #include <ncurses.h>
 #include "grafo.hpp"
 #include "Interfaces.hpp"
-#include "lista.hpp"
+#include "lista_usuario.hpp"
 #include "transacoes.hpp"
 
 #endif
