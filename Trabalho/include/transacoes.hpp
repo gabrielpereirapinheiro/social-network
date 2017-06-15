@@ -13,13 +13,13 @@ typedef struct noTransacao{
 ///Definicao da struct com a cabeca da lista
 typedef struct listaTransacao{
 	noListaTransacao *primeiro;
-}noListaTransacao;
+}ListaTransacao;
 
 ///Assinatura das funcoes
 noListaTransacao *criaNoTransacao(Transacao transacao);
-lista_usuario *criarListaTransacao(Transacao transacao);
-void addNoListaTransacao(lista_usuario *lista, noListaTransacao *no);
-void deletaNoListaTransacao(lista_usuario *lista, noListaTransacao *no);
+ListaTransacao *criarListaTransacao(Transacao transacao);
+int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
+int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
 noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transacao);
 
 #endif
