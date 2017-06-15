@@ -93,4 +93,27 @@ no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]){	/** P
 	}
 
 }
+
+//Funcao que libera a lista
+//Retorna 0 se for liberada com sucesso e -1 se nao for
+int LiberaListaUsuario(lista_usuario *listaUsuario){
+
+	if(listaUsuario){
+		if(listaUsuario->primeiro){
+			no_lista_usuario *l = listaUsuario->primeiro, *q = NULL;
+			while(l != NULL){
+				q = l->prox;
+				free(l);
+				l = q;
+			}	
+		}
+		free(listaUsuario);
+	}else{
+		printf("\nLista passada nao existe! Erro ao destruir lista de usuarios!\n");
+		return ERRO;
+	}
+
+	return SEM_ERRO;	
+
+}
 /****************FIM***********************************/
