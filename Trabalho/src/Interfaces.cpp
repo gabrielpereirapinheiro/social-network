@@ -7,7 +7,8 @@ lista_usuario * lista_us = criarListaUsuario();
 
 void sair_do_programa()
 {
-	endwin();//Finalizar a ncruses
+	endwin();
+	//Finalizar a ncruses
 	exit(0);
 }
 
@@ -100,8 +101,11 @@ void tela_sing_in()
 	//Move para baixo onde ira imprimir
 	move(3,0);
 
+	/**Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos*/
 	strcpy(CPF,"010");
 
+
+	/**Enquanto nao tiver 11 elementos nao aceita*/
 	while(strlen(CPF)!=11)
 	{
 		//Recebe nome do usuario
