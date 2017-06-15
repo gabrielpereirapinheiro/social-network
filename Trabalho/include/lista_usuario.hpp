@@ -21,5 +21,6 @@ lista_usuario *criarListaUsuario();
 void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]);
+int LiberaListaUsuario(lista_usuario *listaUsuario);
 
 #endif
