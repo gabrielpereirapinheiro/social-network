@@ -8,6 +8,7 @@
 #include "grafo.hpp"
 #include "Interfaces.hpp"
 #include "lista.hpp"
+#include "transacoes.hpp"
 
 #endif
 

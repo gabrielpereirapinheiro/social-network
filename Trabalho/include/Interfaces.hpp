@@ -21,6 +21,16 @@ typedef struct usuario
 	
 }Usuario;
 
+/// Definicao da struct de Transacao
+typedef struct transacao{
+	int idTransacao; //chave primaria de transacao
+	int categoria; //Categoria da transacao
+	int clieteID; //O id do usuario que esta consumindo o servico
+	int provedorID; //O id do usuario que esta provendo o servico
+	short avaliacao; //Avaliacao da transacao dos usuarios TODO
+	char comentAvaliClient; //Comentario sobre a avaliacao do cliente
+}Transacao;
+
 void sair_do_programa();
 
 void imprime_titulo();
