@@ -20,6 +20,6 @@ no_lista_usuario * criaNoUsuario(Usuario usuario);
 lista_usuario *criarListaUsuario();
 void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
-no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, Usuario usuario);
+no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]);
 
 #endif
