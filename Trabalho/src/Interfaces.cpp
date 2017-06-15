@@ -1,5 +1,10 @@
 #include "headers.hpp"
 
+/** Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
+	antes dos mesmos serem passados ao Banco de Dados */
+lista_usuario * lista_us = criarListaUsuario();
+
+
 void sair_do_programa()
 {
 	endwin();//Finalizar a ncruses
@@ -170,7 +175,7 @@ void tela_inicial()
 			tela_sing_in();
 			break;
 		case 1:
-			tela_sign_up();
+			addNoListaUsuario(lista_us,criaNoUsuario(tela_sign_up()));
 			break;
 		case 2 :
 			sair_do_programa();

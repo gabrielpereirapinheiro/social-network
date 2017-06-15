@@ -10,14 +10,16 @@ typedef struct no_lista_usuario{
 
 
 typedef struct lista_usuario{
+	
 	no_lista_usuario *primeiro;
+
 }lista_usuario;
 
 
-static no_lista_usuario * criaNoUsuario(Usuario usuario);
-static lista_usuario *criarListaUsuario(Usuario usuario);
-static void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
-static void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
-static no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, Usuario usuario);
+no_lista_usuario * criaNoUsuario(Usuario usuario);
+lista_usuario *criarListaUsuario(/*Usuario usuario*/);
+void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
+void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
+no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, Usuario usuario);
 
 #endif

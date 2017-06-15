@@ -2,7 +2,7 @@
 
 
 /*************LISTA***********************************/
-static no_lista_usuario * criaNoUsuario(Usuario usuario){	/** Cria nó */ 
+no_lista_usuario * criaNoUsuario(Usuario usuario){	/** Cria nó */ 
 
 	no_lista_usuario *no = (no_lista_usuario*)malloc(sizeof(no_lista_usuario));
 	no->prox = NULL;
@@ -11,28 +11,36 @@ static no_lista_usuario * criaNoUsuario(Usuario usuario){	/** Cria nó */
 	return no;
 }
 
-static lista_usuario *criarListaUsuario(Usuario usuario){	/** Cria lista */ 
+lista_usuario *criarListaUsuario(/*Usuario usuario*/){	/** Cria lista */ 
 
 	lista_usuario *lista_criada = (lista_usuario*)malloc(sizeof(lista_usuario));
-	no_lista_usuario *no = criaNoUsuario(usuario);
-	lista_criada->primeiro = no;
+	/*no_lista_usuario *no = criaNoUsuario(usuario);
+	lista_criada->primeiro = no;*/
 
 	return lista_criada;
 
 }
 
-static void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
+void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
 
 	no_lista_usuario *acompanha = lista->primeiro;
-	while(acompanha->prox != NULL){
 
-		acompanha = acompanha->prox;
+	if (acompanha == NULL){
+
+		lista->primeiro = no;
 	}
+	else{
+		
+		while(acompanha->prox != NULL){
 
-	acompanha->prox = no;
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no;
+	}
 }
 
-static void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){ /** Deleta um nó da lista encadeada */
+void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){ /** Deleta um nó da lista encadeada */
 
 	no_lista_usuario *acompanha = lista->primeiro;
 	no_lista_usuario *anterior = NULL;
@@ -66,7 +74,7 @@ static void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){ /*
 	free(no);
 }
 
-static no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, Usuario usuario){	/** Procura vértice na lista */
+no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, Usuario usuario){	/** Procura vértice na lista */
 
 	no_lista_usuario *acompanha = inicio;	/** Primeiro vértice da lista */
 
