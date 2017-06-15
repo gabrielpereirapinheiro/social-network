@@ -17,6 +17,7 @@ typedef struct usuario
 	char email[101];
 	short tipo;
 	int idade;
+	int numero_transacao;
 	
 }Usuario;
 

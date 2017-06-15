@@ -7,6 +7,7 @@
 #include <ncurses.h>
 #include "grafo.hpp"
 #include "Interfaces.hpp"
+#include "lista.hpp"
 
 #endif
 
