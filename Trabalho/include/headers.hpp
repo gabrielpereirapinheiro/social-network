@@ -6,5 +6,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include "grafo.hpp"
+#include "Interfaces.hpp"
 
 #endif
+

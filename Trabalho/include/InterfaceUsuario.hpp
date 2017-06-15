@@ -1,4 +1,0 @@
-#ifndef INTERFACEUSUARIO_HPP
-#define INTERFACEUSUARIO_HPP 
-
-#endif

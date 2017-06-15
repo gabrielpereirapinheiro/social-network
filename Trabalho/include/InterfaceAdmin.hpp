@@ -1,4 +1,0 @@
-#ifndef INTERFACEADMIN_HPP
-#define INTERFACEADMIN_HPP 
-
-#endif

@@ -7,17 +7,17 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = catch.hpp InterfaceUsuario.hpp InterfaceAdmin.hpp headers.hpp
+_DEPS = catch.hpp Interfaces.hpp headers.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = InterfaceAdmin.o InterfaceUsuario.o Testes.o grafo.o
+_OBJ = Interfaces.o main.o grafo.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-Testes: $(OBJ)
+main: $(OBJ)
 	g++ -o $@ $^ $(CFLAGS) $(LIBS) 
 
 .PHONY: clean
