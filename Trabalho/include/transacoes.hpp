@@ -1,6 +1,6 @@
 #ifndef TRANSACAO_HEADER
 #define TRANSACAO_HEADER
-#include "Interfaces.hpp"
+#include "headers.hpp"
 
 /// Header de transacoes, com a definicao da struct de lista de transacoes e a assinatura de suas funcoes
 
@@ -21,6 +21,7 @@ ListaTransacao *criarListaTransacao(Transacao transacao);
 int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
 int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
 noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transacao);
+int LiberaListaTransacao(ListaTransacao *listaTransacao);
 
 #endif
 

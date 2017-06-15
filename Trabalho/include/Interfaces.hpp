@@ -34,6 +34,8 @@ typedef struct transacao{
 	char comentAvaliClient[201]; //Comentario sobre a avaliacao do cliente
 }Transacao;
 
+
+//Assinatura das funcoes
 void sair_do_programa();
 
 void imprime_titulo();
@@ -45,5 +47,9 @@ void tela_sing_in();
 int opcoes_tela_inicial();
 
 void tela_inicial();
+
+
+//Funcoes relacionadas ao back-end
+int EditarUsuario(Lista);
 
 #endif
