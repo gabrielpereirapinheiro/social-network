@@ -86,7 +86,7 @@ Usuario tela_sign_up()
 void tela_sing_in()
 {
 
-	char name[30],senha[15];
+	char CPF[12],senha[51];
 
 	//Limpa a tela
 	clear();
@@ -100,12 +100,14 @@ void tela_sing_in()
 	//Move para baixo onde ira imprimir
 	move(3,0);
 
-	//Recebe nome do usuario
-	printw("Nome:");
-	scanw("%s",name);
+	strcpy(CPF,"010");
 
-	//Desce para receber a senha
-	move(4,0);
+	while(strlen(CPF)!=11)
+	{
+		//Recebe nome do usuario
+		printw("CPF:");
+		scanw("%s",CPF);
+	}
 
 	//Oculta caractres digitados
 	noecho();
@@ -130,7 +132,7 @@ int opcoes_tela_inicial()
 
 		move(3,1);
 
-		printw("	Seja bem-vindo ao SOCIAL NETWORK");
+		printw("Seja bem-vindo ao SOCIAL NETWORK");
 		
 		move(5,0);
 		(opcao == 0) ? printw("->") : printw("  ");
@@ -205,6 +207,9 @@ void tela_inicial()
 			sair_do_programa();
 			break;
 	}
+
+
+
 
 	clear();
 	tela_inicial();
