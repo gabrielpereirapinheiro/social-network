@@ -14,8 +14,6 @@ noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */
 ListaTransacao *criarListaTransacao(Transacao transacao){	/** Cria lista */ 
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));
-	noListaTransacao *no = criaNoTransacao(transacao);
-	lista_criada->primeiro = no;
 
 	return lista_criada;
 
