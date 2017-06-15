@@ -14,23 +14,27 @@ void imprime_titulo()
 	printw("S O C I A L  N E T W O R K\n");
 }
 
-void tela_sign_up()
+Usuario tela_sign_up()
 {
-	char nome[30],cpf[11],senha[15],confirmacao_senha[15];
-	int idade;
+	char confirmacao_senha[51];
 
 	clear();
+
+	Usuario cadastrar_agora; 
 
 	imprime_titulo();
 
 	printw("Name:\n");
-	scanw("%s",nome);
+	scanw("%s",cadastrar_agora.nome);
 
 	printw("Age:\n");
-	scanw("%d",&idade);
+	scanw("%d",&cadastrar_agora.idade);
 
 	printw("CPF\n");
-	scanw("%s",cpf);
+	scanw("%s",cadastrar_agora.CPF);
+
+	printw("Email:");
+	scanw("%s",cadastrar_agora.email);
 
 	//Oculta caractres digitados
 	noecho();
@@ -38,12 +42,18 @@ void tela_sign_up()
 	//Poem o cursor na linha para identificar onde esta
 	curs_set(1);
 	
-		
-	printw("Password\n");
-	scanw("%s",senha);
+	/** Tipo setado para 0 pois e um usario normal*/
+	cadastrar_agora.tipo = 0;
+	
+	/** Usuario digita pela primeira vez a senha */	
+	printw("Senha\n");
+	scanw("%s",cadastrar_agora.senha);
 
 	printw("Confirm password");
 	scanw("%s",confirmacao_senha);
+
+
+	return cadastrar_agora;
 }
 
 void tela_sing_in()
@@ -90,7 +100,7 @@ int opcoes_tela_inicial()
 
 		move(3,1);
 
-		printw("	Welcome to SOCIAL NETWORK !");
+		printw("	Seja bem-vindo ao SOCIAL NETWORK");
 		
 		move(5,0);
 		(opcao == 0) ? printw("->") : printw("  ");
