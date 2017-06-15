@@ -1,14 +1,13 @@
-# Univeristy of Brasilia - UnB
+# Universida de Brasilia - UnB
  
  
 ## Socialnetwork
 
-### Developers:
+### Desenvolvedores:
 
-- André Luis Souto Ferreira - 14/0016261
-- Gabriel Pereira Pinheiro - 14/0020764
-- Victor Araujo Vieira - 14/0032801
-
+- André Luis Souto Ferreira 
+- Gabriel Pereira Pinheiro 
+- Victor Araujo Vieira
 
 ### Email:
 
@@ -30,3 +29,9 @@
 - Basta entrar na pasta ```src``` pelo terminal e digitar o comando 
 
 > $ make
+
+- Em seguida , no terminal digite o comando
+
+> $ ./main
+
+- E o programa sera executado
