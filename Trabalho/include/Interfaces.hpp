@@ -24,7 +24,7 @@ void sair_do_programa();
 
 void imprime_titulo();
 
-void tela_sign_up();
+Usuario tela_sign_up();
 
 void tela_sing_in();
 
