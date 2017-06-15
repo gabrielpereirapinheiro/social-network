@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ncurses.h>
-#include "grafo.hpp"
+#include "grafos.hpp"
 #include "Interfaces.hpp"
 #include "lista_usuario.hpp"
 #include "transacoes.hpp"

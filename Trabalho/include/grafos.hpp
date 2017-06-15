@@ -37,9 +37,6 @@ typedef struct grafo{
 	Vertice *vertices; /*o grafo em si, sera composta por uma lista encadeada, e cada elemento da lista, vai conter outra lista com os nos adjacentes*/
 }Grafo;
 
-/*Variaveis globais usadas para indicar ou nao erro*/
-#define ERRO -1
-#define SEM_ERRO 1
 
 /*Assinatura das funcoes implementadas na biblioteca de grafos*/
 Grafo *cria_grafo(char *nome);

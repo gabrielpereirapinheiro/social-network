@@ -46,4 +46,10 @@ int opcoes_tela_inicial();
 
 void tela_inicial();
 
+void tela_usuario(char CPF[]);
+
+int menu_configuracao(char nome[]);
+
+void tela_configuracao(char nome[]);
+
 #endif
