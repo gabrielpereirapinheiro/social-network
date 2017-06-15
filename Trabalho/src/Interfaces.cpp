@@ -18,31 +18,33 @@ void imprime_titulo()
 	printw("S O C I A L  N E T W O R K\n");
 }
 
-void tela_configuracao(char nome[])
+
+int menu_configuracao(char nome[])
 {
-	
-		int opcao = 0, tecla;
+
+	//Oculta o cursor na tela
+	curs_set(0);
+
+	int opcao = 0, tecla;
+
 	do{
-			
-		clear();
+		
 		imprime_titulo();
-			//Oculta o cursor na tela
-		curs_set(0);
 
 		move(1,30);
+
 		printw("Usuario : %s",nome);
 	
 		move(5,0);
 
 		(opcao == 0) ? printw("->") : printw("  ");
-		printw("Editar informacoes da conta\n");
+		printw("Editar informacoes\n");
 		(opcao == 1) ? printw("->") : printw("  ");
 		printw("Adicionar transacao\n");
 		(opcao == 2) ? printw("->") : printw("  ");
 		printw("Adicionar amigiunho\n");
 		(opcao == 3) ? printw("->") : printw("  ");
-		printw("Voltar\n");
-	
+		printw("Voltar");
 	
 		tecla = getch();
 
@@ -54,12 +56,58 @@ void tela_configuracao(char nome[])
 		clear();
 
 	} while(tecla != enter);
+
+	/**Retorna opcao para tela usuario*/
+	return opcao;
+
+}
+
+
+void tela_configuracao(char nome[])
+{
+
+
+	int opcao;
+	clear();
+	/**Mostra titulo*/
+	imprime_titulo();
+
+	
+	opcao=menu_configuracao(nome);
+
+	switch(opcao)
+	{
+		case 0:
+			break;
+
+		case 1:
+			break;
+
+		case 2:
+			tela_usuario(nome);
+			break;
+
+		case 3:
+			tela_usuario(nome);
+			break;
+
+		case 4:
+			tela_inicial();
+			break;
+
+		default: 
+			break;	
+	}
+
+
+	/**Mostrar caracteres*/
+	echo();
 }
 
 
 int menu_usuario(char nome[])
 {
-
+	clear();
 	//Oculta o cursor na tela
 	curs_set(0);
 
@@ -106,13 +154,12 @@ void tela_usuario(char CPF[])
 	no_lista_usuario *ptr;
 	ptr = encontraNoUsuario(lista_us->primeiro,CPF);
 
-	int oi;
 	int opcao;
+
 	clear();
 	/**Mostra titulo*/
 	imprime_titulo();
 
-	
 	opcao=menu_usuario(ptr->usuario.nome);
 
 	switch(opcao)
@@ -127,6 +174,9 @@ void tela_usuario(char CPF[])
 			break;
 
 		case 3:
+			int oi;
+			printf("entrousaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+			scanw("%d",oi);
 			tela_configuracao(ptr->usuario.nome);
 			break;
 
