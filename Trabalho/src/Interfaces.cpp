@@ -25,16 +25,32 @@ Usuario tela_sign_up()
 
 	Usuario cadastrar_agora; 
 
+	/**Mostra titulo*/
 	imprime_titulo();
 
-	printw("Name:\n");
+	/**Mostrar caracteres*/
+	echo();
+
+
+	printw("Nome:");
 	scanw("%s",cadastrar_agora.nome);
 
-	printw("Age:\n");
-	scanw("%d",&cadastrar_agora.idade);
+	cadastrar_agora.idade=-1;
 
-	printw("CPF\n");
-	scanw("%s",cadastrar_agora.CPF);
+	/**Verifica se nao e negativo*/
+	while(cadastrar_agora.idade<0)
+	{	
+		printw("Idade:");
+		scanw("%d",&cadastrar_agora.idade);
+	}
+
+	strcpy(cadastrar_agora.CPF,"inicial");
+
+	while(strlen(cadastrar_agora.CPF)!=11)
+	{
+		printw("CPF:");
+		scanw("%s",cadastrar_agora.CPF);
+	}
 
 	printw("Email:");
 	scanw("%s",cadastrar_agora.email);
@@ -51,24 +67,32 @@ Usuario tela_sign_up()
 	/** Setado para zero pois o usuario novo nao tem nenhuma transacao */
 	cadastrar_agora.numero_transacao = 0;
 
+
+	strcpy(cadastrar_agora.senha,"abc");
+	strcpy(confirmacao_senha,"ab");
+
+	while(strcmp(cadastrar_agora.senha,confirmacao_senha)!=0)
+	{
 	/** Usuario digita pela primeira vez a senha */	
-	printw("Senha\n");
-	scanw("%s",cadastrar_agora.senha);
+		printw("Senha:");
+		scanw("%s",cadastrar_agora.senha);
 
-	printw("Confirm password");
-	scanw("%s",confirmacao_senha);
-
-
+		printw("Confirmacao de senha:");
+		scanw("%s",confirmacao_senha);
+	}	
 	return cadastrar_agora;
 }
 
 void tela_sing_in()
 {
 
-	char name[30],senha[15];
+	char CPF[12],senha[51];
 
 	//Limpa a tela
 	clear();
+
+	//Mostrar caracteres
+	echo();
 
 	//Imprime o titulo no canto superior
 	imprime_titulo();
@@ -76,12 +100,14 @@ void tela_sing_in()
 	//Move para baixo onde ira imprimir
 	move(3,0);
 
-	//Recebe nome do usuario
-	printw("Name:");
-	scanw("%s",name);
+	strcpy(CPF,"010");
 
-	//Desce para receber a senha
-	move(4,0);
+	while(strlen(CPF)!=11)
+	{
+		//Recebe nome do usuario
+		printw("CPF:");
+		scanw("%s",CPF);
+	}
 
 	//Oculta caractres digitados
 	noecho();
@@ -90,7 +116,7 @@ void tela_sing_in()
 	curs_set(1);
 
 	//Recebe a senha
-	printw("Password:");
+	printw("Senha:");
 	scanw("%s",senha);
 
 }
@@ -106,15 +132,15 @@ int opcoes_tela_inicial()
 
 		move(3,1);
 
-		printw("	Seja bem-vindo ao SOCIAL NETWORK");
+		printw("Seja bem-vindo ao SOCIAL NETWORK");
 		
 		move(5,0);
 		(opcao == 0) ? printw("->") : printw("  ");
 		printw("Log In\n");
 		(opcao == 1) ? printw("->") : printw("  ");
-		printw("Sign Up\n");
+		printw("Cadastro\n");
 		(opcao ==2 ) ? printw("->") : printw("  ");
-		printw("Exit\n");
+		printw("Sair\n");
 	
 		tecla = getch();
 
@@ -181,6 +207,9 @@ void tela_inicial()
 			sair_do_programa();
 			break;
 	}
+
+
+
 
 	clear();
 	tela_inicial();
