@@ -94,8 +94,8 @@ no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]){	/** P
 
 }
 
-//Funcao que libera a lista
-//Retorna 0 se for liberada com sucesso e -1 se nao for
+/** Funcao que libera a lista */
+/** Retorna 0 se for liberada com sucesso e -1 se nao for */
 int LiberaListaUsuario(lista_usuario *listaUsuario){
 
 	if(listaUsuario){
