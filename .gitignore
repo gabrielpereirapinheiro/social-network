@@ -1,3 +1,4 @@
-*.o
-*.gcno
-main
+/Trabalho/src/obj/*.o
+/Trabalho/src/obj/*.gcno
+/Trabalho/src/obj/*.gcda
+/Trabalho/src/main
