@@ -8,6 +8,9 @@
 #define direita   261
 #define enter     10
 
+#define ERRO -1
+#define SEM_ERRO 0
+
 typedef struct usuario
 {
 	int ID;
@@ -25,10 +28,10 @@ typedef struct usuario
 typedef struct transacao{
 	int idTransacao; //chave primaria de transacao
 	int categoria; //Categoria da transacao
-	int clieteID; //O id do usuario que esta consumindo o servico
+	int clienteID; //O id do usuario que esta consumindo o servico
 	int provedorID; //O id do usuario que esta provendo o servico
 	short avaliacao; //Avaliacao da transacao dos usuarios TODO
-	char comentAvaliClient; //Comentario sobre a avaliacao do cliente
+	char comentAvaliClient[201]; //Comentario sobre a avaliacao do cliente
 }Transacao;
 
 void sair_do_programa();
