@@ -7,10 +7,10 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = catch.hpp Interfaces.hpp headers.hpp
+_DEPS = catch.hpp Interfaces.hpp headers.hpp lista.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Interfaces.o main.o grafo.o
+_OBJ = Interfaces.o main.o grafo.o lista.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

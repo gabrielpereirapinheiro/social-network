@@ -1,7 +1,5 @@
 #include "headers.hpp"
 
-
-
 void sair_do_programa()
 {
 	endwin();//Finalizar a ncruses
@@ -45,6 +43,9 @@ Usuario tela_sign_up()
 	/** Tipo setado para 0 pois e um usario normal*/
 	cadastrar_agora.tipo = 0;
 	
+	/** Setado para zero pois o usuario novo nao tem nenhuma transacao */
+	cadastrar_agora.numero_transacao = 0;
+
 	/** Usuario digita pela primeira vez a senha */	
 	printw("Senha\n");
 	scanw("%s",cadastrar_agora.senha);
@@ -170,11 +171,14 @@ void tela_inicial()
 			break;
 		case 1:
 			tela_sign_up();
+			break;
 		case 2 :
 			sair_do_programa();
 			break;
 	}
 
+	clear();
+	tela_inicial();
 	noecho();
 
 }
