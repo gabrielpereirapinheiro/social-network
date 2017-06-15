@@ -68,7 +68,7 @@ Usuario tela_sign_up()
 	/** Setado para zero pois o usuario novo nao tem nenhuma transacao */
 	cadastrar_agora.numero_transacao = 0;
 
-
+	/**Para enquanto nao forem iguais, nao aceitar*/
 	strcpy(cadastrar_agora.senha,"abc");
 	strcpy(confirmacao_senha,"ab");
 
@@ -86,8 +86,11 @@ Usuario tela_sign_up()
 
 void tela_sing_in()
 {
+	no_lista_usuario *ptr;
 
 	char CPF[12],senha[51];
+
+	int chance=3;
 
 	//Limpa a tela
 	clear();
@@ -104,7 +107,6 @@ void tela_sing_in()
 	/**Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos*/
 	strcpy(CPF,"010");
 
-
 	/**Enquanto nao tiver 11 elementos nao aceita*/
 	while(strlen(CPF)!=11)
 	{
@@ -113,16 +115,49 @@ void tela_sing_in()
 		scanw("%s",CPF);
 	}
 
+
+	ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+
+	while(ptr==NULL && chance>0)
+	{
+		printw("CPF inexistente, tente novamente :");
+		scanw("%s",CPF);
+		ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+		chance--;
+
+	}
+
+
+	//if(ptr==NULL)
+//	{
+		/**Se nao tiver o cpf volta apos uma tentativa*/
+//		tela_inicial();
+//	}
+
+
 	//Oculta caractres digitados
 	noecho();
 
-	//Poem o cursor na linha para identificar onde esta
-	curs_set(1);
+	if(strcmp(ptr->usuario.CPF,CPF)==0)
+	{
+		//Poem o cursor na linha para identificar onde esta
+		curs_set(1);
 
-	//Recebe a senha
-	printw("Senha:");
-	scanw("%s",senha);
+		//Recebe a senha
+		printw("Senha:");
+		scanw("%s",senha);
 
+		while(strcmp(ptr->usuario.senha,senha)!=0)
+		{
+			printw("Senha incorreta, digite novamente :" );
+			scanw("%s",senha);
+		}
+
+		if(strcmp(ptr->usuario.senha,senha)==0)
+		{
+			tela_usuario(CPF);
+		}
+	}
 }
 
 int opcoes_tela_inicial()
