@@ -8,9 +8,6 @@
 #define direita   261
 #define enter     10
 
-#define ERRO -1
-#define SEM_ERRO 0
-
 typedef struct usuario
 {
 	int ID;
@@ -48,16 +45,13 @@ int opcoes_tela_inicial();
 
 void tela_inicial();
 
-<<<<<<< HEAD
 
 //Funcoes relacionadas ao back-end
-int EditarUsuario(Lista);
-=======
+//int EditarUsuario(Lista);
 void tela_usuario(char CPF[]);
 
 int menu_configuracao(char nome[]);
 
 void tela_configuracao(char nome[]);
->>>>>>> a621b52c4fd496622d24e9480e06e80837724b73
 
 #endif

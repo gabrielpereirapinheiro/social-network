@@ -9,6 +9,10 @@
 #include "Interfaces.hpp"
 #include "lista_usuario.hpp"
 #include "transacoes.hpp"
+#include "grafos.hpp"
+
+#define ERRO -1
+#define SEM_ERRO 0
 
 #endif
 

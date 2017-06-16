@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#ifndef GRAFOS
+#define GRAFOS 
 
 /*Victor Araujo Vieira - 14/0032801 */
 /*MP - 1/2017*/
@@ -56,3 +55,5 @@ Valor retorna_valor_vertice(Grafo *G, int x);
 int muda_valor_vertice(Grafo *G, int x, Valor v);
 Valor retorna_valor_aresta(Grafo *G, int x, int y);
 int muda_valor_aresta(Grafo *G, int x, int y, Valor v);
+
+#endif

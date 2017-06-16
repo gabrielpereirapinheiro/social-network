@@ -14,6 +14,7 @@ no_lista_usuario * criaNoUsuario(Usuario usuario){	/** Cria nó */
 lista_usuario *criarListaUsuario(){	/** Cria lista */ 
 
 	lista_usuario *lista_criada = (lista_usuario*)malloc(sizeof(lista_usuario));
+	lista_criada->numeroUsuarios = 1; // inicia o numero de usuarios. Comeca com 1 porque ja existe o administrador
 	/*no_lista_usuario *no = criaNoUsuario(usuario);
 	lista_criada->primeiro = no;*/
 
@@ -22,8 +23,13 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 }
 
 void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
-
+	
 	no_lista_usuario *acompanha = lista->primeiro;
+
+	//Ja vai atribuir o id para o usuario, que eh o numero atual de usuarios cadastrados
+	//Depois incrementa o numero de usuarios cadastrados
+	no->usuario.ID = lista->numeroUsuarios;
+	lista->numeroUsuarios++;
 
 	if (acompanha == NULL){
 

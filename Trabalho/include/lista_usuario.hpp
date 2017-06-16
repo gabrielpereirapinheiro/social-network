@@ -10,7 +10,7 @@ typedef struct no_lista_usuario{
 
 
 typedef struct lista_usuario{
-	
+	int numeroUsuarios;
 	no_lista_usuario *primeiro;
 
 }lista_usuario;
