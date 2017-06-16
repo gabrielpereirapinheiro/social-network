@@ -11,9 +11,10 @@ noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */
 	return no;
 }
 
-ListaTransacao *criarListaTransacao(Transacao transacao){	/** Cria lista */ 
+ListaTransacao *criarListaTransacao(){	/** Cria lista */ 
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));
+	lista_criada->numeroTransacoes = 0;
 
 	return lista_criada;
 
@@ -28,6 +29,11 @@ int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){
 		return ERRO;
 	}
 	noListaTransacao *acompanha = lista->primeiro;
+
+	//parte que vai atribuir um ID para as transacoes e incrementar o numero de transacoes na lista
+	no->transacao.idTransacao = lista->numeroTransacoes;
+	lista->numeroTransacoes++;
+
 	while(acompanha->prox != NULL){
 
 		acompanha = acompanha->prox;

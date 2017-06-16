@@ -1,4 +1,6 @@
+﻿
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 
 15/06/17    4 horas      Banco de Dados   Criando o diagrama de cardinaldidade e idealizei o banco de grafico de maneira grafica e repassei minha ideia para os outros membros
+16/06/17    1 hora       Grafos/Listas/   Manipulacao das listas e funcoes de grafo. Desenvolveu toda o modelo do banco de dados e comecou a realizar pseudo codigos para implementacao

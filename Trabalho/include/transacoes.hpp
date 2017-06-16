@@ -12,6 +12,7 @@ typedef struct noTransacao{
 
 ///Definicao da struct com a cabeca da lista
 typedef struct listaTransacao{
+	int numeroTransacoes; // numero de transacoes que existem no aplicativo
 	noListaTransacao *primeiro;
 }ListaTransacao;
 
