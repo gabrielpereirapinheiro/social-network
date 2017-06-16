@@ -68,6 +68,11 @@ int destroi_grafo(Grafo *G){
 int adjacente(Grafo *G, int x, int y){
 	Vizinhos *viz = NULL;
 
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao adjacente\n");
+		return ERRO;
+	}	
+
 	/*se a funcao de validar as arestas nao retornar verdadeiro, sai da funcao*/
 	if(!valida_funcoes_aresta(G, x, y)){
 		printf("Saindo da funcao adjacente\n\n");
@@ -96,6 +101,11 @@ int verifica_se_existe_vertice(Grafo *G, int x){
 /*Funcao que retorna o ponteiro do vertice x*/
 Vertice *recupera_vertice_x(Grafo *G, int x){
 	Vertice *v = NULL, *p = NULL;
+
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao recupera_vertice_x\n");
+		return NULL;
+	}	
 
 	for(p = G->vertices; p != NULL; p = p->prox){
 		if(p->idVertice == x){
@@ -126,6 +136,12 @@ int verifica_se_y_aresta_de_x(Vertice *v, int y){
 int valida_funcoes_aresta(Grafo *G, int x, int y){
 	int flagX = 0, flagY = 0; /*flags para verificar se os vertices nao existem no grafo*/
 
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao valida_funcoes_aresta\n");
+		return 0;
+	}	
+
 	/*Parte que vai verificar se existem ou nao os vertices que deseja-se inserir a aresta*/
 	if(verifica_se_existe_vertice(G, x)) flagX = 1;
 	if(verifica_se_existe_vertice(G, y)) flagY = 1;
@@ -143,6 +159,12 @@ int valida_funcoes_aresta(Grafo *G, int x, int y){
 /*Funcao que adiciona um vertice ao grafo*/
 int adiciona_vertice(Grafo *G, int x){
 	Vertice *v = NULL;
+
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao adiciona_vertice\n");
+		return 0;
+	}	
 	
 	if(verifica_se_existe_vertice(G, x)){
 		printf("\nJa existe o vertice %d no grafo! Nao sera inserido!\n", x);
@@ -170,6 +192,12 @@ int adiciona_vertice(Grafo *G, int x){
 int remove_vertice(Grafo *G, int x){
 	Vertice *anterior = NULL, *p = G->vertices; //p eh o ponteiro para percorrer a lista
 	/*anterior vai receber o elemento antecessor da lista sendo percorrida*/
+
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao remove_vertice\n");
+		return ERRO;
+	}	
 
 	while(p != NULL && p->idVertice != x){
 		anterior = p;
@@ -211,6 +239,12 @@ int adiciona_aresta(Grafo *G, int x, int y){
 	Vertice *v = NULL;
 	Vizinhos *viz = NULL;
 
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao adiciona_aresta\n");
+		return ERRO;
+	}	
+
 	/*se a funcao de validar as arestas nao retornar verdadeiro, sai da funcao*/
 	if(!valida_funcoes_aresta(G, x, y)){
 		printf("Saindo da funcao adiciona_aresta\n\n");
@@ -247,6 +281,12 @@ int adiciona_aresta(Grafo *G, int x, int y){
 int remove_aresta(Grafo *G, int x, int y){
 	Vizinhos *anterior = NULL, *p = NULL; /*anterior vai receber o elemento antecessor da lista sendo percorrida*/
 	Vertice *v = NULL;
+
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao remove_aresta\n");
+		return ERRO;
+	}	
 	
 	/*se a funcao de validar as arestas nao retornar verdadeiro, sai da funcao*/
 	if(!valida_funcoes_aresta(G, x, y)){
@@ -291,6 +331,12 @@ int remove_aresta(Grafo *G, int x, int y){
 Vizinhos *vizinhos(Grafo *G, int x){
 	Vertice *v = NULL;
 
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao vizinhos\n");
+		return NULL;
+	}	
+
 	/*verifica se existe o vertice x no grafo*/
 	if(!verifica_se_existe_vertice(G, x)){
 		printf("\nNao existe o vertice %d no grafo!\n", x);
@@ -314,6 +360,12 @@ Vizinhos *vizinhos(Grafo *G, int x){
 /*Funcao que muda o valor que esta contido no vertice x do grafo*/
 int muda_valor_vertice(Grafo *G, int x, Valor v){
 	Vertice *vert = NULL;
+
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao muda_valor_vertice\n");
+		return ERRO;
+	}	
 
 	/*Verifica se existe o vertice x no grafo*/
 	if(!verifica_se_existe_vertice(G, x)){
@@ -351,6 +403,12 @@ Valor retorna_valor_vertice(Grafo *G, int x){
 int muda_valor_aresta(Grafo *G, int x, int y, Valor v){
 	Vizinhos *viz = NULL;
 	Vertice *vert = NULL;
+
+	/*Verifica se o grafo passado existe*/
+	if(G == NULL){
+		printf("Grafo nao existe! Saindo da funcao muda_valor_aresta\n");
+		return ERRO;
+	}	
 
 	/*se a funcao de validar as arestas nao retornar verdadeiro, sai da funcao*/
 	if(!valida_funcoes_aresta(G, x, y)){
