@@ -22,6 +22,7 @@ void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]);
 no_lista_usuario *encontraNoUsuarioEmail(no_lista_usuario *inicio, char email[]);
+no_lista_usuario *encontraNoUsuarioID(no_lista_usuario *inicio, int id);
 int LiberaListaUsuario(lista_usuario *listaUsuario);
 
 #endif

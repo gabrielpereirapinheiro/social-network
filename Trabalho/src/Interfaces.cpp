@@ -29,6 +29,93 @@ void imprime_titulo()
 }
 
 
+/// Funcao Excluir Amigo
+void excluiAmigo(char nome[], char CPF[])
+{	
+
+
+	/** 
+		\details Permite exclusao de amizade pelo usuario.
+		\param	Char nome[]: Nome do usuario;
+				Char CPF[]: CPF do usuario.
+		\return Sem retorno. 
+	*/	
+
+
+	char email_excluir[101];
+	int controle_erro; 
+
+	/* Limpando a tela */
+	clear();
+
+	/* Oculta o cursor na tela */
+	curs_set(0);
+	
+	/* Construcao da interface */	
+	imprime_titulo();
+	move(1,30);
+	printw("\t\tUsuario : %s",nome);
+	move(5,0);
+	printw("Lista de usuarios:\n");
+
+
+	no_lista_usuario * ptr_amigo;
+	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
+	Vizinhos * ptr = vizinhos(grafo_amizade, ptr_usuario->usuario.ID);
+	
+
+	/* Listando amigos */
+	if (ptr == NULL)
+	{
+		printw("\n\nVoce nao possui usuarios amigos.\n\n");
+		getch();
+	}
+	else{
+		
+		while(ptr != NULL)
+		{	
+			ptr_amigo = encontraNoUsuarioID(lista_us->primeiro,ptr->id);
+			printw("%s\t %s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
+
+			ptr = ptr->prox;
+		}
+
+		curs_set(1);
+		echo();
+
+		/* Excluindo usuario desejado */
+		printw("\n\nInsira o email do usuario a ser deletado:\n");
+		scanw("%s",email_excluir);
+
+		ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_excluir);
+		
+		if (ptr_amigo == NULL)
+		{
+			printw("\n\nUsuario com email fornecido nao consta em sua lista de amigos!\n\n");
+		}
+		else{
+			
+			controle_erro = remove_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
+
+			if (controle_erro != ERRO)
+			{
+
+				printw("\n\n\nAmigo removido com sucesso! \n");
+				getch();
+			}
+			else
+			{
+
+				printw("\n\n\nTal usuario nao existe na sua relacao de amigos ou o email esta incorreto! \n");
+				getch();
+			}
+		}
+	}
+	
+	tela_usuario(CPF);
+}
+
+
 /// Funcao Adicionar Amigo
 void adicionaAmigo(char nome[], char CPF[])
 {	
@@ -83,6 +170,8 @@ void adicionaAmigo(char nome[], char CPF[])
 		printw("\n\n\nAmigo nao pode ser adicionado! \n");
 		getch();
 	}
+
+	tela_usuario(CPF);
 }
 
 
@@ -215,17 +304,19 @@ int menu_configuracao(char nome[])
 		printw("Editar informacoes\n");
 		(opcao == 1) ? printw("->") : printw("  ");
 		printw("Adicionar transacao\n");
+		//(opcao == 2) ? printw("->") : printw("  ");
+		//printw("Adicionar amigiunho\n");
+		//(opcao == 3) ? printw("->") : printw("  ");
+		//printw("Excluir amigo\n");
 		(opcao == 2) ? printw("->") : printw("  ");
-		printw("Adicionar amigiunho\n");
-		(opcao == 3) ? printw("->") : printw("  ");
 		printw("Voltar");
 	
 		tecla = getch();
 
 		if(tecla == baixo)
-			(opcao == 3) ? opcao = 0: opcao++;
+			(opcao == 2) ? opcao = 0: opcao++;
 		if(tecla == cima)
-			(opcao == 0) ? opcao = 3: opcao--;
+			(opcao == 0) ? opcao = 2: opcao--;
 		
 		clear();
 
@@ -266,6 +357,10 @@ void tela_configuracao(char nome[], char CPF[])
 			tela_usuario(CPF);
 			break;
 
+		case 4:
+			tela_usuario(CPF);
+			break;
+
 		default: 
 			break;	
 	}
@@ -300,16 +395,18 @@ int menu_usuario(char nome[])
 		(opcao == 2) ? printw("->") : printw("  ");
 		printw("Adicionar amigiunho\n");
 		(opcao == 3) ? printw("->") : printw("  ");
-		printw("Configuracoes\n");
+		printw("Excluir amigo\n");
 		(opcao ==4 ) ? printw("->") : printw("  ");
+		printw("Configuracoes\n");
+		(opcao ==5 ) ? printw("->") : printw("  ");
 		printw("Sair\n");
 	
 		tecla = getch();
 
 		if(tecla == baixo)
-			(opcao == 4) ? opcao = 0: opcao++;
+			(opcao == 5) ? opcao = 0: opcao++;
 		if(tecla == cima)
-			(opcao == 0) ? opcao = 4: opcao--;
+			(opcao == 0) ? opcao = 5: opcao--;
 		
 		clear();
 
@@ -346,13 +443,17 @@ void tela_usuario(char CPF[])
 			break;
 
 		case 3:
-			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF);
+			excluiAmigo(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 4:
-			tela_inicial();
+			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
+		case 5:
+			tela_inicial();
+			break;
+				
 		default: 
 			break;	
 	}
