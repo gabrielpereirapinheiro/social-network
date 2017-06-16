@@ -23,7 +23,7 @@ ListaCategoria *criarListaCategoria(){	/** Cria lista */
 /** Adiciona uma categoria na lista de categorias*/
 /*Retorna 0 em caso sucesso e -1 caso contrario*/
 int addNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){	
-	
+
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaCategoria! Argumentos invalidos\n");
 		return ERRO;
@@ -34,12 +34,19 @@ int addNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){
 	no->categoria.idCategoria = lista->numeroCategorias;
 	lista->numeroCategorias++;
 
-	while(acompanha->prox != NULL){
+	if (acompanha == NULL){
 
-		acompanha = acompanha->prox;
+		lista->primeiro = no;
 	}
+	else{
+		
+		while(acompanha->prox != NULL){
 
-	acompanha->prox = no;
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no;
+	}
 
 	return SEM_ERRO;
 }

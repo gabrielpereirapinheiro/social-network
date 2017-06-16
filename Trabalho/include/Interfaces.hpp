@@ -74,4 +74,7 @@ int menu_configuracao(char nome[]);
 
 void tela_configuracao(char nome[]);
 
+/*************RETIRAR****************/
+void populaLista();
+
 #endif

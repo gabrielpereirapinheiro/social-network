@@ -18,7 +18,7 @@ typedef struct listacategoria{
 
 ///Assinatura das funcoes
 noListaCategoria *criaNoCategoria(Categoria categoria);
-ListaCategoria *criarListaCategoria(Categoria categoria);
+ListaCategoria *criarListaCategoria();
 int addNoListaCategoria(ListaCategoria *lista, noListaCategoria *no);
 int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no);
 noListaCategoria *encontraNoCategoria(noListaCategoria *inicio, Categoria categoria);

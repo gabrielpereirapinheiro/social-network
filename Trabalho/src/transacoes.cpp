@@ -68,12 +68,19 @@ int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){
 	no->transacao.idTransacao = lista->numeroTransacoes;
 	lista->numeroTransacoes++;
 
-	while(acompanha->prox != NULL){
+	if (acompanha == NULL){
 
-		acompanha = acompanha->prox;
+		lista->primeiro = no;
 	}
+	else{
+		
+		while(acompanha->prox != NULL){
 
-	acompanha->prox = no;
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no;
+	}
 
 	return SEM_ERRO;
 }

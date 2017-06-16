@@ -12,6 +12,29 @@ lista_usuario * lista_us = criarListaUsuario();
 char nome[] = "Grafo de amizade";
 Grafo * grafo_amizade = cria_grafo(nome);
 
+ListaCategoria * lista_cat = criarListaCategoria(); 
+
+/**************************************************************************************/
+
+void populaLista()
+{
+/****************RETIRAR ESTA PORCARIA *********************/
+
+Categoria eletronicos;
+strcpy(eletronicos.nomeCategoria, "eletronicos");
+Categoria vestuario;
+strcpy(vestuario.nomeCategoria,"vestuario");
+Categoria carona;
+strcpy(carona.nomeCategoria,"carona");
+
+printf("pelo menos aqui chegou ne\n\n\n\n\n\n");
+
+addNoListaCategoria(lista_cat,criaNoCategoria(eletronicos));
+addNoListaCategoria(lista_cat,criaNoCategoria(vestuario));
+addNoListaCategoria(lista_cat,criaNoCategoria(carona));
+/********************************************************/
+}
+
 /*************************************************************************************/
 
 
@@ -314,21 +337,21 @@ int menu_configuracao(char nome[])
 
 		(opcao == 0) ? printw("->") : printw("  ");
 		printw("Editar informacoes\n");
-		(opcao == 1) ? printw("->") : printw("  ");
-		printw("Adicionar transacao\n");
+		//(opcao == 1) ? printw("->") : printw("  ");
+		//printw("Adicionar transacao\n");
 		//(opcao == 2) ? printw("->") : printw("  ");
 		//printw("Adicionar amigiunho\n");
 		//(opcao == 3) ? printw("->") : printw("  ");
 		//printw("Excluir amigo\n");
-		(opcao == 2) ? printw("->") : printw("  ");
+		(opcao == 1) ? printw("->") : printw("  ");
 		printw("Voltar");
 	
 		tecla = getch();
 
 		if(tecla == baixo)
-			(opcao == 2) ? opcao = 0: opcao++;
+			(opcao == 1) ? opcao = 0: opcao++;
 		if(tecla == cima)
-			(opcao == 0) ? opcao = 2: opcao--;
+			(opcao == 0) ? opcao = 1: opcao--;
 		
 		clear();
 
@@ -359,17 +382,6 @@ void tela_configuracao(char nome[], char CPF[])
 			break;
 
 		case 1:
-			break;
-
-		case 2:
-			tela_usuario(CPF);
-			break;
-
-		case 3:
-			tela_usuario(CPF);
-			break;
-
-		case 4:
 			tela_usuario(CPF);
 			break;
 
@@ -381,6 +393,28 @@ void tela_configuracao(char nome[], char CPF[])
 	/**Mostrar caracteres*/
 	echo();
 }
+
+
+void adicionarTransacao(char nome[], char CPF[])
+{
+	clear();
+	imprime_titulo();
+
+	noListaCategoria * ptr_categoria = lista_cat->primeiro;
+	printw("\n");
+
+	while(ptr_categoria != NULL)
+	{
+		printw("%s\n",ptr_categoria->categoria.nomeCategoria);
+		ptr_categoria = ptr_categoria->prox;
+	}
+
+	getch();
+
+	tela_usuario(CPF);
+
+}
+
 void procurar_transacao(char nome[], char CPF[])
 {
 
@@ -452,6 +486,7 @@ void tela_usuario(char CPF[])
 			break;
 
 		case 1:
+			adicionarTransacao(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 2:
