@@ -2,7 +2,7 @@
 
 
 /** Funcao que cria o no de categoria */
-noListaCategoria *Categoria(Categoria categoria){	/** Cria nó */ 
+noListaCategoria *criaNoCategoria(Categoria categoria){	/** Cria nó */ 
 
 	noListaCategoria *no = (noListaCategoria*)malloc(sizeof(noListaCategoria));
 	no->prox = NULL;
