@@ -22,7 +22,7 @@ Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *de
 	strcpy(servicoUsuario.precoServico, precoServico); // copia o preco do servico
 	strcpy(servicoUsuario.descricaoServico, descricaoServico); // copia a descricao do servico
 
-	return servicoUsuario
+	return servicoUsuario;
 }
 
 /** Funcao que monta a transacao que vai ser adicionada, recebendo o servico e a categoria do servico*/
