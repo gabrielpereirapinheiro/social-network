@@ -19,6 +19,8 @@ typedef struct listaTransacao{
 ///Assinatura das funcoes
 noListaTransacao *criaNoTransacao(Transacao transacao);
 ListaTransacao *criarListaTransacao(Transacao transacao);
+Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *descricaoServico);
+Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico);
 int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
 int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);
 noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transacao);

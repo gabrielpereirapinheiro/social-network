@@ -11,8 +11,13 @@
 #include "transacoes.hpp"
 #include "grafos.hpp"
 
+//Flags para indicar erro ou nao
 #define ERRO -1
 #define SEM_ERRO 0
+
+//Flags para indicar informacoes sobre transacao
+#define PENDENTE 0
+#define CONCLUIDA 1
 
 #endif
 
