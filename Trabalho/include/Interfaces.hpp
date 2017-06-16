@@ -36,20 +36,18 @@ typedef struct avaliacao{
 
 /** Struct que define os atributos de um servico*/
 typedef struct servico{
-	int idUsuProvedor; //O id do usuario que esta provendo o servico
+	Usuario usuarioProvedor; //O usuario que esta provendo o servico
 	char precoServico[31];
 	char descricaoServico[201];
 }Servico;
 
 /// Definicao da struct de Transacao
->>>>>>> e0199ed4be4a8c63e61e751e7da87a0dfa0c28fb
 typedef struct transacao{
 	int idTransacao; //chave primaria de transacao
 	Servico servico; //Informacoes do servico que caracterizou essa transacao
 	Categoria categoria; //Categoria da transacao
 	Avaliacao avaliacao; //Avaliacao da transacao
-	Usuario usarioCliente;
-
+	Usuario usuarioCliente; //O usuario que esta consumindo o servico
 }Transacao;
 
 
