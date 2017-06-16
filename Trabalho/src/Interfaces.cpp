@@ -24,8 +24,10 @@ void sair_do_programa()
 
 void imprime_titulo()
 {
-	move(1,3);
+	move(1,0);
+	printw("---------------------------\n");
 	printw("S O C I A L  N E T W O R K\n");
+	printw("---------------------------\n");
 }
 
 
@@ -154,24 +156,33 @@ void adicionaAmigo(char nome[], char CPF[])
 	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
 	no_lista_usuario * ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_desejado);
 
-
-	/* Adicionando no grafo de amizades */
-	controle_erro = adiciona_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
-
-	if (controle_erro != ERRO)
+	if(ptr_amigo== NULL)
 	{
-
-		printw("\n\n\nAmigo adicionado com sucesso! \n");
+		printw("Não há mais usuarios cadastrados na SOCIALNETWORK. Pressiona qualquer tecla para voltar para o MENU");
 		getch();
+		tela_usuario(CPF);
 	}
 	else
 	{
+		/* Adicionando no grafo de amizades */
+		controle_erro = adiciona_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
-		printw("\n\n\nAmigo nao pode ser adicionado! \n");
-		getch();
+		if (controle_erro != ERRO)
+		{
+
+			printw("\n\n\nAmigo adicionado com sucesso! \n");
+			getch();
+		}
+		else
+		{
+
+			printw("\n\n\nAmigo nao pode ser adicionado! \n");
+			getch();
+		}		
 	}
 
 	tela_usuario(CPF);
+
 }
 
 
@@ -369,7 +380,10 @@ void tela_configuracao(char nome[], char CPF[])
 	/**Mostrar caracteres*/
 	echo();
 }
+void procurar_transacao(char nome[], char CPF[])
+{
 
+}
 
 int menu_usuario(char nome[])
 {
@@ -383,7 +397,7 @@ int menu_usuario(char nome[])
 		
 		imprime_titulo();
 
-		move(1,30);
+		move(2,30);
 		printw("Usuario : %s",nome);
 	
 		move(5,0);
@@ -433,6 +447,7 @@ void tela_usuario(char CPF[])
 	switch(opcao)
 	{
 		case 0:
+			procurar_transacao(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 1:
@@ -477,6 +492,13 @@ Usuario tela_sign_up()
 
 	/**Mostrar caracteres*/
 	echo();
+
+	move(5,0);
+
+	printw("Cadastro");
+
+	move(7,0);
+
 
 
 	printw("Nome:");
@@ -548,7 +570,8 @@ void tela_sing_in()
 	imprime_titulo();
 
 	//Move para baixo onde ira imprimir
-	move(3,0);
+	move(5,0);
+
 
 	/**Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos*/
 	strcpy(CPF,"010");
@@ -627,11 +650,11 @@ int opcoes_tela_inicial()
 		
 		imprime_titulo();
 
-		move(3,1);
+		move(4,1);
 
 		printw("Seja bem-vindo ao SOCIAL NETWORK");
 		
-		move(5,0);
+		move(6,0);
 		(opcao == 0) ? printw("->") : printw("  ");
 		printw("Log In\n");
 		(opcao == 1) ? printw("->") : printw("  ");
