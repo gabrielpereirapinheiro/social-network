@@ -38,7 +38,7 @@
 
 ### Sobre :
 
-- Todos os membros do grupo sao estudantes de Engenharia da Computacao na Universidade de Brasilia e implementaram este codigo como projeto da disciplina Metodos de Programacao .
+- Todos os membros do grupo sao estudantes de Engenharia da Computação na Universidade de Brasilia e implementaram este código como projeto da disciplina Métodos de Programacao 2017/1 .
 
 - Programa desenvolvido em ```C++``` que simula uma rede social onde é possivel um usuário se cadastrar e realizar login . Dentre as funcionalidades da rede social está em possuir vinculos de amizades com outros usuários ja previamente cadastrados e realizar transações.
 
@@ -48,4 +48,5 @@
 
 - Os testes automatizados foram gerados utilizando a framework [Catch](https://github.com/philsquared/Catch). Foi seguido desenvolvimento orientado a testes (```Test Driven Development```).
 
-- Os comentarios seguiram o padrao para ser possivel ser gerada a documentacao do codigo por meio do [Doxygen](http://www.stack.nl/~dimitri/doxygen/)
+- Os comentarios seguiram o padrao para ser possivel ser gerada a documentacao do codigo por meio do [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
+
