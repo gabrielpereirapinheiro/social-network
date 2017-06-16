@@ -1,7 +1,7 @@
 #include "headers.hpp"
 
 
-//Funcao que cria o no de transacao
+/** Funcao que cria o no de transacao */
 noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */ 
 
 	noListaTransacao *no = (noListaTransacao*)malloc(sizeof(noListaTransacao));

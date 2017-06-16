@@ -1,5 +1,6 @@
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 
-15/06/17    4 horas	    Parte grafica   Juntamente com Gabriel Pereira Pinheiro, criou a tela usuario, struct usuario e adaptei o programa inicial para um modular 
-
+15/06/17    4 horas	    Parte grafica   Juntamente com Gabriel Pereira Pinheiro, criou a tela usuario, struct usuario e adaptei o programa 						    inicial para um modular.
+15/06/17    2 horas	    Teste	    Teste feito para biblioteca lista_usuario.hpp.
+15/06/17    2 horas 	    Biblioteca	    Implementacao da biblioteca lista_usuario.hpp orientada aos testes feitos. 

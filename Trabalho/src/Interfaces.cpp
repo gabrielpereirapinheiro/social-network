@@ -7,7 +7,7 @@ lista_usuario * lista_us = criarListaUsuario();
 
 void sair_do_programa()
 {
-	endwin();
+	endwin(); 
 	//Finalizar a ncruses
 	exit(0);
 }
@@ -19,6 +19,113 @@ void imprime_titulo()
 }
 
 
+/// Funcao Editar Informacoes
+void editaInformacoes(char nome[], char CPF[])
+{	
+
+
+	/** 
+		\details Permite edicao de informacao do usuario.
+		\param	Char nome[]: Nome do usuario; 
+				Char CPF[]: CPF do usuario.
+		\return Sem retorno. 
+	*/	
+
+
+	/* Variveis que recebem os novos dados do usuario */
+	char novo_nome[101], nova_senha[51], novo_email[101];
+	int nova_idade = 0;
+	int opcao = 0, tecla;
+	
+	no_lista_usuario * ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+
+
+	/* Limpando a tela */
+	clear();
+
+	/* Oculta o cursor na tela */
+	curs_set(0);
+
+
+	/* Selecionar a opcao de alteracao de campo */
+	do{
+		
+		imprime_titulo();
+
+		move(1,30);
+
+		printw("\t\tUsuario : %s",nome);
+	
+		move(5,0);
+
+		(opcao == 0) ? printw("->") : printw("  ");
+		printw("Alterar Nome (%s)\n",ptr->usuario.nome);
+		(opcao == 1) ? printw("->") : printw("  ");
+		printw("Alterar Senha \n");
+		(opcao == 2) ? printw("->") : printw("  ");
+		printw("Alterar Email (%s)\n",ptr->usuario.email);
+		(opcao == 3) ? printw("->") : printw("  ");
+		printw("Alterar Idade (%d)\n",ptr->usuario.idade);
+	
+		tecla = getch();
+
+		if(tecla == baixo)
+			(opcao == 3) ? opcao = 0: opcao++;
+		if(tecla == cima)
+			(opcao == 0) ? opcao = 3: opcao--;
+		
+		clear();
+
+	} while(tecla != enter);
+
+
+	curs_set(1);
+	echo();
+
+	/* Alterando o campo desejado */
+	switch (opcao) {
+
+		case 0:	/* nome */
+
+			printw("\n\n\nDigite o novo nome: \n");
+			scanw("%[^\n]s",novo_nome);
+			
+			strcpy(ptr->usuario.nome,novo_nome);
+			tela_usuario(CPF);
+			break;
+
+		case 1: /* senha */
+
+			noecho();
+			printw("\n\n\nDigite o novo senha: \n");
+			scanw("%s",nova_senha);
+			
+			strcpy(ptr->usuario.senha,nova_senha);
+			echo();
+			tela_usuario(CPF);
+			break;
+
+		case 2: /* email */
+
+			printw("\n\n\nDigite o novo email: \n");
+			scanw("%s",novo_email);
+
+			strcpy(ptr->usuario.email,novo_email);
+			tela_usuario(CPF);
+			break;
+
+		case 3: /* idade */
+
+			printw("\n\n\nDigite o novo idade: \n");
+			scanw("%d",&nova_idade);
+
+			ptr->usuario.idade = nova_idade;
+			tela_usuario(CPF);
+			break;
+	}
+}
+
+ 
 int menu_configuracao(char nome[])
 {
 
@@ -63,7 +170,7 @@ int menu_configuracao(char nome[])
 }
 
 
-void tela_configuracao(char nome[])
+void tela_configuracao(char nome[], char CPF[])
 {
 
 
@@ -78,21 +185,18 @@ void tela_configuracao(char nome[])
 	switch(opcao)
 	{
 		case 0:
+			editaInformacoes(nome,CPF);
 			break;
 
 		case 1:
 			break;
 
 		case 2:
-			tela_usuario(nome);
+			tela_usuario(CPF);
 			break;
 
 		case 3:
-			tela_usuario(nome);
-			break;
-
-		case 4:
-			tela_inicial();
+			tela_usuario(CPF);
 			break;
 
 		default: 
@@ -174,10 +278,7 @@ void tela_usuario(char CPF[])
 			break;
 
 		case 3:
-			int oi;
-			printf("entrousaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
-			scanw("%d",oi);
-			tela_configuracao(ptr->usuario.nome);
+			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 4:
@@ -210,7 +311,7 @@ Usuario tela_sign_up()
 
 
 	printw("Nome:");
-	scanw("%s",cadastrar_agora.nome);
+	scanw("%[^\n]s",cadastrar_agora.nome);
 
 	cadastrar_agora.idade=-1;
 
@@ -291,25 +392,42 @@ void tela_sing_in()
 		scanw("%s",CPF);
 	}
 
+	/** Verifica se o ponteiro lista_us->primeiro aponta pra algo diferente de NULL, se sim, a funcao
+	  	encontraNoUsuario podera ser usada. */
+	if(lista_us->primeiro != NULL)
+	{
 
-	ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+		ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+	}
+	else
+	{
+
+		ptr = NULL;
+	}
 
 	while(ptr==NULL && chance>0)
 	{
 		printw("CPF inexistente, tente novamente :");
 		scanw("%s",CPF);
-		ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+		
+		if(lista_us->primeiro != NULL)
+		{
+			
+			ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+		}
+		
 		chance--;
-
 	}
 
 	if(chance==0)
-	{
+	{	
+		printw("\nCrie um cadastro primeiro e clique em qualquer tecla para voltar\n");
+		getch();
 		tela_inicial();
 	}
 
 
-	//Oculta caractres digitados
+	// !Oculta caractres digitados
 	noecho();
 
 	if(strcmp(ptr->usuario.CPF,CPF)==0)
