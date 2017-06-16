@@ -1,6 +1,7 @@
-Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
+﻿Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 
 8/6/17        2 horas          Interface Grafica  Escolha e instalacao da biblioteca ncurses e criacao da pagina inicial .
 15/6/17       4 horas	       Modularizacao da interface grafica e adaptacao para o Make File juntamente com o Andre Luis .
 			       Criacao da tela cadastro e armazenamento em uma struct 
+16/6/17       1 hora 	       Estudou adaptcao do programa para ter a documentao pelo doxygen e atualizou descricao do projeto no github
