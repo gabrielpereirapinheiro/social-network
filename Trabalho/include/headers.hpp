@@ -10,6 +10,7 @@
 #include "lista_usuario.hpp"
 #include "transacoes.hpp"
 #include "grafos.hpp"
+#include "categoria.hpp"
 
 //Flags para indicar erro ou nao
 #define ERRO -1
