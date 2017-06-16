@@ -22,19 +22,19 @@ typedef struct usuario
 	
 }Usuario;
 
-/** Struct que define os atributos de uma categoria*/
+/// Struct que define os atributos de uma categoria
 typedef struct categoria{
 	int idCategoria;
 	char nomeCategoria[51];
 }Categoria;
 
-/** Struct que define os atributos de uma avaliacao*/
+/// Struct que define os atributos de uma avaliacao
 typedef struct avaliacao{
 	short notaTransacao; //Nota da transacao dada por um usuario
 	char comentAvaliClient[201]; //Comentario sobre a avaliacao do cliente
 }Avaliacao;
 
-/** Struct que define os atributos de um servico*/
+/// Struct que define os atributos de um servico
 typedef struct servico{
 	Usuario usuarioProvedor; //O usuario que esta provendo o servico
 	char precoServico[31];
