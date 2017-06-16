@@ -100,6 +100,26 @@ no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]){	/** P
 
 }
 
+no_lista_usuario *encontraNoUsuarioEmail(no_lista_usuario *inicio, char email[]){	/** Procura vértice na lista */
+
+	no_lista_usuario *acompanha = inicio;	/** Primeiro vértice da lista */
+
+	while(strcmp(acompanha->usuario.email,email) != 0 && acompanha->prox != NULL){
+
+		acompanha = acompanha->prox;
+	}
+
+	if(strcmp(acompanha->usuario.email,email) != 0){
+
+		return NULL;
+	}
+	else{
+
+		return acompanha;
+	}
+
+}
+
 /** Funcao que libera a lista */
 /** Retorna 0 se for liberada com sucesso e -1 se nao for */
 int LiberaListaUsuario(lista_usuario *listaUsuario){

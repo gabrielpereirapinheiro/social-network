@@ -1,8 +1,18 @@
 #include "headers.hpp"
 
-/** Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
-	antes dos mesmos serem passados ao Banco de Dados */
+
+/********************************* Globais *******************************************/
+
+/* Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
+   antes dos mesmos serem passados ao Banco de Dados */
 lista_usuario * lista_us = criarListaUsuario();
+
+/* Grafo declarado como variavel global. Sera usado como um buffer para salvar os dados
+   de amizades antes dos mesmos serem passados ao Banco de Dados */
+char nome[] = "Grafo de amizade";
+Grafo * grafo_amizade = cria_grafo(nome);
+
+/*************************************************************************************/
 
 
 void sair_do_programa()
@@ -16,6 +26,63 @@ void imprime_titulo()
 {
 	move(1,3);
 	printw("S O C I A L  N E T W O R K\n");
+}
+
+
+/// Funcao Adicionar Amigo
+void adicionaAmigo(char nome[], char CPF[])
+{	
+
+
+	/** 
+		\details Permite inclusao de amizade pelo usuario.
+		\param	Char nome[]: Nome do usuario;
+				Char CPF[]: CPF do usuario.
+		\return Sem retorno. 
+	*/	
+
+
+	char email_desejado[101];
+	int controle_erro; 
+
+	/* Limpando a tela */
+	clear();
+
+	/* Oculta o cursor na tela */
+	curs_set(0);
+	
+	/* Construcao da interface */	
+	imprime_titulo();
+	move(1,30);
+	printw("\t\tUsuario : %s",nome);
+	move(5,0);
+	printw("Digite o email do usario desejado:\n");
+
+
+	curs_set(1);
+	echo();
+
+	/* Encontrando usuario desejado */
+	scanw("%s",email_desejado);
+	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
+	no_lista_usuario * ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_desejado);
+
+
+	/* Adicionando no grafo de amizades */
+	controle_erro = adiciona_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
+
+	if (controle_erro != ERRO)
+	{
+
+		printw("\n\n\nAmigo adicionado com sucesso! \n");
+		getch();
+	}
+	else
+	{
+
+		printw("\n\n\nAmigo nao pode ser adicionado! \n");
+		getch();
+	}
 }
 
 
@@ -275,6 +342,7 @@ void tela_usuario(char CPF[])
 			break;
 
 		case 2:
+			adicionaAmigo(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 3:
@@ -530,8 +598,14 @@ void tela_inicial()
 		case 0 :
 			tela_sing_in();
 			break;
+
 		case 1:
-			addNoListaUsuario(lista_us,criaNoUsuario(tela_sign_up()));
+			{
+				no_lista_usuario * novo_no = criaNoUsuario(tela_sign_up());
+				addNoListaUsuario(lista_us, novo_no);
+				adiciona_vertice(grafo_amizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 
+																	 // se esta mudando o ID diretamente no no
+			}
 			break;
 		case 2 :
 			sair_do_programa();
