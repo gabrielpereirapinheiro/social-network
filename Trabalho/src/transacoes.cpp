@@ -84,12 +84,12 @@ noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transa
 	noListaTransacao *acompanha = inicio;	/** Primeiro no da lista */
 
 
-	while(acompanha->transacao.provedorID != transacao.provedorID && acompanha->prox != NULL){
+	while(acompanha->transacao.idTransacao != transacao.idTransacao && acompanha->prox != NULL){
 
 		acompanha = acompanha->prox;
 	}
 
-	if(acompanha->transacao.provedorID != transacao.provedorID){
+	if(acompanha->transacao.idTransacao != transacao.idTransacao){
 		printf("Transacao nao existe na lista de transacoes\n");
 		return NULL;
 	}
