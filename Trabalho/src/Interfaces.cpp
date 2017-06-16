@@ -24,8 +24,10 @@ void sair_do_programa()
 
 void imprime_titulo()
 {
-	move(1,3);
+	move(1,0);
+	printw("---------------------------\n");
 	printw("S O C I A L  N E T W O R K\n");
+	printw("---------------------------\n");
 }
 
 
@@ -304,7 +306,7 @@ int menu_usuario(char nome[])
 		
 		imprime_titulo();
 
-		move(1,30);
+		move(2,30);
 		printw("Usuario : %s",nome);
 	
 		move(5,0);
@@ -394,6 +396,13 @@ Usuario tela_sign_up()
 	/**Mostrar caracteres*/
 	echo();
 
+	move(5,0);
+
+	printw("Cadastro");
+
+	move(7,0);
+
+
 
 	printw("Nome:");
 	scanw("%[^\n]s",cadastrar_agora.nome);
@@ -464,7 +473,8 @@ void tela_sing_in()
 	imprime_titulo();
 
 	//Move para baixo onde ira imprimir
-	move(3,0);
+	move(5,0);
+
 
 	/**Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos*/
 	strcpy(CPF,"010");
@@ -543,11 +553,11 @@ int opcoes_tela_inicial()
 		
 		imprime_titulo();
 
-		move(3,1);
+		move(4,1);
 
 		printw("Seja bem-vindo ao SOCIAL NETWORK");
 		
-		move(5,0);
+		move(6,0);
 		(opcao == 0) ? printw("->") : printw("  ");
 		printw("Log In\n");
 		(opcao == 1) ? printw("->") : printw("  ");
