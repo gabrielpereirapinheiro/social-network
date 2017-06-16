@@ -395,25 +395,44 @@ void tela_configuracao(char nome[], char CPF[])
 }
 
 
+/// Funcao Adiciona Transacao
 void adicionarTransacao(char nome[], char CPF[])
-{
+{	
+
+	/** 
+		\details Permite ao usuario adicionar uma transacao.
+		\param	Char nome[]: Nome do usuario; 
+				Char CPF[]: CPF do usuario.
+		\return Sem retorno. 
+	*/
+
+
+	char categoria_desejada[51];
+
 	clear();
 	imprime_titulo();
 
 	noListaCategoria * ptr_categoria = lista_cat->primeiro;
 	printw("\n");
 
+	/* Listando as categorias de transacoes existentes */
 	while(ptr_categoria != NULL)
 	{
 		printw("%s\n",ptr_categoria->categoria.nomeCategoria);
 		ptr_categoria = ptr_categoria->prox;
 	}
 
-	getch();
+	curs_set(1);
+	echo();
+
+	/* Categoria desejada requerida do usuario */
+	printw("\n\nDigite o nome da categoria desejada:\n");
+	scanw("%s",categoria_desejada);
 
 	tela_usuario(CPF);
 
 }
+
 
 void procurar_transacao(char nome[], char CPF[])
 {
