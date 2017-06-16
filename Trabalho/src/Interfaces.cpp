@@ -25,9 +25,9 @@ void sair_do_programa()
 void imprime_titulo()
 {
 	move(1,0);
-	printw("---------------------------\n");
-	printw("S O C I A L  N E T W O R K\n");
-	printw("---------------------------\n");
+	printw(" ---------------------------\n");
+	printw(" S O C I A L  N E T W O R K\n");
+	printw(" ---------------------------\n");
 }
 
 
@@ -94,6 +94,7 @@ void excluiAmigo(char nome[], char CPF[])
 		if (ptr_amigo == NULL)
 		{
 			printw("\n\nUsuario com email fornecido nao consta em sua lista de amigos!\n\n");
+			getch();
 		}
 		else{
 			
@@ -158,7 +159,7 @@ void adicionaAmigo(char nome[], char CPF[])
 
 	if(ptr_amigo== NULL)
 	{
-		printw("Não há mais usuarios cadastrados na SOCIALNETWORK. Pressiona qualquer tecla para voltar para o MENU");
+		printw("Nao foi encontrado o usuario '%s'. \n\nPressiona qualquer tecla para voltar para o MENU",email_desejado);
 		getch();
 		tela_usuario(CPF);
 	}
@@ -170,13 +171,13 @@ void adicionaAmigo(char nome[], char CPF[])
 		if (controle_erro != ERRO)
 		{
 
-			printw("\n\n\nAmigo adicionado com sucesso! \n");
+			printw("\n\n\n'%s' adicionado com sucesso! \n",ptr_amigo->usuario.nome);
 			getch();
 		}
 		else
 		{
 
-			printw("\n\n\nAmigo nao pode ser adicionado! \n");
+			printw("\n\n\n'%s' nao pode ser adicionado! \n",ptr_amigo->usuario.nome);
 			getch();
 		}		
 	}
