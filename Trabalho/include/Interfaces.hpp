@@ -44,6 +44,7 @@ typedef struct servico{
 /// Definicao da struct de Transacao
 typedef struct transacao{
 	int idTransacao; //chave primaria de transacao
+	short classificacao; // indica se a transacao ja foi concluida ou nao. 0 significa pendente e 1 concluida
 	Servico servico; //Informacoes do servico que caracterizou essa transacao
 	Categoria categoria; //Categoria da transacao
 	Avaliacao avaliacao; //Avaliacao da transacao

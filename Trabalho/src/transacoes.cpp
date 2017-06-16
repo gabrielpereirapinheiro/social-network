@@ -11,6 +11,40 @@ noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */
 	return no;
 }
 
+/********************Funcoes relacionadas a tela de adicionar transacao**********************/
+
+/** Funcao que monta o tipo servico do usuario que vai adicionar na transacao sendo criada*/
+Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *descricaoServico){
+	Servico servicoUsuario; //! Variavel do tipo servico para abrigar os atributos do servico que o usuario
+							//! usuarioProvedor esta criando
+
+	servicoUsuario.usuarioProvedor = usuarioProvedor; // atribui ao usuario do servico o usuario que esta criando o servico
+	strcpy(servicoUsuario.precoServico, precoServico); // copia o preco do servico
+	strcpy(servicoUsuario.descricaoServico, descricaoServico); // copia a descricao do servico
+
+	return servicoUsuario
+}
+
+/** Funcao que monta a transacao que vai ser adicionada, recebendo o servico e a categoria do servico*/
+Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico){
+	Transacao transacaoUsuario;
+
+	transacaoUsuario.servico = servicoUsuario; //recebe o servico do usuario
+	transacaoUsuario.categoria = categoriaServico; //recebe a categoria do usuario
+	transacaoUsuario.classificacao = PENDENTE; // quando cria a transacao, considera-se classificado como pendente
+
+	return transacaoUsuario;
+}
+
+/********************************************************************************************/
+
+
+/********************Funcoes relacionadas a tela de procurar transacao**********************/
+
+
+
+/********************************************************************************************/
+
 ListaTransacao *criarListaTransacao(){	/** Cria lista */ 
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));
