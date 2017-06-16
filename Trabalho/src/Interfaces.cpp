@@ -67,6 +67,16 @@ void adicionaAmigo(char nome[], char CPF[])
 	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
 	no_lista_usuario * ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_desejado);
 
+	if(ptr_amigo== NULL)
+	{
+		printw("Não há mais usuarios cadastrados na SOCIALNETWORK. Pressiona qualquer tecla para voltar para o MENU");
+		getch();
+		tela_usuario(CPF);
+	}
+	else
+	{
+		
+
 
 	/* Adicionando no grafo de amizades */
 	controle_erro = adiciona_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
@@ -82,7 +92,10 @@ void adicionaAmigo(char nome[], char CPF[])
 
 		printw("\n\n\nAmigo nao pode ser adicionado! \n");
 		getch();
+	}		
 	}
+
+
 }
 
 
@@ -274,7 +287,10 @@ void tela_configuracao(char nome[], char CPF[])
 	/**Mostrar caracteres*/
 	echo();
 }
+void procurar_transacao(char nome[], char CPF[])
+{
 
+}
 
 int menu_usuario(char nome[])
 {
@@ -336,6 +352,7 @@ void tela_usuario(char CPF[])
 	switch(opcao)
 	{
 		case 0:
+			procurar_transacao(ptr->usuario.nome, ptr->usuario.CPF);
 			break;
 
 		case 1:
