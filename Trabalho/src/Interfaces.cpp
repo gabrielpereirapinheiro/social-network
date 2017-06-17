@@ -42,6 +42,8 @@ void sair_do_programa()
 {
 	endwin(); 
 	//Finalizar a ncruses
+	int retornoSalvaUsuario = 0;
+	retornoSalvaUsuario = SalvaArquivoUsuario(lista_us);
 	exit(0);
 }
 
@@ -586,7 +588,7 @@ Usuario tela_sign_up()
 	curs_set(1);
 	
 	/** Tipo setado para 0 pois e um usario normal*/
-	cadastrar_agora.tipo = 0;
+	cadastrar_agora.tipo = NORMAL;
 	
 	/** Setado para zero pois o usuario novo nao tem nenhuma transacao */
 	cadastrar_agora.numero_transacao = 0;

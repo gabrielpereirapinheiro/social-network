@@ -11,6 +11,11 @@
 #include "transacoes.hpp"
 #include "grafos.hpp"
 #include "categoria.hpp"
+#include "bancodados.hpp"
+
+//Flags para indicar informacoes de tipo de usuario
+#define ADMIN 1
+#define NORMAL 0
 
 //Flags para indicar erro ou nao
 #define ERRO -1
