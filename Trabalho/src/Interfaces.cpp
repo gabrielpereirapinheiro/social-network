@@ -55,6 +55,13 @@ void imprime_titulo()
 	printw(" ---------------------------\n");
 }
 
+void imprime_usuario(char nome[])
+{
+	move(2,30);
+
+	printw("\t\t [ Usuario : %s ]",nome);
+}
+
 
 /// Funcao Excluir Amigo
 void excluiAmigo(char nome[], char CPF[])
@@ -80,8 +87,8 @@ void excluiAmigo(char nome[], char CPF[])
 	
 	/* Construcao da interface */	
 	imprime_titulo();
-	move(1,30);
-	printw("\t\tUsuario : %s",nome);
+
+	imprime_usuario(nome);
 	move(5,0);
 	printw("Lista de usuarios:\n");
 
@@ -168,8 +175,8 @@ void adicionaAmigo(char nome[], char CPF[])
 	
 	/* Construcao da interface */	
 	imprime_titulo();
-	move(1,30);
-	printw("\t\tUsuario : %s",nome);
+
+	imprime_usuario(nome);
 	move(5,0);
 	printw("Digite o email do usario desejado:\n");
 
@@ -245,19 +252,17 @@ void editaInformacoes(char nome[], char CPF[])
 		
 		imprime_titulo();
 
-		move(1,30);
-
-		printw("\t\tUsuario : %s",nome);
+		imprime_usuario(nome);
 	
 		move(5,0);
 
-		(opcao == 0) ? printw("->") : printw("  ");
+		(opcao == 0) ? printw(" >") : printw("  ");
 		printw("Alterar Nome (%s)\n",ptr->usuario.nome);
-		(opcao == 1) ? printw("->") : printw("  ");
+		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Alterar Senha \n");
-		(opcao == 2) ? printw("->") : printw("  ");
+		(opcao == 2) ? printw(" >") : printw("  ");
 		printw("Alterar Email (%s)\n",ptr->usuario.email);
-		(opcao == 3) ? printw("->") : printw("  ");
+		(opcao == 3) ? printw(" >") : printw("  ");
 		printw("Alterar Idade (%d)\n",ptr->usuario.idade);
 	
 		tecla = getch();
@@ -331,13 +336,11 @@ int menu_configuracao(char nome[])
 		
 		imprime_titulo();
 
-		move(1,30);
-
-		printw("Usuario : %s",nome);
+		imprime_usuario(nome);
 	
 		move(5,0);
 
-		(opcao == 0) ? printw("->") : printw("  ");
+		(opcao == 0) ? printw(" >") : printw("  ");
 		printw("Editar informacoes\n");
 		//(opcao == 1) ? printw("->") : printw("  ");
 		//printw("Adicionar transacao\n");
@@ -345,7 +348,7 @@ int menu_configuracao(char nome[])
 		//printw("Adicionar amigiunho\n");
 		//(opcao == 3) ? printw("->") : printw("  ");
 		//printw("Excluir amigo\n");
-		(opcao == 1) ? printw("->") : printw("  ");
+		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Voltar");
 	
 		tecla = getch();
@@ -453,22 +456,21 @@ int menu_usuario(char nome[])
 		
 		imprime_titulo();
 
-		move(2,30);
-		printw("Usuario : %s",nome);
+		imprime_usuario(nome);
 	
 		move(5,0);
 
-		(opcao == 0) ? printw("->") : printw("  ");
+		(opcao == 0) ? printw(" >") : printw("  ");
 		printw("Procurar transacao\n");
-		(opcao == 1) ? printw("->") : printw("  ");
+		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Adicionar transacao\n");
-		(opcao == 2) ? printw("->") : printw("  ");
+		(opcao == 2) ? printw(" >") : printw("  ");
 		printw("Adicionar amigiunho\n");
-		(opcao == 3) ? printw("->") : printw("  ");
+		(opcao == 3) ? printw(" >") : printw("  ");
 		printw("Excluir amigo\n");
-		(opcao ==4 ) ? printw("->") : printw("  ");
+		(opcao ==4 ) ? printw(" >") : printw("  ");
 		printw("Configuracoes\n");
-		(opcao ==5 ) ? printw("->") : printw("  ");
+		(opcao ==5 ) ? printw(" >") : printw("  ");
 		printw("Sair\n");
 	
 		tecla = getch();
@@ -712,11 +714,11 @@ int opcoes_tela_inicial()
 		printw("Seja bem-vindo ao SOCIAL NETWORK");
 		
 		move(6,0);
-		(opcao == 0) ? printw("->") : printw("  ");
+		(opcao == 0) ? printw(" >") : printw("  ");
 		printw("Log In\n");
-		(opcao == 1) ? printw("->") : printw("  ");
+		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Cadastro\n");
-		(opcao ==2 ) ? printw("->") : printw("  ");
+		(opcao ==2 ) ? printw(" >") : printw("  ");
 		printw("Sair\n");
 	
 		tecla = getch();
