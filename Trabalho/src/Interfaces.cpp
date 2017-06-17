@@ -47,6 +47,11 @@ void sair_do_programa()
 	exit(0);
 }
 
+void cores(int opcao)
+{
+	bkgd(COLOR_PAIR(opcao));
+}
+
 void imprime_titulo()
 {
 	move(1,0);
@@ -218,6 +223,78 @@ void adicionaAmigo(char nome[], char CPF[])
 
 }
 
+void tela_cor(char nome[],char CPF[])
+{
+/* Limpando a tela */
+	clear();
+
+	/* Oculta o cursor na tela */
+	curs_set(0);
+
+	int opcao=0;
+
+	int tecla;
+
+	do{
+		
+		imprime_titulo();
+
+		imprime_usuario(nome);
+	
+		move(5,0);
+
+		(opcao == 0) ? printw(" >") : printw("  ");
+		printw("Fundo azul e letra preta\n");
+		(opcao == 1) ? printw(" >") : printw("  ");
+		printw("Fundo branco e letra verde \n");
+		(opcao == 2) ? printw(" >") : printw("  ");
+		printw("Fundo rosa e letra branca \n");
+		(opcao == 3) ? printw(" >") : printw("  ");
+		printw("Fundo preto e letra verde \n");
+	
+		tecla = getch();
+
+		if(tecla == baixo)
+			(opcao == 3) ? opcao = 0: opcao++;
+		if(tecla == cima)
+			(opcao == 0) ? opcao = 3: opcao--;
+		
+		clear();
+
+	} while(tecla != enter);
+
+
+
+	switch (opcao) {
+
+		case 0:	/* nome */
+
+			cores(2);
+			tela_usuario(CPF);
+			break;
+
+		case 1: /* senha */
+
+			cores(1);
+			echo();
+			tela_usuario(CPF);
+			break;
+
+		case 2: /* email */
+
+			cores(3);
+			tela_usuario(CPF);
+			break;
+
+		case 3: /* idade */
+
+			cores(4);
+			tela_usuario(CPF);
+			break;
+	}
+
+}
+
 
 /// Funcao Editar Informacoes
 void editaInformacoes(char nome[], char CPF[])
@@ -346,17 +423,17 @@ int menu_configuracao(char nome[])
 		//printw("Adicionar transacao\n");
 		//(opcao == 2) ? printw("->") : printw("  ");
 		//printw("Adicionar amigiunho\n");
-		//(opcao == 3) ? printw("->") : printw("  ");
-		//printw("Excluir amigo\n");
-		(opcao == 1) ? printw(" >") : printw("  ");
+		(opcao == 1) ? printw("->") : printw("  ");
+		printw("Editar cores\n");
+		(opcao == 2) ? printw(" >") : printw("  ");
 		printw("Voltar");
 	
 		tecla = getch();
 
 		if(tecla == baixo)
-			(opcao == 1) ? opcao = 0: opcao++;
+			(opcao == 2) ? opcao = 0: opcao++;
 		if(tecla == cima)
-			(opcao == 0) ? opcao = 1: opcao--;
+			(opcao == 0) ? opcao = 2: opcao--;
 		
 		clear();
 
@@ -387,6 +464,10 @@ void tela_configuracao(char nome[], char CPF[])
 			break;
 
 		case 1:
+			tela_cor(nome,CPF);
+			break;
+
+		case 2:
 			tela_usuario(CPF);
 			break;
 
@@ -766,9 +847,11 @@ void tela_inicial()
 
 	//Pares de cor que usaremos, texto verde e fundo branco
 	init_pair(1,COLOR_GREEN,COLOR_WHITE);
+	init_pair(2,COLOR_BLUE,COLOR_BLACK);
+	init_pair(3,COLOR_YELLOW,COLOR_WHITE);
+	init_pair(4,COLOR_BLACK,COLOR_GREEN);
 
-	//Atualiza o fundo para o par de cor 1
-	bkgd(COLOR_PAIR(1));
+	cores(1);
 		
 	//Funcao que imprime o titulo na parte superior da tela	
 	imprime_titulo();
