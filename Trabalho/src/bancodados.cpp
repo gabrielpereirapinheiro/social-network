@@ -41,7 +41,7 @@ int SalvaArquivoUsuario(lista_usuario *listaUsuario){
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos as transacoes e suas informacoes em um arquivo
 int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 	FILE *fp = fopen("../arquivos/ArquivoTransacoes.txt", "w");
-	noListaTransacao ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
+	noListaTransacao * ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoTransacoes.txt!\n");
@@ -50,8 +50,7 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 
 	// Vai escrever sempre, por default, a ordem com que os atributos de uma transacao sao dispostas no arquivo
 	// OBS: so vai aparecer no arquivo os campos de nota/comentario/id usuario cliente se o campo classificacao for 1!
-	fprintf(fp, "ID|CLASSIFICACAO(PENDENTE/CONCLUIDO)|ID USUARIO PROVEDOR|
-			PRECO|DESCRICAO|ID CATEGORIA|CATEGORIA|NOTA TRANSACAO|COMENTARIO TRANSACAO| ID USUARIO CLIENTE\n\n");
+	fprintf(fp, "ID|CLASSIFICACAO(PENDENTE/CONCLUIDO)|ID USUARIO PROVEDOR|PRECO|DESCRICAO|ID CATEGORIA|CATEGORIA|NOTA TRANSACAO|COMENTARIO TRANSACAO| ID USUARIO CLIENTE\n\n");
 	// quantidade de transacoes no sistema
 	fprintf(fp, "%d\n", listaTransacao->numeroTransacoes);
 
@@ -59,10 +58,10 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 	ptrNoTransacoes = listaTransacao->primeiro; // ptrNoUsuario vai receber a cabeca da lista
 	//TODO
 	while(ptrNoTransacoes != NULL){
-		fprintf(fp, "%d|%s|%s|%s|%s|", ptrNoTransacoes->usuario.ID, ptrNoTransacoes->usuario.CPF, ptrNoTransacoes->usuario.nome,
-									   ptrNoTransacoes->usuario.senha, ptrNoTransacoes->usuario.email);
-		fprintf(fp, "%hi|%d|%d|\n", ptrNoTransacoes->usuario.tipo, ptrNoTransacoes->usuario.idade, 
-									ptrNoTransacoes->usuario.numero_transacao);
+		fprintf(fp, "%d|%s|%s|%s|%s|", ptrNoTransacoes->transacao.usuarioCliente.ID, ptrNoTransacoes->transacao.usuarioCliente.CPF, ptrNoTransacoes->transacao.usuarioCliente.nome,
+									   ptrNoTransacoes->transacao.usuarioCliente.senha, ptrNoTransacoes->transacao.usuarioCliente.email);
+		fprintf(fp, "%hi|%d|%d|\n", ptrNoTransacoes->transacao.usuarioCliente.tipo, ptrNoTransacoes->transacao.usuarioCliente.idade, 
+									ptrNoTransacoes->transacao.usuarioCliente.numero_transacao);
 		ptrNoTransacoes = ptrNoTransacoes->prox;
 	}
 

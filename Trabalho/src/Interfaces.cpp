@@ -225,7 +225,7 @@ void adicionaAmigo(char nome[], char CPF[])
 
 void tela_cor(char nome[],char CPF[])
 {
-/* Limpando a tela */
+	/* Limpando a tela */
 	clear();
 
 	/* Oculta o cursor na tela */
@@ -244,13 +244,13 @@ void tela_cor(char nome[],char CPF[])
 		move(5,0);
 
 		(opcao == 0) ? printw(" >") : printw("  ");
-		printw("Fundo azul e letra preta\n");
+		printw("Fundo preto e letra azul\n");
 		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Fundo branco e letra verde \n");
 		(opcao == 2) ? printw(" >") : printw("  ");
-		printw("Fundo rosa e letra branca \n");
+		printw("Fundo vermelho e letra amarela \n");
 		(opcao == 3) ? printw(" >") : printw("  ");
-		printw("Fundo preto e letra verde \n");
+		printw("Fundo verde e letra preta \n");
 	
 		tecla = getch();
 
@@ -419,10 +419,6 @@ int menu_configuracao(char nome[])
 
 		(opcao == 0) ? printw(" >") : printw("  ");
 		printw("Editar informacoes\n");
-		//(opcao == 1) ? printw("->") : printw("  ");
-		//printw("Adicionar transacao\n");
-		//(opcao == 2) ? printw("->") : printw("  ");
-		//printw("Adicionar amigiunho\n");
 		(opcao == 1) ? printw("->") : printw("  ");
 		printw("Editar cores \n");
 		(opcao == 2) ? printw(" >") : printw("  ");

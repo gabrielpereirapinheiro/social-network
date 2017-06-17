@@ -49,6 +49,7 @@ ListaTransacao *criarListaTransacao(){	/** Cria lista */
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));
 	lista_criada->numeroTransacoes = 0;
+	lista_criada->primeiro = NULL;
 
 	return lista_criada;
 
@@ -73,13 +74,13 @@ int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){
 		lista->primeiro = no;
 	}
 	else{
-		
+			
 		while(acompanha->prox != NULL){
 
 			acompanha = acompanha->prox;
 		}
 
-		acompanha->prox = no;
+		acompanha->prox = no; 
 	}
 
 	return SEM_ERRO;

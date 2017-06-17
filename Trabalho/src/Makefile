@@ -10,14 +10,14 @@ LIBS=-lm
 _DEPS = catch.hpp Interfaces.hpp headers.hpp lista_usuario.hpp transacoes.hpp grafos.hpp categoria.hpp bancodados.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Interfaces.o main.o grafos.o lista_usuario.o transacoes.o categoria.o bancodados.o
+_OBJ = Interfaces.o Testes.o grafos.o lista_usuario.o transacoes.o categoria.o bancodados.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJ)
+Testes: $(OBJ)
 	g++ -o $@ $^ $(CFLAGS) $(LIBS) 
 
 .PHONY: clean

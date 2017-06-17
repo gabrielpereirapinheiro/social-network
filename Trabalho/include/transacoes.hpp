@@ -1,5 +1,5 @@
-#ifndef TRANSACAO_HEADER
-#define TRANSACAO_HEADER
+#ifndef TRANSACOES_HPP
+#define TRANSACOES_HPP
 #include "headers.hpp"
 
 /// Header de transacoes, com a definicao da struct de lista de transacoes e a assinatura de suas funcoes
@@ -18,7 +18,7 @@ typedef struct listaTransacao{
 
 ///Assinatura das funcoes
 noListaTransacao *criaNoTransacao(Transacao transacao);
-ListaTransacao *criarListaTransacao(Transacao transacao);
+ListaTransacao *criarListaTransacao();
 Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *descricaoServico);
 Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico);
 int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no);

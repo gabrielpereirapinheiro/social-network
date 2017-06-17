@@ -15,8 +15,7 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 
 	lista_usuario *lista_criada = (lista_usuario*)malloc(sizeof(lista_usuario));
 	lista_criada->numeroUsuarios = 1; // inicia o numero de usuarios. Comeca com 1 porque ja existe o administrador
-	/*no_lista_usuario *no = criaNoUsuario(usuario);
-	lista_criada->primeiro = no;*/
+	lista_criada->primeiro = NULL;
 
 	return lista_criada;
 
