@@ -15,6 +15,7 @@ ListaCategoria *criarListaCategoria(){	/** Cria lista */
 
 	ListaCategoria *lista_criada = (ListaCategoria*)malloc(sizeof(ListaCategoria));
 	lista_criada->numeroCategorias = 0;
+	lista_criada->primeiro = NULL;
 
 	return lista_criada;
 

@@ -1,15 +1,19 @@
 #define CATCH_CONFIG_MAIN   
 #include "catch.hpp"
-#include "headers.hpp"
+#include "headers.hpp" 
 
 
 /* Teste case para biblioteca lista_usuario.hpp */
 TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 
 
+	char matricula1[] = "01400705108";
+	char matricula2[] = "01400777708";
+	char matricula3[] = "01400555508"; 
+
 	/* Inicializacao de variaveis de tipo usuario */
 	Usuario usuario1;
-	strcpy(usuario1.CPF, "01400705108");
+	strcpy(usuario1.CPF, matricula1);
 	strcpy(usuario1.nome, "Andre Luis Souto Ferreira");
 	strcpy(usuario1.senha, "senhateste");
 	strcpy(usuario1.email, "andre@hotmail.com");
@@ -18,7 +22,7 @@ TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 	usuario1.numero_transacao = 0;
 
 	Usuario usuario2;
-	strcpy(usuario2.CPF, "01400777708");
+	strcpy(usuario2.CPF, matricula2);
 	strcpy(usuario2.nome, "Gabriel Araujo Vieira");
 	strcpy(usuario2.senha, "senhateste2");
 	strcpy(usuario2.email, "gabriel@hotmail.com");
@@ -27,7 +31,7 @@ TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 	usuario2.numero_transacao = 0;
 
 	Usuario usuario3;
-	strcpy(usuario3.CPF, "01400555508");
+	strcpy(usuario3.CPF, matricula3);
 	strcpy(usuario3.nome, "Victor Pereira Ferreira");
 	strcpy(usuario3.senha, "senhateste3");
 	strcpy(usuario3.email, "victor@hotmail.com");
@@ -53,28 +57,28 @@ TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 
 
 	/* Confirmacao dos resultados do teste */
-	no_lista_usuario * ptr = encontraNoUsuario(l->primeiro,"01400555508");
+	no_lista_usuario * ptr = encontraNoUsuario(l->primeiro,matricula3);
 	REQUIRE(strcmp(ptr->usuario.nome,"Victor Pereira Ferreira") == 0);
 
-	ptr = encontraNoUsuario(l->primeiro,"01400705108");
+	ptr = encontraNoUsuario(l->primeiro,matricula1);
 	REQUIRE(strcmp(ptr->usuario.nome,"Andre Luis Souto Ferreira") == 0);
 
-	ptr = encontraNoUsuario(l->primeiro,"01400777708");
+	ptr = encontraNoUsuario(l->primeiro,matricula2);
 	REQUIRE(strcmp(ptr->usuario.nome,"Victor Pereira Ferreira") != 0);
 
-
+ 
 	/* Deletando um no */
 	deletaNoListaUsuario(l, no1);
 
 
 	/* Confirmacao dos resultados do teste */
-	ptr = encontraNoUsuario(l->primeiro,"01400705108");
+	ptr = encontraNoUsuario(l->primeiro,matricula1);
 	REQUIRE(ptr == NULL);
 
-	ptr = encontraNoUsuario(l->primeiro,"01400555508");
+	ptr = encontraNoUsuario(l->primeiro,matricula3);
 	REQUIRE(strcmp(ptr->usuario.nome,"Victor Pereira Ferreira") == 0);
 
-	ptr = encontraNoUsuario(l->primeiro,"01400777708");
+	ptr = encontraNoUsuario(l->primeiro,matricula2);
 	REQUIRE(strcmp(ptr->usuario.nome,"Gabriel Araujo Vieira") == 0);
 
 }
@@ -144,4 +148,65 @@ TEST_CASE("Testes da biblioteca transacoes.hpp:"){
 
 }
 
+/* Teste case para biblioteca categoria.hpp */
+TEST_CASE("Testes da biblioteca categoria.hpp:"){
 
+	/* Inicializacao de variaveis de tipo categoria */
+	categoria cat0;
+	cat0.idCategoria = 0;
+	strcpy(cat0.nomeCategoria,"eletronicos");
+
+	categoria cat1;
+	cat1.idCategoria = 1;
+	strcpy(cat1.nomeCategoria,"vestuario");
+
+	categoria cat2;
+	cat2.idCategoria = 2;
+	strcpy(cat2.nomeCategoria,"sapatos");
+
+	/* Criacao da lista */
+	ListaCategoria * l = criarListaCategoria();
+
+
+	/* Criacao do no categoria */
+	noListaCategoria * no0 = criaNoCategoria(cat0);
+	noListaCategoria * no1 = criaNoCategoria(cat1);
+	noListaCategoria * no2 = criaNoCategoria(cat2);
+
+
+	/* Insercao na lista */
+	int retorno = -10;
+	retorno = addNoListaCategoria(l,no0);
+	REQUIRE(retorno == SEM_ERRO);
+	retorno = addNoListaCategoria(l,no1);
+	REQUIRE(retorno == SEM_ERRO);
+	retorno = addNoListaCategoria(l,no2);
+	REQUIRE(retorno == SEM_ERRO);
+
+
+	/* Confirmacao dos resultados do teste */
+	noListaCategoria * ptr = encontraNoCategoria(l->primeiro,cat0);
+	REQUIRE(ptr->categoria.idCategoria == 0);
+
+	ptr = encontraNoCategoria(l->primeiro,cat1);
+	REQUIRE(ptr->categoria.idCategoria == 1);
+	 
+	ptr = encontraNoCategoria(l->primeiro,cat2);
+	REQUIRE(ptr->categoria.idCategoria == 2);
+
+
+	/* Deletando um no */
+	deletaNoListaCategoria(l, no1);
+
+
+	/* Confirmacao dos resultados do teste */
+	ptr = encontraNoCategoria(l->primeiro,cat0);
+	REQUIRE(ptr->categoria.idCategoria == 0);
+
+	ptr = encontraNoCategoria(l->primeiro,cat1);
+	REQUIRE(ptr == NULL);
+	
+	ptr = encontraNoCategoria(l->primeiro,cat2);
+	REQUIRE(ptr->categoria.idCategoria == 2);
+ 
+}

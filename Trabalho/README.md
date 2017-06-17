@@ -23,6 +23,7 @@
 
 ### Compilando:
 
-- Basta entrar na pasta src pelo terminal e digitar "make"
+- Basta entrar na pasta src pelo terminal e, caso queira rodar os casos de teste, digitar "make Testes". Caso queira 
+  rodar o aplicativo em si com as interfaces, digitar "make main".
 __________________________________________________________________________________________________________________________________________
 

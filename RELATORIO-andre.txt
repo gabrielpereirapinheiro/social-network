@@ -6,4 +6,5 @@
 15/06/17    2 horas 	    Biblioteca	    Implementacao da biblioteca lista_usuario.hpp orientada aos testes feitos. 
 16/06/17    1 hora	    Parte grafica   Criacao de novas telas do programa . Editar informações pessoais funcional ja editiando
 					    Correção de erro no cadastro
-17/06/17    6 horas	    Parte grafica   Implementacao de funcoes da interface grafica juntamento com Gabriel.
+16/06/17    6 horas	    Parte grafica   Implementacao de funcoes da interface grafica juntamento com Gabriel.
+17/06/17    2 horas	    Testes	    Implemtancao de testes para biblioteca categoria.hpp e transacoes.hpp.

@@ -20,7 +20,7 @@ typedef struct usuario
 	int idade;
 	int numero_transacao;
 	
-}Usuario;
+}Usuario; 
 
 /// Struct que define os atributos de uma categoria
 typedef struct categoria{
