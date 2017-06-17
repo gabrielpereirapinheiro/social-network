@@ -424,7 +424,7 @@ int menu_configuracao(char nome[])
 		//(opcao == 2) ? printw("->") : printw("  ");
 		//printw("Adicionar amigiunho\n");
 		(opcao == 1) ? printw("->") : printw("  ");
-		printw("Editar cores\n");
+		printw("Editar cores \n");
 		(opcao == 2) ? printw(" >") : printw("  ");
 		printw("Voltar");
 	
@@ -848,7 +848,7 @@ void tela_inicial()
 	//Pares de cor que usaremos, texto verde e fundo branco
 	init_pair(1,COLOR_GREEN,COLOR_WHITE);
 	init_pair(2,COLOR_BLUE,COLOR_BLACK);
-	init_pair(3,COLOR_YELLOW,COLOR_WHITE);
+	init_pair(3,COLOR_YELLOW,COLOR_RED);
 	init_pair(4,COLOR_BLACK,COLOR_GREEN);
 
 	cores(1);
