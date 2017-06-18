@@ -202,7 +202,7 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 }
 
 /// Funcao que retorna o tipo usuario pelo ID dele, procurando na lista de usuarios
-Usuario GetUsuarioPorID(lista_usuario *listaUsuario){
+Usuario GetUsuarioPorID(lista_usuario *listaUsuario, int idUsuario){
 	Usuario usuarioDesejado;
 
 	return usuarioDesejado;
