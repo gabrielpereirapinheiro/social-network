@@ -1,4 +1,5 @@
-./Trabalho/src/obj/*.o
-./Trabalho/src/obj/*.gcno
-./Trabalho/src/obj/*.gcda
-./Trabalho/src/main
+*.o
+*.gcno
+*.gcda
+main
+*.txt
