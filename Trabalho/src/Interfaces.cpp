@@ -694,11 +694,29 @@ Usuario tela_sign_up()
 	return cadastrar_agora;
 }
 
+
+/// Funcao Tela Administrador
+void telaAdmin()
+{	
+ 
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	Sem parametros.
+		\return Sem retorno. 
+	*/
+
+	clear();
+	imprime_titulo();
+	getch();
+}
+
+
 void tela_sing_in()
 {
 	no_lista_usuario *ptr;
 
 	char CPF[12],senha[51];
+	char cpf_admin[] = "00000000000";
 
 	int chance=3;
 
@@ -726,60 +744,70 @@ void tela_sing_in()
 		scanw("%s",CPF);
 	}
 
-	/** Verifica se o ponteiro lista_us->primeiro aponta pra algo diferente de NULL, se sim, a funcao
-	  	encontraNoUsuario podera ser usada. */
-	if(lista_us->primeiro != NULL)
+	if(strcmp(CPF,cpf_admin) == 0)
 	{
+		/*OBS.: Colocar senha no banco !!!!*/
+		telaAdmin();
 
-		ptr = encontraNoUsuario(lista_us->primeiro,CPF);
 	}
-	else
-	{
+	else{
 
-		ptr = NULL;
-	}
-
-	while(ptr==NULL && chance>0)
-	{
-		printw("CPF inexistente, tente novamente :");
-		scanw("%s",CPF);
-		
+		/** Verifica se o ponteiro lista_us->primeiro aponta pra algo diferente de NULL, se sim, a funcao
+		  	encontraNoUsuario podera ser usada. */
 		if(lista_us->primeiro != NULL)
 		{
-			
+
 			ptr = encontraNoUsuario(lista_us->primeiro,CPF);
 		}
-		
-		chance--;
-	}
-
-	if(chance==0)
-	{	
-		printw("\nCrie um cadastro primeiro e clique em qualquer tecla para voltar\n");
-		getch();
-		tela_inicial();
-	}
-
-
-	// !Oculta caractres digitados
-	noecho();
-
-	if(strcmp(ptr->usuario.CPF,CPF)==0)
-	{
-		//Poem o cursor na linha para identificar onde esta
-		curs_set(1);
-
-		//Recebe a senha
-		printw("Senha:");
-		scanw("%s",senha);
-
-		while(strcmp(ptr->usuario.senha,senha)!=0)
+		else
 		{
-			printw("Senha incorreta, digite novamente :" );
-			scanw("%s",senha);
+
+			ptr = NULL;
 		}
 
-		tela_usuario(CPF);
+		while(ptr==NULL && chance>0)
+		{
+			printw("CPF inexistente, tente novamente :");
+			scanw("%s",CPF);
+			
+			if(lista_us->primeiro != NULL)
+			{
+				
+				ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+			}
+			
+			chance--;
+		}
+
+		if(chance==0)
+		{	
+			printw("\nCrie um cadastro primeiro e clique em qualquer tecla para voltar\n");
+			getch();
+			tela_inicial();
+		}
+
+
+		// !Oculta caractres digitados
+		noecho();
+
+		if(strcmp(ptr->usuario.CPF,CPF)==0)
+		{
+			//Poem o cursor na linha para identificar onde esta
+			curs_set(1);
+
+			//Recebe a senha
+			printw("Senha:");
+			scanw("%s",senha);
+
+			while(strcmp(ptr->usuario.senha,senha)!=0)
+			{
+				printw("Senha incorreta, digite novamente :" );
+				scanw("%s",senha);
+			}
+
+			tela_usuario(CPF);
+		}
+
 	}
 }
 

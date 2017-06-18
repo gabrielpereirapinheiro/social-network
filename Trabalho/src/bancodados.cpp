@@ -201,16 +201,31 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 	return SEM_ERRO;
 }
 
-/// Funcao que retorna o tipo usuario pelo ID dele, procurando na lista de usuarios
-Usuario GetUsuarioPorID(lista_usuario *listaUsuario, int idUsuario){
-	Usuario usuarioDesejado;
-
-	return usuarioDesejado;
-}
-
 /// Funcao que vai retornar as informacoes do usuario pelo ID dele, a partir da lista de usuarios
 /// E passar essas informacoes para a lista de transacoes
 int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao){
+	Usuario usuarioDesejado; //! O tipo usuario que vai ser retornado
+	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
+	no_lista_usuario *ptrNoUsuarioProv = NULL, *ptrNoUsuarioCli = NULL; //! Os ponteiros de no de usuario 
+
+	if(listaUsuario == NULL || listaTransacao == NULL){
+		printf("Alguma das listas passadas como parametro vazias! Saindo da funcao RecupInfosUsuaID!\n");
+		return ERRO;
+	}
+
+	ptrNoTransacoes = listaTransacao->primeiro;
+
+	while(ptrNoTransacoes != NULL){
+		ptrNoUsuarioProv = encontraNoUsuarioID(listaUsuario->primeiro, ptrNoTransacoes->transacao.servico.usuarioProvedor.ID);
+		if(ptrNoUsuarioProv != NULL){
+			ptrNoTransacoes->transacao.servico.usuarioProvedor = ptrNoUsuarioProv->usuario;
+		}
+		if(ptrNoTransacoes->transacao.classificacao == CONCLUIDA){
+			ptrNoUsuarioCli = encontraNoUsuarioID(listaUsuario->primeiro, ptrNoTransacoes->transacao.usuarioCliente.ID);
+			ptrNoTransacoes->transacao.usuarioCliente = ptrNoUsuarioCli->usuario;
+		}
+		ptrNoTransacoes = ptrNoTransacoes->prox;
+	}
 
 	return SEM_ERRO;
 }

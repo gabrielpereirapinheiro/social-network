@@ -12,7 +12,6 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao);
 int SalvaArquivoCategorias(ListaCategoria *listaCat);
 int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade);
 int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes);
-Usuario GetUsuarioPorID(lista_usuario *listaUsuario);
 int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao);
 
 #endif
