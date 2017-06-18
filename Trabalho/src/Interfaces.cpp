@@ -27,8 +27,6 @@ strcpy(vestuario.nomeCategoria,"vestuario");
 Categoria carona;
 strcpy(carona.nomeCategoria,"carona");
 
-printf("pelo menos aqui chegou ne\n\n\n\n\n\n");
-
 addNoListaCategoria(lista_cat,criaNoCategoria(eletronicos));
 addNoListaCategoria(lista_cat,criaNoCategoria(vestuario));
 addNoListaCategoria(lista_cat,criaNoCategoria(carona));
@@ -696,18 +694,68 @@ Usuario tela_sign_up()
 
 
 /// Funcao Tela Administrador
-void telaAdmin()
-{	
+void telaAdmin(char nomeAdmin[])
+{
  
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	Sem parametros.
+		\param	char nomeAdmin[]: nome do administrador. 
 		\return Sem retorno. 
 	*/
 
 	clear();
 	imprime_titulo();
-	getch();
+	imprime_usuario(nomeAdmin);
+	
+
+	do{
+		
+		imprime_titulo();
+
+		move(4,1);
+
+		printw("Bem-vindo Administrador do SOCIAL NETWORK");
+		
+		move(6,0);
+		(opcao == 0) ? printw(" >") : printw("  ");
+		printw("Visiualizar informacoes dos usuarios\n");
+		(opcao == 1) ? printw(" >") : printw("  ");
+		printw("Cadastrar e descadastrar transacoes\n");
+		(opcao ==2 ) ? printw(" >") : printw("  ");
+		printw("Visiualizar transacoes e avaliacoes\n");
+		(opcao ==3 ) ? printw(" >") : printw("  ");
+		printw("Sair\n");
+	
+		tecla = getch();
+
+		if(tecla == baixo)
+			(opcao == 3) ? opcao = 0: opcao++;
+		if(tecla == cima)
+			(opcao == 0) ? opcao = 3: opcao--;
+		
+		clear();
+
+	} while(tecla != enter);
+
+	switch(opcao)
+	{
+		case 0:
+			break;
+			
+		case 1:
+			break;
+			
+		case 2:
+			break;
+				
+		case 3:
+			tela_inicial();
+			break;
+
+		default: 
+			break;	
+	}
+
 }
 
 
@@ -717,6 +765,8 @@ void tela_sing_in()
 
 	char CPF[12],senha[51];
 	char cpf_admin[] = "00000000000";
+	char nomeAdmin[] = "Admin";
+	char senhaAdmin[] = "ADMIN123";
 
 	int chance=3;
 
@@ -746,9 +796,21 @@ void tela_sing_in()
 
 	if(strcmp(CPF,cpf_admin) == 0)
 	{
-		/*OBS.: Colocar senha no banco !!!!*/
-		telaAdmin();
 
+		noecho();
+		curs_set(1);
+
+		printw("Senha:");
+		scanw("%s",senha);
+
+		while(strcmp(senha,senhaAdmin) != 0)
+		{
+			printw("Senha incorreta, digite novamente :" );
+			scanw("%s",senha);
+		}
+
+		/*OBS.: Colocar senha no banco !!!!*/
+		telaAdmin(nomeAdmin);
 	}
 	else{
 
