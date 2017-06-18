@@ -65,6 +65,29 @@ int opcoes_tela_inicial();
 
 void tela_inicial();
 
+void sair_do_programa();
+
+void cores(int opcao);
+
+void imprime_titulo();
+
+void imprime_usuario(char nome[]);
+
+void excluiAmigo(char nome[], char CPF[]);
+
+void adicionaAmigo(char nome[], char CPF[]);
+
+void tela_cor(char nome[],char CPF[]);
+
+void editaInformacoes(char nome[], char CPF[]);
+
+void adicionarTransacao(char nome[], char CPF[]);
+
+void procurar_transacao(char nome[], char CPF[]);
+
+int menu_usuario(char nome[]);
+
+void tela_usuario(char CPF[]);
 
 // Funcoes relacionadas ao back-end 
 // int EditarUsuario(Lista); 
