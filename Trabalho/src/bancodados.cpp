@@ -200,3 +200,16 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 
 	return SEM_ERRO;
 }
+
+/// Funcao que retorna o tipo usuario pelo ID dele, procurando na lista de usuarios
+Usuario GetUsuarioPorID(lista_usuario *listaUsuario){
+
+	return usuarioDesejado;
+}
+
+/// Funcao que vai retornar as informacoes do usuario pelo ID dele, a partir da lista de usuarios
+/// E passar essas informacoes para a lista de transacoes
+int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao){
+
+	return SEM_ERRO;
+}
