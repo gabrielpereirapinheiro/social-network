@@ -391,8 +391,14 @@ void editaInformacoes(char nome[], char CPF[])
 
 		case 3: /* idade */
 
-			printw("\n\n\nDigite o novo idade: \n");
-			scanw("%d",&nova_idade);
+			nova_idade = -1;
+
+			
+			while(nova_idade<0)
+			{
+				printw("\n\n\nDigite a nova idade: \n");
+				scanw("%d",&nova_idade);
+			}
 
 			ptr->usuario.idade = nova_idade;
 			tela_usuario(CPF);
