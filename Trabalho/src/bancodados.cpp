@@ -58,10 +58,17 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 	ptrNoTransacoes = listaTransacao->primeiro; // ptrNoUsuario vai receber a cabeca da lista
 	//TODO
 	while(ptrNoTransacoes != NULL){
-		fprintf(fp, "%d|%s|%s|%s|%s|", ptrNoTransacoes->transacao.usuarioCliente.ID, ptrNoTransacoes->transacao.usuarioCliente.CPF, ptrNoTransacoes->transacao.usuarioCliente.nome,
-									   ptrNoTransacoes->transacao.usuarioCliente.senha, ptrNoTransacoes->transacao.usuarioCliente.email);
-		fprintf(fp, "%hi|%d|%d|\n", ptrNoTransacoes->transacao.usuarioCliente.tipo, ptrNoTransacoes->transacao.usuarioCliente.idade, 
-									ptrNoTransacoes->transacao.usuarioCliente.numero_transacao);
+		fprintf(fp, "%d|%hi|%d|%s|%s|", ptrNoTransacoes->transacao.idTransacao, ptrNoTransacoes->transacao.classificacao, 
+										ptrNoTransacoes->transacao.servico.usuarioProvedor.ID, ptrNoTransacoes->transacao.servico.precoServico,
+										ptrNoTransacoes->transacao.servico.descricaoServico);
+
+		fprintf(fp, "%d|%s|", ptrNoTransacoes->transacao.categoria.idCategoria, ptrNoTransacoes->transacao.categoria.nomeCategoria);
+		// se classificacao for 1, ou seja, a transacao eh classificada como concluida, tem que adicionar informacoes extras
+		if(ptrNoTransacoes->transacao.classificacao == 1){
+			fprintf(fp, "%hi|%s|%d|", ptrNoTransacoes->transacao.avaliacao.notaTransacao, 
+									 ptrNoTransacoes->transacao.avaliacao.comentAvaliClient, ptrNoTransacoes->transacao.usuarioCliente.ID);
+		}
+		fprintf(fp, "\n");
 		ptrNoTransacoes = ptrNoTransacoes->prox;
 	}
 
