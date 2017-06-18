@@ -1,5 +1,5 @@
-**/*.o
-**/*.gcno
-**/*.gcda
-**/main
-**/*.txt
+*.o
+*.gcno
+*.gcda
+main
+*.txt
