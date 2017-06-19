@@ -38,13 +38,6 @@ Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico){
 
 /********************************************************************************************/
 
-
-/********************Funcoes relacionadas a tela de procurar transacao**********************/
-
-
-
-/********************************************************************************************/
-
 ListaTransacao *criarListaTransacao(){	/** Cria lista */ 
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));

@@ -5,6 +5,11 @@
 /// Header das funcoes que implementam o "banco de dados" da aplicacao
 
 //Assinatura das funcoes
+void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp);
+void RecupDadosTransacoes(ListaTransacao *listaTransacao, FILE *fp);
+void RecupDadosCategorias(ListaCategoria *listaCat, FILE *fp);
+void RecupDadosGrafoAmiz(Grafo *grafoAmizade, FILE *fp);
+void RecupDadosGrafoTransac(Grafo *grafoTransacoes, FILE *fp);
 void RecuperaDadosArquivos(lista_usuario *listaUsuario, ListaTransacao *listaTransacao, ListaCategoria *listaCat,
 						   Grafo *grafoAmizade, Grafo *grafoTransacoes);
 int SalvaArquivoUsuario(lista_usuario *lista_usuario);

@@ -5,14 +5,15 @@
 
 /* Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
    antes dos mesmos serem passados ao Banco de Dados */
-lista_usuario * lista_us = criarListaUsuario();
+
+lista_usuario * lista_us = criarListaUsuario(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
 /* Grafo declarado como variavel global. Sera usado como um buffer para salvar os dados
    de amizades antes dos mesmos serem passados ao Banco de Dados */
-char nome[] = "Grafo de amizade";
-Grafo * grafo_amizade = cria_grafo(nome);
+char nome[] = "Grafo de amizade"; ///////////////////////////TIRAR DEPOIS/////////////////////////////////
+Grafo * grafo_amizade = cria_grafo(nome); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
-ListaCategoria * lista_cat = criarListaCategoria(); 
+ListaCategoria * lista_cat = criarListaCategoria(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
 /**************************************************************************************/
 

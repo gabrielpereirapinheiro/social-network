@@ -1,14 +1,88 @@
 #include "headers.hpp"
 
+
+/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de usuarios
+void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp){
+	no_lista_usuario *ptrNoUsuario = NULL //! ponteiro de no de usuario que sera usado para percorrer a lista de usuarios
+
+	fseek(fp, 76, SEEK_SET); // vai pular o cabecalho do arquivo
+	fscanf(fp, "%d\n", &listaUsuario->numeroUsuarios); // vai pegar a quantidade de usuarios
+}
+
+/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de transacoes
+void RecupDadosTransacoes(ListaTransacao *listaTransacao, FILE *fp){
+
+}
+
+/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de categorias
+void RecupDadosCategorias(ListaCategoria *listaCat, FILE *fp){
+
+}
+
+/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para o grafo de amizades
+void RecupDadosGrafoAmiz(Grafo *grafoAmizade, FILE *fp){
+
+}
+
+/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para o grafo de transacoes
+void RecupDadosGrafoTransac(Grafo *grafoTransacoes, FILE *fp){
+
+}
+
 /// Funcao que sempre sera executada no comeco do programa, e vai verificar se todos os arquivos existem, se sim, recupera
 /// todos os dados antes do termino a todas as listas e grafos do sistema. Se nao, indica que eh a primeira execucao do sistema
 /// e vai criar todas as listas como NULL
 void RecuperaDadosArquivos(lista_usuario *listaUsuario, ListaTransacao *listaTransacao, ListaCategoria *listaCat,
 						   Grafo *grafoAmizade, Grafo *grafoTransacoes){
-	//tamanho do cabecalho do arquivo de usuarios: 76
-	//tamanho do cabecalho do arquivo de transacoes: 154
-	//tamanho do cabecalho do arquivo de categorias: 20
-	//tamanho do cabecalho dos arquivos de grafo: 25
+	//tamanho do cabecalho do arquivo de usuarios: 76 ,tamanho do cabecalho do arquivo de transacoes: 154
+	//tamanho do cabecalho do arquivo de categorias: 20, tamanho do cabecalho dos arquivos de grafo: 25
+	FILE *fUser = NULL, *fTransacao = NULL, *fCateg = NULL; //! descritores das listas
+	FILE *fGrafAmiz = NULL, *fgrafTransac = NULL; //! descritores dos grafos
+
+	//abrindo os arquivos como leitura
+	fUser = fopen("../arquivos/ArquivoUsuarios.txt", "r");
+	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r");
+	fCateg = fopen("../arquivos/ArquivoCategorias.txt", "r");
+	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
+	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
+
+	// Parte que vai verificar se ao abrir os arquivos, eles existem, se existirem, abre como leitura, senao, cria as listas
+	//usuario
+	if(fUser == NULL){
+		listaUsuario = criarListaUsuario(); 
+	}else{
+		// chama a funcao que coloca as informacoes na lista
+		fclose(fUser);
+	}
+	//transacoes
+	if(fTransacao == NULL){
+		listaTransacao = criarListaTransacao(); 
+	}else{
+		// chama a funcao que coloca as informacoes na lista
+		fclose(fTransacao);
+	}
+	//categorias
+	if(fCateg == NULL){
+		listaCat = criarListaCategoria(); 
+	}else{
+		// chama a funcao que coloca as informacoes na lista
+		fclose(fCateg);
+	}
+	//grafo de amizades
+	if(fGrafAmiz == NULL){
+		grafoAmizade = cria_grafo("Grafo de Amizades");
+	}else{
+		// chama a funcao que coloca as informacoes no grafo
+		fclose(fGrafAmiz);
+	}
+	//grafo de transacoes
+	if(fgrafTransac == NULL){
+		grafoTransacoes = cria_grafo("Grafo de Transacoes");
+	}else{
+		// chama a funcao que coloca as informacoes no grafo
+		fclose(fgrafTransac);
+	}
+	
 }
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo
