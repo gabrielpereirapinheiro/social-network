@@ -694,6 +694,13 @@ Usuario tela_sign_up()
 }
 void tela_visualiza(char nomeAdmin[])
 {
+	
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
@@ -703,6 +710,13 @@ void tela_visualiza(char nomeAdmin[])
 
 void tela_visualiza_transacao(char nomeAdmin[])
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
@@ -711,6 +725,14 @@ void tela_visualiza_transacao(char nomeAdmin[])
 
 void tela_cadastra_descadastra(char nomeAdmin[])
 {
+
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
