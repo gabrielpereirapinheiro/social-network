@@ -3,7 +3,7 @@
 
 /// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de usuarios
 void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp){
-	no_lista_usuario *ptrNoUsuario = NULL //! ponteiro de no de usuario que sera usado para percorrer a lista de usuarios
+	no_lista_usuario *ptrNoUsuario = NULL; //! ponteiro de no de usuario que sera usado para percorrer a lista de usuarios
 
 	fseek(fp, 76, SEEK_SET); // vai pular o cabecalho do arquivo
 	fscanf(fp, "%d\n", &listaUsuario->numeroUsuarios); // vai pegar a quantidade de usuarios

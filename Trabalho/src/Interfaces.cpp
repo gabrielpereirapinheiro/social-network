@@ -707,7 +707,8 @@ void telaAdmin(char nomeAdmin[])
 	clear();
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
-	
+	int opcao;
+	int tecla=0;
 
 	do{
 		
