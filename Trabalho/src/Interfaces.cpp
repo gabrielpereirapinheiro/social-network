@@ -692,7 +692,30 @@ Usuario tela_sign_up()
 	}	
 	return cadastrar_agora;
 }
+void tela_visualiza(char nomeAdmin[])
+{
+	imprime_titulo();
+	imprime_usuario(nomeAdmin);
+	getch();
+	telaAdmin(nomeAdmin);
+}
 
+
+void tela_visualiza_transacao(char nomeAdmin[])
+{
+	imprime_titulo();
+	imprime_usuario(nomeAdmin);
+	getch();
+	telaAdmin(nomeAdmin);
+}
+
+void tela_cadastra_descadastra(char nomeAdmin[])
+{
+	imprime_titulo();
+	imprime_usuario(nomeAdmin);
+	getch();
+	telaAdmin(nomeAdmin);
+}
 
 /// Funcao Tela Administrador
 void telaAdmin(char nomeAdmin[])
@@ -742,12 +765,15 @@ void telaAdmin(char nomeAdmin[])
 	switch(opcao)
 	{
 		case 0:
+			tela_visualiza(nomeAdmin);
 			break;
 			
 		case 1:
+			tela_cadastra_descadastra(nomeAdmin);
 			break;
 			
 		case 2:
+			tela_visualiza_transacao(nomeAdmin);
 			break;
 				
 		case 3:
@@ -757,7 +783,6 @@ void telaAdmin(char nomeAdmin[])
 		default: 
 			break;	
 	}
-
 }
 
 
