@@ -39,6 +39,13 @@ addNoListaCategoria(lista_cat,criaNoCategoria(carona));
 
 void sair_do_programa()
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	Sem parametros. 
+		\return Sem retorno. 
+	*/
+
 	endwin(); 
 	//Finalizar a ncruses
 	int retornoSalvaUsuario = 0;
@@ -48,11 +55,27 @@ void sair_do_programa()
 
 void cores(int opcao)
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	bkgd(COLOR_PAIR(opcao));
 }
 
 void imprime_titulo()
 {
+
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
+
 	move(1,0);
 	printw(" ---------------------------\n");
 	printw(" S O C I A L  N E T W O R K\n");
@@ -61,6 +84,13 @@ void imprime_titulo()
 
 void imprime_usuario(char nome[])
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	move(2,30);
 
 	printw("\t\t [ Usuario : %s ]",nome);
@@ -224,6 +254,15 @@ void adicionaAmigo(char nome[], char CPF[])
 
 void tela_cor(char nome[],char CPF[])
 {
+
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
+
 	/* Limpando a tela */
 	clear();
 
@@ -409,6 +448,14 @@ void editaInformacoes(char nome[], char CPF[])
 int menu_configuracao(char nome[])
 {
 
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
+
 	//Oculta o cursor na tela
 	curs_set(0);
 
@@ -448,6 +495,13 @@ int menu_configuracao(char nome[])
 
 void tela_configuracao(char nome[], char CPF[])
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador e char CPF[]: CPF do usuario 
+		\return Sem retorno. 
+	*/
+
 
 
 	int opcao;
@@ -528,6 +582,14 @@ void procurar_transacao(char nome[], char CPF[])
 
 int menu_usuario(char nome[])
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Retorna a opcao escolhida pelo usuario. 
+	*/
+
+
 	clear();
 	//Oculta o cursor na tela
 	curs_set(0);
@@ -573,6 +635,14 @@ int menu_usuario(char nome[])
 
 void tela_usuario(char CPF[])
 {
+
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
+
 	no_lista_usuario *ptr;
 	ptr = encontraNoUsuario(lista_us->primeiro,CPF);
 
@@ -640,8 +710,6 @@ Usuario tela_sign_up()
 
 	move(7,0);
 
-
-
 	printw("Nome:");
 	scanw("%[^\n]s",cadastrar_agora.nome);
 
@@ -694,7 +762,7 @@ Usuario tela_sign_up()
 }
 void tela_visualiza(char nomeAdmin[])
 {
-	
+
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -810,6 +878,13 @@ void telaAdmin(char nomeAdmin[])
 
 void tela_sing_in()
 {
+	
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 	no_lista_usuario *ptr;
 
 	char CPF[12],senha[51];
@@ -924,6 +999,12 @@ void tela_sing_in()
 
 int opcoes_tela_inicial()
 {
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 
 	int opcao = 0, tecla;
 
@@ -970,6 +1051,12 @@ int opcoes_tela_inicial()
 
 void tela_inicial()
 {
+	/** 
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\param	char nomeAdmin[]: nome do administrador. 
+		\return Sem retorno. 
+	*/
+
 
 	clear();
 
