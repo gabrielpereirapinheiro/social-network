@@ -705,15 +705,15 @@ void telaAdmin(char nomeAdmin[])
 	*/
 
 	clear();
-	imprime_titulo();
-	imprime_usuario(nomeAdmin);
-	int opcao;
-	int tecla=0;
+	curs_set(0);
+	
+	int opcao=0;
+	int tecla;
 
 	do{
 		
 		imprime_titulo();
-
+		imprime_usuario(nomeAdmin);
 		move(4,1);
 
 		printw("Bem-vindo Administrador do SOCIAL NETWORK");
