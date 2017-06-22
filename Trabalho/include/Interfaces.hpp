@@ -97,6 +97,15 @@ int menu_configuracao(char nome[]);
 
 void tela_configuracao(char nome[]);
 
+void tela_visualiza(char nomeAdmin[]);
+
+void tela_visualiza_transacao(char nomeAdmin[]);
+
+void tela_cadastra_descadastra(char nomeAdmin[]);
+/// Funcao Tela Administrador
+void telaAdmin(char nomeAdmin[]);
+
+
 /*************RETIRAR****************/
 void populaLista();
 

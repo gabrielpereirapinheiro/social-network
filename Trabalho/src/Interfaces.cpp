@@ -502,13 +502,10 @@ void tela_configuracao(char nome[], char CPF[])
 		\return Sem retorno. 
 	*/
 
-
-
 	int opcao;
 	clear();
 	/**Mostra titulo*/
 	imprime_titulo();
-
 	
 	opcao=menu_configuracao(nome);
 
@@ -530,7 +527,6 @@ void tela_configuracao(char nome[], char CPF[])
 			break;	
 	}
 
-
 	/**Mostrar caracteres*/
 	echo();
 }
@@ -546,8 +542,6 @@ void adicionarTransacao(char nome[], char CPF[])
 				Char CPF[]: CPF do usuario.
 		\return Sem retorno. 
 	*/
-
-
 	char categoria_desejada[51];
 
 	clear();
@@ -573,7 +567,6 @@ void adicionarTransacao(char nome[], char CPF[])
 	tela_usuario(CPF);
 
 }
-
 
 void procurar_transacao(char nome[], char CPF[])
 {
@@ -683,8 +676,6 @@ void tela_usuario(char CPF[])
 		default: 
 			break;	
 	}
-
-
 	/**Mostrar caracteres*/
 	echo();
 }
@@ -794,7 +785,6 @@ void tela_visualiza_transacao(char nomeAdmin[])
 void tela_cadastra_descadastra(char nomeAdmin[])
 {
 
-
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -810,7 +800,6 @@ void tela_cadastra_descadastra(char nomeAdmin[])
 /// Funcao Tela Administrador
 void telaAdmin(char nomeAdmin[])
 {
- 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -874,11 +863,9 @@ void telaAdmin(char nomeAdmin[])
 			break;	
 	}
 }
-
-
 void tela_sing_in()
 {
-	
+
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -905,7 +892,6 @@ void tela_sing_in()
 
 	//Move para baixo onde ira imprimir
 	move(5,0);
-
 
 	/**Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos*/
 	strcpy(CPF,"010");
@@ -960,8 +946,7 @@ void tela_sing_in()
 			{
 				
 				ptr = encontraNoUsuario(lista_us->primeiro,CPF);
-			}
-			
+			}	
 			chance--;
 		}
 
@@ -971,8 +956,6 @@ void tela_sing_in()
 			getch();
 			tela_inicial();
 		}
-
-
 		// !Oculta caractres digitados
 		noecho();
 
@@ -993,7 +976,6 @@ void tela_sing_in()
 
 			tela_usuario(CPF);
 		}
-
 	}
 }
 
@@ -1004,8 +986,6 @@ int opcoes_tela_inicial()
 		\param	char nomeAdmin[]: nome do administrador. 
 		\return Sem retorno. 
 	*/
-
-
 	int opcao = 0, tecla;
 
 	do{
@@ -1048,7 +1028,6 @@ int opcoes_tela_inicial()
 	}
 }
 
-
 void tela_inicial()
 {
 	/** 
@@ -1056,8 +1035,6 @@ void tela_inicial()
 		\param	char nomeAdmin[]: nome do administrador. 
 		\return Sem retorno. 
 	*/
-
-
 	clear();
 
 	int opcao;
@@ -1097,8 +1074,7 @@ void tela_inicial()
 			{
 				no_lista_usuario * novo_no = criaNoUsuario(tela_sign_up());
 				addNoListaUsuario(lista_us, novo_no);
-				adiciona_vertice(grafo_amizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 
-																	 // se esta mudando o ID diretamente no no
+				adiciona_vertice(grafo_amizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 														 // se esta mudando o ID diretamente no no
 			}
 			break;
 		case 2 :
@@ -1106,11 +1082,7 @@ void tela_inicial()
 			break;
 	}
 
-
-
-
 	clear();
 	tela_inicial();
 	noecho();
-
 }
