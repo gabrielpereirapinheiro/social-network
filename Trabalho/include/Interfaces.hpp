@@ -16,7 +16,7 @@ typedef struct usuario
 	char nome[101];
 	char senha[51];
 	char email[101];
-	short tipo;
+	int tipo;
 	int idade;
 	int numero_transacao;
 	
@@ -30,7 +30,7 @@ typedef struct categoria{
 
 /// Struct que define os atributos de uma avaliacao
 typedef struct avaliacao{
-	short notaTransacao; //Nota da transacao dada por um usuario
+	int notaTransacao; //Nota da transacao dada por um usuario
 	char comentAvaliClient[201]; //Comentario sobre a avaliacao do cliente
 }Avaliacao;
 
@@ -44,7 +44,7 @@ typedef struct servico{
 /// Definicao da struct de Transacao
 typedef struct transacao{
 	int idTransacao; //chave primaria de transacao
-	short classificacao; // indica se a transacao ja foi concluida ou nao. 0 significa pendente e 1 concluida
+	int classificacao; // indica se a transacao ja foi concluida ou nao. 0 significa pendente e 1 concluida
 	Servico servico; //Informacoes do servico que caracterizou essa transacao
 	Categoria categoria; //Categoria da transacao
 	Avaliacao avaliacao; //Avaliacao da transacao

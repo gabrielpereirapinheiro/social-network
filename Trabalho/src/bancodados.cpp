@@ -3,10 +3,38 @@
 
 /// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de usuarios
 void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp){
-	no_lista_usuario *ptrNoUsuario = NULL; //! ponteiro de no de usuario que sera usado para percorrer a lista de usuarios
+	Usuario usuarioRecuperado; //! variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
+	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[701]; //! string temporaria que vai receber cada linha do arquivo
 
 	fseek(fp, 76, SEEK_SET); // vai pular o cabecalho do arquivo
 	fscanf(fp, "%d\n", &listaUsuario->numeroUsuarios); // vai pegar a quantidade de usuarios
+
+	// parte que vai ler do arquivo e inserir na lista
+	while(!feof(fp)){
+	  	fscanf(fp, "%s", strTemp);
+	  	if(feof(fp)) break; // aqui sai do loop de percorrer o arquivo
+	  	contadorCampoAtual = 0;
+	  	campoCbclho = NULL;
+		campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
+		while (campoCbclho != NULL){
+			// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
+		   switch(contadorCampoAtual){
+		    	case 0: usuarioRecuperado.ID = atoi(campoCbclho); break; // ID
+		    	case 1: strcpy(usuarioRecuperado.CPF, campoCbclho); break; // CPF
+		    	case 2: strcpy(usuarioRecuperado.nome, campoCbclho); break; // nome
+		    	case 3: strcpy(usuarioRecuperado.senha, campoCbclho); break; // senha
+		    	case 4: strcpy(usuarioRecuperado.email, campoCbclho); break; // email
+		    	case 5: usuarioRecuperado.tipo = atoi(campoCbclho); break; // tipo
+		    	case 6: usuarioRecuperado.idade = atoi(campoCbclho); break; // idade
+		    	default: usuarioRecuperado.numero_transacao = atoi(campoCbclho); // numero de transacoes
+		   }
+		   contadorCampoAtual++;
+		   campoCbclho = strtok (NULL, "|\n");
+		}
+		addNoListaUsuario(listaUsuario, criaNoUsuario(usuarioRecuperado)); // adiciona o usuario recuperado na lista de usuarios
+  	}
 }
 
 /// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de transacoes
@@ -52,6 +80,7 @@ void RecuperaDadosArquivos(lista_usuario *listaUsuario, ListaTransacao *listaTra
 		listaUsuario = criarListaUsuario(); 
 	}else{
 		// chama a funcao que coloca as informacoes na lista
+		RecupDadosUsuario(listaUsuario, fUser);
 		fclose(fUser);
 	}
 	//transacoes
@@ -110,7 +139,7 @@ int SalvaArquivoUsuario(lista_usuario *listaUsuario){
 	while(ptrNoUsuario != NULL){
 		fprintf(fp, "%d|%s|%s|%s|%s|", ptrNoUsuario->usuario.ID, ptrNoUsuario->usuario.CPF, ptrNoUsuario->usuario.nome,
 									   ptrNoUsuario->usuario.senha, ptrNoUsuario->usuario.email);
-		fprintf(fp, "%hi|%d|%d|\n", ptrNoUsuario->usuario.tipo, ptrNoUsuario->usuario.idade, 
+		fprintf(fp, "%d|%d|%d|\n", ptrNoUsuario->usuario.tipo, ptrNoUsuario->usuario.idade, 
 									ptrNoUsuario->usuario.numero_transacao);
 		ptrNoUsuario = ptrNoUsuario->prox;
 	}
@@ -145,14 +174,14 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 	ptrNoTransacoes = listaTransacao->primeiro; // ptrNoTransacoes vai receber a cabeca da lista
 
 	while(ptrNoTransacoes != NULL){
-		fprintf(fp, "%d|%hi|%d|%s|%s|", ptrNoTransacoes->transacao.idTransacao, ptrNoTransacoes->transacao.classificacao, 
+		fprintf(fp, "%d|%d|%d|%s|%s|", ptrNoTransacoes->transacao.idTransacao, ptrNoTransacoes->transacao.classificacao, 
 										ptrNoTransacoes->transacao.servico.usuarioProvedor.ID, ptrNoTransacoes->transacao.servico.precoServico,
 										ptrNoTransacoes->transacao.servico.descricaoServico);
 
 		fprintf(fp, "%d|%s|", ptrNoTransacoes->transacao.categoria.idCategoria, ptrNoTransacoes->transacao.categoria.nomeCategoria);
 		// se classificacao for 1, ou seja, a transacao eh classificada como concluida, tem que adicionar informacoes extras
 		if(ptrNoTransacoes->transacao.classificacao == 1){
-			fprintf(fp, "%hi|%s|%d|", ptrNoTransacoes->transacao.avaliacao.notaTransacao, 
+			fprintf(fp, "%d|%s|%d|", ptrNoTransacoes->transacao.avaliacao.notaTransacao, 
 									 ptrNoTransacoes->transacao.avaliacao.comentAvaliClient, ptrNoTransacoes->transacao.usuarioCliente.ID);
 		}
 		fprintf(fp, "\n");
