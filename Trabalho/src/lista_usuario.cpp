@@ -22,8 +22,6 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 }
 
 void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
-	if(lista == NULL) printw("slololol\n");
-	getch();
 	no_lista_usuario *acompanha = NULL;
 	acompanha = lista->primeiro;
 

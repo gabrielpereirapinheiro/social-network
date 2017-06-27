@@ -16,10 +16,12 @@ int main()
 		
 	*/
 	//populaLista(listaCategorias);
-	initscr();
-	RecuperaDadosArquivos(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
-	if(listaUsuarios == NULL) printw("nao era assim nao burrao\n");
-	getch();
+
+	listaUsuarios = RecupDadosUsuario(listaUsuarios);
+	listaTransacoes = RecupDadosTransacoes(listaTransacoes);
+	listaCategorias = RecupDadosCategorias(listaCategorias);
+	grafoAmizade = RecupDadosGrafoAmiz(grafoAmizade);
+	grafoTransacoes = RecupDadosGrafoTransac(grafoTransacoes);
 	tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	return 0;
 

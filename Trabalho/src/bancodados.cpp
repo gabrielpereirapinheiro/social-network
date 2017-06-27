@@ -1,119 +1,141 @@
 #include "bancodados.hpp"
 
-/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de usuarios
-void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp){
+/// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios
+lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
+	//tamanho do cabecalho do arquivo de usuarios: 76
+	FILE *fUser = NULL; //! descritor do arquivo
 	Usuario usuarioRecuperado; //! variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
 	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
 	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
 	char strTemp[701]; //! string temporaria que vai receber cada linha do arquivo
 
-	fseek(fp, 76, SEEK_SET); // vai pular o cabecalho do arquivo
-	fscanf(fp, "%d\n", &listaUsuario->numeroUsuarios); // vai pegar a quantidade de usuarios
+	fUser = fopen("../arquivos/ArquivoUsuarios.txt", "r"); // abertura do arquivo
 
-	// parte que vai ler do arquivo e inserir na lista
-	while(!feof(fp)){
-	  	fscanf(fp, "%s", strTemp);
-	  	if(feof(fp)) break; // aqui sai do loop de percorrer o arquivo
-	  	contadorCampoAtual = 0;
-	  	campoCbclho = NULL;
-		campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
-		while (campoCbclho != NULL){
-			// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
-		   switch(contadorCampoAtual){
-		    	case 0: usuarioRecuperado.ID = atoi(campoCbclho); break; // ID
-		    	case 1: strcpy(usuarioRecuperado.CPF, campoCbclho); break; // CPF
-		    	case 2: strcpy(usuarioRecuperado.nome, campoCbclho); break; // nome
-		    	case 3: strcpy(usuarioRecuperado.senha, campoCbclho); break; // senha
-		    	case 4: strcpy(usuarioRecuperado.email, campoCbclho); break; // email
-		    	case 5: usuarioRecuperado.tipo = atoi(campoCbclho); break; // tipo
-		    	case 6: usuarioRecuperado.idade = atoi(campoCbclho); break; // idade
-		    	default: usuarioRecuperado.numero_transacao = atoi(campoCbclho); // numero de transacoes
-		   }
-		   contadorCampoAtual++;
-		   campoCbclho = strtok (NULL, "|\n");
-		}
-		addNoListaUsuario(listaUsuario, criaNoUsuario(usuarioRecuperado)); // adiciona o usuario recuperado na lista de usuarios
-  	}
-}
+	listaUsuario = criarListaUsuario(); // cria a lista
 
-/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de transacoes
-void RecupDadosTransacoes(ListaTransacao *listaTransacao, FILE *fp){
+	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos da lista
+	// senao, retorna a lista criada
 
-}
+	if(fUser != NULL){
+		fseek(fUser, 76, SEEK_SET); // vai pular o cabecalho do arquivo
+		fscanf(fUser, "%d\n", &listaUsuario->numeroUsuarios); // vai pegar a quantidade de usuarios
 
-/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de categorias
-void RecupDadosCategorias(ListaCategoria *listaCat, FILE *fp){
+		// parte que vai ler do arquivo e inserir na lista
+		while(!feof(fUser)){
+		  	fscanf(fUser, "%s", strTemp);
+		  	if(feof(fUser)) break; // aqui sai do loop de percorrer o arquivo
+		  	contadorCampoAtual = 0;
+		  	campoCbclho = NULL;
+			campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
+			while (campoCbclho != NULL){
+				// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
+			   switch(contadorCampoAtual){
+			    	case 0: usuarioRecuperado.ID = atoi(campoCbclho); break; // ID
+			    	case 1: strcpy(usuarioRecuperado.CPF, campoCbclho); break; // CPF
+			    	case 2: strcpy(usuarioRecuperado.nome, campoCbclho); break; // nome
+			    	case 3: strcpy(usuarioRecuperado.senha, campoCbclho); break; // senha
+			    	case 4: strcpy(usuarioRecuperado.email, campoCbclho); break; // email
+			    	case 5: usuarioRecuperado.tipo = atoi(campoCbclho); break; // tipo
+			    	case 6: usuarioRecuperado.idade = atoi(campoCbclho); break; // idade
+			    	default: usuarioRecuperado.numero_transacao = atoi(campoCbclho); // numero de transacoes
+			    }
+			   contadorCampoAtual++;
+			   campoCbclho = strtok (NULL, "|\n");
+			}
+			addNoListaUsuario(listaUsuario, criaNoUsuario(usuarioRecuperado)); // adiciona o usuario recuperado na lista de usuarios
+  		}
 
-}
-
-/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para o grafo de amizades
-void RecupDadosGrafoAmiz(Grafo *grafoAmizade, FILE *fp){
-
-}
-
-/// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para o grafo de transacoes
-void RecupDadosGrafoTransac(Grafo *grafoTransacoes, FILE *fp){
-
-}
-
-/// Funcao que sempre sera executada no comeco do programa, e vai verificar se todos os arquivos existem, se sim, recupera
-/// todos os dados antes do termino a todas as listas e grafos do sistema. Se nao, indica que eh a primeira execucao do sistema
-/// e vai criar todas as listas como NULL
-void RecuperaDadosArquivos(lista_usuario *listaUsuario, ListaTransacao *listaTransacao, ListaCategoria *listaCat,
-						   Grafo *grafoAmizade, Grafo *grafoTransacoes){
-	//tamanho do cabecalho do arquivo de usuarios: 76 ,tamanho do cabecalho do arquivo de transacoes: 154
-	//tamanho do cabecalho do arquivo de categorias: 20, tamanho do cabecalho dos arquivos de grafo: 25
-	FILE *fUser = NULL, *fTransacao = NULL, *fCateg = NULL; //! descritores das listas
-	FILE *fGrafAmiz = NULL, *fgrafTransac = NULL; //! descritores dos grafos
-
-	//abrindo os arquivos como leitura
-	fUser = fopen("../arquivos/ArquivoUsuarios.txt", "r");
-	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r");
-	fCateg = fopen("../arquivos/ArquivoCategorias.txt", "r");
-	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
-	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
-
-	// Parte que vai verificar se ao abrir os arquivos, eles existem, se existirem, abre como leitura, senao, cria as listas
-	//usuario
-	if(fUser == NULL){
-		listaUsuario = criarListaUsuario();
-		printw("sdasdaas\n");
-		getch();
-	}else{
-		// chama a funcao que coloca as informacoes na lista
-		RecupDadosUsuario(listaUsuario, fUser);
 		fclose(fUser);
 	}
+
+  	return listaUsuario;
+}
+
+/// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de transacoes
+ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
+	//tamanho do cabecalho do arquivo de transacoes: 154
+	FILE *fTransacao = NULL; //! descritor do arquivo
+	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r");
+
+	listaTransacao = criarListaTransacao(); // cria a lista
+
+	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos da lista
+	// senao, retorna a lista criada
+
 	//transacoes
-	if(fTransacao == NULL){
-		listaTransacao = criarListaTransacao(); 
-	}else{
+	if(fTransacao != NULL){
+		
 		// chama a funcao que coloca as informacoes na lista
 		fclose(fTransacao);
 	}
+
+	return listaTransacao;
+}
+
+/// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de categorias
+ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
+	//tamanho do cabecalho do arquivo de categorias: 20 
+	FILE *fCateg = NULL; //! descritor do arquivo
+	fCateg = fopen("../arquivos/ArquivoCategorias.txt", "r");
+
+	listaCat = criarListaCategoria(); // cria a lista
+
+	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos da lista
+	// senao, retorna a lista criada
+
 	//categorias
-	if(fCateg == NULL){
-		listaCat = criarListaCategoria(); 
-	}else{
+	if(fCateg != NULL){
+		
 		// chama a funcao que coloca as informacoes na lista
 		fclose(fCateg);
 	}
-	//grafo de amizades
-	if(fGrafAmiz == NULL){
-		grafoAmizade = cria_grafo("Grafo de Amizades");
-	}else{
-		// chama a funcao que coloca as informacoes no grafo
+
+	return listaCat;
+}
+
+/// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de amizades
+Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
+	// tamanho do cabecalho dos arquivos de grafo: 25
+	FILE *fGrafAmiz = NULL; //! descritor do arquivo
+	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
+
+	grafoAmizade = cria_grafo("Grafo de Amizades"); // cria o grafo
+
+	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
+	// senao, retorna o grafo criado
+
+	//grafo amizades
+	if(fGrafAmiz != NULL){
+		
+		// chama a funcao que coloca as informacoes na lista
 		fclose(fGrafAmiz);
 	}
+
+	return grafoAmizade;
+
+}
+
+/// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de transacoes
+Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
+	// tamanho do cabecalho dos arquivos de grafo: 25
+	FILE *fgrafTransac = NULL; //! descritor do arquivo
+	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
+
+	grafoTransacoes = cria_grafo("Grafo de Transacoes"); // cria o grafo
+
+	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
+	// senao, retorna o grafo criado
+
 	//grafo de transacoes
-	if(fgrafTransac == NULL){
-		grafoTransacoes = cria_grafo("Grafo de Transacoes");
-	}else{
-		// chama a funcao que coloca as informacoes no grafo
+	if(fgrafTransac != NULL){
+		
+		// chama a funcao que coloca as informacoes na lista
 		fclose(fgrafTransac);
 	}
-	
+
+	return grafoTransacoes;
 }
+
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo
 int SalvaArquivoUsuario(lista_usuario *listaUsuario){
