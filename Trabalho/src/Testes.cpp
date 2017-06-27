@@ -1,6 +1,11 @@
 #define CATCH_CONFIG_MAIN   
 #include "catch.hpp"
 #include "headers.hpp" 
+#include "lista_usuario.hpp"
+#include "transacoes.hpp"
+#include "grafos.hpp"
+#include "categoria.hpp"
+#include "bancodados.hpp"
 
 
 /* Teste case para biblioteca lista_usuario.hpp */

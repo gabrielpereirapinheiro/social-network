@@ -1,6 +1,6 @@
 IDIR =../include
 CC=g++
-CFLAGS=-I$(IDIR) -ftest-coverage -fprofile-arcs -lncurses
+CFLAGS=-I$(IDIR) -ftest-coverage -fprofile-arcs -lncurses -g
  
 ODIR=obj
 LDIR =../lib

@@ -1,7 +1,11 @@
 #ifndef BANCODADOS_HEADER
 #define BANCODADOS_HEADER
 #include "headers.hpp"
-
+#include "lista_usuario.hpp"
+#include "transacoes.hpp"
+#include "grafos.hpp"
+#include "categoria.hpp"
+#include "bancodados.hpp"
 /// Header das funcoes que implementam o "banco de dados" da aplicacao
 
 //Assinatura das funcoes

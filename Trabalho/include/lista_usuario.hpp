@@ -1,6 +1,6 @@
 #ifndef LISTA_HPP
 #define LISTA_HPP 
-
+#include "headers.hpp"
 typedef struct no_lista_usuario{
 
 	Usuario usuario;

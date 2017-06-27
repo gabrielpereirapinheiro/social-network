@@ -1,4 +1,4 @@
-#include "headers.hpp"
+#include "lista_usuario.hpp"
 
 
 /*************LISTA***********************************/
@@ -22,8 +22,10 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 }
 
 void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
-	
-	no_lista_usuario *acompanha = lista->primeiro;
+	if(lista == NULL) printw("slololol\n");
+	getch();
+	no_lista_usuario *acompanha = NULL;
+	acompanha = lista->primeiro;
 
 	//Ja vai atribuir o id para o usuario, que eh o numero atual de usuarios cadastrados
 	//Depois incrementa o numero de usuarios cadastrados
@@ -31,7 +33,6 @@ void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona
 	lista->numeroUsuarios++;
 
 	if (acompanha == NULL){
-
 		lista->primeiro = no;
 	}
 	else{

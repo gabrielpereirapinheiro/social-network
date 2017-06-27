@@ -1,4 +1,4 @@
-#include "headers.hpp"
+#include "Interfaces.hpp"
 
 
 /********************************* Globais *******************************************/
@@ -6,18 +6,18 @@
 /* Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
    antes dos mesmos serem passados ao Banco de Dados */
 
-lista_usuario * lista_us = criarListaUsuario(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
+// lista_usuario * listaUsuario = criarListaUsuario(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
-/* Grafo declarado como variavel global. Sera usado como um buffer para salvar os dados
-   de amizades antes dos mesmos serem passados ao Banco de Dados */
-char nome[] = "Grafo de amizade"; ///////////////////////////TIRAR DEPOIS/////////////////////////////////
-Grafo * grafo_amizade = cria_grafo(nome); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
+//  Grafo declarado como variavel global. Sera usado como um buffer para salvar os dados
+//    de amizades antes dos mesmos serem passados ao Banco de Dados 
+// char nome[] = "Grafo de amizade"; ///////////////////////////TIRAR DEPOIS/////////////////////////////////
+// Grafo * grafoAmizade = cria_grafo(nome); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
-ListaCategoria * lista_cat = criarListaCategoria(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
+// ListaCategoria * lista_cat = criarListaCategoria(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
 /**************************************************************************************/
 
-void populaLista()
+void populaLista(ListaCategoria *listaCategorias)
 {
 /****************RETIRAR ESTA PORCARIA *********************/
 
@@ -28,16 +28,16 @@ strcpy(vestuario.nomeCategoria,"vestuario");
 Categoria carona;
 strcpy(carona.nomeCategoria,"carona");
 
-addNoListaCategoria(lista_cat,criaNoCategoria(eletronicos));
-addNoListaCategoria(lista_cat,criaNoCategoria(vestuario));
-addNoListaCategoria(lista_cat,criaNoCategoria(carona));
+addNoListaCategoria(listaCategorias,criaNoCategoria(eletronicos));
+addNoListaCategoria(listaCategorias,criaNoCategoria(vestuario));
+addNoListaCategoria(listaCategorias,criaNoCategoria(carona));
 /********************************************************/
 }
 
 /*************************************************************************************/
 
 
-void sair_do_programa()
+void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -49,7 +49,10 @@ void sair_do_programa()
 	endwin(); 
 	//Finalizar a ncruses
 	int retornoSalvaUsuario = 0;
-	retornoSalvaUsuario = SalvaArquivoUsuario(lista_us);
+	if(listaUsuarios != NULL){
+		retornoSalvaUsuario = SalvaArquivoUsuario(listaUsuarios);
+	}
+	
 	exit(0);
 }
 
@@ -62,7 +65,7 @@ void cores(int opcao)
 		\return Sem retorno. 
 	*/
 
-	bkgd(COLOR_PAIR(opcao));
+	//bkgd(COLOR_PAIR(opcao));
 }
 
 void imprime_titulo()
@@ -98,7 +101,7 @@ void imprime_usuario(char nome[])
 
 
 /// Funcao Excluir Amigo
-void excluiAmigo(char nome[], char CPF[])
+void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
 
 
@@ -127,9 +130,9 @@ void excluiAmigo(char nome[], char CPF[])
 	printw("Lista de usuarios:\n");
 
 
-	no_lista_usuario * ptr_amigo;
-	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
-	Vizinhos * ptr = vizinhos(grafo_amizade, ptr_usuario->usuario.ID);
+	no_lista_usuario * ptr_amigo = NULL;
+	no_lista_usuario * ptr_usuario = encontraNoUsuario(listaUsuarios->primeiro,CPF);
+	Vizinhos * ptr = vizinhos(grafoAmizade, ptr_usuario->usuario.ID);
 	
 
 	/* Listando amigos */
@@ -142,7 +145,7 @@ void excluiAmigo(char nome[], char CPF[])
 		
 		while(ptr != NULL)
 		{	
-			ptr_amigo = encontraNoUsuarioID(lista_us->primeiro,ptr->id);
+			ptr_amigo = encontraNoUsuarioID(listaUsuarios->primeiro,ptr->id);
 			printw("%s\t %s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
 
 			ptr = ptr->prox;
@@ -155,7 +158,7 @@ void excluiAmigo(char nome[], char CPF[])
 		printw("\n\nInsira o email do usuario a ser deletado:\n");
 		scanw("%s",email_excluir);
 
-		ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_excluir);
+		ptr_amigo = encontraNoUsuarioEmail(listaUsuarios->primeiro,email_excluir);
 		
 		if (ptr_amigo == NULL)
 		{
@@ -164,7 +167,7 @@ void excluiAmigo(char nome[], char CPF[])
 		}
 		else{
 			
-			controle_erro = remove_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
+			controle_erro = remove_aresta(grafoAmizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
 			if (controle_erro != ERRO)
 			{
@@ -181,12 +184,12 @@ void excluiAmigo(char nome[], char CPF[])
 		}
 	}
 	
-	tela_usuario(CPF);
+	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
 
 /// Funcao Adicionar Amigo
-void adicionaAmigo(char nome[], char CPF[])
+void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
 
 
@@ -220,19 +223,19 @@ void adicionaAmigo(char nome[], char CPF[])
 
 	/* Encontrando usuario desejado */
 	scanw("%s",email_desejado);
-	no_lista_usuario * ptr_usuario = encontraNoUsuario(lista_us->primeiro,CPF);
-	no_lista_usuario * ptr_amigo = encontraNoUsuarioEmail(lista_us->primeiro,email_desejado);
+	no_lista_usuario * ptr_usuario = encontraNoUsuario(listaUsuarios->primeiro,CPF);
+	no_lista_usuario * ptr_amigo = encontraNoUsuarioEmail(listaUsuarios->primeiro,email_desejado);
 
 	if(ptr_amigo== NULL)
 	{
 		printw("Nao foi encontrado o usuario '%s'. \n\nPressiona qualquer tecla para voltar para o MENU",email_desejado);
 		getch();
-		tela_usuario(CPF);
+		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
 	else
 	{
 		/* Adicionando no grafo de amizades */
-		controle_erro = adiciona_aresta(grafo_amizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
+		controle_erro = adiciona_aresta(grafoAmizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
 		if (controle_erro != ERRO)
 		{
@@ -248,11 +251,11 @@ void adicionaAmigo(char nome[], char CPF[])
 		}		
 	}
 
-	tela_usuario(CPF);
+	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 }
 
-void tela_cor(char nome[],char CPF[])
+void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 
@@ -308,26 +311,26 @@ void tela_cor(char nome[],char CPF[])
 		case 0:	/* nome */
 
 			cores(2);
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1: /* senha */
 
 			cores(1);
 			echo();
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 2: /* email */
 
 			cores(3);
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 3: /* idade */
 
 			cores(4);
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 	}
 
@@ -335,7 +338,7 @@ void tela_cor(char nome[],char CPF[])
 
 
 /// Funcao Editar Informacoes
-void editaInformacoes(char nome[], char CPF[])
+void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
 
 
@@ -352,7 +355,7 @@ void editaInformacoes(char nome[], char CPF[])
 	int nova_idade = 0;
 	int opcao = 0, tecla;
 	
-	no_lista_usuario * ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+	no_lista_usuario * ptr = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 
 
 	/* Limpando a tela */
@@ -404,7 +407,7 @@ void editaInformacoes(char nome[], char CPF[])
 			scanw("%[^\n]s",novo_nome);
 			
 			strcpy(ptr->usuario.nome,novo_nome);
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1: /* senha */
@@ -415,7 +418,7 @@ void editaInformacoes(char nome[], char CPF[])
 			
 			strcpy(ptr->usuario.senha,nova_senha);
 			echo();
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 2: /* email */
@@ -424,7 +427,7 @@ void editaInformacoes(char nome[], char CPF[])
 			scanw("%s",novo_email);
 
 			strcpy(ptr->usuario.email,novo_email);
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 3: /* idade */
@@ -439,7 +442,7 @@ void editaInformacoes(char nome[], char CPF[])
 			}
 
 			ptr->usuario.idade = nova_idade;
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 	}
 }
@@ -493,7 +496,7 @@ int menu_configuracao(char nome[])
 }
 
 
-void tela_configuracao(char nome[], char CPF[])
+void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -512,15 +515,15 @@ void tela_configuracao(char nome[], char CPF[])
 	switch(opcao)
 	{
 		case 0:
-			editaInformacoes(nome,CPF);
+			editaInformacoes(nome,CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1:
-			tela_cor(nome,CPF);
+			tela_cor(nome,CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 2:
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		default: 
@@ -533,7 +536,7 @@ void tela_configuracao(char nome[], char CPF[])
 
 
 /// Funcao Adiciona Transacao
-void adicionarTransacao(char nome[], char CPF[])
+void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
 
 	/** 
@@ -547,7 +550,7 @@ void adicionarTransacao(char nome[], char CPF[])
 	clear();
 	imprime_titulo();
 
-	noListaCategoria * ptr_categoria = lista_cat->primeiro;
+	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
 	printw("\n");
 
 	/* Listando as categorias de transacoes existentes */
@@ -564,11 +567,11 @@ void adicionarTransacao(char nome[], char CPF[])
 	printw("\n\nDigite o nome da categoria desejada:\n");
 	scanw("%s",categoria_desejada);
 
-	tela_usuario(CPF);
+	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 }
 
-void procurar_transacao(char nome[], char CPF[])
+void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 }
@@ -626,7 +629,7 @@ int menu_usuario(char nome[])
 
 }
 
-void tela_usuario(char CPF[])
+void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -636,8 +639,8 @@ void tela_usuario(char CPF[])
 	*/
 
 
-	no_lista_usuario *ptr;
-	ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+	no_lista_usuario *ptr = NULL;
+	ptr = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 
 	int opcao;
 
@@ -650,27 +653,27 @@ void tela_usuario(char CPF[])
 	switch(opcao)
 	{
 		case 0:
-			procurar_transacao(ptr->usuario.nome, ptr->usuario.CPF);
+			procurar_transacao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1:
-			adicionarTransacao(ptr->usuario.nome, ptr->usuario.CPF);
+			adicionarTransacao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 2:
-			adicionaAmigo(ptr->usuario.nome, ptr->usuario.CPF);
+			adicionaAmigo(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 3:
-			excluiAmigo(ptr->usuario.nome, ptr->usuario.CPF);
+			excluiAmigo(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 4:
-			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF);
+			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 5:
-			tela_inicial();
+			tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 				
 		default: 
@@ -751,7 +754,7 @@ Usuario tela_sign_up()
 	}	
 	return cadastrar_agora;
 }
-void tela_visualiza(char nomeAdmin[])
+void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -763,11 +766,11 @@ void tela_visualiza(char nomeAdmin[])
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
-	telaAdmin(nomeAdmin);
+	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
 
-void tela_visualiza_transacao(char nomeAdmin[])
+void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -779,10 +782,10 @@ void tela_visualiza_transacao(char nomeAdmin[])
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
-	telaAdmin(nomeAdmin);
+	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
-void tela_cadastra_descadastra(char nomeAdmin[])
+void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -794,11 +797,11 @@ void tela_cadastra_descadastra(char nomeAdmin[])
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 	getch();
-	telaAdmin(nomeAdmin);
+	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
 /// Funcao Tela Administrador
-void telaAdmin(char nomeAdmin[])
+void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
@@ -844,26 +847,26 @@ void telaAdmin(char nomeAdmin[])
 	switch(opcao)
 	{
 		case 0:
-			tela_visualiza(nomeAdmin);
+			tela_visualiza(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 			
 		case 1:
-			tela_cadastra_descadastra(nomeAdmin);
+			tela_cadastra_descadastra(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 			
 		case 2:
-			tela_visualiza_transacao(nomeAdmin);
+			tela_visualiza_transacao(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 				
 		case 3:
-			tela_inicial();
+			tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		default: 
 			break;	
 	}
 }
-void tela_sing_in()
+void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
@@ -920,16 +923,16 @@ void tela_sing_in()
 		}
 
 		/*OBS.: Colocar senha no banco !!!!*/
-		telaAdmin(nomeAdmin);
+		telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
 	else{
 
-		/** Verifica se o ponteiro lista_us->primeiro aponta pra algo diferente de NULL, se sim, a funcao
+		/** Verifica se o ponteiro listaUsuarios->primeiro aponta pra algo diferente de NULL, se sim, a funcao
 		  	encontraNoUsuario podera ser usada. */
-		if(lista_us->primeiro != NULL)
+		if(listaUsuarios->primeiro != NULL)
 		{
 
-			ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+			ptr = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 		}
 		else
 		{
@@ -942,10 +945,10 @@ void tela_sing_in()
 			printw("CPF inexistente, tente novamente :");
 			scanw("%s",CPF);
 			
-			if(lista_us->primeiro != NULL)
+			if(listaUsuarios->primeiro != NULL)
 			{
 				
-				ptr = encontraNoUsuario(lista_us->primeiro,CPF);
+				ptr = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 			}	
 			chance--;
 		}
@@ -954,7 +957,7 @@ void tela_sing_in()
 		{	
 			printw("\nCrie um cadastro primeiro e clique em qualquer tecla para voltar\n");
 			getch();
-			tela_inicial();
+			tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 		}
 		// !Oculta caractres digitados
 		noecho();
@@ -974,12 +977,12 @@ void tela_sing_in()
 				scanw("%s",senha);
 			}
 
-			tela_usuario(CPF);
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 		}
 	}
 }
 
-int opcoes_tela_inicial()
+int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
@@ -1028,7 +1031,7 @@ int opcoes_tela_inicial()
 	}
 }
 
-void tela_inicial()
+void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
@@ -1048,7 +1051,7 @@ void tela_inicial()
 	curs_set(0);
 
 	//Inicializa o uso das cores
-	start_color();
+	//start_color();
 
 	//Pares de cor que usaremos, texto verde e fundo branco
 	init_pair(1,COLOR_GREEN,COLOR_WHITE);
@@ -1056,33 +1059,33 @@ void tela_inicial()
 	init_pair(3,COLOR_YELLOW,COLOR_RED);
 	init_pair(4,COLOR_BLACK,COLOR_GREEN);
 
-	cores(1);
+	//cores(1);
 		
 	//Funcao que imprime o titulo na parte superior da tela	
 	imprime_titulo();
 
 	//Recebe a opcao na tela inicial
-	opcao = opcoes_tela_inicial();
+	opcao = opcoes_tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 	switch(opcao)
 	{
 		case 0 :
-			tela_sing_in();
+			tela_sing_in(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1:
 			{
 				no_lista_usuario * novo_no = criaNoUsuario(tela_sign_up());
-				addNoListaUsuario(lista_us, novo_no);
-				adiciona_vertice(grafo_amizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 														 // se esta mudando o ID diretamente no no
+				addNoListaUsuario(listaUsuarios, novo_no);
+				adiciona_vertice(grafoAmizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 														 // se esta mudando o ID diretamente no no
 			}
 			break;
 		case 2 :
-			sair_do_programa();
+			sair_do_programa(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 	}
 
 	clear();
-	tela_inicial();
+	tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	noecho();
 }

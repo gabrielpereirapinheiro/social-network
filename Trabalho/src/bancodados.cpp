@@ -1,5 +1,4 @@
-#include "headers.hpp"
-
+#include "bancodados.hpp"
 
 /// Funcao que dado um descritor de arquivo, recupera os dados desse arquivo para a lista de usuarios
 void RecupDadosUsuario(lista_usuario *listaUsuario, FILE *fp){
@@ -77,7 +76,9 @@ void RecuperaDadosArquivos(lista_usuario *listaUsuario, ListaTransacao *listaTra
 	// Parte que vai verificar se ao abrir os arquivos, eles existem, se existirem, abre como leitura, senao, cria as listas
 	//usuario
 	if(fUser == NULL){
-		listaUsuario = criarListaUsuario(); 
+		listaUsuario = criarListaUsuario();
+		printw("sdasdaas\n");
+		getch();
 	}else{
 		// chama a funcao que coloca as informacoes na lista
 		RecupDadosUsuario(listaUsuario, fUser);

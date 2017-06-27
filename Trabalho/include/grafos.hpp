@@ -1,6 +1,6 @@
 #ifndef GRAFOS
 #define GRAFOS 
-
+#include "headers.hpp"
 /*Victor Araujo Vieira - 14/0032801 */
 /*MP - 1/2017*/
 
