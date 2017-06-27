@@ -14,7 +14,6 @@
 #define enter     10
 
 // Assinatura das funcoes 
-void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes);
 
 void imprime_titulo();
 
