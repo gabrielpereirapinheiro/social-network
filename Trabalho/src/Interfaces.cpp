@@ -65,7 +65,7 @@ void cores(int opcao)
 		\return Sem retorno. 
 	*/
 
-	//bkgd(COLOR_PAIR(opcao));
+	bkgd(COLOR_PAIR(opcao));
 }
 
 void imprime_titulo()
@@ -1051,7 +1051,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 	curs_set(0);
 
 	//Inicializa o uso das cores
-	//start_color();
+	start_color();
 
 	//Pares de cor que usaremos, texto verde e fundo branco
 	init_pair(1,COLOR_GREEN,COLOR_WHITE);
@@ -1059,7 +1059,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 	init_pair(3,COLOR_YELLOW,COLOR_RED);
 	init_pair(4,COLOR_BLACK,COLOR_GREEN);
 
-	//cores(1);
+	cores(1);
 		
 	//Funcao que imprime o titulo na parte superior da tela	
 	imprime_titulo();
