@@ -55,7 +55,12 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 	//tamanho do cabecalho do arquivo de transacoes: 154
 	FILE *fTransacao = NULL; //! descritor do arquivo
-	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r");
+	Transacao transacaoRecuperada; //! variavel do tipo Transacao que vai receber os dados que estao sendo recuperados do arquivo
+	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
+
+	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r"); // abertura do arquivo
 
 	listaTransacao = criarListaTransacao(); // cria a lista
 
@@ -64,6 +69,41 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 
 	//transacoes
 	if(fTransacao != NULL){
+		fseek(fTransacao, 154, SEEK_SET); // vai pular o cabecalho do arquivo
+		fscanf(fTransacao, "%d\n", &listaTransacao->numeroTransacoes); // vai pegar a quantidade de transacoes
+
+		// parte que vai ler do arquivo e inserir na lista
+		while(!feof(fTransacao)){
+		  	fscanf(fTransacao, "%s", strTemp);
+		  	if(feof(fTransacao)) break; // aqui sai do loop de percorrer o arquivo
+		  	contadorCampoAtual = 0;
+		  	campoCbclho = NULL;
+			campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
+			while (campoCbclho != NULL){
+				// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
+			   switch(contadorCampoAtual){
+			    	case 0: transacaoRecuperada.idTransacao = atoi(campoCbclho); break; // ID
+			    	case 1: transacaoRecuperada.classificacao = atoi(campoCbclho); break; // classificacao
+			    	case 2: transacaoRecuperada.servico.usuarioProvedor.ID = atoi(campoCbclho); break; // id usuario provedor
+			    	case 3: strcpy(transacaoRecuperada.servico.precoServico, campoCbclho); break; // preco
+			    	case 4: strcpy(transacaoRecuperada.servico.descricaoServico, campoCbclho); break; // descricao
+			    	case 5: transacaoRecuperada.categoria.idCategoria = atoi(campoCbclho); break; // id categoria
+			    	default: strcpy(transacaoRecuperada.categoria.nomeCategoria, campoCbclho); break; // categoria
+			    }
+
+			   // parte que vai verificar se classificao eh pendente ou concluida, se for concluida, ainda tem outros campos para serem obtidos
+			    if(contadorCampoAtual > 6 && transacaoRecuperada.classificacao == CONCLUIDA){
+			    	switch(contadorCampoAtual){
+			    		case 7: transacaoRecuperada.avaliacao.notaTransacao = atoi(campoCbclho); break; // nota da transacao
+			    		case 8: strcpy(transacaoRecuperada.avaliacao.comentAvaliClient, campoCbclho); break; // comentario da avaliacao
+			    		default: transacaoRecuperada.usuarioCliente.ID = atoi(campoCbclho); // id do usuario cliente
+			    	}
+			    }
+			   contadorCampoAtual++;
+			   campoCbclho = strtok (NULL, "|\n");
+			}
+			addNoListaTransacao(listaTransacao, criaNoTransacao(transacaoRecuperada)); // adiciona o usuario recuperado na lista de usuarios
+  		}
 		
 		// chama a funcao que coloca as informacoes na lista
 		fclose(fTransacao);
@@ -203,7 +243,7 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 
 		fprintf(fp, "%d|%s|", ptrNoTransacoes->transacao.categoria.idCategoria, ptrNoTransacoes->transacao.categoria.nomeCategoria);
 		// se classificacao for 1, ou seja, a transacao eh classificada como concluida, tem que adicionar informacoes extras
-		if(ptrNoTransacoes->transacao.classificacao == 1){
+		if(ptrNoTransacoes->transacao.classificacao == CONCLUIDA){
 			fprintf(fp, "%d|%s|%d|", ptrNoTransacoes->transacao.avaliacao.notaTransacao, 
 									 ptrNoTransacoes->transacao.avaliacao.comentAvaliClient, ptrNoTransacoes->transacao.usuarioCliente.ID);
 		}

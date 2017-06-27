@@ -5,6 +5,7 @@
 int main()
 {
 
+	// inicializacao das estruturas de dados
 	lista_usuario *listaUsuarios = NULL;
 	ListaTransacao *listaTransacoes = NULL;
 	ListaCategoria *listaCategorias = NULL;

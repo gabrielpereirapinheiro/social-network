@@ -49,7 +49,7 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	endwin(); 
 	//Finalizar a ncruses
 	int retornoSalvaUsuario = 0;
-	if(listaUsuarios != NULL){
+	if(listaUsuarios->primeiro != NULL){
 		retornoSalvaUsuario = SalvaArquivoUsuario(listaUsuarios);
 	}
 	
