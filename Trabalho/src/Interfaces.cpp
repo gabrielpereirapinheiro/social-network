@@ -763,8 +763,54 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 		\return Sem retorno. 
 	*/
 
+	no_lista_usuario *ptr;
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
+
+	move(10,1);
+	if(listaUsuarios->primeiro == NULL)
+	{
+		printw("Nao ha ninguem no banco !\n\n Clique 'enter' para voltar ");
+		getch();
+	}
+	else
+	{
+		no_lista_usuario *ponteiro = listaUsuarios->primeiro;
+
+		Usuario recebe_usuario;
+
+		recebe_usuario = ponteiro->usuario;
+
+		Vizinhos *lista_vizinhos;
+
+		
+		Vertice *ponteiro_vertice = recupera_vertice_x(grafoAmizade,recebe_usuario.ID);
+
+		printw("recebe_usuario %d\n\n",recebe_usuario.ID);
+		getch();
+
+		if (ponteiro_vertice==NULL)
+		{
+			printw("deu rui");
+
+		printw("x\n\n");
+		getch();
+		}
+
+		lista_vizinhos = ponteiro_vertice->listVizinhos;
+
+		move(10,1);
+		printw("usuario %s",recebe_usuario.nome);
+
+		while(lista_vizinhos!=  NULL)
+		{
+			no_lista_usuario *temporario = encontraNoUsuarioID(listaUsuarios->primeiro,lista_vizinhos->id);
+			printw("amigo : %s",temporario->usuario.nome);
+			lista_vizinhos = lista_vizinhos->prox;
+		}
+
+	}
+
 	getch();
 	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
