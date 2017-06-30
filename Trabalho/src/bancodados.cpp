@@ -164,7 +164,12 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 /// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de amizades
 Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 	// tamanho do cabecalho dos arquivos de grafo: 25
+	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
+	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
 	FILE *fGrafAmiz = NULL; //! descritor do arquivo
+	int vertice = 0; //! variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
+	int ondeArquivo = 0; //! vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
+	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
 
 	grafoAmizade = cria_grafo("Grafo de Amizades"); // cria o grafo
@@ -172,12 +177,49 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
 	// senao, retorna o grafo criado
 
-	// ID VERTICE>|ID ARESTAS|
-
 	//grafo amizades
 	if(fGrafAmiz != NULL){
+		fseek(fGrafAmiz, 25, SEEK_SET); // vai pular o cabecalho do arquivo
+		// pega uma linha completa do arquivo, que contem o nome do grafo, numero de vertices e numero de arestas
+		fgets(strTemp, 1001, fGrafAmiz);
+		campoCbclho = strtok(strTemp, "|\n");
+		// parte que vai pegar as outras informacoes gerais referentes ao grafo, como numero de vertices e arestas
+		while(campoCbclho != NULL){
+			switch(contadorAux){
+				case 1: grafoAmizade->V = atoi(campoCbclho); break;
+				case 2: grafoAmizade->E = atoi(campoCbclho); break;
+			}
+			contadorAux++;
+			campoCbclho = strtok (NULL, "|\n");
+		}
+		ondeArquivo = ftell(fGrafAmiz); // recebe a posicao do arquivo logo depois de pegar as informacoes gerais do grafo
+		campoCbclho = NULL; // reinicializa o ponteiro de char como NULL
+		// parte que vai adicionar os vertices no grafo
+		while(!feof(fGrafAmiz)){
+		  	fscanf(fGrafAmiz, "%s", strTemp);
+		  	if(feof(fGrafAmiz)) break;
+			campoCbclho = strtok (strTemp,">\n");
+			while (campoCbclho != NULL){
+			   adiciona_vertice(grafoAmizade, atoi(strTemp)); // adiciona o vertice no grafo
+			   campoCbclho = strtok (NULL, ">\n");
+			}
+  		}
+
+  		//volta para a posicao do arquivo guardada na variavel ondeArquivo, para agora adicionar as arestas
+  		fseek(fGrafAmiz, ondeArquivo, SEEK_SET);
+  		while(!feof(fGrafAmiz)){
+		  	fscanf(fGrafAmiz, "%s", strTemp);
+		  	contadorAux = 0;
+		  	if(feof(fGrafAmiz)) break;
+			campoCbclho = strtok (strTemp,">\n");
+			vertice = atoi(campoCbclho);
+			while (campoCbclho != NULL){
+			   if(contadorAux > 0) adiciona_aresta(grafoAmizade, vertice, atoi(strTemp)); // adiciona a aresta no vertice
+			   contadorAux++;
+			   campoCbclho = strtok (NULL, "|\n");
+			}
+  		}
 		
-		// chama a funcao que coloca as informacoes na lista
 		fclose(fGrafAmiz);
 	}
 
@@ -334,7 +376,7 @@ int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
 	// Vai escrever sempre, por default, a ordem com que as informacoes do grafo vao ser dispostas
 	fprintf(fp, "ID VERTICE>|ID ARESTAS|\n\n");
 	// vai mostrar: nome do grafo|Quantidade de vertices|Quantidade de arestas|
-	fprintf(fp, "|%s|%d|%d|\n", grafoAmizade->nomeGrafo, grafoAmizade->V, grafoAmizade->E);
+	fprintf(fp, "%s|%d|%d|\n", grafoAmizade->nomeGrafo, grafoAmizade->V, grafoAmizade->E);
 
 	//Escrito o cabecalho, agora vai escrever todos os dados do grafo de amizades
 	if(grafoAmizade->vertices){

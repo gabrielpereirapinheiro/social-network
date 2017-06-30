@@ -771,11 +771,10 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 
-	move(10,1);
+	move(5,0);
 	if(listaUsuarios->primeiro == NULL)
 	{
-		printw("Nao ha ninguem no banco !\n\n Clique 'enter' para voltar ");
-		getch();
+		printw("Nao ha usuarios salvos !\n\nClique 'enter' para voltar ");
 	}
 	else
 	{
@@ -783,34 +782,41 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 		Usuario recebe_usuario;
 
-		recebe_usuario = ponteiro->usuario;
-
-		Vizinhos *lista_vizinhos;
-
-		
-		Vertice *ponteiro_vertice = recupera_vertice_x(grafoAmizade,recebe_usuario.ID);
-
-		printw("recebe_usuario %d\n\n",recebe_usuario.ID);
-		getch();
-
-		if (ponteiro_vertice==NULL)
+		while(ponteiro!=NULL)
 		{
-			printw("deu rui");
 
-		printw("x\n\n");
-		getch();
-		}
+			recebe_usuario = ponteiro->usuario;
 
-		lista_vizinhos = ponteiro_vertice->listVizinhos;
+			Vizinhos *lista_vizinhos;
 
-		move(10,1);
-		printw("usuario %s",recebe_usuario.nome);
+			Vertice *ponteiro_vertice = recupera_vertice_x(grafoAmizade,recebe_usuario.ID);
 
-		while(lista_vizinhos!=  NULL)
-		{
-			no_lista_usuario *temporario = encontraNoUsuarioID(listaUsuarios->primeiro,lista_vizinhos->id);
-			printw("amigo : %s",temporario->usuario.nome);
-			lista_vizinhos = lista_vizinhos->prox;
+			if (ponteiro_vertice==NULL)
+			{
+				printw("deu ruim");
+			}
+
+			lista_vizinhos = ponteiro_vertice->listVizinhos;
+
+			move(5,0);
+			printw("Usuario %s\n\n",recebe_usuario.nome);
+
+			if(lista_vizinhos == NULL)
+			{
+				printw("Sem amigos\n\n");
+			}
+
+			while(lista_vizinhos!=  NULL)
+			{
+				no_lista_usuario *temporario = encontraNoUsuarioID(listaUsuarios->primeiro,lista_vizinhos->id);
+				printw("Amigo : %s \n",temporario->usuario.nome);
+				lista_vizinhos = lista_vizinhos->prox;
+			}
+
+			ponteiro = ponteiro->prox;
+
+			printw("Clique enter para ver o proximo");
+			getch();
 		}
 
 	}
