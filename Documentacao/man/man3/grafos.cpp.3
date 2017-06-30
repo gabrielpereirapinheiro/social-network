@@ -1,0 +1,139 @@
+.TH "Trabalho/src/grafos.cpp" 3 "Fri Jun 30 2017" "Version 1.0" "SOCIAL NETWORK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trabalho/src/grafos.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'grafos\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "Grafo * \fBcria_grafo\fP (char *nome)"
+.br
+.ti -1c
+.RI "char * \fBretorna_nome_grafo\fP (Grafo *G)"
+.br
+.ti -1c
+.RI "int \fBdestroi_grafo\fP (Grafo *G)"
+.br
+.ti -1c
+.RI "int \fBadjacente\fP (Grafo *G, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBverifica_se_existe_vertice\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "Vertice * \fBrecupera_vertice_x\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "int \fBverifica_se_y_aresta_de_x\fP (Vertice *v, int y)"
+.br
+.ti -1c
+.RI "int \fBvalida_funcoes_aresta\fP (Grafo *G, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBadiciona_vertice\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "int \fBremove_vertice\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "int \fBadiciona_aresta\fP (Grafo *G, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBremove_aresta\fP (Grafo *G, int x, int y)"
+.br
+.ti -1c
+.RI "Vizinhos * \fBvizinhos\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "int \fBmuda_valor_vertice\fP (Grafo *G, int x, Valor v)"
+.br
+.ti -1c
+.RI "Valor \fBretorna_valor_vertice\fP (Grafo *G, int x)"
+.br
+.ti -1c
+.RI "int \fBmuda_valor_aresta\fP (Grafo *G, int x, int y, Valor v)"
+.br
+.ti -1c
+.RI "Valor \fBretorna_valor_aresta\fP (Grafo *G, int x, int y)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int adiciona_aresta (Grafo * G, int x, int y)"
+
+.PP
+Definition at line 238 of file grafos\&.cpp\&.
+.SS "int adiciona_vertice (Grafo * G, int x)"
+
+.PP
+Definition at line 160 of file grafos\&.cpp\&.
+.SS "int adjacente (Grafo * G, int x, int y)"
+
+.PP
+Definition at line 68 of file grafos\&.cpp\&.
+.SS "Grafo* cria_grafo (char * nome)"
+
+.PP
+Definition at line 7 of file grafos\&.cpp\&.
+.SS "int destroi_grafo (Grafo * G)"
+
+.PP
+Definition at line 38 of file grafos\&.cpp\&.
+.SS "int muda_valor_aresta (Grafo * G, int x, int y, Valor v)"
+
+.PP
+Definition at line 403 of file grafos\&.cpp\&.
+.SS "int muda_valor_vertice (Grafo * G, int x, Valor v)"
+
+.PP
+Definition at line 361 of file grafos\&.cpp\&.
+.SS "Vertice* recupera_vertice_x (Grafo * G, int x)"
+
+.PP
+Definition at line 102 of file grafos\&.cpp\&.
+.SS "int remove_aresta (Grafo * G, int x, int y)"
+
+.PP
+Definition at line 281 of file grafos\&.cpp\&.
+.SS "int remove_vertice (Grafo * G, int x)"
+
+.PP
+Definition at line 192 of file grafos\&.cpp\&.
+.SS "char* retorna_nome_grafo (Grafo * G)"
+
+.PP
+Definition at line 32 of file grafos\&.cpp\&.
+.SS "Valor retorna_valor_aresta (Grafo * G, int x, int y)"
+
+.PP
+Definition at line 438 of file grafos\&.cpp\&.
+.SS "Valor retorna_valor_vertice (Grafo * G, int x)"
+
+.PP
+Definition at line 385 of file grafos\&.cpp\&.
+.SS "int valida_funcoes_aresta (Grafo * G, int x, int y)"
+
+.PP
+Definition at line 136 of file grafos\&.cpp\&.
+.SS "int verifica_se_existe_vertice (Grafo * G, int x)"
+
+.PP
+Definition at line 91 of file grafos\&.cpp\&.
+.SS "int verifica_se_y_aresta_de_x (Vertice * v, int y)"
+
+.PP
+Definition at line 120 of file grafos\&.cpp\&.
+.SS "Vizinhos* vizinhos (Grafo * G, int x)"
+
+.PP
+Definition at line 331 of file grafos\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SOCIAL NETWORK from the source code\&.

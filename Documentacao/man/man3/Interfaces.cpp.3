@@ -1,0 +1,449 @@
+.TH "Trabalho/src/Interfaces.cpp" 3 "Fri Jun 30 2017" "Version 1.0" "SOCIAL NETWORK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trabalho/src/Interfaces.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'Interfaces\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsair_do_programa\fP (lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBcores\fP (int opcao)"
+.br
+.ti -1c
+.RI "void \fBimprime_titulo\fP ()"
+.br
+.ti -1c
+.RI "void \fBimprime_usuario\fP (char nome[])"
+.br
+.ti -1c
+.RI "void \fBexcluiAmigo\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.RI "Funcao Excluir Amigo\&. "
+.ti -1c
+.RI "void \fBadicionaAmigo\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.RI "Funcao Adicionar Amigo\&. "
+.ti -1c
+.RI "void \fBtela_cor\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBeditaInformacoes\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.RI "Funcao Editar Informacoes\&. "
+.ti -1c
+.RI "int \fBmenu_configuracao\fP (char nome[])"
+.br
+.ti -1c
+.RI "void \fBtela_configuracao\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBadicionarTransacao\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.RI "Funcao Adiciona Transacao\&. "
+.ti -1c
+.RI "void \fBprocurar_transacao\fP (char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "int \fBmenu_usuario\fP (char nome[])"
+.br
+.ti -1c
+.RI "void \fBtela_usuario\fP (char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "Usuario \fBtela_sign_up\fP ()"
+.br
+.ti -1c
+.RI "void \fBtela_visualiza\fP (char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBtela_visualiza_transacao\fP (char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBtela_cadastra_descadastra\fP (char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBtelaAdmin\fP (char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.RI "Funcao Tela Administrador\&. "
+.ti -1c
+.RI "void \fBtela_sing_in\fP (lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "int \fBopcoes_tela_inicial\fP (lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.ti -1c
+.RI "void \fBtela_inicial\fP (lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void adicionaAmigo (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Funcao Adicionar Amigo\&. Permite inclusao de amizade pelo usuario\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIChar\fP nome[]: Nome do usuario; Char CPF[]: CPF do usuario\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 192 of file Interfaces\&.cpp\&.
+.SS "void adicionarTransacao (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Funcao Adiciona Transacao\&. Permite ao usuario adicionar uma transacao\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIChar\fP nome[]: Nome do usuario; Char CPF[]: CPF do usuario\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 539 of file Interfaces\&.cpp\&.
+.SS "void cores (int opcao)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 59 of file Interfaces\&.cpp\&.
+.SS "void editaInformacoes (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Funcao Editar Informacoes\&. Permite edicao de informacao do usuario\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIChar\fP nome[]: Nome do usuario; Char CPF[]: CPF do usuario\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 341 of file Interfaces\&.cpp\&.
+.SS "void excluiAmigo (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Funcao Excluir Amigo\&. Permite exclusao de amizade pelo usuario\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIChar\fP nome[]: Nome do usuario; Char CPF[]: CPF do usuario\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 104 of file Interfaces\&.cpp\&.
+.SS "void imprime_titulo ()"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 71 of file Interfaces\&.cpp\&.
+.SS "void imprime_usuario (char nome[])"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 88 of file Interfaces\&.cpp\&.
+.SS "int menu_configuracao (char nome[])"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+Retorna opcao para tela usuario 
+.PP
+Definition at line 451 of file Interfaces\&.cpp\&.
+.SS "int menu_usuario (char nome[])"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Retorna a opcao escolhida pelo usuario\&.
+.RE
+.PP
+Retorna opcao para tela usuario 
+.PP
+Definition at line 579 of file Interfaces\&.cpp\&.
+.SS "int opcoes_tela_inicial (lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 1037 of file Interfaces\&.cpp\&.
+.SS "void procurar_transacao (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Definition at line 574 of file Interfaces\&.cpp\&.
+.SS "void sair_do_programa (lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fISem\fP parametros\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 40 of file Interfaces\&.cpp\&.
+.SS "void tela_cadastra_descadastra (char nomeAdmin[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 840 of file Interfaces\&.cpp\&.
+.SS "void tela_configuracao (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador e char CPF[]: CPF do usuario 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+Mostra titulo
+.PP
+Mostrar caracteres 
+.PP
+Definition at line 499 of file Interfaces\&.cpp\&.
+.SS "void tela_cor (char nome[], char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 258 of file Interfaces\&.cpp\&.
+.SS "void tela_inicial (lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 1086 of file Interfaces\&.cpp\&.
+.SS "Usuario tela_sign_up ()"
+Mostra titulo
+.PP
+Mostrar caracteres
+.PP
+Verifica se nao e negativo
+.PP
+Tipo setado para 0 pois e um usario normal
+.PP
+Setado para zero pois o usuario novo nao tem nenhuma transacao
+.PP
+Para enquanto nao forem iguais, nao aceitar
+.PP
+Usuario digita pela primeira vez a senha 
+.PP
+Definition at line 687 of file Interfaces\&.cpp\&.
+.SS "void tela_sing_in (lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+Adiciocna um valor com tamanho menor para so ser aceito CPF de 11 digitos
+.PP
+Enquanto nao tiver 11 elementos nao aceita
+.PP
+Verifica se o ponteiro listaUsuarios->primeiro aponta pra algo diferente de NULL, se sim, a funcao encontraNoUsuario podera ser usada\&. 
+.PP
+Definition at line 921 of file Interfaces\&.cpp\&.
+.SS "void tela_usuario (char CPF[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+Mostra titulo
+.PP
+Mostrar caracteres 
+.PP
+Definition at line 632 of file Interfaces\&.cpp\&.
+.SS "void tela_visualiza (char nomeAdmin[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 757 of file Interfaces\&.cpp\&.
+.SS "void tela_visualiza_transacao (char nomeAdmin[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 825 of file Interfaces\&.cpp\&.
+.SS "void telaAdmin (char nomeAdmin[], lista_usuario * listaUsuarios, ListaTransacao * listaTransacoes, ListaCategoria * listaCategorias, Grafo * grafoAmizade, Grafo * grafoTransacoes)"
+
+.PP
+Funcao Tela Administrador\&. Funcao que exibe a tela apos login do usuario administrador do sistema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar\fP nomeAdmin[]: nome do administrador\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sem retorno\&.
+.RE
+.PP
+
+.PP
+Definition at line 856 of file Interfaces\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SOCIAL NETWORK from the source code\&.
