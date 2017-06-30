@@ -1,0 +1,86 @@
+\hypertarget{transacoes_8cpp}{}\section{Trabalho/src/transacoes.cpp File Reference}
+\label{transacoes_8cpp}\index{Trabalho/src/transacoes.\+cpp@{Trabalho/src/transacoes.\+cpp}}
+{\ttfamily \#include \char`\"{}transacoes.\+hpp\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+no\+Lista\+Transacao $\ast$ \hyperlink{transacoes_8cpp_a12a3e120029cf27498a9f9c0e3c1a4b6}{cria\+No\+Transacao} (Transacao transacao)
+\item 
+Servico \hyperlink{transacoes_8cpp_a2475d6228c265633be8d32230a33c7b0}{Cria\+Servico\+Usuario} (Usuario usuario\+Provedor, char $\ast$preco\+Servico, char $\ast$descricao\+Servico)
+\item 
+Transacao \hyperlink{transacoes_8cpp_a73aedb2fc95f5a6c44088f515c55fbc8}{Monta\+Transacao} (Servico servico\+Usuario, Categoria categoria\+Servico)
+\item 
+Lista\+Transacao $\ast$ \hyperlink{transacoes_8cpp_aed06de35c8405b314d8e620572ea9a31}{criar\+Lista\+Transacao} ()
+\item 
+int \hyperlink{transacoes_8cpp_a987721bec893b164b400f3dfcabd588e}{add\+No\+Lista\+Transacao\+Existente} (Lista\+Transacao $\ast$lista, no\+Lista\+Transacao $\ast$no)
+\item 
+int \hyperlink{transacoes_8cpp_adf975b5e6e1ccfd0f60659d5ab927f84}{add\+No\+Lista\+Transacao\+Nova} (Lista\+Transacao $\ast$lista, no\+Lista\+Transacao $\ast$no)
+\item 
+int \hyperlink{transacoes_8cpp_a832332969a6daf8f94ba003d6e94efb1}{deleta\+No\+Lista\+Transacao} (Lista\+Transacao $\ast$lista, no\+Lista\+Transacao $\ast$no)
+\item 
+no\+Lista\+Transacao $\ast$ \hyperlink{transacoes_8cpp_ab3e525e2636ab34162ef924945333885}{encontra\+No\+Transacao} (no\+Lista\+Transacao $\ast$inicio, Transacao transacao)
+\item 
+int \hyperlink{transacoes_8cpp_ae6acb4777b758bf2e6a6bff047d489b7}{Libera\+Lista\+Transacao} (Lista\+Transacao $\ast$lista\+Transacao)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{transacoes_8cpp_a987721bec893b164b400f3dfcabd588e}\label{transacoes_8cpp_a987721bec893b164b400f3dfcabd588e}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!add\+No\+Lista\+Transacao\+Existente@{add\+No\+Lista\+Transacao\+Existente}}
+\index{add\+No\+Lista\+Transacao\+Existente@{add\+No\+Lista\+Transacao\+Existente}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{add\+No\+Lista\+Transacao\+Existente()}{addNoListaTransacaoExistente()}}
+{\footnotesize\ttfamily int add\+No\+Lista\+Transacao\+Existente (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista,  }\item[{no\+Lista\+Transacao $\ast$}]{no }\end{DoxyParamCaption})}
+
+Adiciona uma transacao na lista de transacoes, se ja existir no BD \mbox{\Hypertarget{transacoes_8cpp_adf975b5e6e1ccfd0f60659d5ab927f84}\label{transacoes_8cpp_adf975b5e6e1ccfd0f60659d5ab927f84}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!add\+No\+Lista\+Transacao\+Nova@{add\+No\+Lista\+Transacao\+Nova}}
+\index{add\+No\+Lista\+Transacao\+Nova@{add\+No\+Lista\+Transacao\+Nova}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{add\+No\+Lista\+Transacao\+Nova()}{addNoListaTransacaoNova()}}
+{\footnotesize\ttfamily int add\+No\+Lista\+Transacao\+Nova (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista,  }\item[{no\+Lista\+Transacao $\ast$}]{no }\end{DoxyParamCaption})}
+
+Adiciona uma transacao na lista de transacoes, se for nova \mbox{\Hypertarget{transacoes_8cpp_a12a3e120029cf27498a9f9c0e3c1a4b6}\label{transacoes_8cpp_a12a3e120029cf27498a9f9c0e3c1a4b6}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!cria\+No\+Transacao@{cria\+No\+Transacao}}
+\index{cria\+No\+Transacao@{cria\+No\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{cria\+No\+Transacao()}{criaNoTransacao()}}
+{\footnotesize\ttfamily no\+Lista\+Transacao$\ast$ cria\+No\+Transacao (\begin{DoxyParamCaption}\item[{Transacao}]{transacao }\end{DoxyParamCaption})}
+
+Funcao que cria o no de transacao Cria nó \mbox{\Hypertarget{transacoes_8cpp_aed06de35c8405b314d8e620572ea9a31}\label{transacoes_8cpp_aed06de35c8405b314d8e620572ea9a31}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!criar\+Lista\+Transacao@{criar\+Lista\+Transacao}}
+\index{criar\+Lista\+Transacao@{criar\+Lista\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{criar\+Lista\+Transacao()}{criarListaTransacao()}}
+{\footnotesize\ttfamily Lista\+Transacao$\ast$ criar\+Lista\+Transacao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cria lista \mbox{\Hypertarget{transacoes_8cpp_a2475d6228c265633be8d32230a33c7b0}\label{transacoes_8cpp_a2475d6228c265633be8d32230a33c7b0}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!Cria\+Servico\+Usuario@{Cria\+Servico\+Usuario}}
+\index{Cria\+Servico\+Usuario@{Cria\+Servico\+Usuario}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{Cria\+Servico\+Usuario()}{CriaServicoUsuario()}}
+{\footnotesize\ttfamily Servico Cria\+Servico\+Usuario (\begin{DoxyParamCaption}\item[{Usuario}]{usuario\+Provedor,  }\item[{char $\ast$}]{preco\+Servico,  }\item[{char $\ast$}]{descricao\+Servico }\end{DoxyParamCaption})}
+
+Funcao que monta o tipo servico do usuario que vai adicionar na transacao sendo criada Variavel do tipo servico para abrigar os atributos do servico que o usuario usuario\+Provedor esta criando \mbox{\Hypertarget{transacoes_8cpp_a832332969a6daf8f94ba003d6e94efb1}\label{transacoes_8cpp_a832332969a6daf8f94ba003d6e94efb1}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!deleta\+No\+Lista\+Transacao@{deleta\+No\+Lista\+Transacao}}
+\index{deleta\+No\+Lista\+Transacao@{deleta\+No\+Lista\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{deleta\+No\+Lista\+Transacao()}{deletaNoListaTransacao()}}
+{\footnotesize\ttfamily int deleta\+No\+Lista\+Transacao (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista,  }\item[{no\+Lista\+Transacao $\ast$}]{no }\end{DoxyParamCaption})}
+
+Deleta uma transacao da lista de transacoes pelo seu id Caso o nó esteja no meio da lista
+
+Caso o nó esteja no fim da lista
+
+Caso o nó seja o primeiro da lista \mbox{\Hypertarget{transacoes_8cpp_ab3e525e2636ab34162ef924945333885}\label{transacoes_8cpp_ab3e525e2636ab34162ef924945333885}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!encontra\+No\+Transacao@{encontra\+No\+Transacao}}
+\index{encontra\+No\+Transacao@{encontra\+No\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{encontra\+No\+Transacao()}{encontraNoTransacao()}}
+{\footnotesize\ttfamily no\+Lista\+Transacao$\ast$ encontra\+No\+Transacao (\begin{DoxyParamCaption}\item[{no\+Lista\+Transacao $\ast$}]{inicio,  }\item[{Transacao}]{transacao }\end{DoxyParamCaption})}
+
+Procura uma transacao na lista de transacoes Primeiro no da lista \mbox{\Hypertarget{transacoes_8cpp_ae6acb4777b758bf2e6a6bff047d489b7}\label{transacoes_8cpp_ae6acb4777b758bf2e6a6bff047d489b7}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!Libera\+Lista\+Transacao@{Libera\+Lista\+Transacao}}
+\index{Libera\+Lista\+Transacao@{Libera\+Lista\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{Libera\+Lista\+Transacao()}{LiberaListaTransacao()}}
+{\footnotesize\ttfamily int Libera\+Lista\+Transacao (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista\+Transacao }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{transacoes_8cpp_a73aedb2fc95f5a6c44088f515c55fbc8}\label{transacoes_8cpp_a73aedb2fc95f5a6c44088f515c55fbc8}} 
+\index{transacoes.\+cpp@{transacoes.\+cpp}!Monta\+Transacao@{Monta\+Transacao}}
+\index{Monta\+Transacao@{Monta\+Transacao}!transacoes.\+cpp@{transacoes.\+cpp}}
+\subsubsection{\texorpdfstring{Monta\+Transacao()}{MontaTransacao()}}
+{\footnotesize\ttfamily Transacao Monta\+Transacao (\begin{DoxyParamCaption}\item[{Servico}]{servico\+Usuario,  }\item[{Categoria}]{categoria\+Servico }\end{DoxyParamCaption})}
+
+Funcao que monta a transacao que vai ser adicionada, recebendo o servico e a categoria do servico 

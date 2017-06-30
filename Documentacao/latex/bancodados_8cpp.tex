@@ -1,0 +1,168 @@
+\hypertarget{bancodados_8cpp}{}\section{Trabalho/src/bancodados.cpp File Reference}
+\label{bancodados_8cpp}\index{Trabalho/src/bancodados.\+cpp@{Trabalho/src/bancodados.\+cpp}}
+{\ttfamily \#include \char`\"{}bancodados.\+hpp\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+lista\+\_\+usuario $\ast$ \hyperlink{bancodados_8cpp_a28a59b810afafb7fc2ec9bf082e5a760}{Recup\+Dados\+Usuario} (lista\+\_\+usuario $\ast$lista\+Usuario)
+\begin{DoxyCompactList}\small\item\em Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios. \end{DoxyCompactList}\item 
+Lista\+Transacao $\ast$ \hyperlink{bancodados_8cpp_ac007a0613d337620c72a426b4b68cfab}{Recup\+Dados\+Transacoes} (Lista\+Transacao $\ast$lista\+Transacao)
+\begin{DoxyCompactList}\small\item\em Funcao que dada uma lista, recupera os dados desse arquivo para a lista de transacoes. \end{DoxyCompactList}\item 
+Lista\+Categoria $\ast$ \hyperlink{bancodados_8cpp_ab0de4f71afa22700be6eb8b6e587f1a3}{Recup\+Dados\+Categorias} (Lista\+Categoria $\ast$lista\+Cat)
+\begin{DoxyCompactList}\small\item\em Funcao que dada uma lista, recupera os dados desse arquivo para a lista de categorias. \end{DoxyCompactList}\item 
+Grafo $\ast$ \hyperlink{bancodados_8cpp_a9314486d0aa81da2b0b8e3ffc44133fb}{Recup\+Dados\+Grafo\+Amiz} (Grafo $\ast$grafo\+Amizade)
+\begin{DoxyCompactList}\small\item\em Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de amizades. \end{DoxyCompactList}\item 
+Grafo $\ast$ \hyperlink{bancodados_8cpp_ad1d3cf108ad2b6d2b92e46e1e3805b29}{Recup\+Dados\+Grafo\+Transac} (Grafo $\ast$grafo\+Transacoes)
+\begin{DoxyCompactList}\small\item\em Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de transacoes. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_a5f03c531762bf077acbad0975aedf994}{Salva\+Arquivo\+Usuario} (lista\+\_\+usuario $\ast$lista\+Usuario)
+\begin{DoxyCompactList}\small\item\em Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_a9ddb17074353f998f071a6301f1ad1bc}{Salva\+Arquivo\+Transacao} (Lista\+Transacao $\ast$lista\+Transacao)
+\begin{DoxyCompactList}\small\item\em Funcao que, antes do programa encerrar de fato, vai salvar todos as transacoes e suas informacoes em um arquivo. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_a0a4f8a8cc8b6cbb7e1528b2fe7c746de}{Salva\+Arquivo\+Categorias} (Lista\+Categoria $\ast$lista\+Cat)
+\begin{DoxyCompactList}\small\item\em Funcao que, antes do programa encerrar de fato, vai salvar todas as categorias e suas informacoes em um arquivo. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_a40cd5c70ade3daaf56a1e246ba2c77f2}{Salva\+Arquivo\+Grafo\+Amiz} (Grafo $\ast$grafo\+Amizade)
+\begin{DoxyCompactList}\small\item\em Funcao que, antes do programa encerrar de fato, vai salvar o grafo de amizades em um arquivo. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_a6bdd96277487d79a2f3975d0cdade471}{Salva\+Arquivo\+Grafo\+Transacao} (Grafo $\ast$grafo\+Transacoes)
+\begin{DoxyCompactList}\small\item\em Funcao que, antes do programa encerrar de fato, vai salvar o grafo de transacoes em um arquivo. \end{DoxyCompactList}\item 
+int \hyperlink{bancodados_8cpp_aee37ca22b298d00007540413e397ea4e}{Recup\+Infos\+Usua\+ID} (lista\+\_\+usuario $\ast$lista\+Usuario, Lista\+Transacao $\ast$lista\+Transacao)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bancodados_8cpp_ab0de4f71afa22700be6eb8b6e587f1a3}\label{bancodados_8cpp_ab0de4f71afa22700be6eb8b6e587f1a3}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Dados\+Categorias@{Recup\+Dados\+Categorias}}
+\index{Recup\+Dados\+Categorias@{Recup\+Dados\+Categorias}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Dados\+Categorias()}{RecupDadosCategorias()}}
+{\footnotesize\ttfamily Lista\+Categoria$\ast$ Recup\+Dados\+Categorias (\begin{DoxyParamCaption}\item[{Lista\+Categoria $\ast$}]{lista\+Cat }\end{DoxyParamCaption})}
+
+
+
+Funcao que dada uma lista, recupera os dados desse arquivo para a lista de categorias. 
+
+string que vai receber cada string entre os delimitadores do arquivo
+
+contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+
+string temporaria que vai receber cada linha do arquivo
+
+descritor do arquivo \mbox{\Hypertarget{bancodados_8cpp_a9314486d0aa81da2b0b8e3ffc44133fb}\label{bancodados_8cpp_a9314486d0aa81da2b0b8e3ffc44133fb}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Dados\+Grafo\+Amiz@{Recup\+Dados\+Grafo\+Amiz}}
+\index{Recup\+Dados\+Grafo\+Amiz@{Recup\+Dados\+Grafo\+Amiz}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Dados\+Grafo\+Amiz()}{RecupDadosGrafoAmiz()}}
+{\footnotesize\ttfamily Grafo$\ast$ Recup\+Dados\+Grafo\+Amiz (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{grafo\+Amizade }\end{DoxyParamCaption})}
+
+
+
+Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de amizades. 
+
+descritor do arquivo \mbox{\Hypertarget{bancodados_8cpp_ad1d3cf108ad2b6d2b92e46e1e3805b29}\label{bancodados_8cpp_ad1d3cf108ad2b6d2b92e46e1e3805b29}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Dados\+Grafo\+Transac@{Recup\+Dados\+Grafo\+Transac}}
+\index{Recup\+Dados\+Grafo\+Transac@{Recup\+Dados\+Grafo\+Transac}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Dados\+Grafo\+Transac()}{RecupDadosGrafoTransac()}}
+{\footnotesize\ttfamily Grafo$\ast$ Recup\+Dados\+Grafo\+Transac (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{grafo\+Transacoes }\end{DoxyParamCaption})}
+
+
+
+Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de transacoes. 
+
+descritor do arquivo \mbox{\Hypertarget{bancodados_8cpp_ac007a0613d337620c72a426b4b68cfab}\label{bancodados_8cpp_ac007a0613d337620c72a426b4b68cfab}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Dados\+Transacoes@{Recup\+Dados\+Transacoes}}
+\index{Recup\+Dados\+Transacoes@{Recup\+Dados\+Transacoes}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Dados\+Transacoes()}{RecupDadosTransacoes()}}
+{\footnotesize\ttfamily Lista\+Transacao$\ast$ Recup\+Dados\+Transacoes (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista\+Transacao }\end{DoxyParamCaption})}
+
+
+
+Funcao que dada uma lista, recupera os dados desse arquivo para a lista de transacoes. 
+
+descritor do arquivo
+
+variavel do tipo Transacao que vai receber os dados que estao sendo recuperados do arquivo
+
+string que vai receber cada string entre os delimitadores do arquivo
+
+contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+
+string temporaria que vai receber cada linha do arquivo \mbox{\Hypertarget{bancodados_8cpp_a28a59b810afafb7fc2ec9bf082e5a760}\label{bancodados_8cpp_a28a59b810afafb7fc2ec9bf082e5a760}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Dados\+Usuario@{Recup\+Dados\+Usuario}}
+\index{Recup\+Dados\+Usuario@{Recup\+Dados\+Usuario}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Dados\+Usuario()}{RecupDadosUsuario()}}
+{\footnotesize\ttfamily lista\+\_\+usuario$\ast$ Recup\+Dados\+Usuario (\begin{DoxyParamCaption}\item[{lista\+\_\+usuario $\ast$}]{lista\+Usuario }\end{DoxyParamCaption})}
+
+
+
+Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios. 
+
+descritor do arquivo
+
+variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
+
+string que vai receber cada string entre os delimitadores do arquivo
+
+contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+
+string temporaria que vai receber cada linha do arquivo \mbox{\Hypertarget{bancodados_8cpp_aee37ca22b298d00007540413e397ea4e}\label{bancodados_8cpp_aee37ca22b298d00007540413e397ea4e}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Recup\+Infos\+Usua\+ID@{Recup\+Infos\+Usua\+ID}}
+\index{Recup\+Infos\+Usua\+ID@{Recup\+Infos\+Usua\+ID}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Recup\+Infos\+Usua\+I\+D()}{RecupInfosUsuaID()}}
+{\footnotesize\ttfamily int Recup\+Infos\+Usua\+ID (\begin{DoxyParamCaption}\item[{lista\+\_\+usuario $\ast$}]{lista\+Usuario,  }\item[{Lista\+Transacao $\ast$}]{lista\+Transacao }\end{DoxyParamCaption})}
+
+Funcao que vai retornar as informacoes do usuario pelo ID dele, a partir da lista de usuarios E passar essas informacoes para a lista de transacoes O tipo usuario que vai ser retornado
+
+vai ser o ponteiro para percorrer a lista de transacoes
+
+Os ponteiros de no de usuario \mbox{\Hypertarget{bancodados_8cpp_a0a4f8a8cc8b6cbb7e1528b2fe7c746de}\label{bancodados_8cpp_a0a4f8a8cc8b6cbb7e1528b2fe7c746de}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Salva\+Arquivo\+Categorias@{Salva\+Arquivo\+Categorias}}
+\index{Salva\+Arquivo\+Categorias@{Salva\+Arquivo\+Categorias}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Salva\+Arquivo\+Categorias()}{SalvaArquivoCategorias()}}
+{\footnotesize\ttfamily int Salva\+Arquivo\+Categorias (\begin{DoxyParamCaption}\item[{Lista\+Categoria $\ast$}]{lista\+Cat }\end{DoxyParamCaption})}
+
+
+
+Funcao que, antes do programa encerrar de fato, vai salvar todas as categorias e suas informacoes em um arquivo. 
+
+vai ser o ponteiro para percorrer a lista de transacoes \mbox{\Hypertarget{bancodados_8cpp_a40cd5c70ade3daaf56a1e246ba2c77f2}\label{bancodados_8cpp_a40cd5c70ade3daaf56a1e246ba2c77f2}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Salva\+Arquivo\+Grafo\+Amiz@{Salva\+Arquivo\+Grafo\+Amiz}}
+\index{Salva\+Arquivo\+Grafo\+Amiz@{Salva\+Arquivo\+Grafo\+Amiz}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Salva\+Arquivo\+Grafo\+Amiz()}{SalvaArquivoGrafoAmiz()}}
+{\footnotesize\ttfamily int Salva\+Arquivo\+Grafo\+Amiz (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{grafo\+Amizade }\end{DoxyParamCaption})}
+
+
+
+Funcao que, antes do programa encerrar de fato, vai salvar o grafo de amizades em um arquivo. 
+
+ponteiro de vertice para percorrer os vertices do grafo
+
+ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo \mbox{\Hypertarget{bancodados_8cpp_a6bdd96277487d79a2f3975d0cdade471}\label{bancodados_8cpp_a6bdd96277487d79a2f3975d0cdade471}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Salva\+Arquivo\+Grafo\+Transacao@{Salva\+Arquivo\+Grafo\+Transacao}}
+\index{Salva\+Arquivo\+Grafo\+Transacao@{Salva\+Arquivo\+Grafo\+Transacao}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Salva\+Arquivo\+Grafo\+Transacao()}{SalvaArquivoGrafoTransacao()}}
+{\footnotesize\ttfamily int Salva\+Arquivo\+Grafo\+Transacao (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{grafo\+Transacoes }\end{DoxyParamCaption})}
+
+
+
+Funcao que, antes do programa encerrar de fato, vai salvar o grafo de transacoes em um arquivo. 
+
+ponteiro de vertice para percorrer os vertices do grafo
+
+ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo \mbox{\Hypertarget{bancodados_8cpp_a9ddb17074353f998f071a6301f1ad1bc}\label{bancodados_8cpp_a9ddb17074353f998f071a6301f1ad1bc}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Salva\+Arquivo\+Transacao@{Salva\+Arquivo\+Transacao}}
+\index{Salva\+Arquivo\+Transacao@{Salva\+Arquivo\+Transacao}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Salva\+Arquivo\+Transacao()}{SalvaArquivoTransacao()}}
+{\footnotesize\ttfamily int Salva\+Arquivo\+Transacao (\begin{DoxyParamCaption}\item[{Lista\+Transacao $\ast$}]{lista\+Transacao }\end{DoxyParamCaption})}
+
+
+
+Funcao que, antes do programa encerrar de fato, vai salvar todos as transacoes e suas informacoes em um arquivo. 
+
+vai ser o ponteiro para percorrer a lista de transacoes \mbox{\Hypertarget{bancodados_8cpp_a5f03c531762bf077acbad0975aedf994}\label{bancodados_8cpp_a5f03c531762bf077acbad0975aedf994}} 
+\index{bancodados.\+cpp@{bancodados.\+cpp}!Salva\+Arquivo\+Usuario@{Salva\+Arquivo\+Usuario}}
+\index{Salva\+Arquivo\+Usuario@{Salva\+Arquivo\+Usuario}!bancodados.\+cpp@{bancodados.\+cpp}}
+\subsubsection{\texorpdfstring{Salva\+Arquivo\+Usuario()}{SalvaArquivoUsuario()}}
+{\footnotesize\ttfamily int Salva\+Arquivo\+Usuario (\begin{DoxyParamCaption}\item[{lista\+\_\+usuario $\ast$}]{lista\+Usuario }\end{DoxyParamCaption})}
+
+
+
+Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo. 
+
+vai ser o ponteiro para percorrer a lista de usuarios 

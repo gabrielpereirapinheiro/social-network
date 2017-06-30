@@ -1,0 +1,145 @@
+\hypertarget{grafos_8cpp}{}\section{Trabalho/src/grafos.cpp File Reference}
+\label{grafos_8cpp}\index{Trabalho/src/grafos.\+cpp@{Trabalho/src/grafos.\+cpp}}
+{\ttfamily \#include \char`\"{}grafos.\+hpp\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Grafo $\ast$ \hyperlink{grafos_8cpp_ab816e1f3a4db7aa6b1fdefb0ff14aebc}{cria\+\_\+grafo} (char $\ast$nome)
+\item 
+char $\ast$ \hyperlink{grafos_8cpp_a8ebcc1e380ff542b63e6b1f109c59c26}{retorna\+\_\+nome\+\_\+grafo} (Grafo $\ast$G)
+\item 
+int \hyperlink{grafos_8cpp_a75c6770f0b5ac5b07007b1f2408739f5}{destroi\+\_\+grafo} (Grafo $\ast$G)
+\item 
+int \hyperlink{grafos_8cpp_ad7786233561582e04223e8fd7b63cc8a}{adjacente} (Grafo $\ast$G, int x, int y)
+\item 
+int \hyperlink{grafos_8cpp_a4a344b12d4089cf7ca5270f9a1ea2e63}{verifica\+\_\+se\+\_\+existe\+\_\+vertice} (Grafo $\ast$G, int x)
+\item 
+Vertice $\ast$ \hyperlink{grafos_8cpp_a54ea515e83dac8ad94331ce3ac557dfc}{recupera\+\_\+vertice\+\_\+x} (Grafo $\ast$G, int x)
+\item 
+int \hyperlink{grafos_8cpp_a132a591d5136c76da3ec9792c7c2d8aa}{verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x} (Vertice $\ast$v, int y)
+\item 
+int \hyperlink{grafos_8cpp_aeddf4656c4be0261d2bbc71acbc905ce}{valida\+\_\+funcoes\+\_\+aresta} (Grafo $\ast$G, int x, int y)
+\item 
+int \hyperlink{grafos_8cpp_abee0efd13a98528f4bc89fa333f85012}{adiciona\+\_\+vertice} (Grafo $\ast$G, int x)
+\item 
+int \hyperlink{grafos_8cpp_ae9e824a786dcdb72d785611c68fd5db6}{remove\+\_\+vertice} (Grafo $\ast$G, int x)
+\item 
+int \hyperlink{grafos_8cpp_a84c9a315612e685f702fdbba6c80f339}{adiciona\+\_\+aresta} (Grafo $\ast$G, int x, int y)
+\item 
+int \hyperlink{grafos_8cpp_ad29bea2f76c8f57bb4c2482b42998e14}{remove\+\_\+aresta} (Grafo $\ast$G, int x, int y)
+\item 
+Vizinhos $\ast$ \hyperlink{grafos_8cpp_a90eceff032085008281f7af05b2a83fd}{vizinhos} (Grafo $\ast$G, int x)
+\item 
+int \hyperlink{grafos_8cpp_a738043e0c26ef33b3fd1e42f75d4635d}{muda\+\_\+valor\+\_\+vertice} (Grafo $\ast$G, int x, Valor v)
+\item 
+Valor \hyperlink{grafos_8cpp_a6b6951a0b5cf1694a7d60ef57b10f205}{retorna\+\_\+valor\+\_\+vertice} (Grafo $\ast$G, int x)
+\item 
+int \hyperlink{grafos_8cpp_a5f1deffe3fb681cea78456d8eb964edf}{muda\+\_\+valor\+\_\+aresta} (Grafo $\ast$G, int x, int y, Valor v)
+\item 
+Valor \hyperlink{grafos_8cpp_a39449224e4bdbe6f8c77107828d4082a}{retorna\+\_\+valor\+\_\+aresta} (Grafo $\ast$G, int x, int y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{grafos_8cpp_a84c9a315612e685f702fdbba6c80f339}\label{grafos_8cpp_a84c9a315612e685f702fdbba6c80f339}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!adiciona\+\_\+aresta@{adiciona\+\_\+aresta}}
+\index{adiciona\+\_\+aresta@{adiciona\+\_\+aresta}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{adiciona\+\_\+aresta()}{adiciona\_aresta()}}
+{\footnotesize\ttfamily int adiciona\+\_\+aresta (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_abee0efd13a98528f4bc89fa333f85012}\label{grafos_8cpp_abee0efd13a98528f4bc89fa333f85012}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!adiciona\+\_\+vertice@{adiciona\+\_\+vertice}}
+\index{adiciona\+\_\+vertice@{adiciona\+\_\+vertice}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{adiciona\+\_\+vertice()}{adiciona\_vertice()}}
+{\footnotesize\ttfamily int adiciona\+\_\+vertice (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_ad7786233561582e04223e8fd7b63cc8a}\label{grafos_8cpp_ad7786233561582e04223e8fd7b63cc8a}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!adjacente@{adjacente}}
+\index{adjacente@{adjacente}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{adjacente()}{adjacente()}}
+{\footnotesize\ttfamily int adjacente (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_ab816e1f3a4db7aa6b1fdefb0ff14aebc}\label{grafos_8cpp_ab816e1f3a4db7aa6b1fdefb0ff14aebc}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!cria\+\_\+grafo@{cria\+\_\+grafo}}
+\index{cria\+\_\+grafo@{cria\+\_\+grafo}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{cria\+\_\+grafo()}{cria\_grafo()}}
+{\footnotesize\ttfamily Grafo$\ast$ cria\+\_\+grafo (\begin{DoxyParamCaption}\item[{char $\ast$}]{nome }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a75c6770f0b5ac5b07007b1f2408739f5}\label{grafos_8cpp_a75c6770f0b5ac5b07007b1f2408739f5}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!destroi\+\_\+grafo@{destroi\+\_\+grafo}}
+\index{destroi\+\_\+grafo@{destroi\+\_\+grafo}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{destroi\+\_\+grafo()}{destroi\_grafo()}}
+{\footnotesize\ttfamily int destroi\+\_\+grafo (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a5f1deffe3fb681cea78456d8eb964edf}\label{grafos_8cpp_a5f1deffe3fb681cea78456d8eb964edf}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!muda\+\_\+valor\+\_\+aresta@{muda\+\_\+valor\+\_\+aresta}}
+\index{muda\+\_\+valor\+\_\+aresta@{muda\+\_\+valor\+\_\+aresta}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{muda\+\_\+valor\+\_\+aresta()}{muda\_valor\_aresta()}}
+{\footnotesize\ttfamily int muda\+\_\+valor\+\_\+aresta (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{Valor}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a738043e0c26ef33b3fd1e42f75d4635d}\label{grafos_8cpp_a738043e0c26ef33b3fd1e42f75d4635d}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!muda\+\_\+valor\+\_\+vertice@{muda\+\_\+valor\+\_\+vertice}}
+\index{muda\+\_\+valor\+\_\+vertice@{muda\+\_\+valor\+\_\+vertice}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{muda\+\_\+valor\+\_\+vertice()}{muda\_valor\_vertice()}}
+{\footnotesize\ttfamily int muda\+\_\+valor\+\_\+vertice (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{Valor}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a54ea515e83dac8ad94331ce3ac557dfc}\label{grafos_8cpp_a54ea515e83dac8ad94331ce3ac557dfc}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!recupera\+\_\+vertice\+\_\+x@{recupera\+\_\+vertice\+\_\+x}}
+\index{recupera\+\_\+vertice\+\_\+x@{recupera\+\_\+vertice\+\_\+x}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{recupera\+\_\+vertice\+\_\+x()}{recupera\_vertice\_x()}}
+{\footnotesize\ttfamily Vertice$\ast$ recupera\+\_\+vertice\+\_\+x (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_ad29bea2f76c8f57bb4c2482b42998e14}\label{grafos_8cpp_ad29bea2f76c8f57bb4c2482b42998e14}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!remove\+\_\+aresta@{remove\+\_\+aresta}}
+\index{remove\+\_\+aresta@{remove\+\_\+aresta}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{remove\+\_\+aresta()}{remove\_aresta()}}
+{\footnotesize\ttfamily int remove\+\_\+aresta (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_ae9e824a786dcdb72d785611c68fd5db6}\label{grafos_8cpp_ae9e824a786dcdb72d785611c68fd5db6}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!remove\+\_\+vertice@{remove\+\_\+vertice}}
+\index{remove\+\_\+vertice@{remove\+\_\+vertice}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{remove\+\_\+vertice()}{remove\_vertice()}}
+{\footnotesize\ttfamily int remove\+\_\+vertice (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a8ebcc1e380ff542b63e6b1f109c59c26}\label{grafos_8cpp_a8ebcc1e380ff542b63e6b1f109c59c26}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!retorna\+\_\+nome\+\_\+grafo@{retorna\+\_\+nome\+\_\+grafo}}
+\index{retorna\+\_\+nome\+\_\+grafo@{retorna\+\_\+nome\+\_\+grafo}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{retorna\+\_\+nome\+\_\+grafo()}{retorna\_nome\_grafo()}}
+{\footnotesize\ttfamily char$\ast$ retorna\+\_\+nome\+\_\+grafo (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a39449224e4bdbe6f8c77107828d4082a}\label{grafos_8cpp_a39449224e4bdbe6f8c77107828d4082a}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!retorna\+\_\+valor\+\_\+aresta@{retorna\+\_\+valor\+\_\+aresta}}
+\index{retorna\+\_\+valor\+\_\+aresta@{retorna\+\_\+valor\+\_\+aresta}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{retorna\+\_\+valor\+\_\+aresta()}{retorna\_valor\_aresta()}}
+{\footnotesize\ttfamily Valor retorna\+\_\+valor\+\_\+aresta (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a6b6951a0b5cf1694a7d60ef57b10f205}\label{grafos_8cpp_a6b6951a0b5cf1694a7d60ef57b10f205}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!retorna\+\_\+valor\+\_\+vertice@{retorna\+\_\+valor\+\_\+vertice}}
+\index{retorna\+\_\+valor\+\_\+vertice@{retorna\+\_\+valor\+\_\+vertice}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{retorna\+\_\+valor\+\_\+vertice()}{retorna\_valor\_vertice()}}
+{\footnotesize\ttfamily Valor retorna\+\_\+valor\+\_\+vertice (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_aeddf4656c4be0261d2bbc71acbc905ce}\label{grafos_8cpp_aeddf4656c4be0261d2bbc71acbc905ce}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!valida\+\_\+funcoes\+\_\+aresta@{valida\+\_\+funcoes\+\_\+aresta}}
+\index{valida\+\_\+funcoes\+\_\+aresta@{valida\+\_\+funcoes\+\_\+aresta}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{valida\+\_\+funcoes\+\_\+aresta()}{valida\_funcoes\_aresta()}}
+{\footnotesize\ttfamily int valida\+\_\+funcoes\+\_\+aresta (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a4a344b12d4089cf7ca5270f9a1ea2e63}\label{grafos_8cpp_a4a344b12d4089cf7ca5270f9a1ea2e63}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!verifica\+\_\+se\+\_\+existe\+\_\+vertice@{verifica\+\_\+se\+\_\+existe\+\_\+vertice}}
+\index{verifica\+\_\+se\+\_\+existe\+\_\+vertice@{verifica\+\_\+se\+\_\+existe\+\_\+vertice}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{verifica\+\_\+se\+\_\+existe\+\_\+vertice()}{verifica\_se\_existe\_vertice()}}
+{\footnotesize\ttfamily int verifica\+\_\+se\+\_\+existe\+\_\+vertice (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a132a591d5136c76da3ec9792c7c2d8aa}\label{grafos_8cpp_a132a591d5136c76da3ec9792c7c2d8aa}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x@{verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x}}
+\index{verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x@{verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x()}{verifica\_se\_y\_aresta\_de\_x()}}
+{\footnotesize\ttfamily int verifica\+\_\+se\+\_\+y\+\_\+aresta\+\_\+de\+\_\+x (\begin{DoxyParamCaption}\item[{Vertice $\ast$}]{v,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{grafos_8cpp_a90eceff032085008281f7af05b2a83fd}\label{grafos_8cpp_a90eceff032085008281f7af05b2a83fd}} 
+\index{grafos.\+cpp@{grafos.\+cpp}!vizinhos@{vizinhos}}
+\index{vizinhos@{vizinhos}!grafos.\+cpp@{grafos.\+cpp}}
+\subsubsection{\texorpdfstring{vizinhos()}{vizinhos()}}
+{\footnotesize\ttfamily Vizinhos$\ast$ vizinhos (\begin{DoxyParamCaption}\item[{Grafo $\ast$}]{G,  }\item[{int}]{x }\end{DoxyParamCaption})}
+

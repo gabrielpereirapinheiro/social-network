@@ -1,0 +1,73 @@
+.TH "Trabalho/src/categoria.cpp" 3 "Fri Jun 30 2017" "Version 1.0" "SOCIAL NETWORK" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trabalho/src/categoria.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'categoria\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "noListaCategoria * \fBcriaNoCategoria\fP (Categoria categoria)"
+.br
+.ti -1c
+.RI "ListaCategoria * \fBcriarListaCategoria\fP ()"
+.br
+.ti -1c
+.RI "int \fBaddNoListaCategoriaExistente\fP (ListaCategoria *lista, noListaCategoria *no)"
+.br
+.ti -1c
+.RI "int \fBaddNoListaCategoriaNova\fP (ListaCategoria *lista, noListaCategoria *no)"
+.br
+.ti -1c
+.RI "int \fBdeletaNoListaCategoria\fP (ListaCategoria *lista, noListaCategoria *no)"
+.br
+.ti -1c
+.RI "noListaCategoria * \fBencontraNoCategoria\fP (noListaCategoria *inicio, Categoria categoria)"
+.br
+.ti -1c
+.RI "int \fBLiberaListaCategoria\fP (ListaCategoria *listaCategoria)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int addNoListaCategoriaExistente (ListaCategoria * lista, noListaCategoria * no)"
+Adiciona uma categoria na lista de categorias, se for existente no BD 
+.PP
+Definition at line 26 of file categoria\&.cpp\&.
+.SS "int addNoListaCategoriaNova (ListaCategoria * lista, noListaCategoria * no)"
+Adiciona uma categoria na lista de categorias, se for nova 
+.PP
+Definition at line 53 of file categoria\&.cpp\&.
+.SS "noListaCategoria* criaNoCategoria (Categoria categoria)"
+Funcao que cria o no de categoria Cria nó 
+.PP
+Definition at line 5 of file categoria\&.cpp\&.
+.SS "ListaCategoria* criarListaCategoria ()"
+Cria lista 
+.PP
+Definition at line 14 of file categoria\&.cpp\&.
+.SS "int deletaNoListaCategoria (ListaCategoria * lista, noListaCategoria * no)"
+Deleta uma categoria da lista de categorias pelo seu id Caso o nó esteja no meio da lista
+.PP
+Caso o nó esteja no fim da lista
+.PP
+Caso o nó seja o primeiro da lista 
+.PP
+Definition at line 84 of file categoria\&.cpp\&.
+.SS "noListaCategoria* encontraNoCategoria (noListaCategoria * inicio, Categoria categoria)"
+Procura uma categoria na lista de categorias Primeiro no da lista 
+.PP
+Definition at line 123 of file categoria\&.cpp\&.
+.SS "int LiberaListaCategoria (ListaCategoria * listaCategoria)"
+
+.PP
+Definition at line 146 of file categoria\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SOCIAL NETWORK from the source code\&.
