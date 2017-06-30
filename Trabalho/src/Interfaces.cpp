@@ -16,11 +16,11 @@
 // ListaCategoria * lista_cat = criarListaCategoria(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
 
 /**************************************************************************************/
-
+/*
 void populaLista(ListaCategoria *listaCategorias)
 {
 /****************RETIRAR ESTA PORCARIA *********************/
-
+/*
 Categoria eletronicos;
 strcpy(eletronicos.nomeCategoria, "eletronicos");
 Categoria vestuario;
@@ -32,8 +32,8 @@ addNoListaCategoria(listaCategorias,criaNoCategoria(eletronicos));
 addNoListaCategoria(listaCategorias,criaNoCategoria(vestuario));
 addNoListaCategoria(listaCategorias,criaNoCategoria(carona));
 /********************************************************/
-}
-
+/*}
+	
 /*************************************************************************************/
 
 

@@ -215,3 +215,26 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 	REQUIRE(ptr->categoria.idCategoria == 2);
  
 }
+
+/* Teste case para biblioteca bancodados.hpp */
+TEST_CASE("Testes da biblioteca bancodados.hpp:"){
+
+// lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario);
+// ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao);
+// ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat);
+// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade);
+// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);
+// int SalvaArquivoUsuario(lista_usuario *lista_usuario);
+// int SalvaArquivoTransacao(ListaTransacao *listaTransacao);
+// int SalvaArquivoCategorias(ListaCategoria *listaCat);
+// int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade);
+// int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes);
+// int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao);
+
+	/* Teste da funcao RecupDadosUsuario */
+	lista_usuario *lista = criarListaUsuario();
+	lista = RecupDadosUsuario(lista);
+
+	REQUIRE(lista->primeiro == NULL);
+
+}
