@@ -767,11 +767,10 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
 
-	move(10,1);
+	move(5,0);
 	if(listaUsuarios->primeiro == NULL)
 	{
-		printw("Nao ha ninguem no banco !\n\n Clique 'enter' para voltar ");
-		getch();
+		printw("Nao ha ninguem no banco !\n\nClique 'enter' para voltar ");
 	}
 	else
 	{
@@ -791,12 +790,11 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 			if (ponteiro_vertice==NULL)
 			{
 				printw("deu ruim");
-
 			}
 
 			lista_vizinhos = ponteiro_vertice->listVizinhos;
 
-			move(10,1);
+			move(5,0);
 			printw("Usuario %s\n\n",recebe_usuario.nome);
 
 			if(lista_vizinhos == NULL)
