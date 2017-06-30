@@ -219,11 +219,9 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 /* Teste case para biblioteca bancodados.hpp */
 TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
-// lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario);
-// ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao);
 // ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat);
-// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade);
-// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);
+// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade); -----
+// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);	------
 // int SalvaArquivoUsuario(lista_usuario *lista_usuario);
 // int SalvaArquivoTransacao(ListaTransacao *listaTransacao);
 // int SalvaArquivoCategorias(ListaCategoria *listaCat);
@@ -232,9 +230,23 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 // int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao);
 
 	/* Teste da funcao RecupDadosUsuario */
-	lista_usuario *lista = criarListaUsuario();
-	lista = RecupDadosUsuario(lista);
+	lista_usuario *lista_us = criarListaUsuario();
+	lista_us = RecupDadosUsuario(lista_us);
 
-	REQUIRE(lista->primeiro == NULL);
+	REQUIRE(lista_us->primeiro == NULL);
+
+	/* Teste da funcao RecupDadosTransacoes */
+	ListaTransacao *lista_tr = criarListaTransacao();
+	lista_tr = RecupDadosTransacoes(lista_tr);
+
+	REQUIRE(lista_tr->primeiro == NULL);
+
+	/* Teste da funcao RecupDadosCategorias */
+	ListaCategoria *lista_cat = criarListaCategoria();
+	lista_cat = RecupDadosCategorias(lista_cat);
+
+	REQUIRE(lista_cat->primeiro == NULL);
+
+	
 
 }
