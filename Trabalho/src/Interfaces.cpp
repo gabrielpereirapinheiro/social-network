@@ -639,6 +639,8 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	clear();
 	imprime_titulo();
+	imprime_usuario(nome);
+
 
 	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
 	printw("\n");
@@ -660,7 +662,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	noListaTransacao * ponteiro = listaTransacoes->primeiro;
 
 	/* Contador para identificar a transacao escolhida */
-	int contador = 0;
+	int contador = 0; 
 	while(ponteiro != NULL)
 	{
 
@@ -704,12 +706,20 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	}
 
 
+	clear();
+	imprime_titulo();
+	imprime_usuario(nome);
+
 	/* Mostrando ao usuario transacao esolhida */
 	printw("--------------------------------------------------------------");
 	printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
 												  		 ponteiro->transacao.servico.precoServico);
 	printw("--------------------------------------------------------------\n\n");
-			
+	
+	//Fazer : adicionar transacao nova  o grafo !!!!!!
+
+	printw("Entrar em contato com %s pelo email %s.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
+													   ponteiro->transacao.servico.usuarioProvedor.email);		
 	getch();
 }
 
