@@ -219,7 +219,6 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 /* Teste case para biblioteca bancodados.hpp */
 TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
-// ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat);
 // Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade); -----
 // Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);	------
 // int SalvaArquivoUsuario(lista_usuario *lista_usuario);
@@ -247,6 +246,10 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
 	REQUIRE(lista_cat->primeiro == NULL);
 
-	
+	/* Teste da funcao SalvaArquivoUsuario */
+	int retorno_SalvaArquivoUsuario;
+	retorno_SalvaArquivoUsuario = SalvaArquivoUsuario(lista_us);
+
+	REQUIRE(retorno_SalvaArquivoUsuario == ERRO);
 
 }
