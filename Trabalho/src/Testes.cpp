@@ -219,22 +219,64 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 /* Teste case para biblioteca bancodados.hpp */
 TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
-// lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario);
-// ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao);
-// ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat);
-// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade);
-// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);
-// int SalvaArquivoUsuario(lista_usuario *lista_usuario);
-// int SalvaArquivoTransacao(ListaTransacao *listaTransacao);
-// int SalvaArquivoCategorias(ListaCategoria *listaCat);
-// int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade);
-// int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes);
-// int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao);
+// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade); -----
+// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);	------
 
 	/* Teste da funcao RecupDadosUsuario */
-	lista_usuario *lista = criarListaUsuario();
-	lista = RecupDadosUsuario(lista);
+	lista_usuario *lista_us = criarListaUsuario();
+	lista_us = RecupDadosUsuario(lista_us);
 
-	REQUIRE(lista->primeiro == NULL);
+	REQUIRE(lista_us->primeiro == NULL);
 
+	/* Teste da funcao RecupDadosTransacoes */
+	ListaTransacao *lista_tr = criarListaTransacao();
+	lista_tr = RecupDadosTransacoes(lista_tr);
+
+	REQUIRE(lista_tr->primeiro == NULL);
+
+	/* Teste da funcao RecupDadosCategorias */
+	ListaCategoria *lista_cat = criarListaCategoria();
+	lista_cat = RecupDadosCategorias(lista_cat);
+
+	REQUIRE(lista_cat->primeiro == NULL);
+
+	/* Teste da funcao SalvaArquivoUsuario */
+	int retorno_SalvaArquivoUsuario;
+	retorno_SalvaArquivoUsuario = SalvaArquivoUsuario(lista_us);
+
+	REQUIRE(retorno_SalvaArquivoUsuario == ERRO);
+
+	/* Teste da funcao SalvaArquivoTransacao */
+	int retorno_SalvaArquivoTransacao;
+	retorno_SalvaArquivoTransacao = SalvaArquivoTransacao(lista_tr);
+
+	REQUIRE(retorno_SalvaArquivoTransacao == ERRO);
+
+	/* Teste da funcao SalvaArquivoCategorias */
+	int retorno_SalvaArquivoCategorias;
+	retorno_SalvaArquivoCategorias = SalvaArquivoCategorias(lista_cat);
+
+	REQUIRE(retorno_SalvaArquivoCategorias == ERRO);
+
+	/* Teste da funcao SalvaArquivoGrafoAmiz */
+	char nome_a[] = "amizade";
+	Grafo *g_amizade = cria_grafo(nome_a);
+	int retorno_SalvaArquivoGrafoAmiz;
+	retorno_SalvaArquivoGrafoAmiz = SalvaArquivoGrafoAmiz(g_amizade);
+
+	REQUIRE(retorno_SalvaArquivoGrafoAmiz == ERRO);
+
+	/* Teste da funcao SalvaArquivoGrafoTransacao */
+	char nome_t[] = "transacao";
+	Grafo *g_transacao = cria_grafo(nome_t);
+	int retorno_SalvaArquivoGrafoTransacao;
+	retorno_SalvaArquivoGrafoTransacao = SalvaArquivoGrafoTransacao(g_transacao);
+
+	REQUIRE(retorno_SalvaArquivoGrafoTransacao == ERRO);
+
+	/* Teste da funcao RecupInfosUsuaID */
+	int retorno_RecupInfosUsuaID;
+	retorno_RecupInfosUsuaID = RecupInfosUsuaID(lista_us,lista_tr);
+
+	REQUIRE(retorno_RecupInfosUsuaID == ERRO);
 }

@@ -21,9 +21,36 @@ ListaCategoria *criarListaCategoria(){	/** Cria lista */
 
 }
 
-/** Adiciona uma categoria na lista de categorias*/
+/** Adiciona uma categoria na lista de categorias, se for existente no BD*/
 /*Retorna 0 em caso sucesso e -1 caso contrario*/
-int addNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){	
+int addNoListaCategoriaExistente(ListaCategoria *lista, noListaCategoria *no){	
+
+	if(lista == NULL || no == NULL){
+		printf("Erro na funcao addNoListaCategoria! Argumentos invalidos\n");
+		return ERRO;
+	}
+	noListaCategoria *acompanha = lista->primeiro;
+
+	if (acompanha == NULL){
+
+		lista->primeiro = no;
+	}
+	else{
+		
+		while(acompanha->prox != NULL){
+
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no;
+	}
+
+	return SEM_ERRO;
+}
+
+/** Adiciona uma categoria na lista de categorias, se for nova*/
+/*Retorna 0 em caso sucesso e -1 caso contrario*/
+int addNoListaCategoriaNova(ListaCategoria *lista, noListaCategoria *no){	
 
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaCategoria! Argumentos invalidos\n");
