@@ -48,9 +48,36 @@ ListaTransacao *criarListaTransacao(){	/** Cria lista */
 
 }
 
-/** Adiciona uma transacao na lista de transacoes*/
+/** Adiciona uma transacao na lista de transacoes, se ja existir no BD*/
 /*Retorna 0 em caso sucesso e -1 caso contrario*/
-int addNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){	
+int addNoListaTransacaoExistente(ListaTransacao *lista, noListaTransacao *no){	
+	
+	if(lista == NULL || no == NULL){
+		printf("Erro na funcao addNoListaTransacao! Argumentos invalidos\n");
+		return ERRO;
+	}
+	noListaTransacao *acompanha = lista->primeiro;
+
+	if (acompanha == NULL){
+
+		lista->primeiro = no;
+	}
+	else{
+			
+		while(acompanha->prox != NULL){
+
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no; 
+	}
+
+	return SEM_ERRO;
+}
+
+/** Adiciona uma transacao na lista de transacoes, se for nova*/
+/*Retorna 0 em caso sucesso e -1 caso contrario*/
+int addNoListaTransacaoNova(ListaTransacao *lista, noListaTransacao *no){	
 	
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaTransacao! Argumentos invalidos\n");

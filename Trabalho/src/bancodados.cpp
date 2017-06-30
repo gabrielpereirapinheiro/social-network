@@ -7,7 +7,7 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 	Usuario usuarioRecuperado; //! variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
 	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
 	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
-	char strTemp[701]; //! string temporaria que vai receber cada linha do arquivo
+	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
 
 	fUser = fopen("../arquivos/ArquivoUsuarios.txt", "r"); // abertura do arquivo
 
@@ -22,7 +22,7 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 
 		// parte que vai ler do arquivo e inserir na lista
 		while(!feof(fUser)){
-		  	fscanf(fUser, "%s", strTemp);
+		  	fgets(strTemp, 1001, fUser); // pega uma linha completa do arquivo
 		  	if(feof(fUser)) break; // aqui sai do loop de percorrer o arquivo
 		  	contadorCampoAtual = 0;
 		  	campoCbclho = NULL;
@@ -42,7 +42,7 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 			   contadorCampoAtual++;
 			   campoCbclho = strtok (NULL, "|\n");
 			}
-			addNoListaUsuario(listaUsuario, criaNoUsuario(usuarioRecuperado)); // adiciona o usuario recuperado na lista de usuarios
+			addNoListaUsuarioExistente(listaUsuario, criaNoUsuario(usuarioRecuperado)); // adiciona o usuario recuperado na lista de usuarios
   		}
 
 		fclose(fUser);
@@ -74,14 +74,15 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 
 		// parte que vai ler do arquivo e inserir na lista
 		while(!feof(fTransacao)){
-		  	fscanf(fTransacao, "%s", strTemp);
+		  	fgets(strTemp, 1001, fTransacao); // pega uma linha completa do arquivo
 		  	if(feof(fTransacao)) break; // aqui sai do loop de percorrer o arquivo
 		  	contadorCampoAtual = 0;
 		  	campoCbclho = NULL;
 			campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
 			while (campoCbclho != NULL){
 				// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
-			   switch(contadorCampoAtual){
+			    if(contadorCampoAtual < 7){
+			    	switch(contadorCampoAtual){
 			    	case 0: transacaoRecuperada.idTransacao = atoi(campoCbclho); break; // ID
 			    	case 1: transacaoRecuperada.classificacao = atoi(campoCbclho); break; // classificacao
 			    	case 2: transacaoRecuperada.servico.usuarioProvedor.ID = atoi(campoCbclho); break; // id usuario provedor
@@ -89,6 +90,7 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 			    	case 4: strcpy(transacaoRecuperada.servico.descricaoServico, campoCbclho); break; // descricao
 			    	case 5: transacaoRecuperada.categoria.idCategoria = atoi(campoCbclho); break; // id categoria
 			    	default: strcpy(transacaoRecuperada.categoria.nomeCategoria, campoCbclho); break; // categoria
+			    	}
 			    }
 
 			   // parte que vai verificar se classificao eh pendente ou concluida, se for concluida, ainda tem outros campos para serem obtidos
@@ -102,7 +104,7 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 			   contadorCampoAtual++;
 			   campoCbclho = strtok (NULL, "|\n");
 			}
-			addNoListaTransacao(listaTransacao, criaNoTransacao(transacaoRecuperada)); // adiciona a transacao recuperada na lista de transacoes
+			addNoListaTransacaoExistente(listaTransacao, criaNoTransacao(transacaoRecuperada)); // adiciona a transacao recuperada na lista de transacoes
   		}
 		
 		// chama a funcao que coloca as informacoes na lista
@@ -129,8 +131,6 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos da lista
 	// senao, retorna a lista criada
 
-	//ID|Nome Categoria|
-
 	//categorias
 	if(fCateg != NULL){
 		fseek(fCateg, 20, SEEK_SET); // vai pular o cabecalho do arquivo
@@ -138,7 +138,7 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 
 		// parte que vai ler do arquivo e inserir na lista
 		while(!feof(fCateg)){
-		  	fscanf(fCateg, "%s", strTemp);
+		  	fgets(strTemp, 1001, fCateg); // pega uma linha completa do arquivo
 		  	if(feof(fCateg)) break; // aqui sai do loop de percorrer o arquivo
 		  	contadorCampoAtual = 0;
 		  	campoCbclho = NULL;
@@ -152,7 +152,7 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 			   contadorCampoAtual++;
 			   campoCbclho = strtok (NULL, "|\n");
 			}
-			addNoListaCategoria(listaCat, criaNoCategoria(categoriaRecuperada)); // adiciona a categoria recuperada na lista de categorias
+			addNoListaCategoriaExistente(listaCat, criaNoCategoria(categoriaRecuperada)); // adiciona a categoria recuperada na lista de categorias
   		}
 
 		fclose(fCateg);
@@ -171,6 +171,8 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
 	// senao, retorna o grafo criado
+
+	// ID VERTICE>|ID ARESTAS|
 
 	//grafo amizades
 	if(fGrafAmiz != NULL){
@@ -332,7 +334,7 @@ int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
 	// Vai escrever sempre, por default, a ordem com que as informacoes do grafo vao ser dispostas
 	fprintf(fp, "ID VERTICE>|ID ARESTAS|\n\n");
 	// vai mostrar: nome do grafo|Quantidade de vertices|Quantidade de arestas|
-	fprintf(fp, "%s|%d|%d|\n", grafoAmizade->nomeGrafo, grafoAmizade->V, grafoAmizade->E);
+	fprintf(fp, "|%s|%d|%d|\n", grafoAmizade->nomeGrafo, grafoAmizade->V, grafoAmizade->E);
 
 	//Escrito o cabecalho, agora vai escrever todos os dados do grafo de amizades
 	if(grafoAmizade->vertices){

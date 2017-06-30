@@ -18,7 +18,8 @@ typedef struct lista_usuario{
 
 no_lista_usuario * criaNoUsuario(Usuario usuario);
 lista_usuario *criarListaUsuario();
-void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
+void addNoListaUsuarioExistente(lista_usuario *lista, no_lista_usuario *no);
+void addNoListaUsuarioNovo(lista_usuario *lista, no_lista_usuario *no);
 void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no);
 no_lista_usuario *encontraNoUsuario(no_lista_usuario *inicio, char cpf[]);
 no_lista_usuario *encontraNoUsuarioEmail(no_lista_usuario *inicio, char email[]);

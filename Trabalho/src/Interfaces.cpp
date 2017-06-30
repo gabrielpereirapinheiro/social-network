@@ -28,9 +28,9 @@ strcpy(vestuario.nomeCategoria,"vestuario");
 Categoria carona;
 strcpy(carona.nomeCategoria,"carona");
 
-addNoListaCategoria(listaCategorias,criaNoCategoria(eletronicos));
-addNoListaCategoria(listaCategorias,criaNoCategoria(vestuario));
-addNoListaCategoria(listaCategorias,criaNoCategoria(carona));
+addNoListaCategoriaNova(listaCategorias,criaNoCategoria(eletronicos));
+addNoListaCategoriaNova(listaCategorias,criaNoCategoria(vestuario));
+addNoListaCategoriaNova(listaCategorias,criaNoCategoria(carona));
 /********************************************************/
 }
 
@@ -1076,7 +1076,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 		case 1:
 			{
 				no_lista_usuario * novo_no = criaNoUsuario(tela_sign_up());
-				addNoListaUsuario(listaUsuarios, novo_no);
+				addNoListaUsuarioNovo(listaUsuarios, novo_no);
 				adiciona_vertice(grafoAmizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 														 // se esta mudando o ID diretamente no no
 			}
 			break;
