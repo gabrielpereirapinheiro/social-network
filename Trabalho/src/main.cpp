@@ -23,6 +23,10 @@ int main()
 	listaCategorias = RecupDadosCategorias(listaCategorias);
 	grafoAmizade = RecupDadosGrafoAmiz(grafoAmizade);
 	grafoTransacoes = RecupDadosGrafoTransac(grafoTransacoes);
+	if(RecupInfosUsuaID(listaUsuarios, listaTransacoes) < 0){
+		printf("Erro ao recuperar informacoes de usuario para a lista de transacoes!\n");
+	}
+	
 	tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	return 0;
 

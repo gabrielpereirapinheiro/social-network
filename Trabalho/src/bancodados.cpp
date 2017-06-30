@@ -102,12 +102,14 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 			   contadorCampoAtual++;
 			   campoCbclho = strtok (NULL, "|\n");
 			}
-			addNoListaTransacao(listaTransacao, criaNoTransacao(transacaoRecuperada)); // adiciona o usuario recuperado na lista de usuarios
+			addNoListaTransacao(listaTransacao, criaNoTransacao(transacaoRecuperada)); // adiciona a transacao recuperada na lista de transacoes
   		}
 		
 		// chama a funcao que coloca as informacoes na lista
 		fclose(fTransacao);
 	}
+
+
 
 	return listaTransacao;
 }
@@ -115,6 +117,10 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de categorias
 ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 	//tamanho do cabecalho do arquivo de categorias: 20 
+	Categoria categoriaRecuperada;
+	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
 	FILE *fCateg = NULL; //! descritor do arquivo
 	fCateg = fopen("../arquivos/ArquivoCategorias.txt", "r");
 
@@ -123,10 +129,32 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos da lista
 	// senao, retorna a lista criada
 
+	//ID|Nome Categoria|
+
 	//categorias
 	if(fCateg != NULL){
-		
-		// chama a funcao que coloca as informacoes na lista
+		fseek(fCateg, 20, SEEK_SET); // vai pular o cabecalho do arquivo
+		fscanf(fCateg, "%d\n", &listaCat->numeroCategorias); // vai pegar a quantidade de categorias
+
+		// parte que vai ler do arquivo e inserir na lista
+		while(!feof(fCateg)){
+		  	fscanf(fCateg, "%s", strTemp);
+		  	if(feof(fCateg)) break; // aqui sai do loop de percorrer o arquivo
+		  	contadorCampoAtual = 0;
+		  	campoCbclho = NULL;
+			campoCbclho = strtok (strTemp,"|\n"); // vai quebrar a string, usando | e \n como delimitadores
+			while (campoCbclho != NULL){
+				// switch que, dado o valor que esta no contadorCampoAtual, vai ler o tipo de dado que tem que ser lido
+			   switch(contadorCampoAtual){
+			    	case 0: categoriaRecuperada.idCategoria = atoi(campoCbclho); break; // ID da categoria
+			    	default: strcpy(categoriaRecuperada.nomeCategoria, campoCbclho); break; // nome da categoria
+			    }
+			   contadorCampoAtual++;
+			   campoCbclho = strtok (NULL, "|\n");
+			}
+			addNoListaCategoria(listaCat, criaNoCategoria(categoriaRecuperada)); // adiciona a categoria recuperada na lista de categorias
+  		}
+
 		fclose(fCateg);
 	}
 
@@ -374,7 +402,7 @@ int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao
 	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
 	no_lista_usuario *ptrNoUsuarioProv = NULL, *ptrNoUsuarioCli = NULL; //! Os ponteiros de no de usuario 
 
-	if(listaUsuario == NULL || listaTransacao == NULL){
+	if(listaUsuario->primeiro == NULL || listaTransacao->primeiro == NULL){
 		printf("Alguma das listas passadas como parametro vazias! Saindo da funcao RecupInfosUsuaID!\n");
 		return ERRO;
 	}
