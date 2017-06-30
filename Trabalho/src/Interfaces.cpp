@@ -770,7 +770,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 	move(5,0);
 	if(listaUsuarios->primeiro == NULL)
 	{
-		printw("Nao ha ninguem no banco !\n\nClique 'enter' para voltar ");
+		printw("Nao ha usuarios salvos !\n\nClique 'enter' para voltar ");
 	}
 	else
 	{
