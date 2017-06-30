@@ -182,27 +182,14 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 		fseek(fGrafAmiz, 25, SEEK_SET); // vai pular o cabecalho do arquivo
 		// pega uma linha completa do arquivo, que contem o nome do grafo, numero de vertices e numero de arestas
 		fgets(strTemp, 1001, fGrafAmiz);
-		campoCbclho = strtok(strTemp, "|\n");
-		// parte que vai pegar as outras informacoes gerais referentes ao grafo, como numero de vertices e arestas
-		while(campoCbclho != NULL){
-			switch(contadorAux){
-				case 1: grafoAmizade->V = atoi(campoCbclho); break;
-				case 2: grafoAmizade->E = atoi(campoCbclho); break;
-			}
-			contadorAux++;
-			campoCbclho = strtok (NULL, "|\n");
-		}
 		ondeArquivo = ftell(fGrafAmiz); // recebe a posicao do arquivo logo depois de pegar as informacoes gerais do grafo
 		campoCbclho = NULL; // reinicializa o ponteiro de char como NULL
 		// parte que vai adicionar os vertices no grafo
 		while(!feof(fGrafAmiz)){
 		  	fscanf(fGrafAmiz, "%s", strTemp);
 		  	if(feof(fGrafAmiz)) break;
-			campoCbclho = strtok (strTemp,">\n");
-			while (campoCbclho != NULL){
-			   adiciona_vertice(grafoAmizade, atoi(strTemp)); // adiciona o vertice no grafo
-			   campoCbclho = strtok (NULL, ">\n");
-			}
+			campoCbclho = strtok (strTemp,">");
+			adiciona_vertice(grafoAmizade, atoi(campoCbclho)); // adiciona o vertice no grafo
   		}
 
   		//volta para a posicao do arquivo guardada na variavel ondeArquivo, para agora adicionar as arestas
@@ -211,12 +198,12 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 		  	fscanf(fGrafAmiz, "%s", strTemp);
 		  	contadorAux = 0;
 		  	if(feof(fGrafAmiz)) break;
-			campoCbclho = strtok (strTemp,">\n");
+			campoCbclho = strtok (strTemp,">");
 			vertice = atoi(campoCbclho);
+			campoCbclho = strtok(NULL, "|\n");
 			while (campoCbclho != NULL){
-			   if(contadorAux > 0) adiciona_aresta(grafoAmizade, vertice, atoi(strTemp)); // adiciona a aresta no vertice
-			   contadorAux++;
-			   campoCbclho = strtok (NULL, "|\n");
+			   adiciona_aresta(grafoAmizade, vertice, atoi(campoCbclho)); // adiciona a aresta no vertice
+			   campoCbclho = strtok(NULL, "|\n");
 			}
   		}
 		

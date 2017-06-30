@@ -49,8 +49,12 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	endwin(); 
 	//Finalizar a ncruses
 	int retornoSalvaUsuario = 0;
+	int retornoSalvaGrafoAmiz = 0;
 	if(listaUsuarios->primeiro != NULL){
 		retornoSalvaUsuario = SalvaArquivoUsuario(listaUsuarios);
+	}
+	if(grafoAmizade->vertices != NULL){
+		retornoSalvaGrafoAmiz = SalvaArquivoGrafoAmiz(grafoAmizade);
 	}
 	
 	exit(0);
