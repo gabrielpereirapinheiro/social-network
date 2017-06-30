@@ -221,8 +221,6 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
 // Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade); -----
 // Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);	------
-// int SalvaArquivoCategorias(ListaCategoria *listaCat);
-// int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade);
 // int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes);
 // int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao);
 
@@ -262,4 +260,19 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
 	REQUIRE(retorno_SalvaArquivoCategorias == ERRO);
 
+	/* Teste da funcao SalvaArquivoGrafoAmiz */
+	char nome_a[] = "amizade";
+	Grafo *g_amizade = cria_grafo(nome_a);
+	int retorno_SalvaArquivoGrafoAmiz;
+	retorno_SalvaArquivoGrafoAmiz = SalvaArquivoGrafoAmiz(g_amizade);
+
+	REQUIRE(retorno_SalvaArquivoGrafoAmiz == ERRO);
+
+	/* Teste da funcao SalvaArquivoGrafoTransacao */
+	char nome_t[] = "amizade";
+	Grafo *g_transacao = cria_grafo(nome_t);
+	int retorno_SalvaArquivoGrafoTransacao;
+	retorno_SalvaArquivoGrafoTransacao = SalvaArquivoGrafoTransacao(g_transacao);
+
+	REQUIRE(retorno_SalvaArquivoGrafoTransacao == ERRO);
 }
