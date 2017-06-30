@@ -41,8 +41,12 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	Sem parametros. 
+		\details Funcao que salva as listas e finaliza o programa.
+		\param	lista_usuario *listaUsuarios: 
+		 		ListaTransacao *listaTransacoes: 
+		 		ListaCategoria *listaCategorias:
+		 		Grafo *grafoAmizade:
+		 		Grafo *grafoTransacoes: 
 		\return Sem retorno. 
 	*/
 
