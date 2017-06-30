@@ -21,7 +21,27 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 
 }
 
-void addNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
+// Funcao que vai adicionar na lista um usuario que ja existe, ou seja, que ja tem no BD
+void addNoListaUsuarioExistente(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
+	no_lista_usuario *acompanha = NULL;
+	acompanha = lista->primeiro;
+
+	if (acompanha == NULL){
+		lista->primeiro = no;
+	}
+	else{
+		
+		while(acompanha->prox != NULL){
+
+			acompanha = acompanha->prox;
+		}
+
+		acompanha->prox = no;
+	}
+}
+
+// Funcao que vai adicionar na lista um usuario novo, ou seja, ques esta sendo cadastrado
+void addNoListaUsuarioNovo(lista_usuario *lista, no_lista_usuario *no){	/** Adiciona nó na lista */
 	no_lista_usuario *acompanha = NULL;
 	acompanha = lista->primeiro;
 
