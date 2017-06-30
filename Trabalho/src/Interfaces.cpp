@@ -629,9 +629,88 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+	/** 
+		\details Permite ao usuario adicionar uma transacao.
+		\param	Char nome[]: Nome do usuario; 
+				Char CPF[]: CPF do usuario.
+		\return Sem retorno. 
+	*/
+	char categoria_desejada[51];
+
 	clear();
 	imprime_titulo();
 
+	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
+	printw("\n");
+
+	/* Listando as categorias de transacoes existentes */
+	while(ptr_categoria != NULL)
+	{
+		printw("%s\n",ptr_categoria->categoria.nomeCategoria);
+		ptr_categoria = ptr_categoria->prox;
+	}
+
+	curs_set(1);
+	echo();
+
+	/* Categoria desejada requerida do usuario */
+	printw("\n\nDigite o nome da categoria desejada:\n");
+	scanw("%s",categoria_desejada);
+
+	noListaTransacao * ponteiro = listaTransacoes->primeiro;
+
+	/* Contador para identificar a transacao escolhida */
+	int contador = 0;
+	while(ponteiro != NULL)
+	{
+
+		if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+		{	
+			printw("--------------------------------------------------------------");
+			printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
+												  		 ponteiro->transacao.servico.precoServico);
+			printw("--------------------------------------------------------------\n\n");
+			
+			contador++;
+		}
+
+		ponteiro = ponteiro->prox;
+	}
+	getch();
+
+	/* Recebe opcao desejada */
+	int opcao_desejada;
+	printw("Digite o numero da opcao desejada.\n");
+	scanw("%d",&opcao_desejada);
+
+
+	/* Recuperando transacao escolhida */
+	ponteiro = listaTransacoes->primeiro;
+	contador = 0;
+	while(ponteiro != NULL)
+	{
+
+		if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+		{	
+			if(opcao_desejada == contador)
+			{
+				break;
+			}
+
+			contador++;
+		}
+
+		ponteiro = ponteiro->prox;
+	}
+
+
+	/* Mostrando ao usuario transacao esolhida */
+	printw("--------------------------------------------------------------");
+	printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
+												  		 ponteiro->transacao.servico.precoServico);
+	printw("--------------------------------------------------------------\n\n");
+			
+	getch();
 }
 
 int menu_usuario(char nome[])
