@@ -550,6 +550,8 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 		\return Sem retorno. 
 	*/
 	char categoria_desejada[51];
+	char descricao_servico[201];
+	char preco_servico[31];
 
 	clear();
 	imprime_titulo();
@@ -571,12 +573,60 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	printw("\n\nDigite o nome da categoria desejada:\n");
 	scanw("%s",categoria_desejada);
 
+	noListaCategoria * no_categoria = listaCategorias->primeiro;
+
+	/* Pegando no da categoria escolhida */
+	while(no_categoria != NULL)
+	{
+		if(strcmp(no_categoria->categoria.nomeCategoria, categoria_desejada) == 0){
+
+			break;
+		}
+		no_categoria = no_categoria->prox;
+	}
+
+	clear();
+	imprime_titulo();
+
+	printw("\nInsira a descricao do produto/servico oferecido. Maximo 200 caracteres. \n\n");
+	scanw("%[^\n]s",descricao_servico);
+
+	clear();
+	imprime_titulo();
+
+	printw("\nInsira o preco do servico.\n\n");
+	scanw("%[^\n]s",preco_servico);
+
+	no_lista_usuario * no_usuario_atual = encontraNoUsuario(listaUsuarios->primeiro, CPF);
+	
+	/* Criando um servico */
+	Servico novo_servico = CriaServicoUsuario(no_usuario_atual->usuario, preco_servico, descricao_servico);
+
+	/* Adicionando transacao */
+	Transacao nova_transacao = MontaTransacao(novo_servico, no_categoria->categoria);
+	noListaTransacao * novo_no_transacao = criaNoTransacao(nova_transacao);
+	int retorno_addNoListaTransacaoNova;
+	retorno_addNoListaTransacaoNova = addNoListaTransacaoNova(listaTransacoes, novo_no_transacao);
+
+	if(retorno_addNoListaTransacaoNova == SEM_ERRO)
+	{
+		printw("\n\nTransacao adicionada com sucesso.\nClique ENTER para sair.\n");
+		getch();
+	}
+	else
+	{
+		printw("\n\nTransacao nao foi adicionada!\nClique ENTER para sair.\n");
+		getch();
+	}
+
 	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 }
 
 void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
-{
+{	
+	clear();
+	imprime_titulo();
 
 }
 
@@ -852,8 +902,97 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
-	getch();
-	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+	
+	int opcao=0;
+	int tecla;
+
+	do{
+		
+		imprime_titulo();
+		imprime_usuario(nomeAdmin);
+		move(4,1);
+		
+		move(6,0);
+		(opcao == 0) ? printw(" >") : printw("  ");
+		printw("Cadastrar\n");
+		(opcao == 1) ? printw(" >") : printw("  ");
+		printw("Descadastrar\n");
+		(opcao == 2) ? printw(" >") : printw("  ");
+		printw("Voltar\n");
+	
+		tecla = getch();
+
+		if(tecla == baixo)
+			(opcao == 2) ? opcao = 0: opcao++;
+		if(tecla == cima)
+			(opcao == 0) ? opcao = 2: opcao--;
+		
+
+		clear();
+
+	} while(tecla != enter);
+
+	switch(opcao)
+	{
+		case 0:
+			{
+				imprime_titulo();
+				imprime_usuario(nomeAdmin);
+				move(5,0);
+
+				curs_set(1);
+				echo();
+
+				char cat_nome[51];
+				printw("\nDigite o nome da categoria a ser cadastrada:\n");
+				scanw("%[^\n]s",cat_nome);
+
+				Categoria categ;
+				strcpy(categ.nomeCategoria,cat_nome);
+				noListaCategoria *novo_no = criaNoCategoria(categ);
+				addNoListaCategoriaNova(listaCategorias, novo_no);
+
+				printw("\n\nA categoria %s foi adicionada com sucesso !\nEnter para voltar.\n", cat_nome);
+				getch();
+
+				telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+			}
+			break;
+			
+		case 1:
+			{
+				imprime_titulo();
+				imprime_usuario(nomeAdmin);
+				move(5,0);
+
+				curs_set(1);
+				echo();
+
+				char cat_nome[51];
+				printw("\nDigite o nome da categoria a ser descadastrada:\n");
+				scanw("%[^\n]s",cat_nome);
+
+				Categoria categ;
+				strcpy(categ.nomeCategoria,cat_nome);
+				noListaCategoria * deleta_no = encontraNoCategoria(listaCategorias->primeiro, categ);
+				deletaNoListaCategoria(listaCategorias, deleta_no);
+
+				printw("\n\nA categoria %s foi excluida com sucesso !\nEnter para voltar.\n", cat_nome);
+				getch();
+
+				telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+			}		
+			break;
+			
+		case 2:
+
+			telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+			break;
+						
+		default: 
+			break;	
+	}
+
 }
 
 /// Funcao Tela Administrador

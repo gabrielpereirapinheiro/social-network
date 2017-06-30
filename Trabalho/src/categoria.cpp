@@ -125,12 +125,12 @@ noListaCategoria *encontraNoCategoria(noListaCategoria *inicio, Categoria catego
 	noListaCategoria *acompanha = inicio;	/** Primeiro no da lista */
 
 
-	while(acompanha->categoria.idCategoria != categoria.idCategoria && acompanha->prox != NULL){
+	while(strcmp(acompanha->categoria.nomeCategoria,categoria.nomeCategoria) != 0 && acompanha->prox != NULL){
 
 		acompanha = acompanha->prox;
 	}
 
-	if(acompanha->categoria.idCategoria != categoria.idCategoria){
+	if(strcmp(acompanha->categoria.nomeCategoria, categoria.nomeCategoria) != 0){
 		printf("Categoria nao existe na lista de categorias\n");
 		return NULL;
 	}
