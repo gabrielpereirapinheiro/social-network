@@ -1,7 +1,7 @@
 # Universidade de Brasilia - UnB
  
  
-## Socialnetwork
+## Social Network
 
 ### Desenvolvedores:
 
@@ -19,7 +19,7 @@
 
 - Basta entrar na pasta ```src``` pelo terminal e digitar o comando :
 
-> $ make
+> $ make main
 
 - Em seguida , no terminal digite o comando:
 
@@ -33,7 +33,7 @@
 
 - Programa desenvolvido em ```C++``` que simula uma rede social onde é possivel um usuário se cadastrar e realizar login . Dentre as funcionalidades da rede social está em possuir vinculos de amizades com outros usuários ja previamente cadastrados e realizar transações.
 
-- O banco de dados foi implementado com o auxilio de funções desenvolvidas que manipulam arquivos.txt e a interface gráfifca do programa foi elaborada com funções da biblioteca ```ncurses```.
+- O banco de dados foi implementado com o auxilio de funções desenvolvidas que manipulam arquivos e a interface gráfifca do programa foi elaborada com funções da biblioteca ```ncurses```.
 
 - As especificacoes de requisitos que foram seguidas esta presente em um arquivo PDF na pasta [roteiro](https://github.com/gabrielpereirapinheiro/social-network/blob/master/Roteiro/MP_Proj_disc_1_17.pdf) do projeto.
 
