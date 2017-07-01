@@ -29,4 +29,4 @@
 
 ### Sobre :
 
-- Para saber mais sobre o projeto clique (aqui)[].
+- Para saber mais sobre o projeto clique [aqui](https://github.com/gabrielpereirapinheiro/social-network/blob/master/sobre.md).
