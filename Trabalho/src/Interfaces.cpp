@@ -123,7 +123,7 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 	char email_excluir[101];
 
 	/*Variavel para conferir erro*/
-	int controle_erro; 
+	int controle_erro; /*!<CONTROLAR ERRO*/
 
 	/* Limpando a tela */
 	clear();
@@ -204,11 +204,9 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 }
 
 
-/// Funcao Adicionar Amigo
+/// Funcao responsavel por adicionar Amigo na lista de amigos de um usuario
 void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
-
-
 	/** 
 		\details Permite inclusao de amizade pelo usuario.
 		\param	Char nome[]: Nome do usuario;
@@ -221,8 +219,9 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 		\return Sem retorno. 
 	*/	
 
-
+	/*Variavel que ira receber o email do amigo*/
 	char email_desejado[101];
+	/*Variavel para controlar erros*/
 	int controle_erro; 
 
 	/* Limpando a tela */
@@ -238,7 +237,7 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 	move(5,0);
 	printw("Digite o email do usario desejado:\n");
 
-
+	/*Imprimindo*/
 	curs_set(1);
 	echo();
 
@@ -272,12 +271,13 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 		}		
 	}
 
+	/*VOlta para tela inicial*/
 	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 }
 
 
-///
+///Funcao responsavel por exibir possibilidades de cores para o usuario
 void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
@@ -285,6 +285,11 @@ void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransac
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
+		lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
