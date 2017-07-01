@@ -56,9 +56,9 @@ TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 
 
 	/* Insercao na lista */
-	addNoListaUsuario(l,no1);
-	addNoListaUsuario(l,no2);
-	addNoListaUsuario(l,no3);
+	addNoListaUsuarioNovo(l,no1);
+	addNoListaUsuarioNovo(l,no2);
+	addNoListaUsuarioNovo(l,no3);
 
 
 	/* Confirmacao dos resultados do teste */
@@ -86,6 +86,19 @@ TEST_CASE("Testes da biblioteca lista_usuario.hpp:"){
 	ptr = encontraNoUsuario(l->primeiro,matricula2);
 	REQUIRE(strcmp(ptr->usuario.nome,"Gabriel Araujo Vieira") == 0);
 
+	char email[] = "victor@hotmail.com";
+	ptr = encontraNoUsuarioEmail(l->primeiro,email);
+	REQUIRE(strcmp(ptr->usuario.nome,"Victor Pereira Ferreira") == 0);
+	
+	int id = 2;
+	ptr = encontraNoUsuarioID(l->primeiro,id);
+	REQUIRE(ptr->usuario.ID == 2);
+
+	/* Testando destruicao da lista */
+	int retorno_destroiLista;
+	retorno_destroiLista = LiberaListaUsuario(l);
+
+	REQUIRE(retorno_destroiLista == SEM_ERRO);
 }
 
 
@@ -118,11 +131,11 @@ TEST_CASE("Testes da biblioteca transacoes.hpp:"){
 
 	/* Insercao na lista */
 	int retorno = -10;
-	retorno = addNoListaTransacao(l,no0);
+	retorno = addNoListaTransacaoNova(l,no0);
 	REQUIRE(retorno == SEM_ERRO);
-	retorno = addNoListaTransacao(l,no1);
+	retorno = addNoListaTransacaoNova(l,no1);
 	REQUIRE(retorno == SEM_ERRO);
-	retorno = addNoListaTransacao(l,no2);
+	retorno = addNoListaTransacaoNova(l,no2);
 	REQUIRE(retorno == SEM_ERRO);
 
 
@@ -151,6 +164,11 @@ TEST_CASE("Testes da biblioteca transacoes.hpp:"){
 	ptr = encontraNoTransacao(l->primeiro,t2);
 	REQUIRE(ptr->transacao.idTransacao == 2);
 
+	/* Testando destruicao da lista */
+	int retorno_destroiLista;
+	retorno_destroiLista = LiberaListaTransacao(l);
+
+	REQUIRE(retorno_destroiLista == SEM_ERRO);
 }
 
 /* Teste case para biblioteca categoria.hpp */
@@ -181,11 +199,11 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 
 	/* Insercao na lista */
 	int retorno = -10;
-	retorno = addNoListaCategoria(l,no0);
+	retorno = addNoListaCategoriaNova(l,no0);
 	REQUIRE(retorno == SEM_ERRO);
-	retorno = addNoListaCategoria(l,no1);
+	retorno = addNoListaCategoriaNova(l,no1);
 	REQUIRE(retorno == SEM_ERRO);
-	retorno = addNoListaCategoria(l,no2);
+	retorno = addNoListaCategoriaNova(l,no2);
 	REQUIRE(retorno == SEM_ERRO);
 
 
@@ -213,50 +231,52 @@ TEST_CASE("Testes da biblioteca categoria.hpp:"){
 	
 	ptr = encontraNoCategoria(l->primeiro,cat2);
 	REQUIRE(ptr->categoria.idCategoria == 2);
- 
+ 	
+ 	/* Testando destruicao da lista */
+	int retorno_destroiLista;
+	retorno_destroiLista = LiberaListaCategoria(l);
+
+	REQUIRE(retorno_destroiLista == SEM_ERRO);
 }
 
 /* Teste case para biblioteca bancodados.hpp */
 TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 
-// Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade); -----
-// Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes);	------
-
 	/* Teste da funcao RecupDadosUsuario */
 	lista_usuario *lista_us = criarListaUsuario();
 	lista_us = RecupDadosUsuario(lista_us);
 
-	REQUIRE(lista_us->primeiro == NULL);
+	REQUIRE(lista_us->primeiro != NULL);
 
 	/* Teste da funcao RecupDadosTransacoes */
 	ListaTransacao *lista_tr = criarListaTransacao();
 	lista_tr = RecupDadosTransacoes(lista_tr);
 
-	REQUIRE(lista_tr->primeiro == NULL);
+	REQUIRE(lista_tr->primeiro != NULL);
 
 	/* Teste da funcao RecupDadosCategorias */
 	ListaCategoria *lista_cat = criarListaCategoria();
 	lista_cat = RecupDadosCategorias(lista_cat);
 
-	REQUIRE(lista_cat->primeiro == NULL);
+	REQUIRE(lista_cat->primeiro != NULL);
 
 	/* Teste da funcao SalvaArquivoUsuario */
 	int retorno_SalvaArquivoUsuario;
 	retorno_SalvaArquivoUsuario = SalvaArquivoUsuario(lista_us);
 
-	REQUIRE(retorno_SalvaArquivoUsuario == ERRO);
+	REQUIRE(retorno_SalvaArquivoUsuario == SEM_ERRO);
 
 	/* Teste da funcao SalvaArquivoTransacao */
 	int retorno_SalvaArquivoTransacao;
 	retorno_SalvaArquivoTransacao = SalvaArquivoTransacao(lista_tr);
 
-	REQUIRE(retorno_SalvaArquivoTransacao == ERRO);
+	REQUIRE(retorno_SalvaArquivoTransacao == SEM_ERRO);
 
 	/* Teste da funcao SalvaArquivoCategorias */
 	int retorno_SalvaArquivoCategorias;
 	retorno_SalvaArquivoCategorias = SalvaArquivoCategorias(lista_cat);
 
-	REQUIRE(retorno_SalvaArquivoCategorias == ERRO);
+	REQUIRE(retorno_SalvaArquivoCategorias == SEM_ERRO);
 
 	/* Teste da funcao SalvaArquivoGrafoAmiz */
 	char nome_a[] = "amizade";
@@ -264,7 +284,7 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 	int retorno_SalvaArquivoGrafoAmiz;
 	retorno_SalvaArquivoGrafoAmiz = SalvaArquivoGrafoAmiz(g_amizade);
 
-	REQUIRE(retorno_SalvaArquivoGrafoAmiz == ERRO);
+	REQUIRE(retorno_SalvaArquivoGrafoAmiz == SEM_ERRO);
 
 	/* Teste da funcao SalvaArquivoGrafoTransacao */
 	char nome_t[] = "transacao";
@@ -272,11 +292,23 @@ TEST_CASE("Testes da biblioteca bancodados.hpp:"){
 	int retorno_SalvaArquivoGrafoTransacao;
 	retorno_SalvaArquivoGrafoTransacao = SalvaArquivoGrafoTransacao(g_transacao);
 
-	REQUIRE(retorno_SalvaArquivoGrafoTransacao == ERRO);
+	REQUIRE(retorno_SalvaArquivoGrafoTransacao == SEM_ERRO);
 
 	/* Teste da funcao RecupInfosUsuaID */
 	int retorno_RecupInfosUsuaID;
 	retorno_RecupInfosUsuaID = RecupInfosUsuaID(lista_us,lista_tr);
 
-	REQUIRE(retorno_RecupInfosUsuaID == ERRO);
+	REQUIRE(retorno_RecupInfosUsuaID == SEM_ERRO);
+
+	/* Teste da funcao RecupDadosGrafoAmiz */ 
+	Grafo *ptr_grafo_amiz = NULL;
+	ptr_grafo_amiz = RecupDadosGrafoAmiz(g_amizade);
+
+	REQUIRE(ptr_grafo_amiz != NULL);
+
+	/* Teste da funcao RecupDadosGrafoTransac */ 
+	Grafo *ptr_grafo_transac = NULL;
+	ptr_grafo_transac = RecupDadosGrafoTransac(g_transacao);
+
+	REQUIRE(ptr_grafo_transac != NULL);
 }
