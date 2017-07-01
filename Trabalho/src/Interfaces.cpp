@@ -1,6 +1,5 @@
 #include "Interfaces.hpp"
 
-
 /**
  * @file
  * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
@@ -496,7 +495,7 @@ int menu_configuracao(char nome[])
 
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario e ele clicar em configuracoes.
 		\param	char nome[]: nome do usuario. 
 		\return Retorna opcao escolhida pelo usuario. 
 	*/
@@ -543,7 +542,7 @@ void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, Li
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario e escolha dele em configuracoes.
 		\param Char nome[]: Nome do usuario;
 		\param Char CPF[]: CPF do usuario.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
@@ -846,12 +845,15 @@ int menu_usuario(char nome[])
 		\return Retorna a opcao escolhida pelo usuario. 
 	*/
 
-
+	//Limpa tela
 	clear();
+
 	//Oculta o cursor na tela
 	curs_set(0);
-
-	int opcao = 0, tecla;
+	//Variavel para pegar opcao
+	int opcao = 0;
+	//Variavel para movimentar
+	int tecla;
 
 	do{
 		
@@ -894,7 +896,7 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario no sistema.
 		\param Char CPF[]: CPF do usuario.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
@@ -919,26 +921,32 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 	switch(opcao)
 	{
 		case 0:
+			//Caso clique na opcao procurar transacao
 			procurar_transacao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 1:
+			//Caso clique na opcao adicionar transacao
 			adicionarTransacao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 2:
+			//Caso clique na ocapo adicionar amigo
 			adicionaAmigo(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 3:
+			//Caso clique na opcao excluir amigo
 			excluiAmigo(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 4:
+			//Caso clique na opcao configuracoes
 			tela_configuracao(ptr->usuario.nome, ptr->usuario.CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 
 		case 5:
+			//Caso clique na opcao sair
 			tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
 				
@@ -956,7 +964,6 @@ Usuario tela_sign_up()
 		\details Funcao que cria o novo usuario com os dados que foram recuperados
 		\return Retorna um usuario com os dados do novo usuario
 	*/
-
 
 	char confirmacao_senha[51];
 
@@ -1030,7 +1037,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema e clique dele em visualizar o grafo de amizade.
 		\param Char nomeAdmin[]: Nome do usuario;
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
@@ -1103,7 +1110,7 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema e ele clicar em visuazliar transacoes.
 		\param	char nomeAdmin[]: nome do administrador. 
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
@@ -1183,7 +1190,7 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela apos login do usuario administrador do sistema e ele clicar para cadastrar ou descadastrar transacoes.
 		\param	char nomeAdmin[]: nome do administrador. 
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
@@ -1393,7 +1400,7 @@ void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela de login.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
 		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
@@ -1512,7 +1519,7 @@ void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela menu de opcoes da tela inicial.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
 		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
@@ -1566,7 +1573,7 @@ int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTrans
 void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
+		\details Funcao que exibe a tela inicial.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
 		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
