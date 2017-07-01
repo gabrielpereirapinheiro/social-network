@@ -1046,6 +1046,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 	if(listaUsuarios->primeiro == NULL)
 	{
 		printw("Nao ha usuarios salvos !\n\nClique 'enter' para voltar ");
+		getch();
 	}
 	else
 	{
@@ -1064,7 +1065,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 			if (ponteiro_vertice==NULL)
 			{
-				printw("deu ruim");
+				printw("erro");
 			}
 
 			lista_vizinhos = ponteiro_vertice->listVizinhos;
@@ -1074,7 +1075,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 			if(lista_vizinhos == NULL)
 			{
-				printw("Sem amigos\n\n");
+				printw("Sem amigos\n");
 			}
 
 			while(lista_vizinhos!=  NULL)
@@ -1084,15 +1085,14 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 				lista_vizinhos = lista_vizinhos->prox;
 			}
 
+			printw("\n");
 			ponteiro = ponteiro->prox;
 
-			printw("Clique enter para ver o proximo");
+			printw("Clique enter para ver o proximo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			getch();
 		}
 
 	}
-
-	getch();
 	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
@@ -1130,7 +1130,7 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 	echo();
 
 	/* Categoria desejada requerida do usuario */
-	printw("\n\nDigite o nome da categoria desejada:\n");
+	printw("\nDigite o nome da categoria desejada:\n");
 	scanw("%s",categoria_desejada);
 
 	noListaTransacao * ponteiro = listaTransacoes->primeiro;
@@ -1146,17 +1146,30 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 	}
 	else{
 
+		contador =0;
+
 		while(ponteiro != NULL){
 
 			if(ponteiro->transacao.classificacao == CONCLUIDA && strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0){
 
-				printw("Provedor: %s\nCliente: %s\nAvaliacao: %d\nComentario: %s\n",ponteiro->transacao.servico.usuarioProvedor.nome
+				printw("\nProvedor: %s\nCliente: %s\nAvaliacao: %d\nComentario: %s\n",ponteiro->transacao.servico.usuarioProvedor.nome
 																				   ,ponteiro->transacao.usuarioCliente.nome
 																				   ,ponteiro->transacao.avaliacao.notaTransacao
 																				   ,ponteiro->transacao.avaliacao.comentAvaliClient);
+					contador++;
 			}
-
+		
 			ponteiro = ponteiro->prox;
+		}
+		//Oculta o cursor na tela
+		curs_set(0);
+		if (contador==0)
+		{
+			printw("Nenhuma transacao concluida na categoria %s ! \n\n Clique ENTER para voltar",categoria_desejada);
+		}
+		else
+		{
+			printw("Todas as transacoes de %s listadas ! \n\n Clique ENTER para voltar",categoria_desejada);
 		}
 	}
 
