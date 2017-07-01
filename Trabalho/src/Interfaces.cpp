@@ -15,11 +15,9 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 		\return Sem retorno. 
 	*/
 
-	
 	/* Finalizar a ncruses */
 	endwin(); 
 	
-
 	/* Salvando grafos e listas no banco de dados */
 	int retornoSalvaUsuario = 0;
 	int retornoSalvaGrafoAmiz = 0;
@@ -281,7 +279,6 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
-
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -487,8 +484,8 @@ int menu_configuracao(char nome[])
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
-		\return Sem retorno. 
+		\param	char nome[]: nome do usuario. 
+		\return Retorna opcao escolhida pelo usuario. 
 	*/
 
 
@@ -879,6 +876,12 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 
 Usuario tela_sign_up()
 {
+	/** 
+		\details Funcao que cria o novo usuario com os dados que foram recuperados
+		\return Retorna um usuario com os dados do novo usuario
+	*/
+
+
 	char confirmacao_senha[51];
 
 	clear();
@@ -952,7 +955,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param Char nome[]: Nome do usuario;
+		\param Char nomeAdmin[]: Nome do usuario;
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
 		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
 		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
@@ -1228,6 +1231,7 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 			break;	
 	}
 }
+
 void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
@@ -1357,9 +1361,10 @@ int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTrans
 		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
 		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
 		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
-		\return Sem retorno. 
+		\return Retorna opcao do usuario. 
 	*/
-	int opcao = 0, tecla;
+	int opcao = 0;
+	int tecla;
 
 	do{
 		
