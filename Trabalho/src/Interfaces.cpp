@@ -1,7 +1,7 @@
 #include "Interfaces.hpp"
 
 
-/// Funcao Excluir Amigo
+/// Funcao que sera responsavel por sair do programa na tela inicial quando o usuario socilitar, nela serao salvos os grafos no arquivo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
@@ -51,12 +51,12 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	LiberaListaCategoria(listaCategorias);
 	destroi_grafo(grafoTransacoes);
 
-
+	/*Fim do programa*/
 	exit(0);
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por definir as cores do fundo e das letras do programa
 void cores(int opcao)
 {
 
@@ -65,23 +65,21 @@ void cores(int opcao)
 		\param int opcao: opcao de cores da tela escolhida pelo usuario. 
 		\return Sem retorno. 
 	*/
-
+	/*Colocando a cor que o usuario escolheu*/
 	bkgd(COLOR_PAIR(opcao));
 }
 
 
-/// Funcao Imprimir Titulo da Tela
+/// Funcao responsavel por imprimir Titulo na tela sempre na mesma posicao
 void imprime_titulo()
 {
-
-
 	/** 
 		\details Funcao que imprime o titulo da tela.
 		\param	Sem parametros.
 		\return Sem retorno. 
 	*/
 
-
+	/*Definindo a posicao onde ira imprimir*/
 	move(1,0);
 	printw(" ---------------------------\n");
 	printw(" S O C I A L  N E T W O R K\n");
@@ -89,7 +87,7 @@ void imprime_titulo()
 }
 
 
-/// Funcao Imprimir Nome do Usuario
+/// Funcao responsavel por imprimir nome do usuario no canto superior da tela
 void imprime_usuario(char nome[])
 {
 
@@ -99,8 +97,8 @@ void imprime_usuario(char nome[])
 		\return Sem retorno. 
 	*/
 
+	/*Definindo a posicao e imprimindo na tela o nome do usuario*/
 	move(2,30);
-
 	printw("\t\t [ Usuario : %s ]",nome);
 }
 
