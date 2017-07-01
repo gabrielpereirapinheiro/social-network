@@ -169,8 +169,10 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		printw("\n\nInsira o email do usuario a ser deletado:\n");
 		scanw("%s",email_excluir);
 
+		/*Procurando amigo pelo email digitado*/
 		ptr_amigo = encontraNoUsuarioEmail(listaUsuarios->primeiro,email_excluir);
 		
+		/*Caso nao tenha o usuario com o email fornecido*/
 		if (ptr_amigo == NULL)
 		{
 			printw("\n\nUsuario com email fornecido nao consta em sua lista de amigos!\n\n");
@@ -180,21 +182,24 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 			
 			controle_erro = remove_aresta(grafoAmizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
+			/*Caso o email fornecido exista e seja removido com sucesso*/
 			if (controle_erro != ERRO)
 			{
 
 				printw("\n\n\nAmigo removido com sucesso! \n");
 				getch();
 			}
+			/*Email nao seja de algum amigo dele*/
 			else
 			{
-
+				/*Mostrando mensagem de erro*/
 				printw("\n\n\nTal usuario nao existe na sua relacao de amigos ou o email esta incorreto! \n");
 				getch();
 			}
 		}
 	}
 	
+	/*Volta para a tela incial*/
 	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
