@@ -6,6 +6,19 @@
 #include "grafos.hpp"
 #include "categoria.hpp"
 #include "bancodados.hpp"
+
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
 /// Header das funcoes que implementam o "banco de dados" da aplicacao
 
 //Assinatura das funcoes

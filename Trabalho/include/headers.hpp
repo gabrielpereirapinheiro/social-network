@@ -6,6 +6,19 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
+
 //Flags para indicar informacoes de tipo de usuario
 #define ADMIN 1
 #define NORMAL 0
