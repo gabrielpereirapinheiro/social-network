@@ -1190,7 +1190,7 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 		
 		move(6,0);
 		(opcao == 0) ? printw(" >") : printw("  ");
-		printw("Visiualizar informacoes dos usuarios\n");
+		printw("Visualizar informacoes dos usuarios\n");
 		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Cadastrar e descadastrar transacoes\n");
 		(opcao ==2 ) ? printw(" >") : printw("  ");
