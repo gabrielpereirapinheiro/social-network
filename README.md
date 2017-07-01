@@ -31,7 +31,7 @@
 
 - Todos os membros do grupo sao estudantes de ```Engenharia da Computação``` na ```Universidade de Brasilia``` e implementaram este código como projeto da disciplina ```Métodos de Programacao 2017/1``` .
 
-- Programa desenvolvido em ```C++``` que simula uma rede social onde é possivel um usuário se cadastrar e realizar login . Dentre as funcionalidades da rede social está em possuir vinculos de amizades com outros usuários ja previamente cadastrados e realizar transações.
+- Programa desenvolvido simula uma rede social onde é possivel um usuário se cadastrar e realizar login . Dentre as funcionalidades da rede social está em possuir vinculos de amizades com outros usuários ja previamente cadastrados e realizar transações.
 
 - O banco de dados foi implementado com o auxilio de funções desenvolvidas que manipulam arquivos e a interface gráfifca do programa foi elaborada com funções da biblioteca ```ncurses```.
 
