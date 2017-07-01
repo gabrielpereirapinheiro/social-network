@@ -1,7 +1,17 @@
 #include "grafos.hpp"
 
-/*Victor Araujo Vieira - 14/0032801 */
-/*MP - 1/2017*/
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
 
 /*Funcao que cria um grafo e da um nome para ele*/
 Grafo *cria_grafo(char *nome){
