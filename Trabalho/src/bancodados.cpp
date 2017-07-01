@@ -1,5 +1,18 @@
 #include "bancodados.hpp"
 
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
+
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios
 lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 	//tamanho do cabecalho do arquivo de usuarios: 76
