@@ -714,64 +714,83 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	/* Contador para identificar a transacao escolhida */
 	int contador = 0; 
-	while(ponteiro != NULL)
-	{
-		
-		if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
-		{	
-			printw("--------------------------------------------------------------");	
-			printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
-												  		 ponteiro->transacao.servico.precoServico);
-			printw("--------------------------------------------------------------");
-			
-			contador++;
-		}
 
-		ponteiro = ponteiro->prox;
+	if(ponteiro == NULL)
+	{
+		printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+		getch();
+		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
-	getch();
-
-	/* Recebe opcao desejada */
-	int opcao_desejada;
-	printw("Digite o numero da opcao desejada:\n");
-	scanw("%d",&opcao_desejada);
-
-
-	/* Recuperando transacao escolhida */
-	ponteiro = listaTransacoes->primeiro;
-	contador = 0;
-	while(ponteiro != NULL)
+	else
 	{
-
-		if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
-		{	
-			if(opcao_desejada == contador)
-			{
-				break;
+		while(ponteiro != NULL)
+		{
+			if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+			{	
+				printw("\n--------------------------------------------------------------");	
+				printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
+													  		 ponteiro->transacao.servico.precoServico);
+				printw("--------------------------------------------------------------");
+				
+				contador++;
 			}
 
-			contador++;
+			ponteiro = ponteiro->prox;
 		}
 
-		ponteiro = ponteiro->prox;
+		if(contador==0)
+		{
+			printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+			getch();
+			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+		}
+		else
+		{
+				/* Recebe opcao desejada */
+			int opcao_desejada;
+			printw("\nDigite o numero da opcao desejada:\n");
+			scanw("%d",&opcao_desejada);
+
+
+			/* Recuperando transacao escolhida */
+			ponteiro = listaTransacoes->primeiro;
+			contador = 0;
+			while(ponteiro != NULL)
+			{
+
+				if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+				{	
+					if(opcao_desejada == contador)
+					{
+						break;
+					}
+
+					contador++;
+				}
+
+				ponteiro = ponteiro->prox;
+			}
+
+
+			clear();
+			imprime_titulo();
+			imprime_usuario(nome);
+
+			move(5,0);
+
+			/* Mostrando ao usuario transacao esolhida */
+			printw("\n--------------------------------------------------------------");
+			printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
+														  		 ponteiro->transacao.servico.precoServico);
+			printw("--------------------------------------------------------------\n\n");
+			
+			//Fazer : adicionar transacao nova  o grafo !!!!!!
+
+			printw("Entrar em contato com %s pelo email %s.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
+															   ponteiro->transacao.servico.usuarioProvedor.email);		
+			getch();	
+		}
 	}
-
-
-	clear();
-	imprime_titulo();
-	imprime_usuario(nome);
-
-	/* Mostrando ao usuario transacao esolhida */
-	printw("--------------------------------------------------------------");
-	printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
-												  		 ponteiro->transacao.servico.precoServico);
-	printw("--------------------------------------------------------------\n\n");
-	
-	//Fazer : adicionar transacao nova  o grafo !!!!!!
-
-	printw("Entrar em contato com %s pelo email %s.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
-													   ponteiro->transacao.servico.usuarioProvedor.email);		
-	getch();
 }
 
 int menu_usuario(char nome[])
