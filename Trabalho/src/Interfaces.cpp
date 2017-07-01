@@ -37,16 +37,17 @@ addNoListaCategoriaNova(listaCategorias,criaNoCategoria(carona));
 /*************************************************************************************/
 
 
+/// Funcao Excluir Amigo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
 		\details Funcao que salva as listas e finaliza o programa.
-		\param	lista_usuario *listaUsuarios: 
-		 		ListaTransacao *listaTransacoes: 
-		 		ListaCategoria *listaCategorias:
-		 		Grafo *grafoAmizade:
-		 		Grafo *grafoTransacoes: 
+		\param	lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -64,25 +65,29 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	exit(0);
 }
 
+
+/// Funcao Excluir Amigo
 void cores(int opcao)
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\details Funcao que recebe uma opcao e muda as cores da tela.
+		\param int opcao: opcao de cores da tela escolhida pelo usuario. 
 		\return Sem retorno. 
 	*/
 
 	bkgd(COLOR_PAIR(opcao));
 }
 
+
+/// Funcao Imprimir Titulo da Tela
 void imprime_titulo()
 {
 
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\details Funcao que imprime o titulo da tela.
+		\param	Sem parametros.
 		\return Sem retorno. 
 	*/
 
@@ -93,12 +98,14 @@ void imprime_titulo()
 	printw(" ---------------------------\n");
 }
 
+
+/// Funcao Imprimir Nome do Usuario
 void imprime_usuario(char nome[])
 {
 
 	/** 
-		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\details Funcao que exibe na tela o nome do usuario logado.
+		\param	char nome[]: nome do usuario logado. 
 		\return Sem retorno. 
 	*/
 
@@ -117,6 +124,11 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		\details Permite exclusao de amizade pelo usuario.
 		\param	Char nome[]: Nome do usuario;
 				Char CPF[]: CPF do usuario.
+				lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/	
 
@@ -205,6 +217,11 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 		\details Permite inclusao de amizade pelo usuario.
 		\param	Char nome[]: Nome do usuario;
 				Char CPF[]: CPF do usuario.
+				lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/	
 
@@ -263,6 +280,8 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 
 }
 
+
+///
 void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
