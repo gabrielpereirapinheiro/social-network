@@ -1,25 +1,23 @@
 #include "Interfaces.hpp"
 
 
-/// Funcao Excluir Amigo
+/// Funcao que sera responsavel por sair do programa na tela inicial quando o usuario socilitar, nela serao salvos os grafos no arquivo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
 		\details Funcao que salva as listas e finaliza o programa.
 		\param	lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
-		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
-		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
-		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
-		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
+		\param	ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param	ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param	Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param	Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
-	
 	/* Finalizar a ncruses */
 	endwin(); 
 	
-
 	/* Salvando grafos e listas no banco de dados */
 	int retornoSalvaUsuario = 0;
 	int retornoSalvaGrafoAmiz = 0;
@@ -51,12 +49,12 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	LiberaListaCategoria(listaCategorias);
 	destroi_grafo(grafoTransacoes);
 
-
+	/*Fim do programa*/
 	exit(0);
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por definir as cores do fundo e das letras do programa
 void cores(int opcao)
 {
 
@@ -65,23 +63,21 @@ void cores(int opcao)
 		\param int opcao: opcao de cores da tela escolhida pelo usuario. 
 		\return Sem retorno. 
 	*/
-
+	/*Colocando a cor que o usuario escolheu*/
 	bkgd(COLOR_PAIR(opcao));
 }
 
 
-/// Funcao Imprimir Titulo da Tela
+/// Funcao responsavel por imprimir Titulo na tela sempre na mesma posicao
 void imprime_titulo()
 {
-
-
 	/** 
 		\details Funcao que imprime o titulo da tela.
 		\param	Sem parametros.
 		\return Sem retorno. 
 	*/
 
-
+	/*Definindo a posicao onde ira imprimir*/
 	move(1,0);
 	printw(" ---------------------------\n");
 	printw(" S O C I A L  N E T W O R K\n");
@@ -89,7 +85,7 @@ void imprime_titulo()
 }
 
 
-/// Funcao Imprimir Nome do Usuario
+/// Funcao responsavel por imprimir nome do usuario no canto superior da tela
 void imprime_usuario(char nome[])
 {
 
@@ -99,32 +95,33 @@ void imprime_usuario(char nome[])
 		\return Sem retorno. 
 	*/
 
+	/*Definindo a posicao e imprimindo na tela o nome do usuario*/
 	move(2,30);
-
 	printw("\t\t [ Usuario : %s ]",nome);
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por excluir amigo da lista de amigos de um usuario
 void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
-
 
 	/** 
 		\details Permite exclusao de amizade pelo usuario.
 		\param	Char nome[]: Nome do usuario;
-				Char CPF[]: CPF do usuario.
-				lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
-		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
-		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
-		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
-		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
+		\param	Char CPF[]: CPF do usuario.
+		\param	lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param	ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param	ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param	Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param	Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/	
 
-
+	/*Tamanho max do email */
 	char email_excluir[101];
-	int controle_erro; 
+
+	/*Variavel para conferir erro*/
+	int controle_erro;
 
 	/* Limpando a tela */
 	clear();
@@ -135,32 +132,34 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 	/* Construcao da interface */	
 	imprime_titulo();
 
+	/*Imprimindo nome do usario*/
 	imprime_usuario(nome);
 	move(5,0);
 	printw("Lista de usuarios:\n");
 
-
+	/*Variaveis para realizar operacoes*/
 	no_lista_usuario * ptr_amigo = NULL;
 	no_lista_usuario * ptr_usuario = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 	Vizinhos * ptr = vizinhos(grafoAmizade, ptr_usuario->usuario.ID);
 	
-
 	/* Listando amigos */
 	if (ptr == NULL)
 	{
+		/*Caso ele nao possua amigos*/
 		printw("\n\nVoce nao possui usuarios amigos.\n\n");
 		getch();
 	}
-	else{
-		
+	else
+	{
+		/*Caso ele possua amigos, imprime todos na tela*/	
 		while(ptr != NULL)
 		{	
 			ptr_amigo = encontraNoUsuarioID(listaUsuarios->primeiro,ptr->id);
-			printw("%s\t %s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
-
+			printw("-Nome:%s\t Email:%s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
+			/*Proximo amigo se existir*/
 			ptr = ptr->prox;
 		}
-
+		/*Ativando o cursos e mostrando os caracteres digitados*/
 		curs_set(1);
 		echo();
 
@@ -168,8 +167,10 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		printw("\n\nInsira o email do usuario a ser deletado:\n");
 		scanw("%s",email_excluir);
 
+		/*Procurando amigo pelo email digitado*/
 		ptr_amigo = encontraNoUsuarioEmail(listaUsuarios->primeiro,email_excluir);
 		
+		/*Caso nao tenha o usuario com o email fornecido*/
 		if (ptr_amigo == NULL)
 		{
 			printw("\n\nUsuario com email fornecido nao consta em sua lista de amigos!\n\n");
@@ -179,44 +180,46 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 			
 			controle_erro = remove_aresta(grafoAmizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
+			/*Caso o email fornecido exista e seja removido com sucesso*/
 			if (controle_erro != ERRO)
 			{
 
 				printw("\n\n\nAmigo removido com sucesso! \n");
 				getch();
 			}
+			/*Email nao seja de algum amigo dele*/
 			else
 			{
-
+				/*Mostrando mensagem de erro*/
 				printw("\n\n\nTal usuario nao existe na sua relacao de amigos ou o email esta incorreto! \n");
 				getch();
 			}
 		}
 	}
 	
+	/*Volta para a tela incial*/
 	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
 
-/// Funcao Adicionar Amigo
+/// Funcao responsavel por adicionar Amigo na lista de amigos de um usuario
 void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
-
-
 	/** 
 		\details Permite inclusao de amizade pelo usuario.
-		\param	Char nome[]: Nome do usuario;
-				Char CPF[]: CPF do usuario.
-				lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
-		 		ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
-		 		ListaCategoria *listaCategorias: lista de categorias lida do banco.
-		 		Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
-		 		Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
+		\param Char nome[]: Nome do usuario;
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/	
 
-
+	/*Variavel que ira receber o email do amigo*/
 	char email_desejado[101];
+	/*Variavel para controlar erros*/
 	int controle_erro; 
 
 	/* Limpando a tela */
@@ -232,7 +235,7 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 	move(5,0);
 	printw("Digite o email do usario desejado:\n");
 
-
+	/*Imprimindo*/
 	curs_set(1);
 	echo();
 
@@ -266,19 +269,24 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 		}		
 	}
 
+	/*VOlta para tela inicial*/
 	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
 }
 
 
-///
+///Funcao responsavel por exibir possibilidades de cores para o usuario
 void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
-
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
+		\param	lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -361,8 +369,13 @@ void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, Lis
 
 	/** 
 		\details Permite edicao de informacao do usuario.
-		\param	Char nome[]: Nome do usuario; 
-				Char CPF[]: CPF do usuario.
+		\param Char nome[]: Nome do usuario;
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/	
 
@@ -471,8 +484,8 @@ int menu_configuracao(char nome[])
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
-		\return Sem retorno. 
+		\param	char nome[]: nome do usuario. 
+		\return Retorna opcao escolhida pelo usuario. 
 	*/
 
 
@@ -518,7 +531,13 @@ void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, Li
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador e char CPF[]: CPF do usuario 
+		\param Char nome[]: Nome do usuario;
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -558,8 +577,13 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	/** 
 		\details Permite ao usuario adicionar uma transacao.
-		\param	Char nome[]: Nome do usuario; 
-				Char CPF[]: CPF do usuario.
+		\param Char nome[]: Nome do usuario;
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 	char categoria_desejada[51];
@@ -640,8 +664,13 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 {	
 	/** 
 		\details Permite ao usuario adicionar uma transacao.
-		\param	Char nome[]: Nome do usuario; 
-				Char CPF[]: CPF do usuario.
+		\param Char nome[]: Nome do usuario;
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 	char categoria_desejada[51];
@@ -790,7 +819,12 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\param Char CPF[]: CPF do usuario.
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -842,6 +876,12 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 
 Usuario tela_sign_up()
 {
+	/** 
+		\details Funcao que cria o novo usuario com os dados que foram recuperados
+		\return Retorna um usuario com os dados do novo usuario
+	*/
+
+
 	char confirmacao_senha[51];
 
 	clear();
@@ -915,7 +955,12 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\param Char nomeAdmin[]: Nome do usuario;
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -984,6 +1029,11 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -999,6 +1049,11 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -1049,10 +1104,14 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 				printw("\nDigite o nome da categoria a ser cadastrada:\n");
 				scanw("%[^\n]s",cat_nome);
 
+				/* Adicionando nova categoria na lista de categorias */
 				Categoria categ;
 				strcpy(categ.nomeCategoria,cat_nome);
 				noListaCategoria *novo_no = criaNoCategoria(categ);
 				addNoListaCategoriaNova(listaCategorias, novo_no);
+
+				/* Adicionando nova categoria no grafo de transacoes */
+				adiciona_vertice(grafoTransacoes, novo_no->categoria.idCategoria);
 
 				printw("\n\nA categoria %s foi adicionada com sucesso !\nEnter para voltar.\n", cat_nome);
 				getch();
@@ -1074,10 +1133,14 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 				printw("\nDigite o nome da categoria a ser descadastrada:\n");
 				scanw("%[^\n]s",cat_nome);
 
+				/* Retirando categoria da lista de categorias */
 				Categoria categ;
 				strcpy(categ.nomeCategoria,cat_nome);
 				noListaCategoria * deleta_no = encontraNoCategoria(listaCategorias->primeiro, categ);
 				deletaNoListaCategoria(listaCategorias, deleta_no);
+
+				/* Retirando categoria do grafo de transacoes */
+				remove_vertice(grafoTransacoes, deleta_no->categoria.idCategoria);
 
 				printw("\n\nA categoria %s foi excluida com sucesso !\nEnter para voltar.\n", cat_nome);
 				getch();
@@ -1103,6 +1166,11 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
 
@@ -1163,12 +1231,17 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 			break;	
 	}
 }
+
 void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco. 
 		\return Sem retorno. 
 	*/
 
@@ -1283,10 +1356,15 @@ int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTrans
 {
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
-		\return Sem retorno. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
+		\return Retorna opcao do usuario. 
 	*/
-	int opcao = 0, tecla;
+	int opcao = 0;
+	int tecla;
 
 	do{
 		
@@ -1332,7 +1410,11 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 {
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
-		\param	char nomeAdmin[]: nome do administrador. 
+		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
+		\param ListaTransacao *listaTransacoes: lista de transacoes lida do banco.
+		\param ListaCategoria *listaCategorias: lista de categorias lida do banco.
+		\param Grafo *grafoAmizade: grafo de amizades entre usuarios lido do banco.
+		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco. 
 		\return Sem retorno. 
 	*/
 	clear();

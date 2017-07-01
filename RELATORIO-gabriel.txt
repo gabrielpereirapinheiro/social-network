@@ -5,3 +5,5 @@
 15/6/17       4 horas	       Modularizacao da interface grafica e adaptacao para o Make File juntamente com o Andre Luis .
 			       Criacao da tela cadastro e armazenamento em uma struct 
 16/6/17       1 hora 	       Estudou adaptcao do programa para ter a documentao pelo doxygen e atualizou descricao do projeto no github
+30/06/17      6 horas	       Documentacao/Funcoes/Comentarios
+
