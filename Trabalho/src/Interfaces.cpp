@@ -799,7 +799,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 			
 			adiciona_aresta(grafoTransacoes,ponteiro->transacao.categoria.idCategoria,ponteiro->transacao.idTransacao);
 
-			printw("Entrar em contato com %s pelo email %s.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
+			printw("Entrar em contato com '%s' pelo email '%s'.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
 															   ponteiro->transacao.servico.usuarioProvedor.email);		
 			getch();
 
@@ -807,7 +807,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 			while(avalicao_transacao<1)
 			{
-				printw("De uma nota de 1 a 5 para a transacao\n\n");
+				printw("De uma nota de (1 a 5) para a transacao:\n");
 				scanw("%d",&avalicao_transacao);
 	
 			}
@@ -817,7 +817,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 			no_lista_usuario *usuarioCliente = NULL;
 			usuarioCliente = encontraNoUsuario(listaUsuarios->primeiro, CPF);
 
-			printw("Digite um comentario sobre a transacao\n\n");
+			printw("Digite um comentario sobre a transacao:\n");
 			scanw("%[^\n]s",comentario_transacao);
 			ponteiro->transacao.classificacao = CONCLUIDA;
 			ponteiro->transacao.usuarioCliente = usuarioCliente->usuario;
@@ -826,13 +826,15 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 			ponteiro->transacao.avaliacao.notaTransacao = avalicao_transacao;
 
-			printw("Digite ENTER para voltar");
+			curs_set(0);
+			printw("\nDigite ENTER para voltar");
 			getch();
 
 
 
 		}
 	}
+	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
 
 int menu_usuario(char nome[])
