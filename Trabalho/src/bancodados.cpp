@@ -1,5 +1,18 @@
 #include "bancodados.hpp"
 
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
+
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios
 lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 	//tamanho do cabecalho do arquivo de usuarios: 76
@@ -271,16 +284,15 @@ Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo
 int SalvaArquivoUsuario(lista_usuario *listaUsuario){
+	if(listaUsuario == NULL){
+		printf("Lista de usuario passada eh vazia! Saindo da funcao SalvaArquivoUsuario!\n");
+		return ERRO;
+	}
 	FILE *fp = fopen("../arquivos/ArquivoUsuarios.txt", "w");
 	no_lista_usuario *ptrNoUsuario = NULL; //! vai ser o ponteiro para percorrer a lista de usuarios
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoUsuarios.txt!\n");
-		return ERRO;
-	}
-
-	if(listaUsuario == NULL){
-		printf("Lista de usuario passada eh vazia! Saindo da funcao SalvaArquivoUsuario!\n");
 		return ERRO;
 	}
 
@@ -306,16 +318,15 @@ int SalvaArquivoUsuario(lista_usuario *listaUsuario){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos as transacoes e suas informacoes em um arquivo
 int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
+	if(listaTransacao == NULL){
+		printf("Lista de transacoes passada eh vazia! Saindo da funcao SalvaArquivoTransacao!\n");
+		return ERRO;
+	}
 	FILE *fp = fopen("../arquivos/ArquivoTransacoes.txt", "w");
 	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoTransacoes.txt!\n");
-		return ERRO;
-	}
-
-	if(listaTransacao == NULL){
-		printf("Lista de transacoes passada eh vazia! Saindo da funcao SalvaArquivoTransacao!\n");
 		return ERRO;
 	}
 
@@ -343,21 +354,22 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 		ptrNoTransacoes = ptrNoTransacoes->prox;
 	}
 
+	fclose(fp);
+
 	return SEM_ERRO;
 }
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todas as categorias e suas informacoes em um arquivo
 int SalvaArquivoCategorias(ListaCategoria *listaCat){
+	if(listaCat == NULL){
+		printf("Lista de categorias passada eh vazia! Saindo da funcao SalvaArquivoCategorias!\n");
+		return ERRO;
+	}
 	FILE *fp = fopen("../arquivos/ArquivoCategorias.txt", "w");
 	noListaCategoria *ptrNoCategorias = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoCategorias.txt!\n");
-		return ERRO;
-	}
-
-	if(listaCat == NULL){
-		printf("Lista de categorias passada eh vazia! Saindo da funcao SalvaArquivoCategorias!\n");
 		return ERRO;
 	}
 
@@ -374,22 +386,23 @@ int SalvaArquivoCategorias(ListaCategoria *listaCat){
 		ptrNoCategorias = ptrNoCategorias->prox;
 	}
 
+	fclose(fp);
+
 	return SEM_ERRO;
 }
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar o grafo de amizades em um arquivo
 int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
+	if(grafoAmizade == NULL){
+		printf("Grafo de amizades passado eh vazio! Saindo da funcao SalvaArquivoGrafoAmiz!\n");
+		return ERRO;
+	}
 	FILE *fp = fopen("../arquivos/GrafoAmizades.txt", "w");
 	Vertice *vert = NULL; //! ponteiro de vertice para percorrer os vertices do grafo
 	Vizinhos *vizinhos = NULL; //! ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo GrafoAmizades.txt!\n");
-		return ERRO;
-	}
-
-	if(grafoAmizade == NULL){
-		printf("Grafo de amizades passado eh vazio! Saindo da funcao SalvaArquivoGrafoAmiz!\n");
 		return ERRO;
 	}
 
@@ -415,22 +428,23 @@ int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
 			}	
 	}
 
+	fclose(fp);
+
 	return SEM_ERRO;
 }
 
 ///Funcao que, antes do programa encerrar de fato, vai salvar o grafo de transacoes em um arquivo
 int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
+	if(grafoTransacoes == NULL){
+		printf("Grafo de transacoes passado eh vazio! Saindo da funcao SalvaArquivoGrafoTransacao!\n");
+		return ERRO;
+	}
 	FILE *fp = fopen("../arquivos/GrafoTransacoes.txt", "w");
 	Vertice *vert = NULL; //! ponteiro de vertice para percorrer os vertices do grafo
 	Vizinhos *vizinhos = NULL; //! ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo GrafoTransacoes.txt!\n");
-		return ERRO;
-	}
-
-	if(grafoTransacoes == NULL){
-		printf("Grafo de transacoes passado eh vazio! Saindo da funcao SalvaArquivoGrafoTransacao!\n");
 		return ERRO;
 	}
 
@@ -455,6 +469,8 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 				vert = vert->prox;
 			}	
 	}
+
+	fclose(fp);	
 
 	return SEM_ERRO;
 }

@@ -1,5 +1,17 @@
 #include "lista_usuario.hpp"
 
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
 
 /*************LISTA***********************************/
 no_lista_usuario * criaNoUsuario(Usuario usuario){	/** Cria nó */ 
@@ -85,7 +97,7 @@ void deletaNoListaUsuario(lista_usuario *lista, no_lista_usuario *no){ /** Delet
 
 			anterior->prox = acompanha->prox;
 		}
-		else if(acompanha == NULL){ /** Caso o nó esteja no fim da lista */
+		else if(acompanha == NULL && anterior != NULL){ /** Caso o nó esteja no fim da lista */
 
 			anterior->prox = NULL;
 		}

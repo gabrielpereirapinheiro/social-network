@@ -1,7 +1,17 @@
 #include "grafos.hpp"
 
-/*Victor Araujo Vieira - 14/0032801 */
-/*MP - 1/2017*/
+/**
+ * @file
+ * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
+ * @author  Gabriel Pereira Pinheiro <gabriel.pereira.pinheiro@gmail.com>
+ * @author Victor Araujo Viera <icevct@gmail.com>
+ * @version 1.0
+ *
+ * @section Descrição
+ * 
+ * Projeto da disciplina metodos de programacão 2017/1
+ *
+ */
 
 /*Funcao que cria um grafo e da um nome para ele*/
 Grafo *cria_grafo(char *nome){
@@ -190,14 +200,13 @@ int adiciona_vertice(Grafo *G, int x){
 
 /*Funcao que remove um vertice do grafo*/
 int remove_vertice(Grafo *G, int x){
-	Vertice *anterior = NULL, *p = G->vertices; //p eh o ponteiro para percorrer a lista
-	/*anterior vai receber o elemento antecessor da lista sendo percorrida*/
-
 	/*Verifica se o grafo passado existe*/
 	if(G == NULL){
 		printf("Grafo nao existe! Saindo da funcao remove_vertice\n");
 		return ERRO;
 	}	
+	Vertice *anterior = NULL, *p = G->vertices; //p eh o ponteiro para percorrer a lista
+	/*anterior vai receber o elemento antecessor da lista sendo percorrida*/
 
 	while(p != NULL && p->idVertice != x){
 		anterior = p;
