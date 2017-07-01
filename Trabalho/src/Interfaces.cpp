@@ -1,7 +1,7 @@
 #include "Interfaces.hpp"
 
 
-/// Funcao Excluir Amigo
+/// Funcao que sera responsavel por sair do programa na tela inicial quando o usuario socilitar, nela serao salvos os grafos no arquivo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
@@ -51,12 +51,12 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 	LiberaListaCategoria(listaCategorias);
 	destroi_grafo(grafoTransacoes);
 
-
+	/*Fim do programa*/
 	exit(0);
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por definir as cores do fundo e das letras do programa
 void cores(int opcao)
 {
 
@@ -65,23 +65,21 @@ void cores(int opcao)
 		\param int opcao: opcao de cores da tela escolhida pelo usuario. 
 		\return Sem retorno. 
 	*/
-
+	/*Colocando a cor que o usuario escolheu*/
 	bkgd(COLOR_PAIR(opcao));
 }
 
 
-/// Funcao Imprimir Titulo da Tela
+/// Funcao responsavel por imprimir Titulo na tela sempre na mesma posicao
 void imprime_titulo()
 {
-
-
 	/** 
 		\details Funcao que imprime o titulo da tela.
 		\param	Sem parametros.
 		\return Sem retorno. 
 	*/
 
-
+	/*Definindo a posicao onde ira imprimir*/
 	move(1,0);
 	printw(" ---------------------------\n");
 	printw(" S O C I A L  N E T W O R K\n");
@@ -89,7 +87,7 @@ void imprime_titulo()
 }
 
 
-/// Funcao Imprimir Nome do Usuario
+/// Funcao responsavel por imprimir nome do usuario no canto superior da tela
 void imprime_usuario(char nome[])
 {
 
@@ -99,16 +97,15 @@ void imprime_usuario(char nome[])
 		\return Sem retorno. 
 	*/
 
+	/*Definindo a posicao e imprimindo na tela o nome do usuario*/
 	move(2,30);
-
 	printw("\t\t [ Usuario : %s ]",nome);
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por excluir amigo da lista de amigos de um usuario
 void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
-
 
 	/** 
 		\details Permite exclusao de amizade pelo usuario.
@@ -122,8 +119,10 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		\return Sem retorno. 
 	*/	
 
-
+	/*Tamanho max do email */
 	char email_excluir[101];
+
+	/*Variavel para conferir erro*/
 	int controle_erro; 
 
 	/* Limpando a tela */
@@ -135,32 +134,34 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 	/* Construcao da interface */	
 	imprime_titulo();
 
+	/*Imprimindo nome do usario*/
 	imprime_usuario(nome);
 	move(5,0);
 	printw("Lista de usuarios:\n");
 
-
+	/*Variaveis para realizar operacoes*/
 	no_lista_usuario * ptr_amigo = NULL;
 	no_lista_usuario * ptr_usuario = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 	Vizinhos * ptr = vizinhos(grafoAmizade, ptr_usuario->usuario.ID);
 	
-
 	/* Listando amigos */
 	if (ptr == NULL)
 	{
+		/*Caso ele nao possua amigos*/
 		printw("\n\nVoce nao possui usuarios amigos.\n\n");
 		getch();
 	}
-	else{
-		
+	else
+	{
+		/*Caso ele possua amigos, imprime todos na tela*/	
 		while(ptr != NULL)
 		{	
 			ptr_amigo = encontraNoUsuarioID(listaUsuarios->primeiro,ptr->id);
-			printw("%s\t %s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
-
+			printw("-Nome:%s\t Email:%s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
+			/*Proximo amigo se existir*/
 			ptr = ptr->prox;
 		}
-
+		/*Ativando o cursos e mostrando os caracteres digitados*/
 		curs_set(1);
 		echo();
 
