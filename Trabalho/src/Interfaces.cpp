@@ -797,11 +797,40 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 														  		 ponteiro->transacao.servico.precoServico);
 			printw("--------------------------------------------------------------\n\n");
 			
-			//Fazer : adicionar transacao nova  o grafo !!!!!!
+			adiciona_aresta(grafoTransacoes,ponteiro->transacao.categoria.idCategoria,ponteiro->transacao.idTransacao);
 
 			printw("Entrar em contato com %s pelo email %s.\n",ponteiro->transacao.servico.usuarioProvedor.nome,
 															   ponteiro->transacao.servico.usuarioProvedor.email);		
-			getch();	
+			getch();
+
+			int avalicao_transacao=-1;
+
+			while(avalicao_transacao<1)
+			{
+				printw("De uma nota de 1 a 5 para a transacao\n\n");
+				scanw("%d",&avalicao_transacao);
+	
+			}
+
+			char comentario_transacao[201];
+
+			no_lista_usuario *usuarioCliente = NULL;
+			usuarioCliente = encontraNoUsuario(listaUsuarios->primeiro, CPF);
+
+			printw("Digite um comentario sobre a transacao\n\n");
+			scanw("%[^\n]s",comentario_transacao);
+			ponteiro->transacao.classificacao = CONCLUIDA;
+			ponteiro->transacao.usuarioCliente = usuarioCliente->usuario;
+
+			strcpy(ponteiro->transacao.avaliacao.comentAvaliClient,comentario_transacao);
+
+			ponteiro->transacao.avaliacao.notaTransacao = avalicao_transacao;
+
+			printw("Digite ENTER para voltar");
+			getch();
+
+
+
 		}
 	}
 }
@@ -1084,6 +1113,53 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 
 	imprime_titulo();
 	imprime_usuario(nomeAdmin);
+
+	char categoria_desejada[51];
+
+	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
+	printw("\n\n\n");
+
+	/* Listando as categorias de transacoes existentes */
+	while(ptr_categoria != NULL)
+	{
+		printw("-%s\n",ptr_categoria->categoria.nomeCategoria);
+		ptr_categoria = ptr_categoria->prox;
+	}
+
+	curs_set(1);
+	echo();
+
+	/* Categoria desejada requerida do usuario */
+	printw("\n\nDigite o nome da categoria desejada:\n");
+	scanw("%s",categoria_desejada);
+
+	noListaTransacao * ponteiro = listaTransacoes->primeiro;
+
+	/* Contador para identificar a transacao escolhida */
+	int contador = 0; 
+
+	if(ponteiro == NULL)
+	{
+		printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+		getch();
+		telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+	}
+	else{
+
+		while(ponteiro != NULL){
+
+			if(ponteiro->transacao.classificacao == CONCLUIDA && strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0){
+
+				printw("Provedor: %s\nCliente: %s\nAvaliacao: %d\nComentario: %s\n",ponteiro->transacao.servico.usuarioProvedor.nome
+																				   ,ponteiro->transacao.usuarioCliente.nome
+																				   ,ponteiro->transacao.avaliacao.notaTransacao
+																				   ,ponteiro->transacao.avaliacao.comentAvaliClient);
+			}
+
+			ponteiro = ponteiro->prox;
+		}
+	}
+
 	getch();
 	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
