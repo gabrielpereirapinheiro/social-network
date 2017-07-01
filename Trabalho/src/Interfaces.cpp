@@ -607,12 +607,12 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	imprime_titulo();
 
 	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
-	printw("\n");
+	printw("\nCategorias:\n\n");
 
 	/* Listando as categorias de transacoes existentes */
 	while(ptr_categoria != NULL)
 	{
-		printw("%s\n",ptr_categoria->categoria.nomeCategoria);
+		printw("-%s\n",ptr_categoria->categoria.nomeCategoria);
 		ptr_categoria = ptr_categoria->prox;
 	}
 
@@ -650,13 +650,13 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 		clear();
 		imprime_titulo();
 
-		printw("\nInsira a descricao do produto/servico oferecido. Maximo 200 caracteres. \n\n");
+		printw("\nInsira a descricao do produto/servico oferecido. Maximo 200 caracteres:\n");
 		scanw("%[^\n]s",descricao_servico);
 
 		clear();
 		imprime_titulo();
 
-		printw("\nInsira o preco do servico.\n\n");
+		printw("\nInsira o preco do servico:\n");
 		scanw("%[^\n]s",preco_servico);
 
 		no_lista_usuario * no_usuario_atual = encontraNoUsuario(listaUsuarios->primeiro, CPF);
@@ -707,7 +707,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 
 	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
-	printw("\n\n\n");
+	printw("\n\nCategorias:\n\n");
 
 	/* Listando as categorias de transacoes existentes */
 	while(ptr_categoria != NULL)
@@ -1236,6 +1236,17 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 				curs_set(1);
 				echo();
 
+
+				noListaCategoria * ptr_categoria = listaCategorias->primeiro;
+				printw("\nCategorias existentes");
+
+				/* Listando as categorias de transacoes existentes */
+				while(ptr_categoria != NULL)
+				{
+					printw("-%s\n",ptr_categoria->categoria.nomeCategoria);
+					ptr_categoria = ptr_categoria->prox;
+				}
+
 				char cat_nome[51];
 				printw("\nDigite o nome da categoria a ser cadastrada:\n");
 				scanw("%[^\n]s",cat_nome);
@@ -1264,6 +1275,16 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 
 				curs_set(1);
 				echo();
+				printw("Categorias existentes\n");
+				noListaCategoria * ptr_categoria = listaCategorias->primeiro;
+				printw("\n");
+
+				/* Listando as categorias de transacoes existentes */
+				while(ptr_categoria != NULL)
+				{
+					printw("-%s\n",ptr_categoria->categoria.nomeCategoria);
+					ptr_categoria = ptr_categoria->prox;
+				}
 
 				char cat_nome[51];
 				printw("\nDigite o nome da categoria a ser descadastrada:\n");
