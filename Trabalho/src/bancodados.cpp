@@ -172,7 +172,8 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
 
-	grafoAmizade = cria_grafo("Grafo de Amizades"); // cria o grafo
+	char nomeGrafo[] = "Grafo de Amizades"; 
+	grafoAmizade = cria_grafo(nomeGrafo); // cria o grafo
 
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
 	// senao, retorna o grafo criado
@@ -225,7 +226,8 @@ Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
 
-	grafoTransacoes = cria_grafo("Grafo de Transacoes"); // cria o grafo
+	char nomeGrafo[] = "Grafo de Transacoes";
+	grafoTransacoes = cria_grafo(nomeGrafo); // cria o grafo
 
 	// Parte que vai verificar se ao abrir o arquivo, ele existe, se existir, abre como leitura e insere os elementos no grafo
 	// senao, retorna o grafo criado

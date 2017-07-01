@@ -1,42 +1,6 @@
 #include "Interfaces.hpp"
 
 
-/********************************* Globais *******************************************/
-
-/* Lista declarada como variavel global. Sera usada como um buffer para salvar os dados 
-   antes dos mesmos serem passados ao Banco de Dados */
-
-// lista_usuario * listaUsuario = criarListaUsuario(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
-
-//  Grafo declarado como variavel global. Sera usado como um buffer para salvar os dados
-//    de amizades antes dos mesmos serem passados ao Banco de Dados 
-// char nome[] = "Grafo de amizade"; ///////////////////////////TIRAR DEPOIS/////////////////////////////////
-// Grafo * grafoAmizade = cria_grafo(nome); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
-
-// ListaCategoria * lista_cat = criarListaCategoria(); ///////////////////////////TIRAR DEPOIS/////////////////////////////////
-
-/**************************************************************************************/
-/*
-void populaLista(ListaCategoria *listaCategorias)
-{
-/****************RETIRAR ESTA PORCARIA *********************/
-/*
-Categoria eletronicos;
-strcpy(eletronicos.nomeCategoria, "eletronicos");
-Categoria vestuario;
-strcpy(vestuario.nomeCategoria,"vestuario");
-Categoria carona;
-strcpy(carona.nomeCategoria,"carona");
-
-addNoListaCategoriaNova(listaCategorias,criaNoCategoria(eletronicos));
-addNoListaCategoriaNova(listaCategorias,criaNoCategoria(vestuario));
-addNoListaCategoriaNova(listaCategorias,criaNoCategoria(carona));
-/********************************************************/
-/*}
-	
-/*************************************************************************************/
-
-
 /// Funcao Excluir Amigo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
@@ -51,17 +15,43 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 		\return Sem retorno. 
 	*/
 
+	
+	/* Finalizar a ncruses */
 	endwin(); 
-	//Finalizar a ncruses
+	
+
+	/* Salvando grafos e listas no banco de dados */
 	int retornoSalvaUsuario = 0;
 	int retornoSalvaGrafoAmiz = 0;
+	int retornoSalvaTransacoes = 0;
+	int retornoSalvaGrafoTransac = 0;
+	int retornoSalvaCategorias = 0;
+
 	if(listaUsuarios->primeiro != NULL){
 		retornoSalvaUsuario = SalvaArquivoUsuario(listaUsuarios);
 	}
 	if(grafoAmizade->vertices != NULL){
 		retornoSalvaGrafoAmiz = SalvaArquivoGrafoAmiz(grafoAmizade);
 	}
+	if(listaTransacoes->primeiro != NULL){
+		retornoSalvaTransacoes = SalvaArquivoTransacao(listaTransacoes);
+	}
+	if(listaCategorias->primeiro != NULL){
+		retornoSalvaCategorias = SalvaArquivoCategorias(listaCategorias);
+	}
+	if(grafoTransacoes->vertices != NULL){
+		retornoSalvaGrafoTransac = SalvaArquivoGrafoTransacao(grafoTransacoes);
+	}
 	
+
+	/* Desalocando listas e grafos */
+	LiberaListaUsuario(listaUsuarios);
+	destroi_grafo(grafoAmizade);
+	LiberaListaTransacao(listaTransacoes);
+	LiberaListaCategoria(listaCategorias);
+	destroi_grafo(grafoTransacoes);
+
+
 	exit(0);
 }
 
