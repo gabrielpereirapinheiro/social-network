@@ -1049,10 +1049,14 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 				printw("\nDigite o nome da categoria a ser cadastrada:\n");
 				scanw("%[^\n]s",cat_nome);
 
+				/* Adicionando nova categoria na lista de categorias */
 				Categoria categ;
 				strcpy(categ.nomeCategoria,cat_nome);
 				noListaCategoria *novo_no = criaNoCategoria(categ);
 				addNoListaCategoriaNova(listaCategorias, novo_no);
+
+				/* Adicionando nova categoria no grafo de transacoes */
+				adiciona_vertice(grafoTransacoes, novo_no->categoria.idCategoria);
 
 				printw("\n\nA categoria %s foi adicionada com sucesso !\nEnter para voltar.\n", cat_nome);
 				getch();
@@ -1074,10 +1078,14 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 				printw("\nDigite o nome da categoria a ser descadastrada:\n");
 				scanw("%[^\n]s",cat_nome);
 
+				/* Retirando categoria da lista de categorias */
 				Categoria categ;
 				strcpy(categ.nomeCategoria,cat_nome);
 				noListaCategoria * deleta_no = encontraNoCategoria(listaCategorias->primeiro, categ);
 				deletaNoListaCategoria(listaCategorias, deleta_no);
+
+				/* Retirando categoria do grafo de transacoes */
+				remove_vertice(grafoTransacoes, deleta_no->categoria.idCategoria);
 
 				printw("\n\nA categoria %s foi excluida com sucesso !\nEnter para voltar.\n", cat_nome);
 				getch();
