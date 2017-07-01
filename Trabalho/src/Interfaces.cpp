@@ -625,51 +625,64 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	noListaCategoria * no_categoria = listaCategorias->primeiro;
 
+
+	int contador=0;
+
 	/* Pegando no da categoria escolhida */
 	while(no_categoria != NULL)
 	{
 		if(strcmp(no_categoria->categoria.nomeCategoria, categoria_desejada) == 0){
-
+			contador++;
 			break;
 		}
 		no_categoria = no_categoria->prox;
-	}
-
-	clear();
-	imprime_titulo();
-
-	printw("\nInsira a descricao do produto/servico oferecido. Maximo 200 caracteres. \n\n");
-	scanw("%[^\n]s",descricao_servico);
-
-	clear();
-	imprime_titulo();
-
-	printw("\nInsira o preco do servico.\n\n");
-	scanw("%[^\n]s",preco_servico);
-
-	no_lista_usuario * no_usuario_atual = encontraNoUsuario(listaUsuarios->primeiro, CPF);
 	
-	/* Criando um servico */
-	Servico novo_servico = CriaServicoUsuario(no_usuario_atual->usuario, preco_servico, descricao_servico);
-
-	/* Adicionando transacao */
-	Transacao nova_transacao = MontaTransacao(novo_servico, no_categoria->categoria);
-	noListaTransacao * novo_no_transacao = criaNoTransacao(nova_transacao);
-	int retorno_addNoListaTransacaoNova;
-	retorno_addNoListaTransacaoNova = addNoListaTransacaoNova(listaTransacoes, novo_no_transacao);
-
-	if(retorno_addNoListaTransacaoNova == SEM_ERRO)
+	}
+	if(contador==0)
 	{
-		printw("\n\nTransacao adicionada com sucesso.\nClique ENTER para sair.\n");
+		printw("Nao foi encontrada a categoria %s  ! Clique ENTER para voltar",categoria_desejada);
 		getch();
+		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
 	else
 	{
-		printw("\n\nTransacao nao foi adicionada!\nClique ENTER para sair.\n");
-		getch();
-	}
 
-	tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+		clear();
+		imprime_titulo();
+
+		printw("\nInsira a descricao do produto/servico oferecido. Maximo 200 caracteres. \n\n");
+		scanw("%[^\n]s",descricao_servico);
+
+		clear();
+		imprime_titulo();
+
+		printw("\nInsira o preco do servico.\n\n");
+		scanw("%[^\n]s",preco_servico);
+
+		no_lista_usuario * no_usuario_atual = encontraNoUsuario(listaUsuarios->primeiro, CPF);
+		
+		/* Criando um servico */
+		Servico novo_servico = CriaServicoUsuario(no_usuario_atual->usuario, preco_servico, descricao_servico);
+
+		/* Adicionando transacao */
+		Transacao nova_transacao = MontaTransacao(novo_servico, no_categoria->categoria);
+		noListaTransacao * novo_no_transacao = criaNoTransacao(nova_transacao);
+		int retorno_addNoListaTransacaoNova;
+		retorno_addNoListaTransacaoNova = addNoListaTransacaoNova(listaTransacoes, novo_no_transacao);
+
+		if(retorno_addNoListaTransacaoNova == SEM_ERRO)
+		{
+			printw("\n\nTransacao adicionada com sucesso.\nClique ENTER para sair.\n");
+			getch();
+		}
+		else
+		{
+			printw("\n\nTransacao nao foi adicionada!\nClique ENTER para sair.\n");
+			getch();
+		}
+		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
+
+	}
 
 }
 
