@@ -662,12 +662,12 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 
 	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
-	printw("\n");
+	printw("\n\n\n");
 
 	/* Listando as categorias de transacoes existentes */
 	while(ptr_categoria != NULL)
 	{
-		printw("%s\n",ptr_categoria->categoria.nomeCategoria);
+		printw("-%s\n",ptr_categoria->categoria.nomeCategoria);
 		ptr_categoria = ptr_categoria->prox;
 	}
 
@@ -684,13 +684,13 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	int contador = 0; 
 	while(ponteiro != NULL)
 	{
-
+		
 		if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
 		{	
-			printw("--------------------------------------------------------------");
+			printw("--------------------------------------------------------------");	
 			printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
 												  		 ponteiro->transacao.servico.precoServico);
-			printw("--------------------------------------------------------------\n\n");
+			printw("--------------------------------------------------------------");
 			
 			contador++;
 		}
@@ -701,7 +701,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	/* Recebe opcao desejada */
 	int opcao_desejada;
-	printw("Digite o numero da opcao desejada.\n");
+	printw("Digite o numero da opcao desejada:\n");
 	scanw("%d",&opcao_desejada);
 
 

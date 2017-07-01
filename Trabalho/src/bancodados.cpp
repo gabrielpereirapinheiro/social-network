@@ -181,7 +181,7 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 	if(fGrafAmiz != NULL){
 		fseek(fGrafAmiz, 25, SEEK_SET); // vai pular o cabecalho do arquivo
 		// pega uma linha completa do arquivo, que contem o nome do grafo, numero de vertices e numero de arestas
-		fgets(strTemp, 1001, fGrafAmiz);
+		fgets(strTemp, 1001, fGrafAmiz); // vai pular uma parte do cabecalho
 		ondeArquivo = ftell(fGrafAmiz); // recebe a posicao do arquivo logo depois de pegar as informacoes gerais do grafo
 		campoCbclho = NULL; // reinicializa o ponteiro de char como NULL
 		// parte que vai adicionar os vertices no grafo
@@ -217,7 +217,12 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 /// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de transacoes
 Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 	// tamanho do cabecalho dos arquivos de grafo: 25
+	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
+	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
 	FILE *fgrafTransac = NULL; //! descritor do arquivo
+	int vertice = 0; //! variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
+	int ondeArquivo = 0; //! vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
+	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
 
 	grafoTransacoes = cria_grafo("Grafo de Transacoes"); // cria o grafo
@@ -227,7 +232,33 @@ Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 
 	//grafo de transacoes
 	if(fgrafTransac != NULL){
-		
+		fseek(fgrafTransac, 25, SEEK_SET); // vai pular o cabecalho do arquivo
+		// pega uma linha completa do arquivo, que contem o nome do grafo, numero de vertices e numero de arestas
+		fgets(strTemp, 1001, fgrafTransac); // vai pular uma parte do cabecalho
+		ondeArquivo = ftell(fgrafTransac); // recebe a posicao do arquivo logo depois de pegar as informacoes gerais do grafo
+		campoCbclho = NULL; // reinicializa o ponteiro de char como NULL
+		// parte que vai adicionar os vertices no grafo
+		while(!feof(fgrafTransac)){
+		  	fscanf(fgrafTransac, "%s", strTemp);
+		  	if(feof(fgrafTransac)) break;
+			campoCbclho = strtok (strTemp,">");
+			adiciona_vertice(grafoTransacoes, atoi(campoCbclho)); // adiciona o vertice no grafo
+  		}
+
+  		//volta para a posicao do arquivo guardada na variavel ondeArquivo, para agora adicionar as arestas
+  		fseek(fgrafTransac, ondeArquivo, SEEK_SET);
+  		while(!feof(fgrafTransac)){
+		  	fscanf(fgrafTransac, "%s", strTemp);
+		  	contadorAux = 0;
+		  	if(feof(fgrafTransac)) break;
+			campoCbclho = strtok (strTemp,">");
+			vertice = atoi(campoCbclho);
+			campoCbclho = strtok(NULL, "|\n");
+			while (campoCbclho != NULL){
+			   adiciona_aresta(grafoTransacoes, vertice, atoi(campoCbclho)); // adiciona a aresta no vertice
+			   campoCbclho = strtok(NULL, "|\n");
+			}
+  		}
 		// chama a funcao que coloca as informacoes na lista
 		fclose(fgrafTransac);
 	}
