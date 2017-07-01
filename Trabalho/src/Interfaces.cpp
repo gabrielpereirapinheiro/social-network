@@ -1,3 +1,6 @@
+#include "Interfaces.hpp"
+
+
 /**
  * @file
  * @author  Andre Luis Souto Ferreira  <andre_luisferreira@hotmail.com>
@@ -10,9 +13,6 @@
  * Projeto da disciplina metodos de programacão 2017/1
  *
  */
-
-#include "Interfaces.hpp"
-
 
 /// Funcao que sera responsavel por sair do programa na tela inicial quando o usuario socilitar, nela serao salvos os grafos no arquivo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
