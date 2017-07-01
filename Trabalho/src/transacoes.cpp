@@ -130,7 +130,7 @@ int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){
 
 			anterior->prox = acompanha->prox;
 		}
-		else if(acompanha == NULL){ /** Caso o nó esteja no fim da lista */
+		else if(acompanha == NULL && anterior != NULL){ /** Caso o nó esteja no fim da lista */
 
 			anterior->prox = NULL;
 		}

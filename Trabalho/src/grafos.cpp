@@ -190,14 +190,13 @@ int adiciona_vertice(Grafo *G, int x){
 
 /*Funcao que remove um vertice do grafo*/
 int remove_vertice(Grafo *G, int x){
-	Vertice *anterior = NULL, *p = G->vertices; //p eh o ponteiro para percorrer a lista
-	/*anterior vai receber o elemento antecessor da lista sendo percorrida*/
-
 	/*Verifica se o grafo passado existe*/
 	if(G == NULL){
 		printf("Grafo nao existe! Saindo da funcao remove_vertice\n");
 		return ERRO;
 	}	
+	Vertice *anterior = NULL, *p = G->vertices; //p eh o ponteiro para percorrer a lista
+	/*anterior vai receber o elemento antecessor da lista sendo percorrida*/
 
 	while(p != NULL && p->idVertice != x){
 		anterior = p;

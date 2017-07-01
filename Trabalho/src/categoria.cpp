@@ -81,7 +81,7 @@ int addNoListaCategoriaNova(ListaCategoria *lista, noListaCategoria *no){
 
 /** Deleta uma categoria da lista de categorias pelo seu id*/
 //Retorna 0 se a remocao tiver ocorrido com sucesso e -1, caso contrario
-int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){ 
+int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){
 
 	noListaCategoria *acompanha = lista->primeiro;
 	noListaCategoria *anterior = NULL;
@@ -103,7 +103,7 @@ int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){
 
 			anterior->prox = acompanha->prox;
 		}
-		else if(acompanha == NULL){ /** Caso o nó esteja no fim da lista */
+		else if(acompanha == NULL && anterior != NULL){ /** Caso o nó esteja no fim da lista */
 
 			anterior->prox = NULL;
 		}
