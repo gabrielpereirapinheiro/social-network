@@ -103,10 +103,9 @@ void imprime_usuario(char nome[])
 }
 
 
-/// Funcao Excluir Amigo
+/// Funcao responsavel por excluir amigo da lista de amigos de um usuario
 void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
-
 
 	/** 
 		\details Permite exclusao de amizade pelo usuario.
@@ -120,8 +119,10 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		\return Sem retorno. 
 	*/	
 
-
+	/*Tamanho max do email */
 	char email_excluir[101];
+
+	/*Variavel para conferir erro*/
 	int controle_erro; 
 
 	/* Limpando a tela */
@@ -133,32 +134,34 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 	/* Construcao da interface */	
 	imprime_titulo();
 
+	/*Imprimindo nome do usario*/
 	imprime_usuario(nome);
 	move(5,0);
 	printw("Lista de usuarios:\n");
 
-
+	/*Variaveis para realizar operacoes*/
 	no_lista_usuario * ptr_amigo = NULL;
 	no_lista_usuario * ptr_usuario = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 	Vizinhos * ptr = vizinhos(grafoAmizade, ptr_usuario->usuario.ID);
 	
-
 	/* Listando amigos */
 	if (ptr == NULL)
 	{
+		/*Caso ele nao possua amigos*/
 		printw("\n\nVoce nao possui usuarios amigos.\n\n");
 		getch();
 	}
-	else{
-		
+	else
+	{
+		/*Caso ele possua amigos, imprime todos na tela*/	
 		while(ptr != NULL)
 		{	
 			ptr_amigo = encontraNoUsuarioID(listaUsuarios->primeiro,ptr->id);
-			printw("%s\t %s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
-
+			printw("-Nome:%s\t Email:%s\n",ptr_amigo->usuario.nome,ptr_amigo->usuario.email);
+			/*Proximo amigo se existir*/
 			ptr = ptr->prox;
 		}
-
+		/*Ativando o cursos e mostrando os caracteres digitados*/
 		curs_set(1);
 		echo();
 
