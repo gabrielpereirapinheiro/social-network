@@ -704,7 +704,7 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
 	/** 
-		\details Permite ao usuario adicionar uma transacao.
+		\details Permite ao usuario escolher uma transacao.
 		\param Char nome[]: Nome do usuario;
 		\param Char CPF[]: CPF do usuario.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
@@ -774,7 +774,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 		}
 		else
 		{
-				/* Recebe opcao desejada */
+			/* Recebe opcao desejada */
 			int opcao_desejada;
 			printw("\nDigite o numero da opcao desejada:\n");
 			scanw("%d",&opcao_desejada);
@@ -786,7 +786,8 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 			while(ponteiro != NULL)
 			{
 
-				if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+				if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0 &&
+				   ponteiro->transacao.classificacao == PENDENTE)
 				{	
 					if(opcao_desejada == contador)
 					{
@@ -1175,10 +1176,11 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 
 			if(ponteiro->transacao.classificacao == CONCLUIDA && strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0){
 
-				printw("\nProvedor: %s\nCliente: %s\nAvaliacao: %d\nComentario: %s\n",ponteiro->transacao.servico.usuarioProvedor.nome
-																				   ,ponteiro->transacao.usuarioCliente.nome
-																				   ,ponteiro->transacao.avaliacao.notaTransacao
-																				   ,ponteiro->transacao.avaliacao.comentAvaliClient);
+				printw("\nProvedor: %s\nCliente: %s\nAvaliacao: %d\nComentario: %s\nDescricao Servico/Produto: %s\n",ponteiro->transacao.servico.usuarioProvedor.nome
+																				   									,ponteiro->transacao.usuarioCliente.nome
+																				   									,ponteiro->transacao.avaliacao.notaTransacao
+																				   									,ponteiro->transacao.avaliacao.comentAvaliClient
+																				   									,ponteiro->transacao.servico.descricaoServico);
 					contador++;
 			}
 		
