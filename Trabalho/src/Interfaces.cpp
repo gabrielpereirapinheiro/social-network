@@ -147,7 +147,7 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 	/*Imprimindo nome do usario*/
 	imprime_usuario(nome);
 	move(5,0);
-	printw("Lista de usuarios:\n");
+	printw("Lista dos seus amigos:\n");
 
 	/*Variaveis para realizar operacoes*/
 	no_lista_usuario * ptr_amigo = NULL;
@@ -185,7 +185,9 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 		/*Caso nao tenha o usuario com o email fornecido*/
 		if (ptr_amigo == NULL)
 		{
+			curs_set(0);
 			printw("\n\nUsuario com email fornecido nao consta em sua lista de amigos!\n\n");
+			printw("Clique ENTER para voltar!");
 			getch();
 		}
 		else{
@@ -195,15 +197,18 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 			/*Caso o email fornecido exista e seja removido com sucesso*/
 			if (controle_erro != ERRO)
 			{
-
-				printw("\n\n\nAmigo removido com sucesso! \n");
+				curs_set(0);
+				printw("\n\nAmigo removido com sucesso! \n");
+				printw("\nClique ENTER para voltar!");
 				getch();
 			}
 			/*Email nao seja de algum amigo dele*/
 			else
 			{
+				curs_set(0);
 				/*Mostrando mensagem de erro*/
 				printw("\n\n\nTal usuario nao existe na sua relacao de amigos ou o email esta incorreto! \n");
+				printw("Clique ENTER para voltar");
 				getch();
 			}
 		}
@@ -258,6 +263,7 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 
 	if(ptr_amigo== NULL)
 	{
+		curs_set(0);
 		printw("Nao foi encontrado o usuario '%s'. \n\nPressiona qualquer tecla para voltar para o MENU",email_desejado);
 		getch();
 		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
@@ -268,14 +274,16 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 		controle_erro = adiciona_aresta(grafoAmizade, ptr_usuario->usuario.ID, ptr_amigo->usuario.ID);
 
 		if (controle_erro != ERRO)
-		{
-
-			printw("\n\n\n'%s' adicionado com sucesso! \n",ptr_amigo->usuario.nome);
+		{	
+			curs_set(0);
+			/*Indicando sucesso na operacao*/
+			printw("\n'%s' adicionado com sucesso! \n",ptr_amigo->usuario.nome);
+			printw("\nClique ENTER para voltar!");
 			getch();
 		}
 		else
 		{
-
+			/*Indicando falha na operacao*/
 			printw("\n\n\n'%s' nao pode ser adicionado! \n",ptr_amigo->usuario.nome);
 			getch();
 		}		
@@ -313,6 +321,8 @@ void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransac
 
 	int tecla;
 
+
+	/*Parte responsavel por mostrar opcoes e pegar a escolhida do usuario*/
 	do{
 		
 		imprime_titulo();
@@ -436,7 +446,7 @@ void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, Lis
 
 	} while(tecla != enter);
 
-
+	/*Mostra caracteres na tela e o curor*/
 	curs_set(1);
 	echo();
 
@@ -504,7 +514,9 @@ int menu_configuracao(char nome[])
 	//Oculta o cursor na tela
 	curs_set(0);
 
-	int opcao = 0, tecla;
+	int opcao = 0;
+
+	int tecla;
 
 	do{
 		
@@ -598,11 +610,15 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 		\param Grafo *grafoTransacoes: grafo de transacoes entre usuarios lido do banco.
 		\return Sem retorno. 
 	*/
+
+	/*Variaveis para pegar a categoria escolhida, a descricao do servico e o preco*/
 	char categoria_desejada[51];
 	char descricao_servico[201];
 	char preco_servico[31];
 
+	/*limpa tela*/
 	clear();
+
 	imprime_titulo();
 
 	noListaCategoria * ptr_categoria = listaCategorias->primeiro;
@@ -868,7 +884,7 @@ int menu_usuario(char nome[])
 		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Adicionar transacao\n");
 		(opcao == 2) ? printw(" >") : printw("  ");
-		printw("Adicionar amigiunho\n");
+		printw("Adicionar amigo\n");
 		(opcao == 3) ? printw(" >") : printw("  ");
 		printw("Excluir amigo\n");
 		(opcao ==4 ) ? printw(" >") : printw("  ");
@@ -906,13 +922,13 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 		\return Sem retorno. 
 	*/
 
-
 	no_lista_usuario *ptr = NULL;
 	ptr = encontraNoUsuario(listaUsuarios->primeiro,CPF);
 
 	int opcao;
 
 	clear();
+
 	/**Mostra titulo*/
 	imprime_titulo();
 
@@ -956,7 +972,6 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 	/**Mostrar caracteres*/
 	echo();
 }
-
 
 Usuario tela_sign_up()
 {
@@ -1104,7 +1119,6 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 	}
 	telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 }
-
 
 void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
@@ -1321,7 +1335,6 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 		default: 
 			break;	
 	}
-
 }
 
 /// Funcao Tela Administrador
@@ -1602,6 +1615,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 	init_pair(3,COLOR_YELLOW,COLOR_RED);
 	init_pair(4,COLOR_BLACK,COLOR_GREEN);
 
+	/*Cor padrao*/
 	cores(1);
 		
 	//Funcao que imprime o titulo na parte superior da tela	
@@ -1610,6 +1624,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 	//Recebe a opcao na tela inicial
 	opcao = opcoes_tela_inicial(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 
+	/*Direciona de acordo com a opcao*/
 	switch(opcao)
 	{
 		case 0 :
@@ -1623,6 +1638,7 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 				adiciona_vertice(grafoAmizade, novo_no->usuario.ID);//OBS.: Talvez nao esteja certo, pois nao sabemos 														 // se esta mudando o ID diretamente no no
 			}
 			break;
+
 		case 2 :
 			sair_do_programa(listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 			break;
