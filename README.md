@@ -1,5 +1,5 @@
 # Universidade de Brasilia - UnB
- 
+ __________________________________________________________________________________________________________________________________________
  
 ## Social Network
 
@@ -9,13 +9,13 @@
 - [Gabriel Pereira Pinheiro](https://github.com/gabrielpereirapinheiro) 
 - [Victor Araujo Vieira](https://github.com/IceVct)
 
-### Preparando o Ambiente
+### Preparando o ambiente
 
-- E necesario instalar a biblioteca ```ncurses``` para executar o programa, para isso abra o terminal e digite o comando:
+- É necesário instalar a biblioteca ```ncurses``` para executar o programa, para isso abra o terminal e digite o comando:
 
 > $ sudo apt-get install libncurses5-dev libncursesw5-dev
 
-### Como executar:
+### Como executar
 
 - Basta entrar na pasta ```src``` pelo terminal e digitar o comando :
 
@@ -27,6 +27,6 @@
 
 - E o programa sera executado.
 
-### Sobre :
+### Sobre o projeto
 
 - Para saber mais sobre o projeto clique [aqui](https://github.com/gabrielpereirapinheiro/social-network/blob/master/sobre.md).
