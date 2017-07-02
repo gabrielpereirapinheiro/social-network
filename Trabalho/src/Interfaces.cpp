@@ -18,7 +18,7 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 {
 	/**
 		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -77,7 +77,7 @@ void cores(int opcao)
 
 	/**
 		Assertivas de entrada: inteiro opcao deve ser um numero de 1 a 4.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -97,7 +97,7 @@ void imprime_titulo()
 
 	/**
 		Assertivas de entrada: nenhuma entrada
-		Assertivas de entrada:  nenhuma saida
+		Assertivas de saida:  nenhuma saida
 	*/
 
 	/** 
@@ -121,7 +121,7 @@ void imprime_usuario(char nome[])
 
 	/**
 		Assertivas de entrada: char nome deve conter um nome de usuario ou do adm.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -144,7 +144,7 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -257,7 +257,7 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -338,7 +338,7 @@ void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransac
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -432,7 +432,7 @@ void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, Lis
 {	
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o usuario as edite podem estar diferentes nome ou cpf.
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o usuario as edite podem estar diferentes nome ou cpf.
 	*/
 
 
@@ -551,7 +551,7 @@ int menu_configuracao(char nome[])
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -607,7 +607,7 @@ void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, Li
 
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -657,7 +657,7 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 {	
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. Menos a lista transacao que se tiver ocorrido tudo bem, com uma transacao a mais 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. Menos a lista transacao que se tiver ocorrido tudo bem, com uma transacao a mais 
 	*/
 
 	/** 
@@ -767,7 +767,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -925,7 +925,7 @@ int menu_usuario(char nome[])
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -985,7 +985,7 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -1056,7 +1056,7 @@ Usuario tela_sign_up()
 
 	/**
 		Assertivas de entrada: Sem entrada .
-		Assertivas de entrada: Ao final da funcao deve-se ter um novo usuario com todos seus campos preenchidos e validos. Retornando -o .
+		Assertivas de saida: Ao final da funcao deve-se ter um novo usuario com todos seus campos preenchidos e validos. Retornando -o .
 	*/
 
 
@@ -1139,7 +1139,7 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 	/**
 		Assertivas de entrada: nome deve conter o nome 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 
@@ -1216,7 +1216,7 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -1301,7 +1301,7 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o adm alterea a lista de categorias, podendo ter acrescentado uma nova ou retirado uma existente da lista de categorias.
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o adm alterea a lista de categorias, podendo ter acrescentado uma nova ou retirado uma existente da lista de categorias.
 	*/
 
 	/** 
@@ -1443,7 +1443,7 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 {
 	/**
 		Assertivas de entrada: nome deve conter o nome 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -1520,7 +1520,7 @@ void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 
 	/**
 		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -1644,7 +1644,7 @@ int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTrans
 {
 	/**
 		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
 
 	/** 
@@ -1703,9 +1703,9 @@ void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 {
 	/**
 		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
-		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+		Assertivas de saida: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
 	*/
-
+	
 	/** 
 		\details Funcao que exibe a tela inicial.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 

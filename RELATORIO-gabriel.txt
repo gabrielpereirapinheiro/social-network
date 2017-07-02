@@ -16,4 +16,8 @@
 01/07/17      2 horas      grafica      com quase tudo pronto, foi revisado e melhorado a estetica
 02/07/17      1 hora       documentacao com a ultima versao do codigo foi gerada a ultima versao do doxygen ( relatorio ) 
 			    doxygen
+02/07/17      1 hora       estudar aula Para relembrar diagramas de sequencia e cria-los
+02/07/17      0.5 hora    revisar 
+                         especificacoes Para ver conformidade do projeto com o que foi pedido ( Ultima revisao antes da entrega )
+
 
