@@ -16,6 +16,10 @@
 /// Funcao que sera responsavel por sair do programa na tela inicial quando o usuario socilitar, nela serao salvos os grafos no arquivo
 void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
 
 	/** 
 		\details Funcao que salva as listas e finaliza o programa.
@@ -70,6 +74,13 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 void cores(int opcao)
 {
 
+
+	/**
+		Assertivas de entrada: inteiro opcao deve ser um numero de 1 a 4.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
+
 	/** 
 		\details Funcao que recebe uma opcao e muda as cores da tela.
 		\param int opcao: opcao de cores da tela escolhida pelo usuario. 
@@ -83,6 +94,12 @@ void cores(int opcao)
 /// Funcao responsavel por imprimir Titulo na tela sempre na mesma posicao
 void imprime_titulo()
 {
+
+	/**
+		Assertivas de entrada: nenhuma entrada
+		Assertivas de entrada:  nenhuma saida
+	*/
+
 	/** 
 		\details Funcao que imprime o titulo da tela.
 		\param	Sem parametros.
@@ -101,6 +118,13 @@ void imprime_titulo()
 void imprime_usuario(char nome[])
 {
 
+
+	/**
+		Assertivas de entrada: char nome deve conter um nome de usuario ou do adm.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
+
 	/** 
 		\details Funcao que exibe na tela o nome do usuario logado.
 		\param	char nome[]: nome do usuario logado. 
@@ -116,6 +140,13 @@ void imprime_usuario(char nome[])
 /// Funcao responsavel por excluir amigo da lista de amigos de um usuario
 void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+
+
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 
 	/** 
 		\details Permite exclusao de amizade pelo usuario.
@@ -222,6 +253,13 @@ void excluiAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTra
 /// Funcao responsavel por adicionar Amigo na lista de amigos de um usuario
 void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+
+
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 	/** 
 		\details Permite inclusao de amizade pelo usuario.
 		\param Char nome[]: Nome do usuario;
@@ -298,6 +336,11 @@ void adicionaAmigo(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaT
 ///Funcao responsavel por exibir possibilidades de cores para o usuario
 void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
@@ -387,6 +430,10 @@ void tela_cor(char nome[],char CPF[], lista_usuario *listaUsuarios, ListaTransac
 /// Funcao Editar Informacoes
 void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o usuario as edite podem estar diferentes nome ou cpf.
+	*/
 
 
 	/** 
@@ -502,6 +549,10 @@ void editaInformacoes(char nome[], char CPF[], lista_usuario *listaUsuarios, Lis
  
 int menu_configuracao(char nome[])
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
 
 
 	/** 
@@ -553,6 +604,12 @@ int menu_configuracao(char nome[])
 void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
+
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 	/** 
 		\details Funcao que exibe a tela apos login do usuario e escolha dele em configuracoes.
 		\param Char nome[]: Nome do usuario;
@@ -598,6 +655,10 @@ void tela_configuracao(char nome[], char CPF[], lista_usuario *listaUsuarios, Li
 /// Funcao Adiciona Transacao
 void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. Menos a lista transacao que se tiver ocorrido tudo bem, com uma transacao a mais 
+	*/
 
 	/** 
 		\details Permite ao usuario adicionar uma transacao.
@@ -703,6 +764,13 @@ void adicionarTransacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {	
+
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
+
 	/** 
 		\details Permite ao usuario escolher uma transacao.
 		\param Char nome[]: Nome do usuario;
@@ -855,6 +923,10 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 int menu_usuario(char nome[])
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
@@ -911,6 +983,11 @@ int menu_usuario(char nome[])
 
 void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario no sistema.
@@ -976,8 +1053,16 @@ void tela_usuario(char CPF[], lista_usuario *listaUsuarios, ListaTransacao *list
 
 Usuario tela_sign_up()
 {
+
+	/**
+		Assertivas de entrada: Sem entrada .
+		Assertivas de entrada: Ao final da funcao deve-se ter um novo usuario com todos seus campos preenchidos e validos. Retornando -o .
+	*/
+
+
 	/** 
 		\details Funcao que cria o novo usuario com os dados que foram recuperados
+		\param Funcao sem parametros 
 		\return Retorna um usuario com os dados do novo usuario
 	*/
 
@@ -1052,6 +1137,12 @@ Usuario tela_sign_up()
 void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
 
+	/**
+		Assertivas de entrada: nome deve conter o nome 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
+
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema e clique dele em visualizar o grafo de amizade.
 		\param Char nomeAdmin[]: Nome do usuario;
@@ -1123,6 +1214,10 @@ void tela_visualiza(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransac
 
 void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema e ele clicar em visuazliar transacoes.
@@ -1204,6 +1299,10 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 
 void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome do usario, CPF deve conter 11 digitos e ser daquele usuario,listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. So caso o adm alterea a lista de categorias, podendo ter acrescentado uma nova ou retirado uma existente da lista de categorias.
+	*/
 
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema e ele clicar para cadastrar ou descadastrar transacoes.
@@ -1342,6 +1441,11 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 /// Funcao Tela Administrador
 void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: nome deve conter o nome 'admin',listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 	/** 
 		\details Funcao que exibe a tela apos login do usuario administrador do sistema.
 		\param	char nomeAdmin[]: nome do administrador. 
@@ -1413,6 +1517,11 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 
 void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+
+	/**
+		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
 
 	/** 
 		\details Funcao que exibe a tela de login.
@@ -1533,6 +1642,11 @@ void tela_sing_in(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes,
 
 int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 	/** 
 		\details Funcao que exibe a tela menu de opcoes da tela inicial.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
@@ -1587,6 +1701,11 @@ int opcoes_tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTrans
 
 void tela_inicial(lista_usuario *listaUsuarios, ListaTransacao *listaTransacoes, ListaCategoria *listaCategorias, Grafo *grafoAmizade, Grafo *grafoTransacoes)
 {
+	/**
+		Assertivas de entrada: listaUsuarios existente, listaTransacoes existente, listaCategorias existente, grafoAmizade existe e grafoTransacoes existente.
+		Assertivas de entrada: todos os itens terminam devem terminar o programa no mesmo jeito que iniciaram. 
+	*/
+
 	/** 
 		\details Funcao que exibe a tela inicial.
 		\param lista_usuario *listaUsuarios: lista de usuarios lida do banco. 
