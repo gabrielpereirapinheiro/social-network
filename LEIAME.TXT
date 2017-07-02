@@ -1,0 +1,3 @@
+Para executar o programa e necessario instalar a biblioteca ncurses primeiramente .
+Apos sua instasalacao e necessario acessar a pasta src do projeto por meio do terminal e utilizar o comando 'make'.
+Em seguida ao comando 'make' e necessario digitar './main' e o programa sera executado.
