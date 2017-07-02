@@ -11,5 +11,3 @@
 - Os testes automatizados foram gerados utilizando a framework [Catch](https://github.com/philsquared/Catch). Foi seguido desenvolvimento orientado a testes (```Test Driven Development```).
 
 - Os comentarios seguiram o padrao para ser possivel ser gerada a documentacao do codigo por meio do [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
-
-# Sobre o projeto
