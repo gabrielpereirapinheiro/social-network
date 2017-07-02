@@ -1,9 +1,16 @@
 ﻿Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 
-8/6/17        2 horas          Interface Grafica  Escolha e instalacao da biblioteca ncurses e criacao da pagina inicial .
-15/6/17       4 horas	       Modularizacao da interface grafica e adaptacao para o Make File juntamente com o Andre Luis .
-			       Criacao da tela cadastro e armazenamento em uma struct 
-16/6/17       1 hora 	       Estudou adaptcao do programa para ter a documentao pelo doxygen e atualizou descricao do projeto no github
-30/06/17      6 horas	       Documentacao/Funcoes/Comentarios
+8/6/17        2 horas     grafica     	Interface Grafica  Escolha e instalacao da biblioteca ncurses e criacao da pagina inicial .
+15/6/17       4 horas	  grafica     	Modularizacao da interface grafica e adaptacao para o Make File juntamente com o Andre Luis .
+			      	      	Criacao da tela cadastro e armazenamento em uma struct 
+16/6/17       1 hora 	  documentacao  Estudou adaptcao do programa para ter a documentao pelo doxygen e atualizou descricao do projeto no github
+17/6/17	      3 horas     comentarios	Comenatarios na estruturra correta para a documentacao
+17/6/17       2 horas 	  revisao	Verificacao do que falta para fazer, inserido no 'to do' e informado aos demais integrantes. Funcoes adiciona
+			    		transacao feita com a ajuda do andre luis.
+			   		Funcao visualiza transacoes feita com todos integrantes do grupo
+			    		Verificacao da cadastra e descadastra transacoes
+30/06/17      6 horas	   documentao	Documentacao e comentarios
+01/07/17      2 horas      funcoes      Utilizando a bibliotecas do victor e com a ajuda do andre luis foi feita a arrumacao da casa e as ultimas funcoes que faltavam
+01/07/17      2 horas      grafica      com quase tudo pronto, foi revisado e melhorado a estetica
 
