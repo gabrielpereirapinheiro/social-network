@@ -10,7 +10,10 @@
 			    		transacao feita com a ajuda do andre luis.
 			   		Funcao visualiza transacoes feita com todos integrantes do grupo
 			    		Verificacao da cadastra e descadastra transacoes
-30/06/17      6 horas	   documentao	Documentacao e comentarios
+30/06/17      6 horas	   espeficiar
+		           as funcoes	Documentacao e comentarios
 01/07/17      2 horas      funcoes      Utilizando a bibliotecas do victor e com a ajuda do andre luis foi feita a arrumacao da casa e as ultimas funcoes que faltavam
 01/07/17      2 horas      grafica      com quase tudo pronto, foi revisado e melhorado a estetica
+02/07/17      1 hora       documentacao com a ultima versao do codigo foi gerada a ultima versao do doxygen ( relatorio ) 
+			    doxygen
 
