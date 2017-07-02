@@ -745,7 +745,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 	if(ponteiro == NULL)
 	{
-		printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+		printw("\n\nCategoria %s nao encontrada!\nClique ENTER para voltar",categoria_desejada);
 		getch();
 		tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
@@ -753,7 +753,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 	{
 		while(ponteiro != NULL)
 		{
-			if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0)
+			if(strcmp(ponteiro->transacao.categoria.nomeCategoria,categoria_desejada) == 0 && ponteiro->transacao.classificacao == PENDENTE)
 			{	
 				printw("\n--------------------------------------------------------------");	
 				printw("\n(%d)\n\nDescricao: %s\nPreco: %s\n",contador, ponteiro->transacao.servico.descricaoServico,
@@ -768,7 +768,7 @@ void procurar_transacao(char nome[], char CPF[], lista_usuario *listaUsuarios, L
 
 		if(contador==0)
 		{
-			printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+			printw("\n\nNao ha produtos/servicos na categoria %s!\nClique ENTER para voltar",categoria_desejada);
 			getch();
 			tela_usuario(CPF, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 		}
@@ -1163,13 +1163,13 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 
 	if(ponteiro == NULL)
 	{
-		printw("\n\nCategoria %s nao foi encontrada !\n Clique ENTER para voltar");
+		printw("\n\nCategoria %s nao foi encontrada !\nClique ENTER para voltar",categoria_desejada);
 		getch();
 		telaAdmin(nomeAdmin, listaUsuarios, listaTransacoes, listaCategorias, grafoAmizade, grafoTransacoes);
 	}
 	else{
 
-		contador =0;
+		contador = 0;
 
 		while(ponteiro != NULL){
 
@@ -1188,11 +1188,11 @@ void tela_visualiza_transacao(char nomeAdmin[], lista_usuario *listaUsuarios, Li
 		curs_set(0);
 		if (contador==0)
 		{
-			printw("Nenhuma transacao concluida na categoria %s ! \n\n Clique ENTER para voltar",categoria_desejada);
+			printw("\nNenhuma transacao concluida na categoria %s ! \n\nClique ENTER para voltar",categoria_desejada);
 		}
 		else
 		{
-			printw("Todas as transacoes de %s listadas ! \n\n Clique ENTER para voltar",categoria_desejada);
+			printw("\nTodas as transacoes de %s listadas ! \n\nClique ENTER para voltar",categoria_desejada);
 		}
 	}
 
@@ -1259,7 +1259,7 @@ void tela_cadastra_descadastra(char nomeAdmin[], lista_usuario *listaUsuarios, L
 
 
 				noListaCategoria * ptr_categoria = listaCategorias->primeiro;
-				printw("\nCategorias existentes");
+				printw("\nCategorias existentes\n");
 
 				/* Listando as categorias de transacoes existentes */
 				while(ptr_categoria != NULL)
@@ -1371,7 +1371,7 @@ void telaAdmin(char nomeAdmin[], lista_usuario *listaUsuarios, ListaTransacao *l
 		(opcao == 1) ? printw(" >") : printw("  ");
 		printw("Cadastrar e descadastrar transacoes\n");
 		(opcao ==2 ) ? printw(" >") : printw("  ");
-		printw("Visiualizar transacoes e avaliacoes\n");
+		printw("Visualizar transacoes e avaliacoes\n");
 		(opcao ==3 ) ? printw(" >") : printw("  ");
 		printw("Sair\n");
 	
