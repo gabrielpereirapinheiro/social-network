@@ -50,8 +50,8 @@ Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *de
 		\return Uma variavel do tipo Servico. 
 	*/ 
 
-	Servico servicoUsuario; //! Variavel do tipo servico para abrigar os atributos do servico que o usuario
-							//! usuarioProvedor esta criando
+	Servico servicoUsuario; // Variavel do tipo servico para abrigar os atributos do servico que o usuario
+							// usuarioProvedor esta criando
 
 	servicoUsuario.usuarioProvedor = usuarioProvedor; // atribui ao usuario do servico o usuario que esta criando o servico
 	strcpy(servicoUsuario.precoServico, precoServico); // copia o preco do servico

@@ -49,7 +49,7 @@ lista_usuario *criarListaUsuario(){	/** Cria lista */
 	*/
 
 	lista_usuario *lista_criada = (lista_usuario*)malloc(sizeof(lista_usuario));
-	lista_criada->numeroUsuarios = 1; //! inicia o numero de usuarios. Comeca com 1 porque ja existe o administrador
+	lista_criada->numeroUsuarios = 1; // inicia o numero de usuarios. Comeca com 1 porque ja existe o administrador
 	lista_criada->primeiro = NULL;
 
 	return lista_criada;
@@ -70,8 +70,8 @@ void addNoListaUsuarioExistente(lista_usuario *lista, no_lista_usuario *no){
 		\return Sem retorno. 
 	*/
 
-	no_lista_usuario *acompanha = NULL; //! inicializa um ponteiro do tipo no_lista_usuario
-	acompanha = lista->primeiro; //! o ponteiro do tipo no_lista_usuario recebe a cabeca da lista
+	no_lista_usuario *acompanha = NULL; // inicializa um ponteiro do tipo no_lista_usuario
+	acompanha = lista->primeiro; // o ponteiro do tipo no_lista_usuario recebe a cabeca da lista
 
 	if (acompanha == NULL){
 		lista->primeiro = no;
@@ -101,8 +101,8 @@ void addNoListaUsuarioNovo(lista_usuario *lista, no_lista_usuario *no){
 		\return Sem retorno. 
 	*/
 
-	no_lista_usuario *acompanha = NULL; //! inicializa um ponteiro do tipo no_lista_usuario
-	acompanha = lista->primeiro; //! o ponteiro do tipo no_lista_usuario recebe a cabeca da lista
+	no_lista_usuario *acompanha = NULL; // inicializa um ponteiro do tipo no_lista_usuario
+	acompanha = lista->primeiro; // o ponteiro do tipo no_lista_usuario recebe a cabeca da lista
 
 	//Ja vai atribuir o id para o usuario, que eh o numero atual de usuarios cadastrados
 	//Depois incrementa o numero de usuarios cadastrados

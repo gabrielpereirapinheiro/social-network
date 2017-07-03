@@ -27,11 +27,11 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 	*/
 
 	//tamanho do cabecalho do arquivo de usuarios: 76
-	FILE *fUser = NULL; //! descritor do arquivo
-	Usuario usuarioRecuperado; //! variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
-	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
-	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
-	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
+	FILE *fUser = NULL; // descritor do arquivo
+	Usuario usuarioRecuperado; // variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
+	char *campoCbclho = NULL; // string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; // contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[1001]; // string temporaria que vai receber cada linha do arquivo
 
 	fUser = fopen("../arquivos/ArquivoUsuarios.txt", "r"); // abertura do arquivo
 
@@ -89,11 +89,11 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 	*/
 
 	//tamanho do cabecalho do arquivo de transacoes: 154
-	FILE *fTransacao = NULL; //! descritor do arquivo
-	Transacao transacaoRecuperada; //! variavel do tipo Transacao que vai receber os dados que estao sendo recuperados do arquivo
-	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
-	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
-	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
+	FILE *fTransacao = NULL; // descritor do arquivo
+	Transacao transacaoRecuperada; // variavel do tipo Transacao que vai receber os dados que estao sendo recuperados do arquivo
+	char *campoCbclho = NULL; // string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; // contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[1001]; // string temporaria que vai receber cada linha do arquivo
 
 	fTransacao = fopen("../arquivos/ArquivoTransacoes.txt", "r"); // abertura do arquivo
 
@@ -166,10 +166,10 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 
 	//tamanho do cabecalho do arquivo de categorias: 20 
 	Categoria categoriaRecuperada;
-	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
-	int contadorCampoAtual = 0; //! contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
-	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
-	FILE *fCateg = NULL; //! descritor do arquivo
+	char *campoCbclho = NULL; // string que vai receber cada string entre os delimitadores do arquivo
+	int contadorCampoAtual = 0; // contador para verificar qual elemento dos delimitadores do arquivo esta sendo verificado
+	char strTemp[1001]; // string temporaria que vai receber cada linha do arquivo
+	FILE *fCateg = NULL; // descritor do arquivo
 	fCateg = fopen("../arquivos/ArquivoCategorias.txt", "r");
 
 	listaCat = criarListaCategoria(); // cria a lista
@@ -221,12 +221,12 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 	*/
 
 	// tamanho do cabecalho dos arquivos de grafo: 25
-	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
-	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
-	FILE *fGrafAmiz = NULL; //! descritor do arquivo
-	int vertice = 0; //! variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
-	int ondeArquivo = 0; //! vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
-	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
+	char *campoCbclho = NULL; // string que vai receber cada string entre os delimitadores do arquivo
+	char strTemp[1001]; // string temporaria que vai receber cada linha do arquivo
+	FILE *fGrafAmiz = NULL; // descritor do arquivo
+	int vertice = 0; // variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
+	int ondeArquivo = 0; // vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
+	int contadorAux = 0; // contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fGrafAmiz = fopen("../arquivos/GrafoAmizades.txt", "r");
 
 	char nomeGrafo[] = "Grafo de Amizades"; 
@@ -286,12 +286,12 @@ Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 	*/
 
 	// tamanho do cabecalho dos arquivos de grafo: 25
-	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
-	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
-	FILE *fgrafTransac = NULL; //! descritor do arquivo
-	int vertice = 0; //! variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
-	int ondeArquivo = 0; //! vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
-	int contadorAux = 0; //! contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
+	char *campoCbclho = NULL; // string que vai receber cada string entre os delimitadores do arquivo
+	char strTemp[1001]; // string temporaria que vai receber cada linha do arquivo
+	FILE *fgrafTransac = NULL; // descritor do arquivo
+	int vertice = 0; // variavel auxiliar para guardar o valor do vertice em que serao adicionadas as arestas
+	int ondeArquivo = 0; // vai receber em que posicao do arquivo comeca os vertices e arestas do grafo
+	int contadorAux = 0; // contador que sera usado para retirar o nome do grafo, e pegar o numero de vertices e arestas, na linha do arquivo
 	fgrafTransac = fopen("../arquivos/GrafoTransacoes.txt", "r");
 
 	char nomeGrafo[] = "Grafo de Transacoes";
@@ -355,7 +355,7 @@ int SalvaArquivoUsuario(lista_usuario *listaUsuario){
 		return ERRO;
 	}
 	FILE *fp = fopen("../arquivos/ArquivoUsuarios.txt", "w");
-	no_lista_usuario *ptrNoUsuario = NULL; //! vai ser o ponteiro para percorrer a lista de usuarios
+	no_lista_usuario *ptrNoUsuario = NULL; // vai ser o ponteiro para percorrer a lista de usuarios
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoUsuarios.txt!\n");
@@ -400,7 +400,7 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 		return ERRO;
 	}
 	FILE *fp = fopen("../arquivos/ArquivoTransacoes.txt", "w");
-	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
+	noListaTransacao *ptrNoTransacoes = NULL;  // vai ser o ponteiro para percorrer a lista de transacoes
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoTransacoes.txt!\n");
@@ -454,7 +454,7 @@ int SalvaArquivoCategorias(ListaCategoria *listaCat){
 		return ERRO;
 	}
 	FILE *fp = fopen("../arquivos/ArquivoCategorias.txt", "w");
-	noListaCategoria *ptrNoCategorias = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
+	noListaCategoria *ptrNoCategorias = NULL;  // vai ser o ponteiro para percorrer a lista de transacoes
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo ArquivoCategorias.txt!\n");
@@ -497,8 +497,8 @@ int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
 		return ERRO;
 	}
 	FILE *fp = fopen("../arquivos/GrafoAmizades.txt", "w");
-	Vertice *vert = NULL; //! ponteiro de vertice para percorrer os vertices do grafo
-	Vizinhos *vizinhos = NULL; //! ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
+	Vertice *vert = NULL; // ponteiro de vertice para percorrer os vertices do grafo
+	Vizinhos *vizinhos = NULL; // ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo GrafoAmizades.txt!\n");
@@ -550,8 +550,8 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 		return ERRO;
 	}
 	FILE *fp = fopen("../arquivos/GrafoTransacoes.txt", "w");
-	Vertice *vert = NULL; //! ponteiro de vertice para percorrer os vertices do grafo
-	Vizinhos *vizinhos = NULL; //! ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
+	Vertice *vert = NULL; // ponteiro de vertice para percorrer os vertices do grafo
+	Vizinhos *vizinhos = NULL; // ponteiro de vizinhos para percorrer os vizinhos do vertice do grafo
 
 	if(fp == NULL){
 		printf("Nao foi possivel abrir o arquivo GrafoTransacoes.txt!\n");
@@ -600,9 +600,9 @@ int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao
 		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
 	*/
 
-	Usuario usuarioDesejado; //! O tipo usuario que vai ser retornado
-	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
-	no_lista_usuario *ptrNoUsuarioProv = NULL, *ptrNoUsuarioCli = NULL; //! Os ponteiros de no de usuario 
+	Usuario usuarioDesejado; // O tipo usuario que vai ser retornado
+	noListaTransacao *ptrNoTransacoes = NULL;  // vai ser o ponteiro para percorrer a lista de transacoes
+	no_lista_usuario *ptrNoUsuarioProv = NULL, *ptrNoUsuarioCli = NULL; // Os ponteiros de no de usuario 
 
 	if(listaUsuario->primeiro == NULL || listaTransacao->primeiro == NULL){
 		printf("Alguma das listas passadas como parametro vazias! Saindo da funcao RecupInfosUsuaID!\n");
