@@ -8,3 +8,6 @@
 					    Correção de erro no cadastro
 16/06/17    6 horas	    Parte grafica   Implementacao de funcoes da interface grafica juntamento com Gabriel.
 17/06/17    2 horas	    Testes	    Implemtancao de testes para biblioteca categoria.hpp e transacoes.hpp.
+01/07/17    2 horas	    Testes	    Implementacao dos testes que estavam faltando para bancodados.cpp
+01/07/17    4 horas	    Parte grafica   Implementacao do restante das interfaces juntamente com Gabriel.
+02/07/17    6 horas	    Programa Geral  Inspecao do codigo, correcao de bugs detectados.
