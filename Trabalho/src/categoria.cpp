@@ -12,8 +12,18 @@
  *
  */
 
-/** Funcao que cria o no de categoria */
-noListaCategoria *criaNoCategoria(Categoria categoria){	/** Cria nó */ 
+/// Funcao que cria um no do tipo categoria, para ser inserido ou nao na lista de categorias
+noListaCategoria *criaNoCategoria(Categoria categoria){	
+
+	/**
+		Assertivas de entrada: Uma variavel do tipo categoria valida, com atributos preenchidos
+		Assertivas de saida: Um no do tipo noListaCategoria valido
+	*/
+
+	/** 
+		\param Categoria categoria: Uma variavel do tipo Categoria, com seus atributos preenchidos. 
+		\return Um ponteiro do tipo noListaCategoria. 
+	*/
 
 	noListaCategoria *no = (noListaCategoria*)malloc(sizeof(noListaCategoria));
 	no->prox = NULL;
@@ -22,7 +32,18 @@ noListaCategoria *criaNoCategoria(Categoria categoria){	/** Cria nó */
 	return no;
 }
 
-ListaCategoria *criarListaCategoria(){	/** Cria lista */ 
+/// Funcao que cria a lista de categorias
+ListaCategoria *criarListaCategoria(){	
+
+	/**
+		Assertivas de entrada: Sem assertivas de entrada
+		Assertivas de saida: Uma lista de categorias, com a cabeca para lista de nos vazia e o atributo numeroCategorias = 0
+	*/
+
+	/** 
+		\param	Sem parametros de entrada.
+		\return Um ponteiro do tipo ListaCategoria, ou seja, a lista de categorias criada. 
+	*/
 
 	ListaCategoria *lista_criada = (ListaCategoria*)malloc(sizeof(ListaCategoria));
 	lista_criada->numeroCategorias = 0;
@@ -32,9 +53,19 @@ ListaCategoria *criarListaCategoria(){	/** Cria lista */
 
 }
 
-/** Adiciona uma categoria na lista de categorias, se for existente no BD*/
-/*Retorna 0 em caso sucesso e -1 caso contrario*/
-int addNoListaCategoriaExistente(ListaCategoria *lista, noListaCategoria *no){	
+/// Adiciona uma categoria na lista de categorias, se for existente no BD
+int addNoListaCategoriaExistente(ListaCategoria *lista, noListaCategoria *no){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias existente e um no do tipo noListaCategoria existente
+		Assertivas de saida: A lista de categorias passada como argumento com o no adicionado
+	*/
+
+	/** 
+		\param	ListaCategoria *lista: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\param noListaCategoria *no: Um ponteiro do tipo noListaCategoria a ser adicionado na lista de categorias.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario
+	*/
 
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaCategoria! Argumentos invalidos\n");
@@ -59,9 +90,19 @@ int addNoListaCategoriaExistente(ListaCategoria *lista, noListaCategoria *no){
 	return SEM_ERRO;
 }
 
-/** Adiciona uma categoria na lista de categorias, se for nova*/
-/*Retorna 0 em caso sucesso e -1 caso contrario*/
-int addNoListaCategoriaNova(ListaCategoria *lista, noListaCategoria *no){	
+/// Adiciona uma categoria na lista de categorias, se for nova
+int addNoListaCategoriaNova(ListaCategoria *lista, noListaCategoria *no){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias existente e um no do tipo noListaCategoria existente
+		Assertivas de saida: A lista de categorias passada como argumento com o no adicionado
+	*/
+
+	/** 
+		\param	ListaCategoria *lista: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\param noListaCategoria *no: Um ponteiro do tipo noListaCategoria que foi cadastrado a ser adicionado na lista de categorias.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario
+	*/
 
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaCategoria! Argumentos invalidos\n");
@@ -90,9 +131,19 @@ int addNoListaCategoriaNova(ListaCategoria *lista, noListaCategoria *no){
 	return SEM_ERRO;
 }
 
-/** Deleta uma categoria da lista de categorias pelo seu id*/
-//Retorna 0 se a remocao tiver ocorrido com sucesso e -1, caso contrario
+/// Deleta uma categoria da lista de categorias pelo seu id
 int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias existente e um no do tipo noListaCategoria existente
+		Assertivas de saida: A lista de categorias passada como argumento com o no deletado
+	*/
+
+	/** 
+		\param	ListaCategoria *lista: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\param noListaCategoria *no: Um ponteiro do tipo noListaCategoria a ser removido da lista de categorias.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario
+	*/
 
 	noListaCategoria *acompanha = lista->primeiro;
 	noListaCategoria *anterior = NULL;
@@ -129,9 +180,19 @@ int deletaNoListaCategoria(ListaCategoria *lista, noListaCategoria *no){
 	return SEM_ERRO;
 }
 
-/** Procura uma categoria na lista de categorias */
-//Retorna o no que esta procurando
-noListaCategoria *encontraNoCategoria(noListaCategoria *inicio, Categoria categoria){	
+/// Funcao que procura uma categoria na lista de categorias 
+noListaCategoria *encontraNoCategoria(noListaCategoria *inicio, Categoria categoria){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias existente e uma variavel do tipo Categoria valida
+		Assertivas de saida: Um ponteiro do tipo noListaCategoria valido
+	*/
+
+	/** 
+		\param	ListaCategoria *lista: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\param Categoria categoria: Uma variavel do tipo categoria, com os atributos preenchidos, a ser procurada na lista .
+		\return O no da categoria procurada ou NULL, caso nao seja achado essa categoria na lista
+	*/
 
 	noListaCategoria *acompanha = inicio;	/** Primeiro no da lista */
 
@@ -152,9 +213,18 @@ noListaCategoria *encontraNoCategoria(noListaCategoria *inicio, Categoria catego
 
 }
 
-//Funcao que libera a lista
-//Retorna 0 se for liberada com sucesso e -1 se nao for
+/// Funcao que libera a lista de categorias
 int LiberaListaCategoria(ListaCategoria *listaCategoria){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias existente
+		Assertivas de saida: A memoria alocada para a lista de categorias livre
+	*/
+
+	/** 
+		\param	ListaCategoria *lista: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario
+	*/
 
 	if(listaCategoria){
 		if(listaCategoria->primeiro){

@@ -15,6 +15,17 @@
 
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de usuarios
 lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
+
+	/**
+		Assertivas de entrada: Uma lista de usuarios vazia
+		Assertivas de saida: Uma lista de usuarios preenchida apos obter os dados no banco de dados, ou uma lista nova
+	*/
+
+	/** 
+		\param	lista_usuario *listaUsuario: Um ponteiro do tipo lista_usuario, que eh a lista de usuarios. 
+		\return Um ponteiro do tipo lista_usuario, que vai ser a lista de usuarios criada ou reconstruida.
+	*/
+
 	//tamanho do cabecalho do arquivo de usuarios: 76
 	FILE *fUser = NULL; //! descritor do arquivo
 	Usuario usuarioRecuperado; //! variavel do tipo Usuario que vai receber os dados que estao sendo recuperados do arquivo
@@ -66,6 +77,17 @@ lista_usuario *RecupDadosUsuario(lista_usuario *listaUsuario){
 
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de transacoes
 ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes vazia
+		Assertivas de saida: Uma lista de transacoes preenchida apos obter os dados no banco de dados, ou uma lista nova
+	*/
+
+	/** 
+		\param	ListaTransacao *listaTransacao: Um ponteiro do tipo lista_usuario, que eh a lista de transacoes. 
+		\return Um ponteiro do tipo ListaTransacao, que vai ser a lista de transacoes criada ou reconstruida.
+	*/
+
 	//tamanho do cabecalho do arquivo de transacoes: 154
 	FILE *fTransacao = NULL; //! descritor do arquivo
 	Transacao transacaoRecuperada; //! variavel do tipo Transacao que vai receber os dados que estao sendo recuperados do arquivo
@@ -131,6 +153,17 @@ ListaTransacao *RecupDadosTransacoes(ListaTransacao *listaTransacao){
 
 /// Funcao que dada uma lista, recupera os dados desse arquivo para a lista de categorias
 ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias vazia
+		Assertivas de saida: Uma lista de categorias preenchida apos obter os dados no banco de dados, ou uma lista nova
+	*/
+
+	/** 
+		\param	ListaCategoria *listaCat: Um ponteiro do tipo lista_usuario, que eh a lista de categorias. 
+		\return Um ponteiro do tipo ListaCategoria, que vai ser a lista de categorias criada ou reconstruida.
+	*/
+
 	//tamanho do cabecalho do arquivo de categorias: 20 
 	Categoria categoriaRecuperada;
 	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
@@ -176,6 +209,17 @@ ListaCategoria *RecupDadosCategorias(ListaCategoria *listaCat){
 
 /// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de amizades
 Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
+
+	/**
+		Assertivas de entrada: Um grafo de amizades vazio
+		Assertivas de saida: Um grafo de amizades preenchido apos obter os dados no banco de dados, ou um grafo novo
+	*/
+
+	/** 
+		\param	Grafo *grafoAmizade: Um ponteiro do tipo Grafo, que eh o grafo de amizades. 
+		\return Um ponteiro do tipo Grafo, que vai ser o grafo de amizades criado ou reconstruido.
+	*/
+
 	// tamanho do cabecalho dos arquivos de grafo: 25
 	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
 	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
@@ -230,6 +274,17 @@ Grafo *RecupDadosGrafoAmiz(Grafo *grafoAmizade){
 
 /// Funcao que dado um grafo, recupera os dados desse arquivo para o grafo de transacoes
 Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
+
+	/**
+		Assertivas de entrada: Um grafo de transacoes vazio
+		Assertivas de saida: Um grafo de transacoes preenchido apos obter os dados no banco de dados, ou um grafo novo
+	*/
+
+	/** 
+		\param	Grafo *grafoTransacoes: Um ponteiro do tipo Grafo, que eh o grafo de transacoes. 
+		\return Um ponteiro do tipo Grafo, que vai ser o grafo de transacoes criado ou reconstruido.
+	*/
+
 	// tamanho do cabecalho dos arquivos de grafo: 25
 	char *campoCbclho = NULL; //! string que vai receber cada string entre os delimitadores do arquivo
 	char strTemp[1001]; //! string temporaria que vai receber cada linha do arquivo
@@ -284,7 +339,18 @@ Grafo *RecupDadosGrafoTransac(Grafo *grafoTransacoes){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos os usuarios e suas informacoes em um arquivo
 int SalvaArquivoUsuario(lista_usuario *listaUsuario){
-	if(listaUsuario == NULL){
+
+	/**
+		Assertivas de entrada: Uma lista de usuarios preenchida com os dados da execucao do programa
+		Assertivas de saida: Um arquivo preenchido com os dados da lista de usuarios
+	*/
+
+	/** 
+		\param	lista_usuario *listaUsuario: Um ponteiro do tipo lista_usuario, que eh a lista de usuarios. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
+	if(listaUsuario->primeiro == NULL || listaUsuario == NULL){
 		printf("Lista de usuario passada eh vazia! Saindo da funcao SalvaArquivoUsuario!\n");
 		return ERRO;
 	}
@@ -318,7 +384,18 @@ int SalvaArquivoUsuario(lista_usuario *listaUsuario){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todos as transacoes e suas informacoes em um arquivo
 int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
-	if(listaTransacao == NULL){
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes preenchida com os dados da execucao do programa
+		Assertivas de saida: Um arquivo preenchido com os dados da lista de transacoes
+	*/
+
+	/** 
+		\param	ListaTransacao *listaTransacao: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
+	if(listaTransacao->primeiro == NULL || listaTransacao == NULL){
 		printf("Lista de transacoes passada eh vazia! Saindo da funcao SalvaArquivoTransacao!\n");
 		return ERRO;
 	}
@@ -361,7 +438,18 @@ int SalvaArquivoTransacao(ListaTransacao *listaTransacao){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar todas as categorias e suas informacoes em um arquivo
 int SalvaArquivoCategorias(ListaCategoria *listaCat){
-	if(listaCat == NULL){
+
+	/**
+		Assertivas de entrada: Uma lista de categorias preenchida com os dados da execucao do programa
+		Assertivas de saida: Um arquivo preenchido com os dados da lista de categorias
+	*/
+
+	/** 
+		\param	ListaCategoria *listaCat: Um ponteiro do tipo ListaCategoria, que eh a lista de categorias. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
+	if(listaCat->primeiro == NULL || listaCat == NULL){
 		printf("Lista de categorias passada eh vazia! Saindo da funcao SalvaArquivoCategorias!\n");
 		return ERRO;
 	}
@@ -393,7 +481,18 @@ int SalvaArquivoCategorias(ListaCategoria *listaCat){
 
 /// Funcao que, antes do programa encerrar de fato, vai salvar o grafo de amizades em um arquivo
 int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
-	if(grafoAmizade == NULL){
+
+	/**
+		Assertivas de entrada: Um grafo de amizades preenchido com os dados da execucao do programa
+		Assertivas de saida: Um arquivo preenchido com os dados do grafo de amizades
+	*/
+
+	/** 
+		\param	Grafo *grafoAmizade: Um ponteiro do tipo Grafo, que eh o grafo de amizades. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
+	if(grafoAmizade->vertices == NULL || grafoAmizade == NULL){
 		printf("Grafo de amizades passado eh vazio! Saindo da funcao SalvaArquivoGrafoAmiz!\n");
 		return ERRO;
 	}
@@ -435,7 +534,18 @@ int SalvaArquivoGrafoAmiz(Grafo *grafoAmizade){
 
 ///Funcao que, antes do programa encerrar de fato, vai salvar o grafo de transacoes em um arquivo
 int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
-	if(grafoTransacoes == NULL){
+
+	/**
+		Assertivas de entrada: Um grafo de transacoes preenchido com os dados da execucao do programa
+		Assertivas de saida: Um arquivo preenchido com os dados do grafo de transacoes
+	*/
+
+	/** 
+		\param	Grafo *grafoTransacoes: Um ponteiro do tipo Grafo, que eh o grafo de transacoes. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
+	if(grafoTransacoes->vertices == NULL || grafoTransacoes == NULL){
 		printf("Grafo de transacoes passado eh vazio! Saindo da funcao SalvaArquivoGrafoTransacao!\n");
 		return ERRO;
 	}
@@ -478,6 +588,18 @@ int SalvaArquivoGrafoTransacao(Grafo *grafoTransacoes){
 /// Funcao que vai retornar as informacoes do usuario pelo ID dele, a partir da lista de usuarios
 /// E passar essas informacoes para a lista de transacoes
 int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao){
+
+	/**
+		Assertivas de entrada: Listas de transacoes e usuarios recem preenchidas pelas informacoes do banco de dados
+		Assertivas de saida: Lista de transacoes com as informacoes de usuario validas
+	*/
+
+	/** 
+		\param	lista_usuario *listaUsuario: Um ponteiro do tipo lista_usuario, que eh a lista de usuarios. 
+		\param ListaTransacao *listaTransacao: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
+
 	Usuario usuarioDesejado; //! O tipo usuario que vai ser retornado
 	noListaTransacao *ptrNoTransacoes = NULL;  //! vai ser o ponteiro para percorrer a lista de transacoes
 	no_lista_usuario *ptrNoUsuarioProv = NULL, *ptrNoUsuarioCli = NULL; //! Os ponteiros de no de usuario 
@@ -489,6 +611,7 @@ int RecupInfosUsuaID(lista_usuario *listaUsuario, ListaTransacao *listaTransacao
 
 	ptrNoTransacoes = listaTransacao->primeiro;
 
+	// loop que vai percorrer e passar as devidas informacoes de usuarios para as variaveis do tipo transacao da lista de transacoes
 	while(ptrNoTransacoes != NULL){
 		ptrNoUsuarioProv = encontraNoUsuarioID(listaUsuario->primeiro, ptrNoTransacoes->transacao.servico.usuarioProvedor.ID);
 		if(ptrNoUsuarioProv != NULL){

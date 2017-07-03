@@ -13,8 +13,18 @@
  *
  */
 
-/** Funcao que cria o no de transacao */
-noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */ 
+/// Funcao que cria um no do tipo transacao, para ser inserido ou nao na lista de transacoes
+noListaTransacao *criaNoTransacao(Transacao transacao){	
+
+	/**
+		Assertivas de entrada: Uma variavel do tipo Transacao valida, com atributos preenchidos
+		Assertivas de saida: Um no do tipo noListaTransacao valido
+	*/
+
+	/** 
+		\param Transacao transacao: Uma variavel do tipo Transacao, com seus atributos preenchidos. 
+		\return Um ponteiro do tipo noListaTransacao. 
+	*/ 
 
 	noListaTransacao *no = (noListaTransacao*)malloc(sizeof(noListaTransacao));
 	no->prox = NULL;
@@ -25,8 +35,21 @@ noListaTransacao *criaNoTransacao(Transacao transacao){	/** Cria nó */
 
 /********************Funcoes relacionadas a tela de adicionar transacao**********************/
 
-/** Funcao que monta o tipo servico do usuario que vai adicionar na transacao sendo criada*/
+/// Funcao que monta o tipo servico do usuario que vai adicionar na transacao sendo criada
 Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *descricaoServico){
+
+	/**
+		Assertivas de entrada: Uma variavel do tipo Usuario e duas strings validas 
+		Assertivas de saida: Uma variavel do tipo Servico com atributos preenchidos
+	*/
+
+	/** 
+		\param Usuario usuarioProvedor: Uma variavel do tipo Usuario, que eh o usuario que esta adicionando a transacao, com seus atributos preenchidos.
+		\param char *precoServico: Uma string com o preco do servico a ser criado.
+		\param char *descricaoServico: Uma string com a descricao do servico a ser criado. 
+		\return Uma variavel do tipo Servico. 
+	*/ 
+
 	Servico servicoUsuario; //! Variavel do tipo servico para abrigar os atributos do servico que o usuario
 							//! usuarioProvedor esta criando
 
@@ -37,8 +60,20 @@ Servico CriaServicoUsuario(Usuario usuarioProvedor, char *precoServico, char *de
 	return servicoUsuario;
 }
 
-/** Funcao que monta a transacao que vai ser adicionada, recebendo o servico e a categoria do servico*/
+/// Funcao que monta a transacao que vai ser adicionada, recebendo o servico e a categoria do servico
 Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico){
+
+	/**
+		Assertivas de entrada: Uma variavel do tipo Servico e Categoria validas
+		Assertivas de saida: Uma variavel do tipo Transacao com atributos preenchidos
+	*/
+
+	/** 
+		\param Servico servicoUsuario: Uma variavel do tipo Servico, que eh o servico que esta sendo adicionado pelo usuario, com seus atributos preenchidos.
+		\param Categoria categoriaServico: Uma variavel do tipo Categoria, que sera a categoria da transacao, com seus atributos preenchidos.
+		\return Uma variavel do tipo Transacao. 
+	*/ 
+
 	Transacao transacaoUsuario;
 
 	transacaoUsuario.servico = servicoUsuario; //recebe o servico do usuario
@@ -50,7 +85,18 @@ Transacao MontaTransacao(Servico servicoUsuario, Categoria categoriaServico){
 
 /********************************************************************************************/
 
-ListaTransacao *criarListaTransacao(){	/** Cria lista */ 
+/// Funcao que cria a lista de transacoes
+ListaTransacao *criarListaTransacao(){	
+
+	/**
+		Assertivas de entrada: Sem assertivas de entrada
+		Assertivas de saida: Uma lista de transacoes, com a cabeca para lista de nos vazia e o atributo numeroTransacoes = 0
+	*/
+
+	/** 
+		\param	Sem parametros de entrada.
+		\return Um ponteiro do tipo ListaTransacao, ou seja, a lista de transacoes criada. 
+	*/
 
 	ListaTransacao *lista_criada = (ListaTransacao*)malloc(sizeof(ListaTransacao));
 	lista_criada->numeroTransacoes = 0;
@@ -60,9 +106,19 @@ ListaTransacao *criarListaTransacao(){	/** Cria lista */
 
 }
 
-/** Adiciona uma transacao na lista de transacoes, se ja existir no BD*/
-/*Retorna 0 em caso sucesso e -1 caso contrario*/
+/// Adiciona uma transacao na lista de transacoes, se ja existir no BD
 int addNoListaTransacaoExistente(ListaTransacao *lista, noListaTransacao *no){	
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes existente e um no do tipo noListaTransacao existente
+		Assertivas de saida: A lista de transacoes passada como argumento com o no adicionado
+	*/
+
+	/** 
+		\param	ListaTransacao *lista: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\param noListaTransacao *no: Um ponteiro do tipo noListaTransacao a ser adicionado na lista de transacoes.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
 	
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaTransacao! Argumentos invalidos\n");
@@ -87,9 +143,19 @@ int addNoListaTransacaoExistente(ListaTransacao *lista, noListaTransacao *no){
 	return SEM_ERRO;
 }
 
-/** Adiciona uma transacao na lista de transacoes, se for nova*/
-/*Retorna 0 em caso sucesso e -1 caso contrario*/
-int addNoListaTransacaoNova(ListaTransacao *lista, noListaTransacao *no){	
+/// Adiciona uma transacao na lista de transacoes, se for nova
+int addNoListaTransacaoNova(ListaTransacao *lista, noListaTransacao *no){
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes existente e um no do tipo noListaTransacao existente
+		Assertivas de saida: A lista de transacoes passada como argumento com o no adicionado
+	*/
+
+	/** 
+		\param	ListaTransacao *lista: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\param noListaTransacao *no: Um ponteiro do tipo noListaTransacao que foi cadastrado a ser adicionado na lista de transacoes.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
 	
 	if(lista == NULL || no == NULL){
 		printf("Erro na funcao addNoListaTransacao! Argumentos invalidos\n");
@@ -118,9 +184,19 @@ int addNoListaTransacaoNova(ListaTransacao *lista, noListaTransacao *no){
 	return SEM_ERRO;
 }
 
-/** Deleta uma transacao da lista de transacoes pelo seu id*/
-//Retorna 0 se a remocao tiver ocorrido com sucesso e -1, caso contrario
+/// Deleta uma transacao da lista de transacoes pelo seu id
 int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){ 
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes existente e um no do tipo noListaTransacao existente
+		Assertivas de saida: A lista de transacoes passada como argumento com o no deletado
+	*/
+
+	/** 
+		\param	ListaTransacao *lista: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\param noListaTransacao *no: Um ponteiro do tipo noListaTransacao a ser removido da lista de transacoes.
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario.
+	*/
 
 	noListaTransacao *acompanha = lista->primeiro;
 	noListaTransacao *anterior = NULL;
@@ -157,9 +233,19 @@ int deletaNoListaTransacao(ListaTransacao *lista, noListaTransacao *no){
 	return SEM_ERRO;
 }
 
-/** Procura uma transacao na lista de transacoes */
-//Retorna o no que esta procurando
-noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transacao){	
+/// Procura uma transacao na lista de transacoes pelo id da transacao
+noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transacao){
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes existente e uma variavel do tipo Transacao valida
+		Assertivas de saida: Um ponteiro do tipo noListaTransacao valido
+	*/
+
+	/** 
+		\param	ListaTransacao *lista: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\param Transacao transacao: Uma variavel do tipo Transacao, com os atributos preenchidos, a ser procurada na lista.
+		\return O no da transacao procurada ou NULL, caso nao seja achado essa transacao na lista.
+	*/	
 
 	noListaTransacao *acompanha = inicio;	/** Primeiro no da lista */
 
@@ -180,9 +266,18 @@ noListaTransacao *encontraNoTransacao(noListaTransacao *inicio, Transacao transa
 
 }
 
-//Funcao que libera a lista
-//Retorna 0 se for liberada com sucesso e -1 se nao for
+/// Funcao que libera a lista de transacoes
 int LiberaListaTransacao(ListaTransacao *listaTransacao){
+
+	/**
+		Assertivas de entrada: Uma lista de transacoes existente
+		Assertivas de saida: A memoria alocada para a lista de transacoes livre
+	*/
+
+	/** 
+		\param	ListaTransacao *lista: Um ponteiro do tipo ListaTransacao, que eh a lista de transacoes. 
+		\return Um inteiro, retorna 0 em caso sucesso e -1 caso contrario
+	*/
 
 	if(listaTransacao){
 		if(listaTransacao->primeiro){

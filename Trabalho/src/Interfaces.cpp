@@ -43,18 +43,33 @@ void sair_do_programa(lista_usuario *listaUsuarios, ListaTransacao *listaTransac
 
 	if(listaUsuarios->primeiro != NULL){
 		retornoSalvaUsuario = SalvaArquivoUsuario(listaUsuarios);
+		if(retornoSalvaUsuario < 0){
+			printf("Lista de usuarios passada vazia, entao nao salva nos arquivos!\n");
+		}
 	}
 	if(grafoAmizade->vertices != NULL){
 		retornoSalvaGrafoAmiz = SalvaArquivoGrafoAmiz(grafoAmizade);
+		if(retornoSalvaGrafoAmiz < 0){
+			printf("Grafo de amizades vazio, entao nao salva nos arquivos!\n");
+		}
 	}
 	if(listaTransacoes->primeiro != NULL){
 		retornoSalvaTransacoes = SalvaArquivoTransacao(listaTransacoes);
+		if(retornoSalvaTransacoes < 0){
+			printf("Lista de transacoes passada vazia, entao nao salva nos arquivos!\n");
+		}
 	}
 	if(listaCategorias->primeiro != NULL){
 		retornoSalvaCategorias = SalvaArquivoCategorias(listaCategorias);
+		if(retornoSalvaCategorias < 0){
+			printf("Lista de categorias passada vazia, entao nao salva nos arquivos!\n");
+		}
 	}
 	if(grafoTransacoes->vertices != NULL){
 		retornoSalvaGrafoTransac = SalvaArquivoGrafoTransacao(grafoTransacoes);
+		if(retornoSalvaGrafoTransac < 0){
+			printf("Grafo de transacoes vazio, entao nao salva nos arquivos!\n");
+		}
 	}
 	
 
