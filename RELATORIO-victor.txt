@@ -2,5 +2,18 @@
 Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada
 
 
-15/06/17    4 horas      Banco de Dados   Criando o diagrama de cardinaldidade e idealizei o banco de grafico de maneira grafica e repassei minha ideia para os outros membros
-16/06/17    1 hora       Grafos/Listas/   Manipulacao das listas e funcoes de grafo. Desenvolveu toda o modelo do banco de dados e comecou a realizar pseudo codigos para implementacao
+15/06/17    4 horas      especificar os módulos/fazer diagramas   Criando o diagrama de cardinaldidade e idealizei o banco de grafico de maneira grafica e repassei minha ideia para os outros membros
+
+16/06/17    3 hora       especificar os módulos/especificar as funções/codificar módulo   Manipulacao das listas e funcoes de grafo. Desenvolvi todo o modelo do banco de dados e comecei a realizar pseudo codigos para implementacao
+
+20/06/17    5 horas       codificar módulo   Comecei a implementar as funcoes de salvar nos arquivos do BD
+
+23/06/17    4 horas       codificar módulo   Terminei de implementar as funcoes de salvar nos arquivos do BD
+
+26/06/17    3 horas      codificar módulo   Comecei a implementar as funcoes de obter os dados do BD para as listas e grafos do programa
+
+30/06/17    6 horas      codificar módulo   Terminei de implementar as funcoes de obter os dados do BD para as listas e grafos do programa
+
+01/07/17    3 hora       revisar projetos/Rodar os CPPCheck e retirar warnings/revisar código do módulo   Ajudei os meus companheiros a revisar todo o codigo, corrigimos bugs, tanto da minha parte quanto da deles, verifiquei todos os codigos no cppcheck e corrigi os warnings
+
+02/07/17    4 horas       documentar com Doxygen   Comentei todos os codigos que escrevi para se adequarem ao doxygen
