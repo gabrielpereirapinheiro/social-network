@@ -1,32 +1,23 @@
-# Universidade de Brasilia - UnB
- __________________________________________________________________________________________________________________________________________
- 
-## Social Network
+## Implementation of Social Network 
 
-### Desenvolvedores:
+### Preparing the enveioremnt
 
-- [André Luis Souto Ferreira](https://github.com/AndreSouto) 
-- [Gabriel Pereira Pinheiro](https://github.com/gabrielpereirapinheiro) 
-- [Victor Araujo Vieira](https://github.com/IceVct)
-
-### Preparando o ambiente
-
-- É necesário instalar a biblioteca ```ncurses``` para executar o programa, para isso abra o terminal e digite o comando:
+- It's necessary install the library ```ncurses``` to execute the program, to do that open the terminal and use
 
 > $ sudo apt-get install libncurses5-dev libncursesw5-dev
 
-### Como executar
+### Execute
 
-- Basta entrar na pasta ```src``` pelo terminal e digitar o comando :
+- Open the folder ```src``` by the terminal and use the command
 
 > $ make main
 
-- Em seguida , no terminal digite o comando:
+- And then use 
 
 > $ ./main
 
-- E o programa sera executado.
+- So the program will be executed.
 
-### Sobre o projeto
+### Knowing the project
 
-- Para saber mais sobre o projeto clique [aqui](https://github.com/gabrielpereirapinheiro/social-network/blob/master/SOBRE.md).
+- To know more about the project, click [here](https://github.com/gabrielpereirapinheiro/social-network/blob/master/SOBRE.md).
