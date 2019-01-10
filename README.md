@@ -1,6 +1,6 @@
 ## Implementation of Social Network 
 
-### Preparing the enveioremnt
+### Preparing the environment
 
 - It's necessary install the library ```ncurses``` to execute the program, to do that open the terminal and use
 
