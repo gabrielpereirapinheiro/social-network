@@ -6,7 +6,7 @@
 
 - The database was implemented with the help of developed functions that manipulate files and the graphs interface was elaborated with the library ```ncurses```.
 
-- The requirements specifications that were followed are present in a PDF file in the [script] (https://github.com/gabrielpereirapinheiro/social-network/blob/master/Roteiro/MP_Proj_disc_1_17.pdf) do projeto.
+- The requirements specifications that were followed are present in a PDF file in the [script](https://github.com/gabrielpereirapinheiro/social-network/blob/master/Roteiro/MP_Proj_disc_1_17.pdf) do projeto.
 
 - Os testes automatizados foram gerados utilizando a framework [Catch](https://github.com/philsquared/Catch). Foi seguido desenvolvimento orientado a testes (```Test Driven Development```).
 
