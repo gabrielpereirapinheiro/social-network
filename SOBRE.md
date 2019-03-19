@@ -1,12 +1,12 @@
 # Sobre o projeto
 
-- Programa desenvolvido simula uma rede social utilizando a linguagem C.
+- The develop program simulate an social network using C programming language
 
-- Todos os membros do grupo sao estudantes de ```Engenharia da Computação``` na ```Universidade de Brasilia``` e implementaram este código como projeto da disciplina ```Métodos de Programacao 2017/1``` .
+- All member of the group are students of ```Computer Engineer``` at ```University of Brasilia``` and implemented the code to the subject "```Programing methods 2017/1```"
 
-- O banco de dados foi implementado com o auxilio de funções desenvolvidas que manipulam arquivos e a interface gráfifca do programa foi elaborada com funções da biblioteca ```ncurses```.
+- The database was implemented with the help of developed functions that manipulate files and the graphs interface was elaborated with the library ```ncurses```.
 
-- As especificacoes de requisitos que foram seguidas esta presente em um arquivo PDF na pasta [roteiro](https://github.com/gabrielpereirapinheiro/social-network/blob/master/Roteiro/MP_Proj_disc_1_17.pdf) do projeto.
+- The requirements specifications that were followed are present in a PDF file in the [script] (https://github.com/gabrielpereirapinheiro/social-network/blob/master/Roteiro/MP_Proj_disc_1_17.pdf) do projeto.
 
 - Os testes automatizados foram gerados utilizando a framework [Catch](https://github.com/philsquared/Catch). Foi seguido desenvolvimento orientado a testes (```Test Driven Development```).
 
